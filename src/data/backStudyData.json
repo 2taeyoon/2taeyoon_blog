@@ -2,13 +2,27 @@
   "cards": [
 		{
 			"type": "bs",
+			"mdFile": "/images/back_study/5/5.md",
+      "image": "/images/back_study/5/main_image.webp",
+			"sortDate": "2025-09-04",
+      "title": "GEMO 프로젝트 API 설정과 연결",
+			"subTitle": "이번 프로젝트는 GEMO라는 이름으로 진행하는 간단한 웹게임 사이트입니다. 첫 단계로 워들 게임을 구현했으며, 이를 위해 사용된 API 설정과 관련된 부분을 정리해 보려고 합니다. Repo 개요·목표 프론트: gemo-frontend — Next.js(App Router) + NextAuth(구글 OAuth) + MongoDB 게임용 유저 상태/통계 API를 Route Handlers로 직접 제공합니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#NextAuth"},
+				{"name": "#MongoDB"},
+				{"name": "#TypeScript"}
+			]
+		},
+		{
+			"type": "bs",
 			"mdFile": "/images/back_study/4/4.md",
       "image": "/images/back_study/4/main_image.webp",
 			"sortDate": "2025-07-29",
       "title": "NextAuth와 MongoDB 연결하기",
 			"subTitle": "Next.js 13에서 구글 로그인 구현하고 싶다구요? next-auth만 있으면 로그인부터 DB 저장, 세션 관리까지 전부 다 됩니다. 게다가 MongoDBAdapter 없이? 커스텀해서 사용할 수 있습니다! 왜 MongoDBAdapter 안 썼냐고요? MongoDBAdapter는 좋긴 한데 제 프로젝트에 필요한 데이터 구조가 독특했어요.",
 			"hashs": [
-				{"name": "#Next.js"},
+				{"name": "#NextJS"},
 				{"name": "#NextAuth"},
 				{"name": "#MongoDB"},
 				{"name": "#Google"}
