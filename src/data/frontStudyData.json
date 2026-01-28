@@ -2,6 +2,10 @@
   "cards": [
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/28/28.md",
 			"image": "/images/front_study/28/main_image.webp",
 			"sortDate": "2025-05-10",
@@ -15,6 +19,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/27/27.md",
 			"image": "/images/front_study/27/main_image.webp",
 			"sortDate": "2025-04-30",
@@ -28,6 +36,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/26/26.md",
 			"image": "/images/front_study/26/main_image.webp",
 			"sortDate": "2025-03-20",
@@ -41,6 +53,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/25/25.md",
 			"image": "/images/front_study/25/main_image.webp",
 			"sortDate": "2025-02-25",
@@ -54,6 +70,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/24/24.md",
 			"image": "/images/front_study/24/main_image.webp",
 			"sortDate": "2025-02-23",
@@ -66,6 +86,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/23/23.md",
 			"image": "/images/front_study/23/main_image.webp",
 			"sortDate": "2025-02-20",
@@ -79,6 +103,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/22/22.md",
 			"image": "/images/front_study/22/main_image.webp",
 			"sortDate": "2025-02-15",
@@ -93,6 +121,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/21/21.md",
 			"image": "/images/front_study/21/main_image.webp",
 			"sortDate": "2025-02-02",
@@ -107,6 +139,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/20/20.md",
 			"image": "/images/front_study/20/main_image.webp",
 			"sortDate": "2025-01-23",
@@ -119,6 +155,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/19/19.md",
 			"image": "/images/front_study/19/main_image.webp",
 			"sortDate": "2025-01-21",
@@ -132,6 +172,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/18/18.md",
 			"image": "/images/front_study/18/main_image.webp",
 			"sortDate": "2025-01-17",
@@ -145,6 +189,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/17/17.md",
 			"image": "/images/front_study/17/main_image.webp",
 			"sortDate": "2025-01-11",
@@ -159,6 +207,10 @@
 		},
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/16/16.md",
       "image": "/images/front_study/16/main_image.webp",
 			"sortDate": "2025-01-10",
@@ -172,6 +224,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/15/15.md",
       "image": "/images/front_study/15/main_image.webp",
 			"sortDate": "2024-12-10",
@@ -185,6 +241,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/14/14.md",
       "image": "/images/front_study/14/main_image.webp",
 			"sortDate": "2024-12-08",
@@ -197,6 +257,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/13/13.md",
       "image": "/images/front_study/13/main_image.webp",
 			"sortDate": "2024-11-20",
@@ -209,6 +273,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/12/12.md",
       "image": "/images/front_study/12/main_image.webp",
 			"sortDate": "2024-11-10",
@@ -222,6 +290,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/11/11.md",
       "image": "/images/front_study/11/main_image.webp",
 			"sortDate": "2024-10-30",
@@ -235,6 +307,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/10/10.md",
       "image": "/images/front_study/10/main_image.webp",
 			"sortDate": "2024-10-20",
@@ -246,6 +322,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/9/9.md",
       "image": "/images/front_study/9/main_image.webp",
 			"sortDate": "2024-10-10",
@@ -257,6 +337,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/8/8.md",
       "image": "/images/front_study/8/main_image.webp",
 			"sortDate": "2024-10-08",
@@ -269,6 +353,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/7/7.md",
       "image": "/images/front_study/7/main_image.webp",
 			"sortDate": "2024-09-20",
@@ -281,6 +369,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/6/6.md",
       "image": "/images/front_study/6/main_image.webp",
 			"sortDate": "2024-09-10",
@@ -293,6 +385,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/5/5.md",
       "image": "/images/front_study/5/main_image.webp",
 			"sortDate": "2024-09-08",
@@ -305,6 +401,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/4/4.md",
       "image": "/images/front_study/4/main_image.webp",
 			"sortDate": "2024-08-30",
@@ -317,6 +417,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/3/3.md",
       "image": "/images/front_study/3/main_image.webp",
 			"sortDate": "2024-08-20",
@@ -329,6 +433,10 @@
     },
     {
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/2/2.md",
       "image": "/images/front_study/2/main_image.webp",
 			"sortDate": "2024-08-10",
@@ -341,6 +449,10 @@
     },
 		{
 			"type": "fs",
+			"category": [
+				{"text": "Front-End" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/front_study/1/1.md",
       "image": "/images/front_study/1/main_image.webp",
 			"sortDate": "2024-08-08",

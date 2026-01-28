@@ -45,7 +45,7 @@
 }
 
 .swiper_common .swiper .description .autoplay_progress { position: absolute; top: 0; left: 0; width: 100%; height: 5px; background-color: var(--thema); overflow: hidden; z-index: 100; }
-.swiper_common .swiper .description .autoplay_progress .progress_bar { height: 100%; width: 0%; background-color: var(--themabright); transition: width linear; }
+.swiper_common .swiper .description .autoplay_progress .progress_bar { height: 100%; width: 0%; background-color: var(--themaBright); transition: width linear; }
 .swiper_common .swiper .description .current_page { position: absolute; top: -40px; right: 0; }
 
 @media (max-width: 1024px) {
@@ -56,7 +56,7 @@
 	.swiper_common .swiper .description .current_page { top: -30px; }
 }
 
-.swiper_common .swiper .description .current_page span:nth-child(1) { color: var(--themabright); font-size: 2.6rem; font-family: "TTTtangsbudaejjigae", "Malgun Gothic", sans-serif; }
+.swiper_common .swiper .description .current_page span:nth-child(1) { color: var(--themaBright); font-size: 2.6rem; font-family: "TTTtangsbudaejjigae", "Malgun Gothic", sans-serif; }
 
 @media (max-width: 1024px) {
 	.swiper_common .swiper .description .current_page span:nth-child(1) { font-size: 2.4rem; }

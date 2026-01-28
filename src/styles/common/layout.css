@@ -178,7 +178,7 @@
 
 .common_wrap .blog .page_url .page_url_wrap .page_url_item .page_url_item_text .prev_post,
 .common_wrap .blog .page_url .page_url_wrap .page_url_item .page_url_item_text .next_post {
-	color: var(--themabright);
+	color: var(--themaBright);
 	font-size: 16px;
 }
 

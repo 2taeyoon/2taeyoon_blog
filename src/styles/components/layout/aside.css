@@ -33,7 +33,7 @@
 .another_site .tistory { width: 25px; height: 25px; }
 .another_site .github { width: 25px; height: 25px; }
 .nav { width: 100%; padding: 16px 0; border-top: 1px solid var(--line); }
-.nav .home { display: inline-block; width: 100%; padding: 10px 36px; transition: transform .3s; background-image: linear-gradient(to right, var(--thema), var(--themalight)); background-clip: text; -webkit-background-clip: text; color: transparent; font-weight: 700; font-size: 16px; }
+.nav .home { display: inline-block; width: 100%; padding: 10px 36px; transition: transform .3s; background-image: linear-gradient(to right, var(--thema), var(--themaLight)); background-clip: text; -webkit-background-clip: text; color: transparent; font-weight: 700; font-size: 16px; }
 .nav .home:hover { transform: scale(1.05); animation: hueRotate 2s ease-in infinite alternate; }
 
 @media (max-width: 640px) {
@@ -43,7 +43,7 @@
 .nav .nav_wrap { width: 100%; }
 .nav .nav_wrap .category { padding: 20px 36px; color: var(--blacklight); font-size: 15px; }
 .nav .nav_wrap .item { display: flex; align-items: center; position: relative; width: 100%; padding: 12px 36px; background-color: var(--white); color: var(--black); transition: transform .3s, color .3s, background-color .3s; overflow: hidden; }
-.nav .nav_wrap .item:hover { transform: scale(1.05); color: var(--thema); background-color: var(--themalight); z-index: 1; }
+.nav .nav_wrap .item:hover { transform: scale(1.05); color: var(--thema); background-color: var(--themaLight); z-index: 1; }
 .nav .nav_wrap .item:hover svg { fill: var(--thema); }
 .nav .nav_wrap .item svg { padding-right: 12px; transition: fill .3s; }
 

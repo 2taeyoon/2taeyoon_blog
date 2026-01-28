@@ -60,7 +60,7 @@
 	.saying_all_wrap .saying_wrap .reset_btn:hover svg { animation: none; }
 }
 
-.saying_all_wrap .saying_wrap .reset_btn svg { fill: var(--themabright); width: 35px; height: 35px; }
+.saying_all_wrap .saying_wrap .reset_btn svg { fill: var(--themaBright); width: 35px; height: 35px; }
 
 @media (max-width: 1024px) {
 	.saying_all_wrap .saying_wrap .reset_btn svg { width: 30px; height: 30px; }

@@ -12,5 +12,5 @@
 	.hashs_wrap .swiper-wrapper div:hover { transform: none; filter: none; }
 }
 
-.hashs_wrap .swiper-wrapper div.active { background-color: var(--themabright); }
+.hashs_wrap .swiper-wrapper div.active { background-color: var(--themaBright); }
 .hashs_wrap .swiper-wrapper div.active:hover { transform: none; filter: none; }

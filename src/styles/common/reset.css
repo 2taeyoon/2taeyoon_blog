@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 ::selection {
-  background: var(--themabright);
+  background: var(--themaBright);
   color: var(--whiteF9);
 }
 

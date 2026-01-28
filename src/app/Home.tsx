@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useEffect, useMemo, useState } from "react";
-import SliderFade from "@/components/ui/SliderFade";
-import DesignStudyData from "@/data/designStudyData.json";
-import FrontStudyData from "@/data/frontStudyData.json";
-import BackStudyData from "@/data/backStudyData.json";
-import EtcStudyData from "@/data/etcStudyData.json";
-import CardPagination from "@/components/utill/CardPagination";
-import Saying from "@/components/ui/Saying";
-import Hashs from "@/components/utill/Hashs";
-import { CardProps } from "@/types/props";
+import React from "react";
+// import SliderFade from "@/components/ui/SliderFade";
+// import DesignStudyData from "@/data/designStudyData.json";
+// import FrontStudyData from "@/data/frontStudyData.json";
+// import BackStudyData from "@/data/backStudyData.json";
+// import EtcStudyData from "@/data/etcStudyData.json";
+// import CardPagination from "@/components/utill/CardPagination";
+// import Saying from "@/components/ui/Saying";
+// import Hashs from "@/components/utill/Hashs";
+// import { CardProps } from "@/types/props";
 
 export default function Home() {
 	// useEffect(()=>{ // 홈에 들어올 시 fromHome 추가

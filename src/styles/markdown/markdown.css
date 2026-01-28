@@ -255,14 +255,14 @@
 
 .blog table thead tr,
 .post_view table thead tr {
-	background-color: var(--themalight);
+	background-color: var(--themaLight);
 }
 
 .blog table thead tr th,
 .post_view table thead tr th {
 	border-top: 1px solid var(--whiteEEE);
 	border-left: 1px solid var(--whiteEEE);
-	border-bottom: 2px solid var(--themabright);
+	border-bottom: 2px solid var(--themaBright);
 	text-align: left;
 	font-weight: 700;
 }

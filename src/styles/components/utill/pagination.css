@@ -5,5 +5,5 @@
 }
 
 .pagination li a { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; margin: 0 4px; border-radius: 999px; font-size: 1.6rem; cursor: pointer; }
-.pagination .active a { background-color: var(--themabright); color: var(--white); }
+.pagination .active a { background-color: var(--themaBright); color: var(--white); }
 .pagination .break { pointer-events: none; cursor: default; }

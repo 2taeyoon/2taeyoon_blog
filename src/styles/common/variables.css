@@ -1,7 +1,11 @@
 :root {
 	--thema: #1D55AA;
-	--themabright: #4783dd;
-	--themalight: #f4f8ff;
+	--themaBright: #4783dd;
+	--themaLight: #f4f8ff;
+	--themaPoint: #bbdff7;
+	--redBright: #dd4747;
+	--greenBright: #16963b;
+	--purpleBright: #6d47dd;
 	--line: #dceaff;
 	--shadow: #e5efff;
 	--black: #232323;
@@ -23,7 +27,7 @@
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 999px;
-	background-color: var(--themabright);
+	background-color: var(--themaBright);
 }
 
 ::-webkit-scrollbar-thumb:hover {

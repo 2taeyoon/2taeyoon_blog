@@ -16,7 +16,7 @@
 	}
 }
 
-@keyframes expandWidth {
+/* @keyframes expandWidth {
 	from {
 		width: 0;
 	}
@@ -32,7 +32,7 @@
 	to {
 		height: 100%;
 	}
-}
+} */
 
 @keyframes arrowAnimate {
 	from {
