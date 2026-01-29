@@ -70,7 +70,9 @@ export interface SvgProps {
 // 카드 컴포넌트 START!
 export interface CardProps {
 	mdFile?: string; // 마크다운 파일 경로
-	category?: { text: string; color: string }[]; // 카드 카테고리
+	// 카드 카테고리
+	// 데이터(JSON)는 [{ text }, { color }] 형태로 분리되어 있음
+	category?: ({ text: string; color?: never } | { color: string; text?: never })[];
   badge?: string; // 카드에 출력되는 뱃지
 	badge2?: string; // 카드에 출력되는 뱃지
   image?: string; // 카드 썸네일
