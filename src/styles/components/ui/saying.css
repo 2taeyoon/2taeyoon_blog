@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .saying_all_wrap { width: 60%; z-index: 1; }
 
 @media (max-width: 1536px) {

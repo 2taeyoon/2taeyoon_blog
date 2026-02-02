@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .hashs_wrap { display: flex; align-items: center; width: 100%; padding: 32px 64px 0; }
 
 @media (max-width: 640px) {

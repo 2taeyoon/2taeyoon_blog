@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .aside_wrap { position: fixed; z-index: 50; top: 0; bottom: 0; width: 250px; background-color: var(--white); box-shadow: 0 0 3px var(--shadow); overflow: auto; }
 .aside_wrap::-webkit-scrollbar { width: 0; height: 0; }
 
