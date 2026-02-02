@@ -1,0 +1,71 @@
+.saying_all_wrap { width: 60%; z-index: 1; }
+
+@media (max-width: 1536px) {
+	.saying_all_wrap { width: 65%; }
+}
+
+@media (max-width: 1024px) {
+	.saying_all_wrap { width: 75%; }
+}
+
+@media (max-width: 640px) {
+	.saying_all_wrap { width: 85%; }
+}
+
+.saying_all_wrap .saying_wrap { display: flex; flex-direction: column; justify-content: space-between; position: relative; padding: 32px 64px; margin: -64px 0 16px; box-shadow: 0 0 30px 0 var(--whiteEEE); border-radius: 32px; background-color: var(--white); transition: all .3s; }
+.saying_all_wrap .saying_wrap:hover { box-shadow: 0 0 30px 0 var(--whiteCCC); }
+
+@media (max-width: 1024px) {
+	.saying_all_wrap .saying_wrap { padding: 24px 40px; border-radius: 24px; }
+}
+
+@media (max-width: 640px) {
+	.saying_all_wrap .saying_wrap { padding: 12px 20px; margin: -32px 0 16px; border-radius: 16px; }
+}
+
+.saying_all_wrap .saying_wrap .saying { font-size: 1.8rem; }
+
+@media (max-width: 640px) {
+	.saying_all_wrap .saying_wrap .saying { font-size: 1.6rem; }
+}
+
+.saying_all_wrap .saying_wrap .writer_wrap { display: flex; flex-direction: column; padding-top: 8px; }
+
+@media (max-width: 640px) {
+	.saying_all_wrap .saying_wrap .writer_wrap { padding-top: 4px; }
+}
+
+.saying_all_wrap .saying_wrap .writer_wrap .writer { display: flex; justify-content: flex-end; align-items: center; color: var(--thema); font-size: 1.6rem; font-weight: 700; font-family: "TTTtangsbudaejjigae", "Malgun Gothic", sans-serif; }
+.saying_all_wrap .saying_wrap .writer_wrap .writer span { padding-right: 8px; color: var(--thema); font-size: 1.6rem; font-weight: 700; font-family: "TTTtangsbudaejjigae", "Malgun Gothic", sans-serif; }
+.saying_all_wrap .saying_wrap .writer_wrap .job { display: flex; justify-content: flex-end; color: var(--blacklight); font-size: 1.4rem; font-weight: 300; font-family: "TTTtangsbudaejjigae", "Malgun Gothic", sans-serif; }
+.saying_all_wrap .saying_wrap .border { position: absolute; bottom: 0; left: 10px; width: 100%; height: 106%; border-radius: 32px; background-color: var(--thema); z-index: -1; }
+
+@media (max-width: 1024px) {
+	.saying_all_wrap .saying_wrap .border { border-radius: 24px; }
+}
+
+@media (max-width: 640px) {
+	.saying_all_wrap .saying_wrap .border { left: 7px; height: 108%; border-radius: 16px; }
+}
+
+.saying_all_wrap .saying_wrap .reset_btn { display: flex; align-items: center; justify-content: center; position: absolute; top: -16px; right: -16px; width: 60px; height: 60px; background-color: var(--white); border-radius: 999px; cursor: pointer; transition: all .3s; }
+.saying_all_wrap .saying_wrap .reset_btn:hover svg { animation: rotate 2s linear infinite; }
+
+@media (max-width: 1024px) {
+	.saying_all_wrap .saying_wrap .reset_btn { width: 50px; height: 50px; }
+}
+
+@media (max-width: 640px) {
+	.saying_all_wrap .saying_wrap .reset_btn { width: 40px; height: 40px; }
+	.saying_all_wrap .saying_wrap .reset_btn:hover svg { animation: none; }
+}
+
+.saying_all_wrap .saying_wrap .reset_btn svg { fill: var(--themaBright); width: 35px; height: 35px; }
+
+@media (max-width: 1024px) {
+	.saying_all_wrap .saying_wrap .reset_btn svg { width: 30px; height: 30px; }
+}
+
+@media (max-width: 640px) {
+	.saying_all_wrap .saying_wrap .reset_btn svg { width: 25px; height: 25px; }
+}

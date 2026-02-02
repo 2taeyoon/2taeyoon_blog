@@ -2,6 +2,10 @@
   "cards": [
 		{
 			"type": "es",
+			"category": [
+				{"text": "Etc" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/etc_study/5/5.md",
       "image": "/images/etc_study/5/main_image.webp",
 			"sortDate": "2025-05-26",
@@ -15,6 +19,10 @@
 		},
 		{
 			"type": "es",
+			"category": [
+				{"text": "Etc" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/etc_study/4/4.md",
       "image": "/images/etc_study/4/main_image.webp",
 			"sortDate": "2024-11-10",
@@ -26,6 +34,10 @@
     },
 		{
 			"type": "es",
+			"category": [
+				{"text": "Etc" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/etc_study/3/3.md",
       "image": "/images/etc_study/3/main_image.webp",
 			"sortDate": "2024-10-15",
@@ -37,6 +49,10 @@
     },
 		{
 			"type": "es",
+			"category": [
+				{"text": "Etc" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/etc_study/2/2.md",
       "image": "/images/etc_study/2/main_image.webp",
 			"sortDate": "2024-09-15",
@@ -48,6 +64,10 @@
     },
 		{
 			"type": "es",
+			"category": [
+				{"text": "Etc" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/etc_study/1/1.md",
       "image": "/images/etc_study/1/main_image.webp",
 			"sortDate": "2024-08-15",

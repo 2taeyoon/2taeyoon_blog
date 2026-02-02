@@ -2,6 +2,10 @@
   "cards": [
 		{
 			"type": "ds",
+						"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
 			"mdFile": "/images/design_study/3/3.md",
       "image": "/images/design_study/3/main_image.webp",
 			"sortDate": "2024-11-30",
@@ -13,6 +17,10 @@
     },
 		{
 			"type": "ds",
+						"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
 			"mdFile": "/images/design_study/2/2.md",
       "image": "/images/design_study/2/main_image.webp",
 			"sortDate": "2024-11-01",
@@ -24,6 +32,10 @@
     },
 		{
 			"type": "ds",
+						"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
 			"mdFile": "/images/design_study/1/1.md",
       "image": "/images/design_study/1/main_image.webp",
 			"sortDate": "2024-09-29",
