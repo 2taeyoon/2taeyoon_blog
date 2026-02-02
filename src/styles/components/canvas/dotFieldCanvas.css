@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+/**
+ * DotFieldCanvas
+ * WebGL 캔버스를 담는 루트·마운트 영역 스타일.
+ */
+
+/* 루트: 가시성 관찰 대상. position relative + height 100vh 로 레이아웃 확보 */
+.dot-field-canvas {
+	position: relative;
+	height: 100vh;
+}
+
+/* 마운트: fixed + inset:0 + 100vw/100vh 로 뷰포트 전체를 덮고, pointer-events none 으로 배경이 클릭/호버를 가로채지 않도록 함 */
+.dot-field-canvas__mount {
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	z-index: 0;
+	pointer-events: none;
+}
