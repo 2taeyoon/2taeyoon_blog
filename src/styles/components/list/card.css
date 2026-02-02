@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .card_wrap { display: flex; flex-wrap: wrap; }
 .card { position: relative; width: calc(25% - 32px); margin: 16px; overflow: hidden; cursor: pointer; transition: .5s; }
 .card:hover .card_top .card_img { transform: scale(1.1); }
@@ -8,8 +10,39 @@
 .card .card_top .card_img .card_badge_wrap .card_badge { padding: 2px 16px; margin-right: 8px; border-radius: 999px; background-color: var(--whiteDDD); }
 .card .card_top .card_img .card_badge_wrap .card_badge div { font-size: 1.4rem; }
 .card .card_bottom { width: 100%; padding-top: 12px; }
-.card .card_bottom .card_bottom_title { position: relative; padding-bottom: 8px; font-size: 1.8rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
-.card .card_bottom .card_bottom_category { padding-bottom: 4px; font-size: 1.4rem; font-weight: 400; }
+.card .card_bottom .card_bottom_title {
+	padding-bottom: 8px;
+	font-size: 1.8rem;
+	font-weight: 700;
+}
+.card .card_bottom .card_bottom_title span {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	z-index: 0;
+	font-size: 1.8rem;
+	font-weight: 700;
+}
+.card .card_bottom .card_bottom_title span::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 80%;
+	transform: translateY(-50%);
+	width: 0;
+	height: 16px;
+	background: rgba(96, 165, 250, 0.4);
+	z-index: -1;
+	transition: none;
+}
+.card:hover .card_bottom_title span::after {
+	width: 100%;
+	transition: width 0.3s ease-out;
+}
+.card .card_bottom .card_bottom_category { padding-bottom: 4px; font-size: 1.5rem; font-weight: 400; }
 .card .card_bottom .card_bottom_sub_title { display: -webkit-box; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 1.6rem; font-weight: 400; opacity: .7; }
 
 .card_date { color: var(--blackmute); font-size: 1.4rem; }
@@ -42,6 +75,7 @@
 	.card:hover::after { animation: none; }
 	.card:hover::before { animation: none; }
 	.card:hover .card_top .card_img { transform: none; }
+	.card:hover .card_bottom_title span::after { width: 0; }
 }
 
 @media (max-width: 640px) {
