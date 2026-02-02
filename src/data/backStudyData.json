@@ -6,6 +6,24 @@
 				{"text": "Back-End" },
 				{"color": "purpleBright"}
 			],
+			"mdFile": "/images/back_study/6/6.md",
+      "image": "/images/back_study/6/main_image.webp",
+			"sortDate": "2026-02-03",
+      "title": "폼 → Ajax → API → DB",
+			"subTitle": "이번 프로젝트는 GEMO라는 이름으로 진행하는 간단한 웹게임 사이트입니다. 첫 단계로 워들 게임을 구현했으며, 이를 위해 사용된 API 설정과 관련된 부분을 정리해 보려고 합니다. Repo 개요·목표 프론트: gemo-frontend — Next.js(App Router) + NextAuth(구글 OAuth) + MongoDB 게임용 유저 상태/통계 API를 Route Handlers로 직접 제공합니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#NextAuth"},
+				{"name": "#MongoDB"},
+				{"name": "#TypeScript"}
+			]
+		},
+		{
+			"type": "bs",
+			"category": [
+				{"text": "Back-End" },
+				{"color": "purpleBright"}
+			],
 			"mdFile": "/images/back_study/5/5.md",
       "image": "/images/back_study/5/main_image.webp",
 			"sortDate": "2025-09-04",
