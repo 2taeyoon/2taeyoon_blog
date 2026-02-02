@@ -11,9 +11,11 @@ import "@/styles/components/layout/aside.css";
 import "@/styles/components/ui/banner.css";
 import "@/styles/components/ui/sliderFade.css";
 import "@/styles/components/ui/saying.css";
+import "@/styles/components/ui/customCursor.css";
 import "@/styles/components/list/card.css";
 import "@/styles/components/utill/hashs.css";
 import "@/styles/components/utill/pagination.css";
+import "@/styles/components/canvas/dotFieldCanvas.css";
 
 /* Markdown Styles */
 import "@/styles/markdown/markdown.css";
