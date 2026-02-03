@@ -1,13 +1,7 @@
-/* Common Styles */
-import "@/styles/common/variables.css";
-import "@/styles/common/reset.css";
-import "@/styles/common/fonts.css";
-import "@/styles/common/animations.css";
-import "@/styles/common/layout.css";
-
 /* Component Styles */
 import "@/styles/components/layout/header.css";
 import "@/styles/components/layout/aside.css";
+import "@/styles/components/layout/aside2.css";
 import "@/styles/components/ui/banner.css";
 import "@/styles/components/ui/sliderFade.css";
 import "@/styles/components/ui/saying.css";
@@ -21,9 +15,17 @@ import "@/styles/components/canvas/dotFieldCanvas.css";
 import "@/styles/markdown/markdown.css";
 import "@/styles/markdown/markdownAtom.css";
 
+/* Common Styles */
+import "@/styles/common/variables.css";
+import "@/styles/common/reset.css";
+import "@/styles/common/fonts.css";
+import "@/styles/common/animations.css";
+import "@/styles/common/layout.css";
+
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 // import HeaderAside from "@/components/layout/HeaderAside";
+//import Aside2 from "@/components/layout/Aside2";
 
 export default function RootLayout({
   children,
@@ -60,6 +62,7 @@ export default function RootLayout({
       <body>
 				<div className="RouteApp">
 					{/* <HeaderAside/> */}
+					{/* <Aside2/> */}
 					{children}
 				</div>
         {/* Vercel 측정도구 */}
