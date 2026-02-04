@@ -1,13 +1,10 @@
 /* Component Styles */
-import "@/styles/components/layout/header.css";
-import "@/styles/components/layout/aside.css";
-import "@/styles/components/layout/aside2.css";
+import "@/styles/components/layout/blogAide.css";
 import "@/styles/components/ui/banner.css";
 import "@/styles/components/ui/sliderFade.css";
 import "@/styles/components/ui/saying.css";
 import "@/styles/components/ui/customCursor.css";
 import "@/styles/components/list/card.css";
-import "@/styles/components/utill/hashs.css";
 import "@/styles/components/utill/pagination.css";
 import "@/styles/components/canvas/dotFieldCanvas.css";
 
@@ -24,8 +21,6 @@ import "@/styles/common/layout.css";
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
-// import HeaderAside from "@/components/layout/HeaderAside";
-//import Aside2 from "@/components/layout/Aside2";
 
 export default function RootLayout({
   children,
