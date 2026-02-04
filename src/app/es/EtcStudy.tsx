@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import EtcStudyCard from "@/data/etcStudyData.json";
-//import SliderFade from "@/components/ui/SliderFade";
+import SliderFade from "@/components/ui/SliderFade";
 import { CardProps } from "@/types/props";
 // import Hashs from "@/components/utill/Hashs";
 import Saying from "@/components/ui/Saying";
 import CardPagination from "@/components/utill/CardPagination";
-import Aside2 from "@/components/layout/Aside2";
+import BlogAide from "@/components/layout/BlogAide";
 // import { usePathname } from "next/navigation";
 
 export default function EtcStudy() {
@@ -40,10 +40,10 @@ export default function EtcStudy() {
 
   return (
 		<div className="layout_wrap">
-			<Aside2/>
+			<BlogAide/>
 			<div className="wrap">
-				{/* <SliderFade/> */}
 				<div className="common_wrap pd_none_col">
+					<SliderFade/>
 					<Saying sessionName="es"/>
 					{/* <Hashs selectedHash={selectedHash} setSelectedHash={setSelectedHash} uniqueHashs={uniqueHashs} sessionName="es" setCurrentPage={setCurrentPage}/> */}
 				</div>
