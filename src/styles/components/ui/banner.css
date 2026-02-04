@@ -15,10 +15,13 @@
 .banner_wrap .banner .banner_info { position: absolute; top: calc(50% + 30px); left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 850px; }
 .banner_wrap .banner .banner_info .card_link_wrap { display: flex; justify-content: center; padding: 16px 0; }
 .banner_wrap .banner .banner_info .card_link_wrap a { color: var(--white); background-color: var(--thema); padding: 4px 8px; border-radius: 4px; font-size: 1.6rem; transition: .3s; }
-.banner_wrap .banner .banner_info .card_link_wrap a:hover { transform: scale(1.05); filter: brightness(0.7); }
+
+@media (hover: hover) {
+	.banner_wrap .banner .banner_info .card_link_wrap a:hover { transform: scale(1.05); filter: brightness(0.7); }
+}
 
 @media (max-width: 640px) {
-	.banner_wrap .banner .banner_info .card_link_wrap a:hover { transform: none; filter: none; }
+	/* 터치 환경에서는 hover 효과 없음(@media (hover: hover)로 제한) */
 }
 
 .banner_wrap .banner .banner_info .card_title { padding: 0 64px; font-size: 4.0rem; color: var(--whiteF9); text-align: center; font-weight: 700; font-family: "TTTtangsbudaejjigae", "Malgun Gothic", sans-serif; }
