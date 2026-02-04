@@ -15,7 +15,10 @@
 }
 
 .saying_all_wrap .saying_wrap { display: flex; flex-direction: column; justify-content: space-between; position: relative; padding: 32px 64px; margin: -64px 0 16px; box-shadow: 0 0 30px 0 var(--whiteEEE); border-radius: 32px; background-color: var(--white); transition: all .3s; }
-.saying_all_wrap .saying_wrap:hover { box-shadow: 0 0 30px 0 var(--whiteCCC); }
+
+@media (hover: hover) {
+	.saying_all_wrap .saying_wrap:hover { box-shadow: 0 0 30px 0 var(--whiteCCC); }
+}
 
 @media (max-width: 1024px) {
 	.saying_all_wrap .saying_wrap { padding: 24px 40px; border-radius: 24px; }
@@ -51,7 +54,10 @@
 }
 
 .saying_all_wrap .saying_wrap .reset_btn { display: flex; align-items: center; justify-content: center; position: absolute; top: -16px; right: -16px; width: 60px; height: 60px; background-color: var(--white); border-radius: 999px; cursor: pointer; transition: all .3s; }
-.saying_all_wrap .saying_wrap .reset_btn:hover svg { animation: rotate 2s linear infinite; }
+
+@media (hover: hover) {
+	.saying_all_wrap .saying_wrap .reset_btn:hover svg { animation: rotate 2s linear infinite; }
+}
 
 @media (max-width: 1024px) {
 	.saying_all_wrap .saying_wrap .reset_btn { width: 50px; height: 50px; }
@@ -59,7 +65,6 @@
 
 @media (max-width: 640px) {
 	.saying_all_wrap .saying_wrap .reset_btn { width: 40px; height: 40px; }
-	.saying_all_wrap .saying_wrap .reset_btn:hover svg { animation: none; }
 }
 
 .saying_all_wrap .saying_wrap .reset_btn svg { fill: var(--themaBright); width: 35px; height: 35px; }

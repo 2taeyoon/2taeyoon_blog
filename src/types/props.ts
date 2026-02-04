@@ -110,13 +110,7 @@ export interface PageUrlsProps {
 // 이전, 다음 페이지 URL END!
 
 // 해시태그 필터링 START!
-export interface HashsProps {
-  selectedHash: string | null;
-  setSelectedHash: React.Dispatch<React.SetStateAction<string | null>>;
-  uniqueHashs: string[];
-  sessionName: string;
-	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-}
+// (현재 Hashs 컴포넌트 미사용, 필요 시 다시 정의)
 // 해시태그 필터링 END!
 
 // 명언 컴포넌트 START!
@@ -132,9 +126,7 @@ export interface SayingComponentProps {
 // 명언 컴포넌트 END!
 
 // 헤더 컴포넌트 START!
-export interface AsideContextProps {
-  trueActive: () => void;
-}
+// (현재 Header/Aside 컨텍스트 미사용, 필요 시 다시 정의)
 // 헤더 컴포넌트 END!
 
 // 콘텐츠 컴포넌트 START!
