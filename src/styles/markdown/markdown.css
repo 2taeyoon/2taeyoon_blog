@@ -182,9 +182,11 @@
 	text-decoration: none;
 }
 
-.blog a:hover,
-.post_view a:hover {
-	text-decoration: underline;
+@media (hover: hover) {
+	.blog a:hover,
+	.post_view a:hover {
+		text-decoration: underline;
+	}
 }
 
 .blog hr,
