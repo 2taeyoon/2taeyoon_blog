@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mapping } from "../../types/props"
+import { Mapping } from "../../types/props.types"
 import Link from "next/link";
 
 export default function Card2({ cards }: Mapping) {
