@@ -91,6 +91,11 @@ export interface Mapping {
   cards: CardProps[];
 	sessionName?: string;
 }
+
+export interface StudyListPageProps {
+  cards: CardProps[];
+  sessionName: string;
+}
 // 카드 컴포넌트 END!
 
 // 카드 페이지네이션 컴포넌트 START!
