@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .card_wrap { display: flex; flex-wrap: wrap; gap: 24px 16px; }
-.card { position: relative; width: calc(25% - 32px); overflow: hidden; cursor: pointer; transition: .5s; }
+.card { display: block; position: relative; width: calc(25% - 32px); overflow: hidden; cursor: pointer; transition: .5s; }
 
 @media (hover: hover) {
 	.card:hover .card_top .card_img { scale: 1.02; filter: brightness(0.9); }
