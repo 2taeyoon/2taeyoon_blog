@@ -1,0 +1,89 @@
+@keyframes hueRotate {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+	100% {
+		filter: hue-rotate(45deg);
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* @keyframes expandWidth {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+@keyframes expandHeight {
+	from {
+		height: 0;
+	}
+	to {
+		height: 100%;
+	}
+} */
+
+@keyframes arrowAnimate {
+	from {
+		left: 0;
+	}
+	to {
+		left: -5px;
+	}
+}
+
+@keyframes arrowAnimate2 {
+	from {
+		right: 0;
+	}
+	to {
+		right: -5px;
+	}
+}
+
+@keyframes headerAnimate {
+	from {
+		bottom: -75px;
+	}
+	to {
+		bottom: 10px;
+	}
+}
+
+@keyframes headerAnimate2 {
+	from {
+		bottom: 10px;
+	}
+	to {
+		bottom: -75px;
+	}
+}
+
+@keyframes headerBarAnimate {
+	from {
+		top: -35px;
+	}
+	to {
+		top: 0;
+	}
+}
+
+@keyframes headerBarAnimate2 {
+	from {
+		top: 0;
+	}
+	to {
+		top: -35px;
+	}
+}
