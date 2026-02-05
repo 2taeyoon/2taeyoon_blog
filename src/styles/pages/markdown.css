@@ -157,6 +157,12 @@
 .blog ol li,
 .post_view ol li {
 	list-style: decimal;
+	margin-bottom: 5px;
+}
+
+.blog ol li:last-child,
+.post_view ol li:last-child {
+	margin-bottom: 0;
 }
 
 .blog ul,
@@ -174,6 +180,12 @@
 .blog ul li,
 .post_view ul li {
 	list-style: disc;
+	margin-bottom: 5px;
+}
+
+.blog ul li:last-child,
+.post_view ul li:last-child {
+	margin-bottom: 0;
 }
 
 .blog a,
