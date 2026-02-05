@@ -10,7 +10,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { CardProps } from "@/types/props";
+import { CardProps } from "@/types/props.types";
 import DesignStudyData from "@/data/designStudyData.json";
 import FrontStudyData from "@/data/frontStudyData.json";
 import BackStudyData from "@/data/backStudyData.json";
