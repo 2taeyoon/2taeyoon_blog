@@ -1,5 +1,5 @@
-import React from 'react'
-import EtcStudy from "@/app/es/EtcStudy";
+import EtcStudyCard from "@/data/etcStudyData.json";
+import StudyListPage from "@/features/study-list/StudyListPage";
 
 export const metadata = {
   title: "Etc Study",
@@ -19,5 +19,5 @@ export const metadata = {
 };
 
 export default function page() {
-	return <EtcStudy/>
+	return <StudyListPage cards={EtcStudyCard.cards} sessionName="es" />
 }
