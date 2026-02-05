@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
 import EtcCard from "@/data/etcStudyData.json";
-import { CardProps, TitleProps } from "@/types/props";
+import { CardProps, TitleProps } from "@/types/props.types";
 
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm";
-import PageUrls from "@/components/utill/PageUrl";
+import PageUrls from "@/components/util/PageUrl";
 import Banner from "@/components/ui/Banner";
 
 export default function EtcStudyContent({title}: TitleProps) {
