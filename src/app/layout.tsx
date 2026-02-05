@@ -5,7 +5,7 @@ import "@/styles/components/ui/sliderFade.css";
 import "@/styles/components/ui/saying.css";
 import "@/styles/components/ui/customCursor.css";
 import "@/styles/components/list/card.css";
-import "@/styles/components/utill/pagination.css";
+import "@/styles/components/util/pagination.css";
 import "@/styles/components/canvas/dotFieldCanvas.css";
 
 /* Markdown Styles */
