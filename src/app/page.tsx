@@ -1,5 +1,6 @@
 import React from 'react'
-import Home from "@/app/Home";
+import CustomCursor from "@/components/ui/CustomCursor";
+import DotFieldCanvas from "@/components/canvas/DotFieldCanvas";
 
 export const metadata = {
   title: "2taeyoon",
@@ -21,7 +22,8 @@ export const metadata = {
 export default function page() {
 	return (
 		<main>
-			<Home/>
+			<DotFieldCanvas />
+			<CustomCursor />	
 		</main>
 	)
 }

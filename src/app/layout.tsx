@@ -9,15 +9,15 @@ import "@/styles/components/util/pagination.css";
 import "@/styles/components/canvas/dotFieldCanvas.css";
 
 /* Markdown Styles */
-import "@/styles/markdown/markdown.css";
-import "@/styles/markdown/markdownAtom.css";
+import "@/styles/pages/markdown.css";
+import "@/styles/pages/markdownAtom.css";
 
 /* Common Styles */
-import "@/styles/common/variables.css";
-import "@/styles/common/reset.css";
-import "@/styles/common/fonts.css";
-import "@/styles/common/animations.css";
-import "@/styles/common/layout.css";
+import "@/styles/base/variables.css";
+import "@/styles/base/reset.css";
+import "@/styles/base/fonts.css";
+import "@/styles/utils/animations.css";
+import "@/styles/layout/layout.css";
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
