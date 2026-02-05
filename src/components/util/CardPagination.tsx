@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useEffect } from 'react'
-import Card from "@/components/list/Card";
-import Card2 from "@/components/list/Card2";
+import StudyCard from "@/components/list/StudyCard";
+import StudyCardCompact from "@/components/list/StudyCardCompact";
 import ReactPaginate from 'react-paginate';
-import { CardPaginationProps } from "@/types/props";
+import { CardPaginationProps } from "@/types/props.types";
 
 
 export default function CardPagination({filteredCards, sessionName, currentPage, setCurrentPage}: CardPaginationProps) {
@@ -58,9 +58,9 @@ export default function CardPagination({filteredCards, sessionName, currentPage,
 			<div className="card_wrap">
 				{displayCards.map(card =>
 					card.type ? (
-						<Card2 key={card.title} cards={[card]} />
+						<StudyCardCompact key={card.title} cards={[card]} />
 					) : (
-						<Card key={card.title} cards={[card]} sessionName={sessionName}/>
+						<StudyCard key={card.title} cards={[card]} sessionName={sessionName}/>
 					)
 				)}
 			</div>

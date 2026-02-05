@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { MetaProps } from "@/types/props";
+import { MetaProps } from "@/types/props.types";
 
 const CommonHead = ({ title, keywords, description, ogTitle, ogDescription,	ogURL, ogImage, ogType }: MetaProps) => (
   <Head>

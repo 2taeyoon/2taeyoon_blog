@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import Link from "next/link";
-import { CardProps, PageUrlsProps } from "@/types/props";
+import { CardProps, PageUrlsProps } from "@/types/props.types";
 import { usePathname } from "next/navigation";
 
 import DesignStudyData from "@/data/designStudyData.json";
