@@ -1,5 +1,5 @@
-import React from 'react'
-import BackStudy from "@/app/bs/BackStudy";
+import BackStudyData from "@/data/backStudyData.json";
+import StudyListPage from "@/features/study-list/StudyListPage";
 
 export const metadata = {
 	title: "Back Study",
@@ -19,5 +19,5 @@ export const metadata = {
 };
 
 export default function page() {
-	return <BackStudy/>
+	return <StudyListPage cards={BackStudyData.cards} sessionName="bs" />
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SayingComponentProps, SayingProps } from "@/types/props";
+import { SayingComponentProps, SayingProps } from "@/types/props.types";
 import { sayings } from "@/data/sayingList";
 
 export default function Saying({sessionName}: SayingComponentProps) {

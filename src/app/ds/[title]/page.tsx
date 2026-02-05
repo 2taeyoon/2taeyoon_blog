@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import DesignCard from "@/data/designStudyData.json";
-import DesignStudyContent from "@/app/ds/[title]/DesignStudyContent"; // 클라이언트 컴포넌트 가져오기
+import DesignStudyContent from "@/app/ds/[title]/DesignStudy"; // 클라이언트 컴포넌트 가져오기
 
 
 // 서버 컴포넌트: 동적 메타데이터 설정

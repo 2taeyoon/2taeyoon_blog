@@ -3,7 +3,6 @@
 .blog_aide_sidebar {
 	width: 64px;
 	background: #1c1b2a;
-	transition: all .3s ease;
 	height: 100vh;
 	position: fixed;
 	top: 0;
@@ -11,7 +10,7 @@
 	z-index: 999;
 }
 
-.blog_aide_open .blog_aide_sidebar {
+.layout_wrap.open .blog_aide_sidebar {
   width: 260px;
 }
 
@@ -45,51 +44,8 @@
 	}
 }
 
-.blog_aide_open .blog_aide_toggle {
+.layout_wrap.open .blog_aide_toggle {
   rotate: 180deg;
-}
-
-.blog_aide_search {
-  position: relative;
-  padding: 16px 0;
-  margin: 0 10px;
-  width: calc(64px - 20px);
-  transition: 0.3s;
-}
-
-.blog_aide_open .blog_aide_search {
-  width: calc(260px - 20px);
-}
-
-.blog_aide_search span {
-  position: absolute;
-  top: 26px;
-  left: 12px;
-  color: #68687a;
-}
-
-.blog_aide_search input {
-  background: rgb(255 255 255 / 6%);
-  border: 0;
-  border-radius: 8px;
-  width: 100%;
-  height: 44px;
-  font-size: 17px;
-  padding-left: 30px;
-  font-family: inherit;
-  transition: 0.3s;
-}
-
-.blog_aide_search input::placeholder {
-  color: transparent;
-}
-
-.blog_aide_open .blog_aide_search input::placeholder {
-  color: #68687a;
-}
-
-.blog_aide_open .blog_aide_search input {
-  padding-left: 52px;
 }
 
 .blog_aide_inner {
@@ -106,10 +62,9 @@
   padding: 0 20px;
   background: rgb(0 0 0 / 15%);
   border-radius: 16px 16px 0 0;
-  transition: 0.3s;
 }
 
-.blog_aide_open .blog_aide_header {
+.layout_wrap.open .blog_aide_header {
   width: 260px;
 }
 
@@ -154,10 +109,9 @@
   padding: 0 22px;
   color: inherit;
   opacity: 0.8;
-  transition: 0.3s;
 }
 
-.blog_aide_open .blog_aide_menu button {
+.layout_wrap.open .blog_aide_menu button {
   width: 260px;
 }
 
@@ -179,22 +133,12 @@
   opacity: 0;
 }
 
-.blog_aide_open .blog_aide_menu button p,
-.blog_aide_open .blog_aide_header h1 {
+.layout_wrap.open .blog_aide_menu button p,
+.layout_wrap.open .blog_aide_header h1 {
   opacity: 1;
 }
 
 .blog_aide_menu button img {
   width: 24px;
   height: 24px;
-}
-
-/* 고정 사이드바 옆 컨텐츠 밀기 */
-.blog_aide_sidebar + .wrap {
-	margin-left: 64px;
-	transition: margin-left .3s;
-}
-
-.blog_aide_open .blog_aide_sidebar + .wrap {
-	margin-left: 260px;
 }

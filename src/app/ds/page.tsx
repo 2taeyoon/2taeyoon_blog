@@ -1,5 +1,5 @@
-import React from 'react'
-import DesignStudy from "@/app/ds/DesignStudy";
+import DesignStudyCard from "@/data/designStudyData.json";
+import StudyListPage from "@/features/study-list/StudyListPage";
 
 export const metadata = {
   title: "Design Study",
@@ -19,5 +19,5 @@ export const metadata = {
 };
 
 export default function page() {
-	return <DesignStudy/>
+	return <StudyListPage cards={DesignStudyCard.cards} sessionName="ds" />
 }

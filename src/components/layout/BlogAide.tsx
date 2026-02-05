@@ -9,7 +9,7 @@ export default function BlogAide() {
 
   const toggleOpen = () => {
     const layout = sidebarRef.current?.closest(".layout_wrap") as HTMLElement | null;
-    layout?.classList.toggle("blog_aide_open");
+    layout?.classList.toggle("open");
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function BlogAide() {
 
   return (
     <aside ref={sidebarRef} className="blog_aide_sidebar">
-      <button className="blog_aide_toggle" type="button" onClick={toggleOpen} aria-label="사이드바 열기/닫기">
+      <button className="blog_aide_toggle" type="button" onClick={toggleOpen} aria-label="open/close">
         <span className="material-symbols-outlined">→</span>
       </button>
       <div className="blog_aide_inner">
