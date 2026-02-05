@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mapping } from "../../types/props.types"
+import { Mapping } from "@/types/props.types"
 import Link from "next/link";
 
 export default function Card2({ cards }: Mapping) {
@@ -23,11 +23,11 @@ export default function Card2({ cards }: Mapping) {
 							</div>
 						</div>
 					</div>
-					<div className="card_bottom">			
+					<div className="card_bottom">
             <div className="card_bottom_category" style={{ color: `var(--${card.category?.[1]?.color})` }}>{card.category?.[0]?.text}</div>
 						<div className="card_bottom_title"><span>{card.title}</span></div>
-						<div className="card_date">{card.date}</div>
 						{ card.subTitle? <div className="card_bottom_sub_title">{card.subTitle}</div> : null }
+						<div className="card_date">{card.sortDate}</div>
 					</div>
 				</Link>
 			))}

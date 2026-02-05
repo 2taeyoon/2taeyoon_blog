@@ -23,7 +23,7 @@ export default function Card({ cards, sessionName }: Mapping) {
 							</div>
 						</div>
 					</div>
-					<div className="card_bottom">						
+					<div className="card_bottom">
 						<div className="card_bottom_category" style={{ color: `var(--${card.category?.[1]?.color})` }}>{card.category?.[0]?.text}</div>
 						<div className="card_bottom_title"><span>{card.title}</span></div>
 						<div className="card_date">{card.date}</div>

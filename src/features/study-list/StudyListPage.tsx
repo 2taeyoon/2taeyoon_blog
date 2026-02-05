@@ -20,9 +20,6 @@ export default function StudyListPage({ cards, sessionName }: StudyListPageProps
         <div className="common_wrap pd_none_col">
           <SliderFade />
           <Saying sessionName={sessionName} />
-          {/* 해시태그 필터링은 현재 사용하지 않지만,
-              기존 주석 로직(Hashs, selectedHash 등)은
-              필요 시 이 컴포넌트로 이동해 재사용할 수 있습니다. */}
         </div>
         <div className="common_wrap">
           <CardPagination
