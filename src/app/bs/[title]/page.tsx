@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import BackStudyData from "@/data/backStudyData.json";
-import BackStudyContent from "@/app/bs/[title]/BackStudyContent"; // 클라이언트 컴포넌트 가져오기
+import BackStudyContent from "@/app/bs/[title]/BackStudy"; // 클라이언트 컴포넌트 가져오기
 
 
 // 서버 컴포넌트: 동적 메타데이터 설정
@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ title: st
 	const replaceTitle = decodedTitle.replace(/-/g, " "); // 공백 대신 하이픈(-) 추가
   const backStudyFind = BackStudyData.cards.find((item) => item.title === replaceTitle); // JSON 데이터와 title을 비교하여 알맞는 데이터 찾음
 
-	if (!backStudyFind) return notFound(); // 데데이터가 없으면 404
+	if (!backStudyFind) return notFound(); // 데이터가 없으면 404
 
   return {
     title: backStudyFind.title,
