@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from "react";
 import DesignStudyCard from "@/data/designStudyData.json";
 import SliderFade from "@/components/ui/SliderFade";
-import { CardProps } from "@/types/props";
-// import Hashs from "@/components/utill/Hashs";
+import { CardProps } from "@/types/props.types";
+// import Hashs from "@/components/util/Hashs";
 import Saying from "@/components/ui/Saying";
-import CardPagination from "@/components/utill/CardPagination";
+import CardPagination from "@/components/util/CardPagination";
 import BlogAide from "@/components/layout/BlogAide";
 // import { usePathname } from "next/navigation";
 
