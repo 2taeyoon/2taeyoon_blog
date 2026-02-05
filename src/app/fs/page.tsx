@@ -1,5 +1,5 @@
-import React from 'react'
-import FrontStudy from "@/app/fs/FrontStudy";
+import frontStudyData from "@/data/frontStudyData.json";
+import StudyListPage from "@/features/study-list/StudyListPage";
 
 export const metadata = {
 	title: "Front Study",
@@ -19,5 +19,5 @@ export const metadata = {
 };
 
 export default function page() {
-	return <FrontStudy/>
+	return <StudyListPage cards={frontStudyData.cards} sessionName="fs" />
 }
