@@ -3,7 +3,7 @@ import DesignStudyData from "@/data/designStudyData.json";
 import FrontStudyData from "@/data/frontStudyData.json";
 import BackStudyData from "@/data/backStudyData.json";
 import EtcStudyData from "@/data/etcStudyData.json";
-import { CardProps } from "@/types/props";
+import { CardProps } from "@/types/props.types";
 
 // JSON 파일을 하나의 배열로 통합
 const combinedData: CardProps[] = [
