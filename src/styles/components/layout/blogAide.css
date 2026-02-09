@@ -2,79 +2,67 @@
 
 .blog_aide_sidebar {
 	width: 64px;
-	background: #1c1b2a;
+	background: #fff;
 	height: 100vh;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 999;
+	border-right: 1px solid var(--whiteEEE);
 }
 
-.layout_wrap.open .blog_aide_sidebar {
+.blog_aide_sidebar.open {
   width: 260px;
-}
-
-.blog_aide_sidebar button {
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  font-family: inherit;
 }
 
 .blog_aide_toggle {
   position: absolute;
   z-index: 2;
-  top: 24px;
+  bottom: -12px;
   right: -12px;
   display: grid;
   place-items: center;
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  background: #3e3d54;
-  color: #8f8d9b;
-  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
-  transition: 0.3s;
+  background: var(--white);
+	border: 1px solid var(--whiteEEE);
+	cursor: pointer;
+	transform: rotate(90deg);
 }
 
-@media (hover: hover) {
-	.blog_aide_toggle:hover {
-		color: #f9f9f9;
-	}
-}
-
-.layout_wrap.open .blog_aide_toggle {
-  rotate: 180deg;
+.blog_aide_toggle svg {
+	width: 18px;
+	height: 18px;
+	fill: var(--black);
 }
 
 .blog_aide_inner {
   position: absolute;
   inset: 0;
-  width: 260px;
+	width: 100%;
 }
 
 .blog_aide_header {
   display: flex;
   align-items: center;
+	position: relative;
   height: 72px;
   width: 64px;
-  padding: 0 20px;
-  background: rgb(0 0 0 / 15%);
-  border-radius: 16px 16px 0 0;
+  padding: 0 16px;
+	background-color: var(--whiteF9);
+	border-bottom: 1px solid var(--whiteEEE);
 }
 
-.layout_wrap.open .blog_aide_header {
+.blog_aide_sidebar.open .blog_aide_header {
   width: 260px;
 }
 
 .blog_aide_header h1 {
   margin-left: 12px;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 2.0rem;
   white-space: nowrap;
-  color: #f9f9f9;
+  color: var(--black);
   opacity: 0;
 }
 
@@ -83,59 +71,97 @@
 }
 
 .blog_aide_menu {
-  position: relative;
-  display: grid;
+	position: relative;
+	display: flex;
+	padding: 16px 0;
+	flex-direction: column;
+	align-items: center;
 }
 
-.blog_aide_menu::after {
+.blog_aide_sidebar.open .blog_aide_menu {
+	padding: 16px 20px;
+	align-items: flex-start;
+}
+
+/* .blog_aide_menu::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: 56px;
   width: 6px;
-  background: #656aff;
+  background: var(--thema);
   translate: 0 var(--top);
   transition: 0.3s;
+} */
+
+.blog_aide_menu_title {
+	font-size: 1.4rem;
+	color: var(--blackmute);
+	margin-bottom: 12px;
 }
 
 .blog_aide_menu button {
   display: flex;
   gap: 16px;
   align-items: center;
-  height: 56px;
-  width: 64px;
-  font-size: 17px;
-  padding: 0 22px;
+	justify-content: center;
+  height: 60px;
+	width: 100%;
+  font-size: 1.6rem;
   color: inherit;
-  opacity: 0.8;
 }
 
-.layout_wrap.open .blog_aide_menu button {
-  width: 260px;
-}
-
-@media (hover: hover) {
-	.blog_aide_menu button:hover:not(.active) {
-		color: rgb(255 255 255 / 90%);
-		background: rgb(255 255 255 / 2%);
-	}
-}
-
-.blog_aide_menu button.active {
-  color: white;
-  background: rgb(255 255 255 / 4%);
-  opacity: 1;
-  cursor: default;
+.blog_aide_sidebar.open .blog_aide_menu button {
+	width: 100%;
+	transition: all 0.3s ease;
+	padding: 0 16px;
+	justify-content: flex-start;
 }
 
 .blog_aide_menu button p {
   opacity: 0;
+	display: none;
+	transition: color 0.3s ease;
 }
 
-.layout_wrap.open .blog_aide_menu button p,
-.layout_wrap.open .blog_aide_header h1 {
+.blog_aide_menu button span {
+	transition: color 0.3s ease;
+}
+
+@media (hover: hover) {
+	.blog_aide_menu button:hover:not(.active) {
+		background-color: var(--themaLight);
+	}
+
+	.blog_aide_menu button:hover:not(.active) p,
+	.blog_aide_menu button:hover:not(.active) span {
+		color: var(--thema);
+		font-weight: 700;
+	}
+}
+
+
+
+.blog_aide_menu button.active {
+  background-color: var(--themaLight);
   opacity: 1;
+  cursor: default;
+}
+
+.blog_aide_menu button.active p {
+	color: var(--thema);
+	font-weight: 700;
+}
+
+
+
+
+
+.blog_aide_sidebar.open .blog_aide_menu button p,
+.blog_aide_sidebar.open .blog_aide_header h1 {
+  opacity: 1;
+	display: block;
 }
 
 .blog_aide_menu button img {
