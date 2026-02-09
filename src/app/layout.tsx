@@ -21,6 +21,7 @@ import "@/styles/layout/layout.css";
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import BlogAideWrapper from "@/components/layout/BlogAideWrapper";
 
 export default function RootLayout({
   children,
@@ -56,8 +57,7 @@ export default function RootLayout({
       </head>
       <body>
 				<div className="RouteApp">
-					{/* <HeaderAside/> */}
-					{/* <Aside2/> */}
+					<BlogAideWrapper />
 					{children}
 				</div>
         {/* Vercel 측정도구 */}
