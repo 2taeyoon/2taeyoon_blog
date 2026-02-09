@@ -7,7 +7,7 @@
 	margin-left: 64px;
 }
 
-.layout_wrap.open .wrap {
+.blog_aide_sidebar.open + .layout_wrap .wrap {
 	width: calc(100% - 260px);
 	margin-left: 260px;
 }
