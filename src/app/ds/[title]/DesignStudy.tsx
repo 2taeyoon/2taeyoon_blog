@@ -22,18 +22,20 @@ export default function DesignStudy({ title }: TitleProps) {
   if (notFoundState) return notFound();
 
   return (
-    <>
-      <div className="common_wrap banner_wrap">
-        {currentCard && <Banner CardFind={currentCard} />}
-      </div>
-      <div className="common_wrap">
-        <div className="blog">
-          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw, rehypeHighlight]}>
-            {markdown}
-          </ReactMarkdown>
-          <PageUrls hyphenRemoval={decodedTitle} cards={DesignCard.cards} />
+    <div className="layout_wrap">
+      <div className="wrap">
+        <div className="common_wrap banner_wrap">
+          {currentCard && <Banner CardFind={currentCard} />}
+        </div>
+        <div className="common_wrap">
+          <div className="blog">
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw, rehypeHighlight]}>
+              {markdown}
+            </ReactMarkdown>
+            <PageUrls hyphenRemoval={decodedTitle} cards={DesignCard.cards} />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

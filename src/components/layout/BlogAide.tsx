@@ -1,74 +1,51 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 
 export default function BlogAide() {
-  const sidebarRef = useRef<HTMLElement>(null);
-  const navRef = useRef<HTMLElement>(null);
 
   const toggleOpen = () => {
-    const layout = sidebarRef.current?.closest(".layout_wrap") as HTMLElement | null;
+    const layout = document.querySelector(".blog_aide_sidebar") as HTMLElement | null;
     layout?.classList.toggle("open");
   };
 
-  useEffect(() => {
-    const sidebar = sidebarRef.current;
-    const nav = navRef.current;
-    if (!sidebar || !nav) return;
-
-    const buttons = nav.querySelectorAll<HTMLButtonElement>("button");
-    if (buttons.length === 0) return;
-
-    buttons[0].classList.add("active");
-
-    const cleanups: (() => void)[] = [];
-    buttons.forEach((button, index) => {
-      const handler = () => {
-        buttons.forEach((b) => b.classList.remove("active"));
-        button.classList.add("active");
-        nav.style.setProperty("--top", `${index === 0 ? 0 : index * 56}px`);
-      };
-      button.addEventListener("click", handler);
-      cleanups.push(() => button.removeEventListener("click", handler));
-    });
-
-    return () => cleanups.forEach((fn) => fn());
-  }, []);
-
   return (
-    <aside ref={sidebarRef} className="blog_aide_sidebar">
-      <button className="blog_aide_toggle" type="button" onClick={toggleOpen} aria-label="open/close">
-        <span className="material-symbols-outlined">→</span>
-      </button>
+    <aside className="blog_aide_sidebar">
       <div className="blog_aide_inner">
         <div className="blog_aide_header">
           <Image src="/images/logo.svg" className="blog_aide_logo" alt="로고" width={32} height={32} unoptimized />
-          <h1>BOLT UI</h1>
+          <h1>2taeyoon</h1>
+					<button className="blog_aide_toggle" type="button" onClick={toggleOpen} aria-label="open/close">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">
+							<path d="M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z"></path>
+						</svg>
+					</button>
         </div>
-        <nav ref={navRef} className="blog_aide_menu">
+        <nav className="blog_aide_menu">
+					<div className="blog_aide_menu_title">STUDY</div>
           <button type="button">
-            <span className="material-symbols-outlined">1</span>
+            <span>1</span>
             <p>Dashboard</p>
           </button>
           <button type="button">
-            <span className="material-symbols-outlined">2</span>
+            <span>2</span>
             <p>Leaderboard</p>
           </button>
           <button type="button">
-            <span className="material-symbols-outlined">3</span>
+            <span>3</span>
             <p>Monitoring</p>
           </button>
           <button type="button">
-            <span className="material-symbols-outlined">4</span>
+            <span>4</span>
             <p>Analytics</p>
           </button>
           <button type="button">
-            <span className="material-symbols-outlined">5</span>
+            <span>5</span>
             <p>Message</p>
           </button>
           <button type="button">
-            <span className="material-symbols-outlined">6</span>
+            <span>6</span>
             <p>Settings</p>
           </button>
         </nav>

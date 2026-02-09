@@ -28,7 +28,7 @@
 	.saying_all_wrap .saying_wrap { padding: 12px 20px; margin: -32px 0 16px; border-radius: 16px; }
 }
 
-.saying_all_wrap .saying_wrap .saying { font-size: 1.8rem; }
+.saying_all_wrap .saying_wrap .saying { font-size: 1.8rem; color: var(--black); }
 
 @media (max-width: 640px) {
 	.saying_all_wrap .saying_wrap .saying { font-size: 1.6rem; }
