@@ -1,28 +1,31 @@
 @charset "utf-8";
 
-.blog_aide_sidebar { width: 64px; background: #fff; height: 100vh; position: fixed; top: 0; left: 0; z-index: 999; border-right: 1px solid var(--whiteEEE); }
+.blog_aide_sidebar { width: 120px; background: #fff; height: 100vh; position: fixed; top: 0; left: 0; z-index: 999; border-right: 1px solid var(--whiteEEE); }
 .RouteApp.open .blog_aide_sidebar { width: 260px; }
 .blog_aide_toggle { position: absolute; z-index: 2; bottom: -12px; right: -12px; display: grid; place-items: center; width: 24px; height: 24px; background: var(--white); border: 1px solid var(--whiteEEE); cursor: pointer; transform: rotate(90deg); }
 .blog_aide_toggle svg { width: 18px; height: 18px; fill: var(--black); }
 .blog_aide_inner { position: absolute; inset: 0; display: flex; flex-direction: column; }
-.blog_aide_header { display: flex; align-items: center; position: relative; height: 72px; width: 64px; padding: 0 16px; background-color: var(--whiteF9); border-bottom: 1px solid var(--whiteEEE); }
+.blog_aide_header { display: flex; align-items: center; justify-content: center; position: relative; height: 72px; width: 120px; background-color: var(--whiteF9); border-bottom: 1px solid var(--whiteEEE); }
 .RouteApp.open .blog_aide_header { width: 260px; }
-.blog_aide_header h1 { margin-left: 12px; font-weight: 700; font-size: 2.0rem; white-space: nowrap; color: var(--black); opacity: 0; }
-.blog_aide_logo { width: 32px; height: 32px; border-radius: 50%; }
+.blog_aide_header h1 { display: none; margin-left: 12px; font-weight: 700; font-size: 2.0rem; white-space: nowrap; color: var(--black); }
+.blog_aide_logo { border-radius: 50%; }
 .blog_aide_menu { position: relative; display: flex; padding-top: 8px; flex-direction: column; align-items: center; }
 .RouteApp.open .blog_aide_menu { align-items: flex-start; }
-.blog_aide_menu_list { flex: 1; width: 100%; padding: 12px 0; overflow-y: auto; }
+.blog_aide_menu_list { flex: 1; width: 100%; padding: 12px 16px; overflow-y: auto; }
 .RouteApp.open .blog_aide_menu_list { padding: 12px 20px; }
 .blog_aide_menu_wrap { width: 100%; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
 .blog_aide_menu_wrap svg { width: 18px; height: 18px; fill: var(--blackmute); transition: all 0.3s ease; }
 .blog_aide_menu_title { font-size: 1.4rem; color: var(--blackmute); padding: 8px 0; transition: all 0.3s ease; }
 .blog_aide_menu .blog_aide_menu_button { display: flex; gap: 16px; align-items: center; justify-content: center; height: 45px; width: 100%; font-size: 1.6rem; color: inherit; }
 .RouteApp.open .blog_aide_menu .blog_aide_menu_button { width: 100%; transition: all 0.3s ease; padding: 0 16px; justify-content: flex-start; }
-.blog_aide_menu .blog_aide_menu_button p { opacity: 0; display: none; transition: color 0.3s ease; }
+.blog_aide_menu .blog_aide_menu_button p { display: none; transition: color 0.3s ease; }
 .blog_aide_menu .blog_aide_menu_button span { transition: color 0.3s ease; }
 .blog_aide_menu .blog_aide_menu_button.active { background-color: var(--themaLight); opacity: 1; cursor: default; }
 .blog_aide_menu .blog_aide_menu_button.active p { color: var(--thema); font-weight: 700; }
-.RouteApp.open .blog_aide_menu .blog_aide_menu_button p, .RouteApp.open .blog_aide_header h1 { opacity: 1; display: block; }
+
+.RouteApp.open .blog_aide_menu .blog_aide_menu_button p,
+.RouteApp.open .blog_aide_header h1 { display: block; }
+
 .blog_aide_menu .blog_aide_menu_button img { width: 24px; height: 24px; }
 
 @media (hover: hover) {

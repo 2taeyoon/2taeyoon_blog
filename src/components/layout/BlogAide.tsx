@@ -24,10 +24,28 @@ export default function BlogAide() {
         return acc;
       }, {})
   );
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const layoutRoot = document.querySelector(".RouteApp") as HTMLElement | null;
-    layoutRoot?.classList.add("open");
+
+    const handleResize = () => {
+      const mobile = window.matchMedia("(max-width: 640px)").matches;
+      setIsMobile(mobile);
+
+      if (mobile) {
+        layoutRoot?.classList.remove("open");
+      } else {
+        layoutRoot?.classList.add("open");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const toggleOpen = () => {
@@ -43,10 +61,10 @@ export default function BlogAide() {
   };
 
   return (
-    <aside className="blog_aide_sidebar">
+    <aside className="blog_aide_sidebar" style={isMobile ? { display: "none" } : undefined}>
       <div className="blog_aide_inner">
         <div className="blog_aide_header">
-          <Image src="/favicon/favicon-32x32.png" className="blog_aide_logo" alt="로고" width={32} height={32} unoptimized />
+          <Image src="/favicon/favicon-48x48.png" className="blog_aide_logo" alt="로고" width={40} height={40} unoptimized />
           <h1>2taeyoon</h1>
           <button className="blog_aide_toggle" type="button" onClick={toggleOpen} aria-label="open/close">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">
