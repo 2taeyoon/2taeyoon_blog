@@ -16,24 +16,6 @@
 	}
 }
 
-/* @keyframes expandWidth {
-	from {
-		width: 0;
-	}
-	to {
-		width: 100%;
-	}
-}
-
-@keyframes expandHeight {
-	from {
-		height: 0;
-	}
-	to {
-		height: 100%;
-	}
-} */
-
 @keyframes arrowAnimate {
 	from {
 		left: 0;

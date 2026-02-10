@@ -1,11 +1,18 @@
 /* Component Styles */
 import "@/styles/components/layout/blogAide.css";
+import "@/styles/components/layout/blogAide.reaction.css";
 import "@/styles/components/ui/banner.css";
+import "@/styles/components/ui/banner.reaction.css";
 import "@/styles/components/ui/sliderFade.css";
+import "@/styles/components/ui/sliderFade.reaction.css";
 import "@/styles/components/ui/saying.css";
+import "@/styles/components/ui/saying.reaction.css";
 import "@/styles/components/ui/customCursor.css";
 import "@/styles/components/list/card.css";
+import "@/styles/components/list/card.reaction.css";
 import "@/styles/components/util/pagination.css";
+import "@/styles/components/util/pagination.reaction.css";
+import "@/styles/components/util/animations.css";
 import "@/styles/components/canvas/dotFieldCanvas.css";
 
 /* Markdown Styles */
@@ -13,11 +20,11 @@ import "@/styles/pages/markdown.css";
 import "@/styles/pages/markdownAtom.css";
 
 /* Common Styles */
+import "@/styles/layout/layout.css";
+import "@/styles/layout/layout.reaction.css";
 import "@/styles/base/variables.css";
 import "@/styles/base/reset.css";
 import "@/styles/base/fonts.css";
-import "@/styles/utils/animations.css";
-import "@/styles/layout/layout.css";
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
