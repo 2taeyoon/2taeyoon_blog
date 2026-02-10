@@ -1,9 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 
 export default function BlogAide() {
+
+  useEffect(() => {
+    const layoutRoot = document.querySelector(".RouteApp") as HTMLElement | null;
+    layoutRoot?.classList.add("open");
+  }, []);
 
   const toggleOpen = () => {
     const layoutRoot = document.querySelector(".RouteApp") as HTMLElement | null;
@@ -23,7 +28,12 @@ export default function BlogAide() {
 					</button>
         </div>
         <nav className="blog_aide_menu">
-					<div className="blog_aide_menu_title">STUDY</div>
+					<div className="blog_aide_menu_wrap">
+						<div className="blog_aide_menu_title">STUDY</div>
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">
+							<path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+						</svg>
+					</div>
           <button type="button">
             <span>1</span>
             <p>Dashboard</p>
