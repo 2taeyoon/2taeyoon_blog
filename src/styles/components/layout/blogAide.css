@@ -11,7 +11,7 @@
 	border-right: 1px solid var(--whiteEEE);
 }
 
-.blog_aide_sidebar.open {
+.RouteApp.open .blog_aide_sidebar {
   width: 260px;
 }
 
@@ -53,7 +53,7 @@
 	border-bottom: 1px solid var(--whiteEEE);
 }
 
-.blog_aide_sidebar.open .blog_aide_header {
+.RouteApp.open .blog_aide_header {
   width: 260px;
 }
 
@@ -67,7 +67,9 @@
 }
 
 .blog_aide_logo {
-  height: 28px;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
 }
 
 .blog_aide_menu {
@@ -78,22 +80,10 @@
 	align-items: center;
 }
 
-.blog_aide_sidebar.open .blog_aide_menu {
+.RouteApp.open .blog_aide_menu {
 	padding: 16px 20px;
 	align-items: flex-start;
 }
-
-/* .blog_aide_menu::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 56px;
-  width: 6px;
-  background: var(--thema);
-  translate: 0 var(--top);
-  transition: 0.3s;
-} */
 
 .blog_aide_menu_title {
 	font-size: 1.4rem;
@@ -112,7 +102,7 @@
   color: inherit;
 }
 
-.blog_aide_sidebar.open .blog_aide_menu button {
+.RouteApp.open .blog_aide_menu button {
 	width: 100%;
 	transition: all 0.3s ease;
 	padding: 0 16px;
@@ -154,12 +144,8 @@
 	font-weight: 700;
 }
 
-
-
-
-
-.blog_aide_sidebar.open .blog_aide_menu button p,
-.blog_aide_sidebar.open .blog_aide_header h1 {
+.RouteApp.open .blog_aide_menu button p,
+.RouteApp.open .blog_aide_header h1 {
   opacity: 1;
 	display: block;
 }
@@ -167,4 +153,10 @@
 .blog_aide_menu button img {
   width: 24px;
   height: 24px;
+}
+
+@media screen and (max-width: 640px) {
+	.blog_aide_sidebar {
+		display: none;
+	}
 }
