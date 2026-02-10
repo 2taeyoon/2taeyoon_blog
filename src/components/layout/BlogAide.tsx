@@ -6,15 +6,15 @@ import Image from "next/image";
 export default function BlogAide() {
 
   const toggleOpen = () => {
-    const layout = document.querySelector(".blog_aide_sidebar") as HTMLElement | null;
-    layout?.classList.toggle("open");
+    const layoutRoot = document.querySelector(".RouteApp") as HTMLElement | null;
+    layoutRoot?.classList.toggle("open");
   };
 
   return (
     <aside className="blog_aide_sidebar">
       <div className="blog_aide_inner">
         <div className="blog_aide_header">
-          <Image src="/images/logo.svg" className="blog_aide_logo" alt="로고" width={32} height={32} unoptimized />
+          <Image src="/favicon/favicon-32x32.png" className="blog_aide_logo" alt="로고" width={32} height={32} unoptimized />
           <h1>2taeyoon</h1>
 					<button className="blog_aide_toggle" type="button" onClick={toggleOpen} aria-label="open/close">
 						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">
