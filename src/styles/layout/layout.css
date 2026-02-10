@@ -7,11 +7,17 @@
 	margin-left: 64px;
 }
 
-.blog_aide_sidebar.open + .layout_wrap .wrap {
+.RouteApp.open .layout_wrap .wrap {
 	width: calc(100% - 260px);
 	margin-left: 260px;
 }
 
+@media screen and (max-width: 640px) {
+	.layout_wrap .wrap {
+		width: 100%;
+		margin-left: 0;
+	}
+}
 
 .common_wrap {
 	display: flex;
