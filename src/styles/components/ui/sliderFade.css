@@ -2,7 +2,7 @@
 
 .swiper_common { width: 100%; }
 .swiper_common .swiper { position: relative; width: 100%; max-width: 100%; height: 600px; min-height: 400px; overflow: hidden; }
-.swiper_common .swiper .swiper-slide .swiper_image_wrap { height: 100%; }
+.swiper_common .swiper .swiper-slide .swiper_image_wrap { display: block; height: 100%; }
 .swiper_common .swiper .swiper_image { width: 100%; height: 100%; filter: brightness(0.1) contrast(0.9); }
 .swiper_common .swiper .description { display: flex; flex-direction: column; position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%); z-index: 100; width: 500px; margin-left: 0; color: var(--whiteF9); text-align: center; }
 .swiper_common .swiper .description .title { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin: 24px 12px 12px; font-family: "TTTtangsbudaejjigae", "Malgun Gothic", sans-serif; font-weight: 500; font-size: 2.6rem; text-align: center; }
