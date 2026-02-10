@@ -20,11 +20,11 @@ import "@/styles/pages/markdown.css";
 import "@/styles/pages/markdownAtom.css";
 
 /* Common Styles */
+import "@/styles/layout/layout.css";
+import "@/styles/layout/layout.reaction.css";
 import "@/styles/base/variables.css";
 import "@/styles/base/reset.css";
 import "@/styles/base/fonts.css";
-import "@/styles/layout/layout.css";
-import "@/styles/layout/layout.reaction.css";
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
