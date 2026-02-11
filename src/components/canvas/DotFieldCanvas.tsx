@@ -48,8 +48,6 @@ export default function DotFieldCanvas() {
 	const mountRef = useRef<HTMLDivElement | null>(null);
 	// rafRef: requestAnimationFrame 반환값. cleanup 시 cancelAnimationFrame(rafRef.current)로 중지합니다.
 	const rafRef = useRef<number | null>(null);
-	// visibleRef: 현재 이 컴포넌트 영역이 화면에 보이는지. false면 animate() 안에서 렌더를 건너뜁니다.
-	const visibleRef = useRef<boolean>(true);
 	// 마우스는 "목표값"과 "현재값" 두 개로 관리해, 셰이더에 넘길 때 부드럽게(lerp) 따라가게 합니다.
 	// mouseTargetRef: pointermove 이벤트에서 즉시 갱신되는 실제 마우스 위치(NDC -1~1).
 	const mouseTargetRef = useRef(new THREE.Vector2(0, 0));
@@ -124,7 +122,7 @@ export default function DotFieldCanvas() {
 			u_spacing: { value: 10.0 }, // 점 사이 간격(px). 작을수록 점이 촘촘해짐.
 			u_dotSize: { value: 5.0 }, // 점 한 변 크기(px) 대략값.
 			u_warp: { value: 15.0 }, // 마우스 주변 픽셀을 휘는 정도(px). 클수록 더 휘어짐.
-			u_range: { value: isLowPower ? 1.0 : 2.0 }, // 마우스 영향 반경 배수. 클수록 넓은 범위에 워프/색 적용.
+			u_range: { value: isLowPower ? 1.2 : 2.4 }, // 마우스 영향 반경 배수. 클수록 넓은 범위에 워프/색 적용.
 		};
 
 		// ----------------------------------------
@@ -312,28 +310,10 @@ export default function DotFieldCanvas() {
 		window.addEventListener("resize", handleResize);
 
 		// ----------------------------------------
-		// [7] 가시성 관찰: 보일 때만 rAF 실행
-		// ----------------------------------------
-		// 탭 전환·스크롤로 화면 밖으로 나가면 애니메이션을 중지해 CPU/GPU 부담을 줄입니다.
-		const visibilityObserver = new IntersectionObserver(
-			(entries) => {
-				visibleRef.current = entries.some((en) => en.isIntersecting);
-				if (visibleRef.current && rafRef.current == null) animate();
-				if (!visibleRef.current && rafRef.current != null) {
-					window.cancelAnimationFrame(rafRef.current);
-					rafRef.current = null;
-				}
-			},
-			{ threshold: 0.05 },
-		);
-		if (rootRef.current) visibilityObserver.observe(rootRef.current);
-
-		// ----------------------------------------
-		// [8] 애니메이션 루프
+		// [7] 애니메이션 루프
 		// ----------------------------------------
 		const clock = new THREE.Clock();
 		const animate = () => {
-			if (!visibleRef.current) return;
 			rafRef.current = window.requestAnimationFrame(animate);
 
 			const dt = clock.getDelta();
@@ -348,13 +328,13 @@ export default function DotFieldCanvas() {
 			);
 			renderer.render(scene, camera);
 		};
+		// 항상 실행: 페이지 어디까지 스크롤하든 효과가 유지되도록 rAF를 상시 돌립니다.
 		animate();
 
 		// ----------------------------------------
-		// [9] 클린업: 이벤트·옵저버·rAF·GPU·DOM 해제
+		// [8] 클린업: 이벤트·rAF·GPU·DOM 해제
 		// ----------------------------------------
 		return () => {
-			visibilityObserver.disconnect();
 			window.removeEventListener("pointermove", handlePointerMove);
 			window.removeEventListener("scroll", updateScrollTarget);
 			window.removeEventListener("resize", handleResize);
@@ -372,7 +352,7 @@ export default function DotFieldCanvas() {
 	// rootRef: 가시성 관찰 대상. mountRef: WebGL 캔버스가 붙는 div.
 	return (
 		<div ref={rootRef} className="dot-field-canvas">
-			<div ref={mountRef} className="dot-field-canvas__mount" aria-hidden="true" />
+			<div ref={mountRef} className="dot-field-canvas_mount" aria-hidden="true" />
 		</div>
 	);
 }
