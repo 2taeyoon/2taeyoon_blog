@@ -18,6 +18,7 @@ import "@/styles/components/canvas/dotFieldCanvas.css";
 /* Markdown Styles */
 import "@/styles/pages/markdown.css";
 import "@/styles/pages/markdownAtom.css";
+import "@/styles/pages/home.css";
 
 /* Common Styles */
 import "@/styles/layout/layout.css";
