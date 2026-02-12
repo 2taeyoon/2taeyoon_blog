@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import DesignStudyData from "@/data/designStudyData.json";
 import FrontStudyData from "@/data/frontStudyData.json";
 import BackStudyData from "@/data/backStudyData.json";
-import EtcStudyData from "@/data/etcStudyData.json";
 import { CardProps } from "@/types/props.types";
 
 // JSON 파일을 하나의 배열로 통합
@@ -10,7 +9,6 @@ const combinedData: CardProps[] = [
   ...DesignStudyData.cards,
   ...FrontStudyData.cards,
   ...BackStudyData.cards,
-  ...EtcStudyData.cards,
 ];
 
 // 동적 경로 생성
@@ -49,11 +47,6 @@ function generateSitemap(paths: { url: string; }[]) {
     </url>
 		<url>
       <loc>${domain}/bs</loc>
-      <changefreq>weekly</changefreq>
-      <priority>1.0</priority>
-    </url>
-		<url>
-      <loc>${domain}/es</loc>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
     </url>
