@@ -15,6 +15,7 @@ import "@/styles/components/list/card.css";
 import "@/styles/components/list/card.reaction.css";
 import "@/styles/components/util/pagination.css";
 import "@/styles/components/util/pagination.reaction.css";
+import "@/styles/components/util/studySearch.css";
 import "@/styles/components/util/animations.css";
 import "@/styles/components/canvas/dotFieldCanvas.css";
 import "@/styles/components/layout/blogAide.css";
