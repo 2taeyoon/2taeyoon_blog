@@ -139,3 +139,21 @@ export interface TitleProps {
   title: string;
 }
 // 콘텐츠 컴포넌트 END!
+
+// 메뉴 섹션 타입 START!
+export interface MenuSectionWithButtons {
+  id: string;
+  title: string;
+  items: { label: string; href: string }[];
+  type: "withButtons";
+}
+
+export interface MenuSectionLinkOnly {
+  id: string;
+  title: string;
+  href: string;
+  type: "linkOnly";
+}
+
+export type MenuSection = MenuSectionWithButtons | MenuSectionLinkOnly;
+// 메뉴 섹션 타입 END!
