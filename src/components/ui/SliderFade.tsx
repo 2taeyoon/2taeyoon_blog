@@ -14,7 +14,6 @@ import { CardProps } from "@/types/props.types";
 import DesignStudyData from "@/data/designStudyData.json";
 import FrontStudyData from "@/data/frontStudyData.json";
 import BackStudyData from "@/data/backStudyData.json";
-import EtcStudyData from "@/data/etcStudyData.json";
 import Link from "next/link";
 
 export function SliderFadeComponent() {
@@ -32,7 +31,6 @@ export function SliderFadeComponent() {
       ...DesignStudyData.cards.map(card => ({ ...card, type: "ds" })),
       ...FrontStudyData.cards.map(card => ({ ...card, type: "fs" })),
       ...BackStudyData.cards.map(card => ({ ...card, type: "bs" })),
-      ...EtcStudyData.cards.map(card => ({ ...card, type: "es" })),
     ]);
   }, []); // 빈 배열 -> 최초 1회 실행
 

@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 import DesignStudyData from "@/data/designStudyData.json";
 import FrontStudyData from "@/data/frontStudyData.json";
 import BackStudyData from "@/data/backStudyData.json";
-import EtcStudyData from "@/data/etcStudyData.json";
 
 export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 
@@ -26,7 +25,6 @@ export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 		...DesignStudyData.cards.map(card => ({ ...card })),
 		...FrontStudyData.cards.map(card => ({ ...card })),
 		...BackStudyData.cards.map(card => ({ ...card })),
-		...EtcStudyData.cards.map(card => ({ ...card })),
 	];
 
 	const sorted = combinedData.sort((a, b) => {

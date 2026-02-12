@@ -1,6 +1,9 @@
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import HeaderWrapper from "@/components/layout/HeaderWrapper";
+import BlogAideWrapper from "@/components/layout/BlogAideWrapper";
+
 /* Component Styles */
-import "@/styles/components/layout/blogAide.css";
-import "@/styles/components/layout/blogAide.reaction.css";
 import "@/styles/components/ui/banner.css";
 import "@/styles/components/ui/banner.reaction.css";
 import "@/styles/components/ui/sliderFade.css";
@@ -12,10 +15,15 @@ import "@/styles/components/list/card.css";
 import "@/styles/components/list/card.reaction.css";
 import "@/styles/components/util/pagination.css";
 import "@/styles/components/util/pagination.reaction.css";
+import "@/styles/components/util/studySearch.css";
 import "@/styles/components/util/animations.css";
 import "@/styles/components/canvas/dotFieldCanvas.css";
+import "@/styles/components/layout/blogAide.css";
+import "@/styles/components/layout/blogAide.reaction.css";
+import "@/styles/components/layout/header.css";
+import "@/styles/components/layout/header.reaction.css";
 
-/* Markdown Styles */
+/* Page Styles */
 import "@/styles/pages/markdown.css";
 import "@/styles/pages/markdownAtom.css";
 import "@/styles/pages/home.css";
@@ -26,10 +34,6 @@ import "@/styles/layout/layout.reaction.css";
 import "@/styles/base/variables.css";
 import "@/styles/base/reset.css";
 import "@/styles/base/fonts.css";
-
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import BlogAideWrapper from "@/components/layout/BlogAideWrapper";
 
 export default function RootLayout({
   children,
@@ -65,6 +69,7 @@ export default function RootLayout({
       </head>
       <body>
 				<div className="RouteApp">
+					<HeaderWrapper />
 					<BlogAideWrapper />
 					{children}
 				</div>
