@@ -2,7 +2,7 @@
 
 .blog_aide_sidebar { width: 260px; background: #fff; height: 100vh; position: fixed; top: 0; left: 0; z-index: 999; border-right: 1px solid var(--whiteEEE); transition: all 0.3s ease; }
 .RouteApp.close .blog_aide_sidebar { position: absolute; left: -272px; }
-.blog_aide_toggle { position: absolute; z-index: 2; bottom: -12px; right: -12px; display: grid; place-items: center; width: 24px; height: 24px; background: var(--white); border: 1px solid var(--whiteEEE); cursor: pointer; transform: rotate(90deg); }
+.blog_aide_toggle { position: absolute; z-index: 2; bottom: -12px; right: -12px; display: grid; place-items: center; width: 24px; height: 24px; background: var(--white); border: 1px solid var(--whiteEEE); cursor: pointer; transform: rotate(90deg); transition: all 0.3s ease; }
 .blog_aide_toggle svg { width: 18px; height: 18px; fill: var(--black); }
 .blog_aide_inner { position: relative; height: 100%; }
 .blog_aide_header { display: flex; align-items: center; justify-content: center; gap: 12px; position: relative; height: 72px; width: 260px; background-color: var(--whiteF9); border-bottom: 1px solid var(--whiteEEE); }
@@ -17,14 +17,17 @@
 .blog_aide_menu_title { font-size: 1.5rem; color: var(--blackmute); padding: 8px 0; transition: all 0.3s ease; }
 
 .blog_aide_menu_button { display: flex; gap: 16px; align-items: center; justify-content: flex-start; width: 100%; padding: 0 24px; height: 45px; width: 100%; font-size: 1.6rem; color: inherit; transition: all 0.3s ease; }
-.blog_aide_menu_button.active { background-color: var(--whiteF9); cursor: default; }
+.blog_aide_menu_button.active { background-color: var(--whiteF9); }
 .blog_aide_menu_button.active p { color: var(--thema); font-weight: 700; }
 .blog_aide_menu_button.active span { color: var(--thema); font-weight: 700; }
 
 .blog_aide_menu_button img { width: 24px; height: 24px; }
 
-.blog_aide_bar { visibility: hidden; position: fixed; z-index: -1; top: 0; left: -20px; width: 20px; height: 100vh; border-right: 1px solid var(--whiteDDD); background: var(--white); transition: all .3s .3s ease; cursor: pointer; }
+.blog_aide_bar { visibility: hidden; position: fixed; z-index: -1; top: 0; left: -20px; width: 20px; height: 100vh; border-right: 1px solid var(--whiteDDD); background: var(--white); transition: all .3s ease; cursor: pointer; }
+.blog_aide_bar::before { content: ''; position: absolute; width: 1px; height: 30px; background: var(--black); top: 50%; left: 65%; transform: translate(-50%, -50%); }
+.blog_aide_bar::after { content: ''; position: absolute; width: 1px; height: 30px; background: var(--black); top: 50%; left: 35%; transform: translate(-50%, -50%); }
 .RouteApp.close .blog_aide_bar { visibility: visible; left: 0; z-index: 0; }
+
 
 .blog_aide_menu_category.active { background-color: var(--themaLight); }
 .blog_aide_menu_category.active .blog_aide_menu_title { color: var(--black); font-weight: 700; }
@@ -38,4 +41,8 @@
 	.blog_aide_menu_button:hover:not(.active) { background-color: var(--whiteF9); }
 	.blog_aide_menu_button:hover:not(.active) p,
 	.blog_aide_menu_button:hover:not(.active) span { color: var(--thema); font-weight: 700; }
+
+	.blog_aide_toggle:hover { transform: rotate(90deg) scale(1.1); background-color: var(--themaLight); }
+
+	.RouteApp.close .blog_aide_bar:hover { transform: scale(1.1); background-color: var(--themaLight); }
 }

@@ -6,6 +6,102 @@
 				{"text": "Design" },
 				{"color": "redBright"}
 			],
+			"mdFile": "/images/design_study/18/18.md",
+      "image": "/images/design_study/18/main_image.webp",
+			"sortDate": "2026-02-24",
+      "title": "균일 연결의 법칙(Law of Uniform Connectedness)",
+			"subTitle": "균일 연결의 법칙은 “시각적으로 서로 연결되어 있는 요소들은, 그렇지 않은 요소들보다 더 밀접하게 관련된 것으로 인식된다”는 원리입니다. 저는 화면을 설계할 때, “이것들이 한 묶음이다”라는 느낌을 어떻게 줄 수 있을까를 항상 고민하게 됩니다. 텍스트로 설명하지 않아도, 박스, 배경색, 선, 연결선 같은 시각적 연결만으로도 사용자 머릿속에서는 “아 이건 같은 그룹이구나”라는 인식이 자연스럽게 생기기 때문입니다.",
+			"hashs": [
+				{"name": "#Effect"},
+				{"name": "#UX/UI"}
+      ]
+    },
+		{
+			"type": "ds",
+			"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
+			"mdFile": "/images/design_study/17/17.md",
+      "image": "/images/design_study/17/main_image.webp",
+			"sortDate": "2026-02-23",
+      "title": "멘탈 모델(Mental Model)",
+			"subTitle": "멘탈 모델은 “우리가 시스템에 대해 알고 있다고 생각하는 것, 그리고 그것이 어떻게 작동하는지에 대한 압축된 모델”입니다. 저는 새로운 제품을 설계할 때마다, “사용자들이 이 기능을 어떻게 이해할까?”를 계속 고민하게 됩니다. 사용자는 이미 다른 경험에서 “이런 건 이렇게 작동할 거야”라는 예상을 가지고 있기 때문에, 그 예상과 우리 제품의 실제 동작이 얼마나 맞는지가 UX의 핵심이라고 저는 생각합니다.",
+			"hashs": [
+				{"name": "#Effect"},
+				{"name": "#UX/UI"}
+      ]
+    },
+		{
+			"type": "ds",
+			"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
+			"mdFile": "/images/design_study/16/16.md",
+      "image": "/images/design_study/16/main_image.webp",
+			"sortDate": "2026-02-22",
+      "title": "밀러의 법칙(Miller’s Law)",
+			"subTitle": "밀러의 법칙은 “사람이 작업 기억(working memory)에 동시에 유지할 수 있는 정보는 평균 7개, 플러스 마이너스 2개 정도”라는 관찰에서 출발합니다. 저는 이 법칙을 볼 때마다, “지금 내가 만든 화면이 사람 머릿속에 몇 개나 남을까?”를 스스로에게 물어보려고 합니다. UX에서는 특히, 한 번에 너무 많은 것들을 보여주지 않는 것이 얼마나 중요한지 계속 상기시켜 줍니다.",
+			"hashs": [
+				{"name": "#Effect"},
+				{"name": "#UX/UI"}
+      ]
+    },
+		{
+			"type": "ds",
+			"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
+			"mdFile": "/images/design_study/15/15.md",
+      "image": "/images/design_study/15/main_image.webp",
+			"sortDate": "2026-02-21",
+      "title": "오컴의 면도날(Occam’s Razor)",
+			"subTitle": "오컴의 면도날은 “동일하게 잘 예측하는 여러 가설이 있다면, 가장 가정이 적은 것을 선택하라”는 원리입니다. 저는 이 법칙을 UX에 가져와서, “동일하게 문제를 해결하는 여러 설계안 중에서, 사용자 입장에서 가장 단순한 것을 고르자”라는 식으로 자주 되새기려고 합니다.",
+			"hashs": [
+				{"name": "#Effect"},
+				{"name": "#UX/UI"}
+      ]
+    },
+		{
+			"type": "ds",
+			"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
+			"mdFile": "/images/design_study/14/14.md",
+      "image": "/images/design_study/14/main_image.webp",
+			"sortDate": "2026-02-20",
+      "title": "능동적 사용자의 역설(Paradox of the Active User)",
+			"subTitle": "능동적 사용자의 역설은 '사용자는 매뉴얼을 읽지 않고, 일단 써 보기부터 시작한다'는 현상을 설명합니다. 저는 새로운 도구를 쓸 때마다, 항상 설명서를 건너뛰고 바로 클릭부터 해 보게 됩니다. UX를 생각하는 입장에서도, '사람들이 어차피 설명을 안 읽는다'는 이 사실을 전제로 두고 설계해야겠다고 계속 다짐하게 됩니다.",
+			"hashs": [
+				{"name": "#Effect"},
+				{"name": "#UX/UI"}
+      ]
+    },
+		{
+			"type": "ds",
+			"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
+			"mdFile": "/images/design_study/13/13.md",
+      "image": "/images/design_study/13/main_image.webp",
+			"sortDate": "2026-02-19",
+      "title": "파레토 법칙(Pareto Principle)",
+			"subTitle": "빌프레도 파레토(Vilfredo Pareto)의 관찰 파레토 법칙의 이름은 이탈리아 출신 경제학자 빌프레도 파레토(Vilfredo Pareto)에서 왔습니다. 그는 당시 이탈리아의 토지 분포를 보다가, “전체 토지의 약 80%를 인구 20%가 소유하고 있다”는 사실을 관찰했다고 알려져 있습니다.",
+			"hashs": [
+				{"name": "#Effect"},
+				{"name": "#UX/UI"}
+      ]
+    },
+		{
+			"type": "ds",
+			"category": [
+				{"text": "Design" },
+				{"color": "redBright"}
+			],
 			"mdFile": "/images/design_study/12/12.md",
       "image": "/images/design_study/12/main_image.webp",
 			"sortDate": "2026-02-06",
