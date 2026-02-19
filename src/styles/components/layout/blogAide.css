@@ -17,7 +17,7 @@
 .blog_aide_menu_title { font-size: 1.5rem; color: var(--blackmute); padding: 8px 0; transition: all 0.3s ease; }
 
 .blog_aide_menu_button { display: flex; gap: 16px; align-items: center; justify-content: flex-start; width: 100%; padding: 0 24px; height: 45px; width: 100%; font-size: 1.6rem; color: inherit; transition: all 0.3s ease; }
-.blog_aide_menu_button.active { background-color: var(--whiteF9); cursor: default; }
+.blog_aide_menu_button.active { background-color: var(--whiteF9); }
 .blog_aide_menu_button.active p { color: var(--thema); font-weight: 700; }
 .blog_aide_menu_button.active span { color: var(--thema); font-weight: 700; }
 
