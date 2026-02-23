@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server";
-import DesignStudyData from "@/data/designStudyData.json";
-import FrontStudyData from "@/data/frontStudyData.json";
-import BackStudyData from "@/data/backStudyData.json";
+import designData from "@/data/designData.json";
+import frontendData from "@/data/frontendData.json";
+import backendData from "@/data/backendData.json";
+import insightData from "@/data/insightData.json";
 import { CardProps } from "@/types/props.types";
 
 // JSON 파일을 하나의 배열로 통합
 const combinedData: CardProps[] = [
-  ...DesignStudyData.cards,
-  ...FrontStudyData.cards,
-  ...BackStudyData.cards,
+  ...designData.cards,
+  ...frontendData.cards,
+  ...backendData.cards,
+  ...insightData.cards,
 ];
 
 // 동적 경로 생성
@@ -36,17 +38,27 @@ function generateSitemap(paths: { url: string; }[]) {
       <priority>1.0</priority>
     </url>
 		<url>
-      <loc>${domain}/ds</loc>
+      <loc>${domain}/design</loc>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
     </url>
 		<url>
-      <loc>${domain}/fs</loc>
+      <loc>${domain}/frontend</loc>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
     </url>
 		<url>
-      <loc>${domain}/bs</loc>
+      <loc>${domain}/backend</loc>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+    </url>
+		<url>
+      <loc>${domain}/study</loc>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+    </url>
+		<url>
+      <loc>${domain}/insight</loc>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
     </url>
