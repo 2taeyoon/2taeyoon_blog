@@ -7,8 +7,8 @@ import { usePathActive } from "@/hooks/usePathActive";
 import { useSidebarToggle } from "@/hooks/useSidebarToggle";
 import { useMobileDetection } from "@/hooks/useMobileDetection";
 import { useAccordion } from "@/hooks/useAccordion";
-import BlogAideHeader from "./BlogAideHeader";
-import BlogAideMenu from "./BlogAideMenu";
+import BlogAideHeader from "@/components/layout/BlogAideHeader";
+import BlogAideMenu from "@/components/layout/BlogAideMenu";
 
 export default function BlogAide() {
   const { isPathActive } = usePathActive();
