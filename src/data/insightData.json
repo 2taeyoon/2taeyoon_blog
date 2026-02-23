@@ -1,0 +1,21 @@
+{
+  "cards": [
+		{
+			"type": "insight",
+			"category": [
+				{"text": "Insight" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/insight/1/1.md",
+			"image": "/images/insight/1/main_image.webp",
+			"sortDate": "2026-02-23",
+			"title": "일론 머스크, AGI 타임라인과 초월적 풍요의 시대",
+			"subTitle": "AI와 로봇 기술이 가져올 '초고속 쓰나미' 속에서 '터미네이터'가 아닌 '스타트렉'의 미래로 나아가기 위한 현실적인 로드맵을 제시한다.",
+			"hashs": [
+				{"name": "#AI"},
+				{"name": "#AGI"},
+				{"name": "#Future"}
+			]
+		}
+  ]
+}
