@@ -1,0 +1,483 @@
+{
+  "cards": [
+
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/29/29.md",
+			"image": "/images/frontend/29/main_image.webp",
+			"sortDate": "2025-05-10",
+			"title": "포트폴리오 제작기 4: 프로젝트 섹션 구현기",
+			"subTitle": "이번 포스트에서는 포트폴리오 웹사이트의 하이라이트 중 하나인 프로젝트 섹션 구현 과정을 살펴보려고 합니다. 코드 기반 프로젝트와 디자인 중심 프로젝트를 한 화면에 나란히 배치하고, GSAP ScrollTrigger를 활용해 텍스트 등장, 카드 애니메이션, 이미지 모달 등을 적용하여 인터랙션을 강화했습니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Portfolio"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/28/28.md",
+			"image": "/images/frontend/28/main_image.webp",
+			"sortDate": "2025-04-30",
+			"title": "포트폴리오 제작기 3: 스킬 섹션 구현기",
+			"subTitle": "이번 포스트에서는 포트폴리오 사이트의 스킬 소개 섹션을 구현하면서 사용한 주요 코드를 살펴보려고 합니다. 스킬 소개 섹션은 방문자에게 내가 어떤 기술을 다룰 수 있는지를 보여주는 중요한 부분입니다. 그래서 이 섹션은 단순히 나열하는 것이 아니라 각 기술에 대한 설명과 함께 애니메이션 효과를 추가하여 시각적 돋보이게게 만들었습니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Portfolio"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/27/27.md",
+			"image": "/images/frontend/27/main_image.webp",
+			"sortDate": "2025-03-20",
+			"title": "포트폴리오 제작기 2: 프로필 섹션",
+			"subTitle": "저번에 포트폴리오 제작기 1: 메인페이지를 구현하고 나서 이번에는 포트폴리오 사이트의 저를 소개하는 프로필 섹션을 구현해야겠다는 생각이 들었습니다. 프로필 섹션은 방문자가 나라는 사람을 가장 먼저 알게 되는 곳이기 때문에, 어떻게 해야하나 고민을 많이 했지만 이번에는 gsap의 pin으로 스크롤이 고정된 것이 아닌 스크롤을 내리면서 작동하는 스크롤 트리거로 구현해보았습니다. 포트폴리오 페이지이기 때문에 단순히 정적인 UI가 아니라 효과를 적용한 비디오 + 마우스 인터렉션 효과 + 애니메이션을 적극적으로 활용했습니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Portfolio"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/26/26.md",
+			"image": "/images/frontend/26/main_image.webp",
+			"sortDate": "2025-02-25",
+			"title": "포트폴리오 제작기 1: 메인페이지",
+			"subTitle": "저는 현재 포트폴리오 사이트를 만들고 있습니다. 가장 중요하게 신경 쓴 부분이 바로 메인 페이지인데요. 아무래도 처음 이미지를 전달해주는 메인이기 때문에 이것저것 많이 시도를 해본 것 같아요. 첫인상이 중요한 만큼 단순한 정적인 페이지가 아니라 포트폴리오 사이트에서 흔히 볼 수 있는 다양한 애니메이션과 인터랙션을 활용해서 동적인 화면을 만들고자 했습니다. 이번 글에서는 메인 페이지를 구성하는 주요 코드들과 역할을 하나씩 분석하면서 각 컴포넌트가 어떻게 동작하는지 알아보려고 합니다!",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Portfolio"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/25/25.md",
+			"image": "/images/frontend/25/main_image.webp",
+			"sortDate": "2025-02-23",
+			"title": "requestAnimationFrame을 이용한 마우스 이펙트 코드 개선",
+			"subTitle": "현재 진행 중인 포트폴리오 사이트의 마우스 이펙트를 구현하는 과정에서 NextJS의 오류를 해결한 방법을 기록하려고 합니다. 이전에는 useState를 사용하여 마우스 움직임을 감지하고 상태를 업데이트했는데 예상치 못한 오류가 발생했습니다. 허헣.. Maximum update depth exceeded 오류가 발생하면서 무한 루프에 빠지는 문제를 해결해야 했습니다!",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/24/24.md",
+			"image": "/images/frontend/24/main_image.webp",
+			"sortDate": "2025-02-20",
+			"title": "NextJS에서 JSON 기반 동적 Sitemap 생성",
+			"subTitle": "NextJS에서 JSON을 기반으로 동적 라우팅이 설정되어 있는데요. 이번에 자동으로 동적 sitemap.xml을 생성했습니다. 기존의 정적인 sitemap을 동적으로 변환하는 과정과 JSON 데이터를 기반으로 sitemap을 자동으로 업데이트하는지 알아보았습니다. 기존 Sitemap vs 변경된 Sitemap 우선 기존의 sitemap.xml과 우리가 새롭게 변경할 sitemap.xml의 차이점을 먼저 살펴보겠습니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Sitemap"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/23/23.md",
+			"image": "/images/frontend/23/main_image.webp",
+			"sortDate": "2025-02-15",
+			"title": "NextJS 15 마이그레이션 오류 해결기: params는 이제 Promise",
+			"subTitle": "오늘은 NextJS 15로 프로젝트를 마이그레이션하면서 겪은 params 오류와 해결 과정을 정리하려고 합니다. NextJS 15 params 오류 발생 React 파일들을 NextJS에 맞게 변경하는데 터미널에서 다음과 같은 오류가 발생했습니다. 오류 메시지 등장! Error: Route \"/fs/[title]\" used `params.title`. `params` should be awaited before using its properties. 뭐지? params를 `await`로 감싸야 한다? 이전 React에서는 잘되던 코드인데 왜 이런 오류가 발생..?",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#NextJS"},
+				{"name": "#SessionStorage"},
+				{"name": "#TypeScript"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/22/22.md",
+			"image": "/images/frontend/22/main_image.webp",
+			"sortDate": "2025-02-02",
+			"title": "React에서 NextJS로 마이그레이션 중 발생한 세션 스토리지 오류",
+			"subTitle": "React 프로젝트를 NextJS로 마이그레이션하면서 마주쳤던 sessionStorage 관련 오류를 공유하려고 합니다. 사실 저는 React 코드 그대로 NextJS에서 쓰면 되지 않을까? 하는 가벼운 생각을 했는데요. 마이그레이션을 진행하다보니 작은 오류부터 큼지막한 오류까지 다양했습니다. 작은 오류: img 태그를 Image 컴포넌트로 변경하라는 오류, useLocation이 아니라 usePathname을 사용해야 하는 오류 등",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#NextJS"},
+				{"name": "#SessionStorage"},
+				{"name": "#TypeScript"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/21/21.md",
+			"image": "/images/frontend/21/main_image.webp",
+			"sortDate": "2025-01-23",
+			"title": "React 프로젝트 개선: 세션 스토리지 수정 및 오류 해결",
+			"subTitle": "안녕하세요! 오늘은 React 프로젝트에서 세션 스토리지를 이용해 지저분했던 스토리지를 조금이나마 개선한 과정을 소개하려고 합니다. 프로젝트의 주요 기능인 명언 표시(Saying), 카드 페이징(CardPagination), 해시태그(Hashs)에서 데이터를 저장하고 읽어오는 방식을 업그레이드했습니다.",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#SessionStorage"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/20/20.md",
+			"image": "/images/frontend/20/main_image.webp",
+			"sortDate": "2025-01-21",
+			"title": "React 프로젝트 개선: 동적 URL 삼항 연산자 사용 시 경로 이상 해결",
+			"subTitle": "제가 진행했던 React 프로젝트의 코드를 살짝 손보고 새로운 기능을 추가했는데요. 개선하는 과정에서 (정말 개선이 잘 되었다고는 생각하지는 않지만) URL 경로 이상 문제도 다뤄보도록 하겠습니다. 헬멧과 슬라이드 배너만 돌아가는 아무것도 없는 Home 탭이었습니다. 여기에 공부했던 블로그 글을 전부 화면에 표시해주면 좋을 것 같다는 생각을 했습니다.",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#Webpack"},
+				{"name": "#TypeScript"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/19/19.md",
+			"image": "/images/frontend/19/main_image.webp",
+			"sortDate": "2025-01-17",
+			"title": "Veolog 글쓰기 창 구현해 보기2(Supabase)",
+			"subTitle": "안녕하세요! 여러분, 이번에는 Markdown 에디터 2탄을 가지고 돌아왔습니다! 지난번에는 글을 작성하고 Supabase 테이블에 데이터 저장까지 성공했었는데요. 이제 파일로도 저장하면 더 깔끔하고 관리하기 좋지 않을까라는 생각이 들어 곧바로 실행에 옮겼습니다!",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#TypeScript"},
+				{"name": "#Supabase"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/18/18.md",
+			"image": "/images/frontend/18/main_image.webp",
+			"sortDate": "2025-01-11",
+			"title": "로컬에서는 멀쩡한 환경 변수 배포 시 오류(webpack)",
+			"subTitle": "Velog와 비슷한 마크다운 페이지를 만들다가 황당한 상황이 벌어졌습니다. 저는 Vercel을 이용해 배포 중이었는데, 분명 환경 변수를 제대로 등록했는데도 배포된 사이트에서 환경 변수가 작동하지 않는 사태가 발생했습니다. React에서 Webpack을 사용하는 프로젝트였고, 다음과 같은 .env 파일을 사용 중이었습니다.",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#Webpack"},
+				{"name": "#TypeScript"},
+				{"name": "#Vercel"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/17/17.md",
+      "image": "/images/frontend/17/main_image.webp",
+			"sortDate": "2025-01-10",
+      "title": "Veolog 글쓰기 창 구현해 보기(Supabase)",
+			"subTitle": "안녕하세요! 오늘은 포트폴리오를 업그레이드하고 싶던 마음에 Markdown 에디터를 이용해서 Velog 글쓰기 창과 비슷한 것을 구현해보려고 합니다. 에디터를 이용해서 내용을 작성하고 Supabase에 게시하는 기능까지 해보려고 합니다!",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#TypeScript"},
+				{"name": "#Supabase"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/16/16.md",
+      "image": "/images/frontend/16/main_image.webp",
+			"sortDate": "2024-12-10",
+      "title": "Sitemap을 사용해 보고 오류도 잡아보기",
+			"subTitle": "간단히 말해 사이트맵(sitemap)은 웹사이트의 페이지를 나열한 파일이라고 합니다. 사이트맵은 검색 엔진이 웹사이트를 더 효율적으로 크롤링할 수 있도록 도와주는 파일입니다. 사실 sitemap이 검색엔진에 도움이 된다는 내용만 알고 있었을뿐 자세하게는 찾아보지 않았었다.",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#Webpack"},
+				{"name": "#Sitemap"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/15/15.md",
+      "image": "/images/frontend/15/main_image.webp",
+			"sortDate": "2024-12-08",
+      "title": "Vercel에 React 배포하기",
+			"subTitle": "Vercel은 미국의 클라우드 서비스형 플랫폼 회사입니다. 이 회사는 Next.js 웹 개발 프레임워크를 유지 관리하며, 배포는 Git 저장소를 통해 자동으로 처리가 됩니다.",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#Vercel"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/14/14.md",
+      "image": "/images/frontend/14/main_image.webp",
+			"sortDate": "2024-11-20",
+      "title": "React에서 Markdown 랜더링하기",
+			"subTitle": "React에서 Markdown을 랜더링하려면 우선 Markdown을 React 컴포넌트로 변환해야합니다. 예를 들어, Markdown의 헤딩은 html의 h1, h2로 변환하는 작업이 필요합니다.",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#Markdown"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/13/13.md",
+      "image": "/images/frontend/13/main_image.webp",
+			"sortDate": "2024-11-10",
+      "title": "React에서 Webpack Image 로드하기",
+			"subTitle": "웹팩 설정을 마치고 프로젝트를 진행하다가 문제가 하나 생겼습니다. 개발 모드에서는 이미지가 로드되었는데 빌드된 파일에서는 이미지 로드가 되지 않는 문제가 있었죠..",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#Webpack"},
+				{"name": "#TypeScript"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/12/12.md",
+      "image": "/images/frontend/12/main_image.webp",
+			"sortDate": "2024-10-30",
+      "title": "React에서 Webpack 사용하기(Typescript)",
+			"subTitle": "웹 페이지를 구성하는 Module(HTML, CSS, JavaScript, 이미지 등)을 결합하여 병합된 하나의 결과물을 생성하는 라이브러리를 Module Bundler라고 합니다. 그러한 라이브러리가 바로 Webpack입니다.",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#Webpack"},
+				{"name": "#TypeScript"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/11/11.md",
+      "image": "/images/frontend/11/main_image.webp",
+			"sortDate": "2024-10-20",
+      "title": "Prettier로 코드 포맷 통일시키기",
+			"subTitle": "혼자 진행하는 프로젝트에서는 코드 포맷이 큰 문제가 되지 않을 수 있습니다. 그러나 여러 명의 개발자가 함께 협업하여 서비스를 개발할 때, 각자가 사용하는 코드 포맷이 서로 다를 수 있습니다.",
+			"hashs": [
+				{"name": "#Prettier"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/10/10.md",
+      "image": "/images/frontend/10/main_image.webp",
+			"sortDate": "2024-10-10",
+      "title": "NextJS에서 mouse hover시 특정 텍스트 변경",
+			"subTitle": "Next.js 환경에서 했던 것이니 Next 태그를 넣긴 했지만 이 녀석은 거진 React..회사 프로젝트를 진행하다가 어려웠던 부분이 있었는데 그거를 집에서 혼자 해보고 싶었습니다..",
+			"hashs": [
+				{"name": "#NextJS"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/9/9.md",
+      "image": "/images/frontend/9/main_image.webp",
+			"sortDate": "2024-10-08",
+      "title": "NextJS에서 AOS 라이브러리 사용하기",
+			"subTitle": "터미널에서 AOS를 설치해줍니다. npm install --save aos@next 또는 yarn add aos@next 정상적으로 설치가 완료된 것을 확인하기 위해 setting.json 파일에서 aos: ^3.0.0-beta.6를 확인합니다.",
+			"hashs": [
+				{"name": "#API"},
+				{"name": "#NextJS"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/8/8.md",
+      "image": "/images/frontend/8/main_image.webp",
+			"sortDate": "2024-09-20",
+      "title": "NextJS에서 카카오지도 넣기",
+			"subTitle": "터미널에서 지도 SDK를 설치해줍니다. npm install react-kakao-maps-sdk 또는 yarn add react-kakao-maps-sdk 정상적으로 설치가 완료된 것을 확인하기 위해 setting.json 파일에서 react-kakao-maps-sdk를 확인합니다.",
+			"hashs": [
+				{"name": "#API"},
+				{"name": "#NextJS"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/7/7.md",
+      "image": "/images/frontend/7/main_image.webp",
+			"sortDate": "2024-09-15",
+      "title": "Github Pages로 정적파일 자동 배포하기",
+			"subTitle": "gh-pages는 Node.js 환경에서 사용되는 npm 패키지입니다. 로컬에서 사이트를 빌드하고, 빌드된 정적 파일을 GitHub Pages에 쉽게 배포가 가능해집니다. gh-pages는 빌드된 정적 사이트를 자동으로 gh-pages 브랜치에 푸시하게 해줍니다.",
+			"hashs": [
+				{"name": "#Github"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/6/6.md",
+      "image": "/images/frontend/6/main_image.webp",
+			"sortDate": "2024-09-10",
+      "title": "NextJS에서 Swiper 사용하기",
+			"subTitle": "Swiper는 자바스크립트로 제작되어 터치, 마우스 드래그, 키보드 등 다양한 입력 방식을 지원하며 반응형 웹에 적합합니다. 이 라이브러리는 다양한 애니메이션 효과, 루프, 자동 재생 등의 기능을 제공하고 있습니다.",
+			"hashs": [
+				{"name": "#API"},
+				{"name": "#NextJS"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/5/5.md",
+      "image": "/images/frontend/5/main_image.webp",
+			"sortDate": "2024-09-08",
+      "title": "Firebase로 React App 배포하기",
+			"subTitle": "Github을 통해 build된 파일을 배포해 본 적은 있지만 Firebase의 호스팅으로 파일을 배포해 본 적은 없어서 글을 작성하였습니다.",
+			"hashs": [
+				{"name": "#Firebase"},
+        {"name": "#React"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/4/4.md",
+      "image": "/images/frontend/4/main_image.webp",
+			"sortDate": "2024-08-30",
+      "title": "TypeScript Class",
+			"subTitle": "클래스는 객체 지향 프로그래밍의 기본 요소로, TypeScript에서 클래스를 정의하고 사용하는 방법은 다음과 같습니다.",
+			"hashs": [
+				{"name": "#TypeScript"},
+        {"name": "#JavaScript"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/3/3.md",
+      "image": "/images/frontend/3/main_image.webp",
+			"sortDate": "2024-08-20",
+      "title": "TypeScript 함수",
+			"subTitle": "함수를 TypeScript에서 선언할 때에는 매개변수의 타입과 반환 타입을 명시할 수 있고, 이를 통해 타입 에러를 방지할 수 있습니다.",
+			"hashs": [
+				{"name": "#TypeScript"},
+        {"name": "#JavaScript"}
+      ]
+    },
+    {
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/2/2.md",
+      "image": "/images/frontend/2/main_image.webp",
+			"sortDate": "2024-08-10",
+      "title": "React FC와 타입 직접 선언",
+			"subTitle": "React.FC는 React에서 함수형 컴포넌트를 정의하는 TypeScript에서 사용되는 제네릭 타입입니다. React.FC를 사용하여 타입을 명확하게 지정하여 Props에 대한 타입 검사를 수행합니다.",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#TypeScript"}
+      ]
+    },
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/1/1.md",
+      "image": "/images/frontend/1/main_image.webp",
+			"sortDate": "2024-08-08",
+      "title": "TypeScript는 왜 사용하는가..",
+			"subTitle": "정적 타입은 변수의 데이터 타입을 선언하고, 변수에 할당되는 값의 타입을 컴파일 시점에서 미리 확인하는 방식입니다. 변수를 선언할 때 해당 변수의 타입을 명시적으로 지정하거나 타입 추론을 통해 타입을 결정할 수 있습니다.",
+			"hashs": [
+				{"name": "#TypeScript"},
+        {"name": "#JavaScript"}
+      ]
+    }
+  ]
+}
