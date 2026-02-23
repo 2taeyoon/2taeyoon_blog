@@ -144,13 +144,15 @@ export interface TitleProps {
 export interface MenuSectionWithButtons {
   id: string;
   title: string;
-  items: { label: string; href: string }[];
+  count?: number;
+  items: { label: string; href: string; count?: number }[];
   type: "withButtons";
 }
 
 export interface MenuSectionLinkOnly {
   id: string;
   title: string;
+  count?: number;
   href: string;
   type: "linkOnly";
 }
