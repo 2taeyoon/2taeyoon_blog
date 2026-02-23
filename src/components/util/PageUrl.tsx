@@ -5,9 +5,9 @@ import Link from "next/link";
 import { CardProps, PageUrlsProps } from "@/types/props.types";
 import { usePathname } from "next/navigation";
 
-import DesignStudyData from "@/data/designStudyData.json";
-import FrontStudyData from "@/data/frontStudyData.json";
-import BackStudyData from "@/data/backStudyData.json";
+import designData from "@/data/designData.json";
+import frontendData from "@/data/frontendData.json";
+import backendData from "@/data/backendData.json";
 
 export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 
@@ -22,9 +22,9 @@ export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 	}, [pathname]);
 
 	const combinedData = [
-		...DesignStudyData.cards.map(card => ({ ...card })),
-		...FrontStudyData.cards.map(card => ({ ...card })),
-		...BackStudyData.cards.map(card => ({ ...card })),
+		...designData.cards.map(card => ({ ...card })),
+		...frontendData.cards.map(card => ({ ...card })),
+		...backendData.cards.map(card => ({ ...card })),
 	];
 
 	const sorted = combinedData.sort((a, b) => {
