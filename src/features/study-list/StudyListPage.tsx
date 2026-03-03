@@ -21,6 +21,7 @@ export default function StudyListPage({ cards, sessionName }: StudyListPageProps
           {/* 검색창 - card_pagination 위에 위치 */}
           <div className="study_search_wrap">
             <input
+							id="studySearch"
               type="text"
               className="study_search_input"
               placeholder="제목, 내용, 해시태그로 검색..."
@@ -34,8 +35,8 @@ export default function StudyListPage({ cards, sessionName }: StudyListPageProps
                 onClick={() => handleSearch("")}
                 aria-label="검색어 지우기"
               >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 4L4 12M4 4L12 12" stroke="var(--black)" strokeWidth="1" strokeLinecap="round"/>
                 </svg>
               </button>
             )}
