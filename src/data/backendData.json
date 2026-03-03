@@ -6,9 +6,25 @@
 				{"text": "Backend" },
 				{"color": "purpleBright"}
 			],
+			"mdFile": "/images/backend/11/11.md",
+      "image": "/images/backend/11/main_image.webp",
+			"sortDate": "2026-02-03",
+      "title": "목록·상세 화면에 썸네일 넣기(전체 흐름)",
+			"subTitle": "관리자 페이지에서 등록한 썸네일 이미지가 사용자 화면(목록, 상세)에 나오게 만들려면 등록 → 데이터 붙이기 → 화면 출력 이 세 단계를 맞춰 주면 됩니다. 아래에서는 행사/이벤트 같은 목록을 예로 들어, 어느 부분을 손봐야 하는지, 각 단계가 어떤 역할을 하는지 정리해 보겠습니다.",
+			"hashs": [
+				{"name": "#PHP"},
+				{"name": "#MySQL"}
+			]
+		},
+		{
+			"type": "backend",
+			"category": [
+				{"text": "Backend" },
+				{"color": "purpleBright"}
+			],
 			"mdFile": "/images/backend/10/10.md",
       "image": "/images/backend/10/main_image.webp",
-			"sortDate": "2026-02-03",
+			"sortDate": "2026-12-22",
       "title": "폼 → Ajax → API → DB",
 			"subTitle": "이번 프로젝트는 GEMO라는 이름으로 진행하는 간단한 웹게임 사이트입니다. 첫 단계로 워들 게임을 구현했으며, 이를 위해 사용된 API 설정과 관련된 부분을 정리해 보려고 합니다. Repo 개요·목표 프론트: gemo-frontend — Next.js(App Router) + NextAuth(구글 OAuth) + MongoDB 게임용 유저 상태/통계 API를 Route Handlers로 직접 제공합니다.",
 			"hashs": [
