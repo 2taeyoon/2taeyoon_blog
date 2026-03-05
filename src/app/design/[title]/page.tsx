@@ -5,11 +5,12 @@ import DesignStudyContent from "@/app/design/[title]/DesignStudy";
 
 // 서버 컴포넌트: 동적 메타데이터 설정
 export async function generateMetadata({ params }: { params: Promise<{ title: string }> }) { // 동적 경로 매개변수인 params로 URL 가져옴
-	const title = (await params).title
+	const title = (await params).title;
 
-  const decodedTitle = decodeURIComponent(title) // decodeURIComponent로 인코딩을 풀어줌
-	const replaceTitle = decodedTitle.replace(/-/g, " "); // 공백 대신 하이픈(-) 추가
-  const DesignCardFind = DesignCard.cards.find((item) => item.title === replaceTitle); // JSON 데이터와 title을 비교하여 알맞는 데이터 찾음
+  const decodedTitle = decodeURIComponent(title); // 인코딩 해제
+
+	// 카드의 제목을 슬러그 형태로 변환한 값과 URL 파라미터를 비교
+	const DesignCardFind = DesignCard.cards.find((item) => item.title.replace(/\s+/g, "-") === decodedTitle);
 
 	if (!DesignCardFind) return notFound(); // 데이터가 없으면 404
 
