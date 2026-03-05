@@ -1,0 +1,72 @@
+{
+  "cards": [
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/29/29.md",
+			"image": "/images/frontend/29/main_image.webp",
+			"sortDate": "2025-05-10",
+			"title": "포트폴리오 제작기 4: 프로젝트 섹션 구현기",
+			"subTitle": "이번 포스트에서는 포트폴리오 웹사이트의 하이라이트 중 하나인 프로젝트 섹션 구현 과정을 살펴보려고 합니다. 코드 기반 프로젝트와 디자인 중심 프로젝트를 한 화면에 나란히 배치하고, GSAP ScrollTrigger를 활용해 텍스트 등장, 카드 애니메이션, 이미지 모달 등을 적용하여 인터랙션을 강화했습니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Portfolio"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/28/28.md",
+			"image": "/images/frontend/28/main_image.webp",
+			"sortDate": "2025-04-30",
+			"title": "포트폴리오 제작기 3: 스킬 섹션 구현기",
+			"subTitle": "이번 포스트에서는 포트폴리오 사이트의 스킬 소개 섹션을 구현하면서 사용한 주요 코드를 살펴보려고 합니다. 스킬 소개 섹션은 방문자에게 내가 어떤 기술을 다룰 수 있는지를 보여주는 중요한 부분입니다. 그래서 이 섹션은 단순히 나열하는 것이 아니라 각 기술에 대한 설명과 함께 애니메이션 효과를 추가하여 시각적 돋보이게게 만들었습니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Portfolio"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/27/27.md",
+			"image": "/images/frontend/27/main_image.webp",
+			"sortDate": "2025-03-20",
+			"title": "포트폴리오 제작기 2: 프로필 섹션",
+			"subTitle": "저번에 포트폴리오 제작기 1: 메인페이지를 구현하고 나서 이번에는 포트폴리오 사이트의 저를 소개하는 프로필 섹션을 구현해야겠다는 생각이 들었습니다. 프로필 섹션은 방문자가 나라는 사람을 가장 먼저 알게 되는 곳이기 때문에, 어떻게 해야하나 고민을 많이 했지만 이번에는 gsap의 pin으로 스크롤이 고정된 것이 아닌 스크롤을 내리면서 작동하는 스크롤 트리거로 구현해보았습니다. 포트폴리오 페이지이기 때문에 단순히 정적인 UI가 아니라 효과를 적용한 비디오 + 마우스 인터렉션 효과 + 애니메이션을 적극적으로 활용했습니다.",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Portfolio"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
+			"mdFile": "/images/frontend/26/26.md",
+			"image": "/images/frontend/26/main_image.webp",
+			"sortDate": "2025-02-25",
+			"title": "포트폴리오 제작기 1: 메인페이지",
+			"subTitle": "저는 현재 포트폴리오 사이트를 만들고 있습니다. 가장 중요하게 신경 쓴 부분이 바로 메인 페이지인데요. 아무래도 처음 이미지를 전달해주는 메인이기 때문에 이것저것 많이 시도를 해본 것 같아요. 첫인상이 중요한 만큼 단순한 정적인 페이지가 아니라 포트폴리오 사이트에서 흔히 볼 수 있는 다양한 애니메이션과 인터랙션을 활용해서 동적인 화면을 만들고자 했습니다. 이번 글에서는 메인 페이지를 구성하는 주요 코드들과 역할을 하나씩 분석하면서 각 컴포넌트가 어떻게 동작하는지 알아보려고 합니다!",
+			"hashs": [
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"},
+				{"name": "#Portfolio"}
+			]
+		}
+	]
+}
