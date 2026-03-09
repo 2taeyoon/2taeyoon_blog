@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import Header from '@/components/layout/Header';
+import BlogHeader from '@/components/layout/BlogHeader';
 
-export default function HeaderWrapper() {
+export default function BlogHeaderWrapper() {
   const pathname = usePathname();
   const isHome = pathname === '/';
 
@@ -13,7 +13,7 @@ export default function HeaderWrapper() {
 
   return (
     <div className={wrapperClassName}>
-      <Header />
+      <BlogHeader />
     </div>
   );
 }
