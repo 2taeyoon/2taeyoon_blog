@@ -1,18 +1,9 @@
 @charset "utf-8";
 
 @media (max-width: 1280px) {
-	.card { width: calc(50% - 32px); }
+	.card { width: calc(50% - 8px); }
 }
 
 @media (max-width: 768px) {
-	.card { width: calc(100% - 32px); }
-}
-
-@media (max-width: 640px) {
-	.card { width: calc(100% - 16px); margin: 8px; }
-	.card .card_bottom { padding: 12px 0; }
-	.card .card_bottom .card_bottom_title { padding: 4px 0 4px; }
-	.card .card_bottom .card_bottom_sub_title { margin: 0 0 4px; }
-	.card_skill_wrap .card_skill { margin: 0 4px 4px 0; }
-	.card_hash_wrap .card_hash { margin: 0 4px 4px 0; }
+	.card { width: calc(100%); }
 }
