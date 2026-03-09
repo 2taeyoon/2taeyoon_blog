@@ -6,6 +6,23 @@
 				{"text": "Insight" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/insight/2/2.md",
+			"image": "/images/insight/2/main_image.webp",
+			"sortDate": "2026-03-10",
+			"title": "OpenAI CEO 샘 알트만과 VC 비노드 코슬라의 IIT 델리 대담",
+			"subTitle": "OpenAI CEO 샘 알트만과 VC 비노드 코슬라가 IIT 델리에서 AI의 미래, 기술 변화, 교육의 중요성, 그리고 사회적 영향에 대해 대담을 나눈 것이 핵심입니다.",
+			"hashs": [
+				{"name": "#OpenAI"},
+				{"name": "#SamAltman"},
+				{"name": "#Future"}
+			]
+		},
+		{
+			"type": "insight",
+			"category": [
+				{"text": "Insight" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/insight/1/1.md",
 			"image": "/images/insight/1/main_image.webp",
 			"sortDate": "2026-02-23",

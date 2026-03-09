@@ -22,7 +22,9 @@
 }
 
 @media (max-width: 640px) { 
+	.RouteApp.close .layout_wrap .wrap,
 	.layout_wrap .wrap { width: 100%; margin-left: 0; }
+
 	.common_wrap { padding: 16px 16px 32px; }
 	.common_wrap .blog .page_url .page_url_wrap .page_url_prev,
 	.common_wrap .blog .page_url .page_url_wrap .page_url_next { border-radius: 12px; }
