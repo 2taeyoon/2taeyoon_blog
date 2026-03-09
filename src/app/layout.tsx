@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import HeaderWrapper from "@/components/layout/HeaderWrapper";
+import BlogHeaderWrapper from "@/components/layout/BlogHeaderWrapper";
 import BlogAideWrapper from "@/components/layout/BlogAideWrapper";
 
 /* Component Styles */
@@ -20,8 +20,8 @@ import "@/styles/components/util/animations.css";
 import "@/styles/components/canvas/dotFieldCanvas.css";
 import "@/styles/components/layout/blogAide.css";
 import "@/styles/components/layout/blogAide.reaction.css";
-import "@/styles/components/layout/header.css";
-import "@/styles/components/layout/header.reaction.css";
+import "@/styles/components/layout/blogHeader.css";
+import "@/styles/components/layout/blogHeader.reaction.css";
 
 /* Page Styles */
 import "@/styles/pages/markdown.css";
@@ -69,7 +69,7 @@ export default function RootLayout({
       </head>
       <body>
 				<div className="RouteApp">
-					<HeaderWrapper />
+					<BlogHeaderWrapper />
 					<BlogAideWrapper />
 					{children}
 				</div>
