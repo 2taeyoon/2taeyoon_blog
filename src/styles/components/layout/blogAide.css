@@ -18,6 +18,9 @@
 .blog_aide_menu_title .menu_title { transition: all 0.3s ease; }
 .blog_aide_menu_title .menu_count { transition: all 0.3s ease; }
 
+.blog_aide_menu_title .menu_count_wrap { display: flex; align-items: center; justify-content: center; }
+.blog_aide_menu_title .menu_count_wrap .menu_arrow_wrap { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; }
+
 .blog_aide_menu_button { display: flex; align-items: center; justify-content: flex-start; width: 100%; color: inherit; transition: all 0.3s ease; }
 .blog_aide_menu_button p { width: 100%; }
 .blog_aide_menu_button p a { display: flex; justify-content: space-between; align-items: center; padding: 8px 24px; }
@@ -36,6 +39,8 @@
 .blog_aide_bar::after { content: ''; position: absolute; width: 1px; height: 30px; background: var(--black); top: 50%; left: 35%; transform: translate(-50%, -50%); }
 .RouteApp.close .blog_aide_bar { visibility: visible; left: 0; z-index: 0; }
 
+/* 모바일에서 사이드바가 열렸을 때 배경 어둡게 처리하는 오버레이 */
+.blog_aide_overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 998; }
 
 .blog_aide_menu_category.active { background-color: var(--themaLight); }
 .blog_aide_menu_category.active .blog_aide_menu_title .menu_title { font-size: 1.7rem; color: var(--black); font-weight: 700; }

@@ -16,9 +16,13 @@ export function useMobileDetection() {
       setIsMobile(mobile);
 
       if (mobile) {
+        // 모바일로 전환될 때는 사이드바를 완전히 닫힌 상태로 초기화
         layoutRoot?.classList.remove("open");
+        layoutRoot?.classList.remove("close");
       } else {
+        // 데스크탑에서는 기본적으로 사이드바가 열린 상태를 유지
         layoutRoot?.classList.add("open");
+        layoutRoot?.classList.remove("close");
       }
     };
 
