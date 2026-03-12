@@ -18,10 +18,10 @@ import "@/styles/components/util/pagination.reaction.css";
 import "@/styles/components/util/studySearch.css";
 import "@/styles/components/util/animations.css";
 import "@/styles/components/canvas/dotFieldCanvas.css";
-import "@/styles/components/layout/blogAide.css";
-import "@/styles/components/layout/blogAide.reaction.css";
-import "@/styles/components/layout/blogHeader.css";
-import "@/styles/components/layout/blogHeader.reaction.css";
+import "@/styles/components/pageLayout/blogAide.css";
+import "@/styles/components/pageLayout/blogAide.reaction.css";
+import "@/styles/components/pageLayout/blogHeader.css";
+import "@/styles/components/pageLayout/blogHeader.reaction.css";
 
 /* Page Styles */
 import "@/styles/pages/markdown.css";
