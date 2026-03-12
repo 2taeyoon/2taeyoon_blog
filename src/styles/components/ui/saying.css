@@ -2,7 +2,7 @@
 
 .saying_all_wrap { width: 60%; z-index: 1; }
 .saying_all_wrap .saying_wrap { display: flex; flex-direction: column; justify-content: space-between; position: relative; padding: 32px 64px; margin: -64px 0 16px; border: 1px solid var(--borderSubtle); box-shadow: 0 0 20px 0 var(--borderSubtle); background-color: var(--white); transition: all .3s; }
-.saying_all_wrap .saying_wrap .reset_btn { display: flex; align-items: center; justify-content: center; position: absolute; top: -16px; right: -16px; width: 60px; height: 60px; background-color: var(--white); cursor: pointer; transition: all .3s; }
+.saying_all_wrap .saying_wrap .reset_btn { display: flex; align-items: center; justify-content: center; position: absolute; top: -16px; right: -16px; width: 60px; height: 60px; border: 1px solid var(--borderSubtle); background-color: var(--white); cursor: pointer; transition: all .3s; }
 .saying_all_wrap .saying_wrap .reset_btn svg { fill: var(--black); width: 35px; height: 35px; }
 
 @media (hover: hover) {
