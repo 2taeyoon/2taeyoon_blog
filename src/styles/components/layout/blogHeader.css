@@ -1,8 +1,0 @@
-@charset "utf-8";
-
-.header { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 56px; align-items: center; justify-content: center; background: var(--white); border-bottom: 1px solid var(--whiteEEE); }
-.blog_header { width: 100%; }
-.blog_header_inner { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 16px; }
-.blog_header_title { border: none; background: none; padding: 0; margin: 0; font-size: 1.8rem; font-weight: 700; color: var(--black); text-decoration: none; cursor: pointer; }
-.blog_header_avatar { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; border: none; padding: 0; background: transparent; cursor: pointer; }
-.blog_header_avatar_image { border-radius: 50%; }
