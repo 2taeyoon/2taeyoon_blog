@@ -105,6 +105,24 @@ export interface CardPaginationProps {
 	currentPage: number;
 	setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
+
+// CardPagination 전용 훅에서 사용하는 인자 타입
+export type CardPaginationHookArgs = Pick<
+	CardPaginationProps,
+	'filteredCards' | 'sessionName' | 'currentPage' | 'setCurrentPage'
+>;
+
+// 페이지네이션 UI 컴포넌트에서 사용하는 공통 타입
+export type PaginationControlsProps = {
+	pageCount: number;
+	currentPage: number;
+	visiblePages: number[];
+	onFirst: () => void;
+	onLast: () => void;
+	onPrev: () => void;
+	onNext: () => void;
+	onSelectPage: (page: number) => void;
+};
 // 카드 페이지네이션 컴포넌트 END!
 
 // 이전, 다음 페이지 URL START!
