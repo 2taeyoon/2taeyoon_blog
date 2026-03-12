@@ -2,7 +2,7 @@
 
 ::selection {
   background: var(--themaBright);
-  color: var(--whiteF9);
+  color: var(--textOnDark);
 }
 
 body {
