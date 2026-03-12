@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { CardPaginationHookArgs } from "@/types/props.types";
 
-const CARDS_PER_PAGE = 1;
+const CARDS_PER_PAGE = 8;
 const MAX_PAGE_BUTTONS = 5;
 
 export function useCardPagination({
