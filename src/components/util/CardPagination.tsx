@@ -8,7 +8,7 @@ import { CardPaginationProps } from "@/types/props.types";
 
 
 export default function CardPagination({filteredCards, sessionName, currentPage, setCurrentPage}: CardPaginationProps) {
-	const cardsPerPage = 8; // 한 페이지에 표시할 카드 수
+	const cardsPerPage = 1; // 한 페이지에 표시할 카드 수
 	const displayCards = filteredCards.slice(currentPage * cardsPerPage, (currentPage + 1) * cardsPerPage); // 페이지에 따라 표시할 카드들을 계산
 	const pageCount = Math.max(1, Math.ceil(filteredCards.length / cardsPerPage)); // pageCount를 안전하게 계산
 
@@ -64,18 +64,20 @@ export default function CardPagination({filteredCards, sessionName, currentPage,
 					)
 				)}
 			</div>
-			<ReactPaginate
-				previousLabel={prevButton} // 이전 페이지 버튼에 표시할 요소
-				nextLabel={nextButton} // 다음 페이지 버튼에 표시할 요소
-				breakLabel={'···'} // 페이지 번호 사이에 구분자 표시할 요소
-				pageCount={pageCount} // 페이지네이션에 표시할 총 페이지 수
-				marginPagesDisplayed={1} // 앞뒤로 보여줄 고정 페이지 수
-				pageRangeDisplayed={2} // 현재 선택된 페이지 주변에 표시할 페이지 범위
-				onPageChange={handlePageClick} // 페이지가 변경될 때 호출되는 콜백 함수
-				containerClassName={'pagination'} // 최상단 부모 클래스 이름
-				activeClassName={'active'} // 현재 선택된 페이지에 적용할 클래스 이름
-				forcePage={currentPage} // 강제로 현재 페이지를 설정 (주로 상태 관리와 연계)
-			/>
+			<div>
+				<ReactPaginate
+					previousLabel={prevButton} // 이전 페이지 버튼에 표시할 요소
+					nextLabel={nextButton} // 다음 페이지 버튼에 표시할 요소
+					//breakLabel={'···'} // 페이지 번호 사이에 구분자 표시할 요소
+					pageCount={pageCount} // 페이지네이션에 표시할 총 페이지 수
+					marginPagesDisplayed={1} // 앞뒤로 보여줄 고정 페이지 수
+					pageRangeDisplayed={6} // 현재 선택된 페이지 주변에 표시할 페이지 범위
+					onPageChange={handlePageClick} // 페이지가 변경될 때 호출되는 콜백 함수
+					containerClassName={'pagination'} // 최상단 부모 클래스 이름
+					activeClassName={'active'} // 현재 선택된 페이지에 적용할 클래스 이름
+					forcePage={currentPage} // 강제로 현재 페이지를 설정 (주로 상태 관리와 연계)
+				/>
+			</div>
 		</div>
 	)
 }
