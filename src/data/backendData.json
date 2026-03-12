@@ -6,6 +6,22 @@
 				{"text": "Backend" },
 				{"color": "purpleBright"}
 			],
+			"mdFile": "/images/backend/12/12.md",
+      "image": "/images/backend/12/main_image.webp",
+			"sortDate": "2026-03-20",
+      "title": "이벤트 삭제를 안전하게 만드는 휴지통 패턴",
+			"subTitle": "관리자가 목록 화면에서 '선택삭제'를 누르면 데이터가 사라지는 기능이 있다고 가정해 보겠습니다. 문제는 같은 버튼을 눌렀는데, 일부 데이터는 휴지통으로 가고 일부는 바로 영구 삭제되는 경우입니다. UI 는 동일하지만 실제 동작이 달라서 운영자 입장에서 위험하고 직관적이지 않습니다. 이 글에서는 일반적인 휴지통 패턴을 예시 코드와 함께 정리합니다.",
+			"hashs": [
+				{"name": "#PHP"},
+				{"name": "#MySQL"}
+			]
+		},
+		{
+			"type": "backend",
+			"category": [
+				{"text": "Backend" },
+				{"color": "purpleBright"}
+			],
 			"mdFile": "/images/backend/11/11.md",
       "image": "/images/backend/11/main_image.webp",
 			"sortDate": "2026-02-03",

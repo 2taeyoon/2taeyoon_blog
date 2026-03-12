@@ -1,23 +1,29 @@
 :root {
-	--thema: #1D55AA;
-	--themaBright: #4783dd;
-	--themaLight: #f4f8ff;
-	--themaPoint: #bbdff7;
-	--redBright: #dd4747;
-	--greenBright: #16963b;
-	--purpleBright: #6d47dd;
-	--line: #dceaff;
-	--shadow: #e5efff;
-	--black: #232323;
-	--blacklight: #555;
-	--blackmute: #8e95a1;
-	--whiteCCC: #cccccc;
-	--whiteDDD: #dddddd;
-	--whiteEEE: #eeeeee;
-	--whiteFD: #fdfdfd;
-	--whiteF7: #f7f7f7;
-	--whiteF9: #f9f9f9;
-	--white: #fff;
+	--thema: #0071e3;
+	--themaBright: #2997ff;
+	--themaLight: #e8f2ff;
+	--themaPoint: #cfe5ff;
+
+	--redBright: #ff3b30;
+	--greenBright: #34c759;
+	--purpleBright: #af52de;
+
+	--line: #e5e5ea;
+	--shadow: rgba(0,0,0,0.08);
+
+	--black: #1b1b1f;
+	--blacklight: #6e6e73;
+	--blackmute: #86868b;
+
+	--borderStrong: #d2d2d7;
+	--borderLight: #e5e5ea;
+	--borderSubtle: #f2f2f2;
+
+	--bgSurface: #fbfbfd;
+	--bgMuted: #f5f5f7;
+	--textOnDark: #fafafa;
+
+	--white: #ffffff;
 }
 
 ::-webkit-scrollbar {
@@ -26,7 +32,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	border-radius: 999px;
 	background-color: var(--themaBright);
 }
 
