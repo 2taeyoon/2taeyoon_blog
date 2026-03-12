@@ -1,6 +1,12 @@
 @charset "utf-8";
 
-@media (max-width: 640px) {
-	.pagination { padding: 16px 0; }
+@media (max-width: 768px) {
+	.pagination li a,
+	.card_pagination_nav .pagination_first,
+	.card_pagination_nav .pagination_last	{ width: 32px; height: 32px; }
+
+	.pagination li a svg,
+	.card_pagination_nav .pagination_first svg,
+	.card_pagination_nav .pagination_last svg { width: 5px; height: 10px;  }
 }
 

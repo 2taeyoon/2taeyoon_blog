@@ -4,17 +4,17 @@
 .card_pagination_nav .pagination_first { border-top: 1px solid #d2d2d7; border-bottom: 1px solid #d2d2d7; border-left: 1px solid #d2d2d7; }
 .card_pagination_nav .pagination_last { border: 1px solid #d2d2d7; }
 .card_pagination_nav .pagination_first,
-.card_pagination_nav .pagination_last { display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; cursor: pointer; }
+.card_pagination_nav .pagination_last { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; cursor: pointer; }
 
 .pagination { display: flex; justify-content: center; }
-.pagination li a { display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; border-top: 1px solid #d2d2d7; border-bottom: 1px solid #d2d2d7; border-left: 1px solid #d2d2d7; font-size: 1.5rem; cursor: pointer; user-select: none; }
+.pagination li a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-top: 1px solid #d2d2d7; border-bottom: 1px solid #d2d2d7; border-left: 1px solid #d2d2d7; font-size: 1.5rem; cursor: pointer; user-select: none; }
 .pagination .break { pointer-events: none; cursor: default; }
 
 
 .pagination li:hover a,
-.pagination .active a { background-color: var(--thema); color: var(--white); }
+.pagination .active a { background-color: var(--thema); color: var(--white); border-top: 1px solid var(--thema); border-bottom: 1px solid var(--thema); border-left: 1px solid var(--thema); border-right: 1px solid var(--thema); }
 .card_pagination_nav .pagination_first:hover,
-.card_pagination_nav .pagination_last:hover { background-color: var(--thema); color: var(--white); }
+.card_pagination_nav .pagination_last:hover { background-color: var(--thema); color: var(--white); border: 1px solid var(--thema); }
 
 .pagination li:hover a polyline,
 .card_pagination_nav .pagination_first:hover polyline,
