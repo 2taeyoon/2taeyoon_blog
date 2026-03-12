@@ -58,10 +58,10 @@ export default function PaginationControls({
 			</ul>
 			<button type="button" className="pagination_last" aria-label="마지막 페이지로 이동" onClick={onLast}>
 				<svg width="7" height="12" viewBox="0 0 7 12">
-					<polyline fill="none" stroke="var(--black)" strokeWidth="1.2" points="1 1 6 6 1 11" />
+					<polyline fill="none" stroke="var(--black)" strokeWidth="1.5" points="1 1 6 6 1 11" />
 				</svg>
 				<svg width="7" height="12" viewBox="0 0 7 12">
-					<polyline fill="none" stroke="var(--black)" strokeWidth="1.2" points="1 1 6 6 1 11" />
+					<polyline fill="none" stroke="var(--black)" strokeWidth="1.5" points="1 1 6 6 1 11" />
 				</svg>
 			</button>
 		</div>
