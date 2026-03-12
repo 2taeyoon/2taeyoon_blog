@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+.blog_aide_sidebar { width: 260px; background: #fff; height: 100vh; position: fixed; top: 0; left: 0; z-index: 999; border-right: 1px solid var(--borderSubtle); transition: all 0.3s ease; }
+.RouteApp.close .blog_aide_sidebar { position: absolute; left: -260px; }
+.blog_aide_toggle { position: absolute; z-index: 2; bottom: -14px; right: 0; display: grid; place-items: center; width: 28px; height: 28px; background: var(--white); border: 1px solid var(--borderSubtle); cursor: pointer; transform: rotate(90deg); transition: 0.3s; }
+.blog_aide_toggle svg { width: 18px; height: 18px; fill: var(--black); }
+.blog_aide_inner { position: relative; height: 100%; }
+.blog_aide_header { display: flex; align-items: center; justify-content: center; gap: 12px; position: relative; height: 72px; width: 260px; border-bottom: 1px solid var(--borderSubtle); }
+
+.blog_aide_header h1 { font-weight: 700; font-size: 2.0rem; white-space: nowrap; color: var(--black); }
+.blog_aide_menu { position: relative; display: flex; flex-direction: column; align-items: center; }
+.blog_aide_menu_list { width: 100%; padding: 24px 16px; height: calc(100% - 72px); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.blog_aide_menu_category { display: flex; justify-content: space-between; align-items: center;  width: 100%; }
+.blog_aide_menu_category svg { width: 18px; height: 18px; margin-left: 10px; fill: var(--blackmute); transition: transform 0.3s ease, fill 0.3s ease; }
+.blog_aide_menu_category svg.rotated { transform: rotate(180deg); }
+.blog_aide_menu_title { display: flex; align-items: center; justify-content: space-between; padding: 12px 12px; color: var(--blackmute); transition: all 0.3s ease; text-decoration: none; width: 100%; }
+.blog_aide_menu_title .menu_title { transition: all 0.3s ease; }
+.blog_aide_menu_title .menu_count { transition: all 0.3s ease; }
+
+.blog_aide_menu_title .menu_count_wrap { display: flex; align-items: center; justify-content: center; }
+.blog_aide_menu_title .menu_count_wrap .menu_arrow_wrap { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; }
+
+.blog_aide_menu_button { display: flex; align-items: center; justify-content: flex-start; width: 100%; color: inherit; transition: all 0.3s ease; }
+.blog_aide_menu_button p { width: 100%; }
+.blog_aide_menu_button p a { display: flex; justify-content: space-between; align-items: center; padding: 8px 24px; }
+.blog_aide_menu_button p a .menu_title { font-size: 1.6rem; transition: all 0.3s ease; }
+.blog_aide_menu_button p a .menu_count { transition: all 0.3s ease; }
+.blog_aide_menu_button.active { background-color: var(--bgMuted); }
+.blog_aide_menu_button.active p a .menu_title { color: var(--thema); font-weight: 700; }
+.blog_aide_menu_button.active p a .menu_count { background: var(--thema); color: var(--white); font-weight: 700; }
+
+.menu_count { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; background-color: var(--borderSubtle); color: var(--blackmute); font-size: 1.2rem; font-weight: 600; line-height: 1; vertical-align: middle; }
+
+.blog_aide_menu_button img { width: 24px; height: 24px; }
+
+.blog_aide_bar { visibility: hidden; position: fixed; z-index: -1; top: 0; left: -20px; width: 20px; height: 100vh; border-right: 1px solid var(--borderLight); background: var(--white); transition: all .3s ease; cursor: pointer; }
+.blog_aide_bar::before { content: ''; position: absolute; width: 1px; height: 30px; background: var(--black); top: 50%; left: 65%; transform: translate(-50%, -50%); }
+.blog_aide_bar::after { content: ''; position: absolute; width: 1px; height: 30px; background: var(--black); top: 50%; left: 35%; transform: translate(-50%, -50%); }
+.RouteApp.close .blog_aide_bar { visibility: visible; left: 0; z-index: 0; }
+
+/* 모바일에서 사이드바가 열렸을 때 배경 어둡게 처리하는 오버레이 */
+.blog_aide_overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 998; }
+
+.blog_aide_menu_category.active { background-color: var(--themaLight); }
+.blog_aide_menu_category.active .blog_aide_menu_title .menu_title { font-size: 1.7rem; color: var(--black); font-weight: 700; }
+.blog_aide_menu_category.active .blog_aide_menu_title .menu_count { background: var(--thema); color: var(--white); font-weight: 700; }
+.blog_aide_menu_category.active svg { fill: var(--black); }
+
+@media (hover: hover) {
+	.blog_aide_menu_category:hover { background-color: var(--themaLight); }
+	.blog_aide_menu_category:hover .blog_aide_menu_title .menu_title { color: var(--black); font-weight: 700; }
+	.blog_aide_menu_category:hover .blog_aide_menu_title .menu_count { background: var(--thema); color: var(--white); font-weight: 700; }
+	.blog_aide_menu_category:hover svg { fill: var(--black); }
+
+	.blog_aide_menu_button:hover:not(.active) { background-color: var(--bgMuted); }
+	.blog_aide_menu_button:hover:not(.active) p a .menu_title { color: var(--thema); font-weight: 700; }
+	.blog_aide_menu_button:hover:not(.active) p a .menu_count { background: var(--thema); color: var(--white); font-weight: 700; }
+
+	.blog_aide_toggle:hover { transform: rotate(90deg); box-shadow: 0 0 5px #00000010; }
+
+	.RouteApp.close .blog_aide_bar:hover { box-shadow: 0 0 10px 0px #00000020; }
+}
