@@ -5,7 +5,15 @@
 .RouteApp.close .layout_wrap .wrap { width: calc(100% - 20px); margin-left: 20px; }
 .common_wrap { display: flex; flex-wrap: wrap; justify-content: center; position: relative; width: 100%; max-width: 100%; padding: 32px 64px 128px; }
 .common_wrap .card_pagination { position: relative; width: 100%; }
-.common_wrap .blog { width: 100%; max-width: 768px; }
+
+.common_wrap .study_toc { width: 240px; position: absolute; right: 4rem; top: 4rem; background: #f1f1f1; }
+.common_wrap .study_toc.fix { position: fixed; top: 4rem; }
+.common_wrap .study_toc_item .study_toc_line { display: block; text-align: left; padding-top: 0.4rem; }
+.common_wrap .study_toc_item.level-2 .study_toc_line { font-size: 1.5rem; font-weight: 500; }
+.common_wrap .study_toc_item.level-3 .study_toc_line { padding-left: 2rem; font-size: 1.4rem; }
+
+
+.common_wrap .blog { display: flex; flex-direction: column; justify-content: center; width: 768px; }
 .common_wrap .blog .page_url { display: flex; justify-content: space-between; width: 100%; padding: 100px 0 0; margin: 48px 0 0; border-top: 1px solid var(--borderLight); }
 .common_wrap .blog .page_url .page_url_wrap1 { justify-content: flex-start; }
 .common_wrap .blog .page_url .page_url_wrap2 { justify-content: flex-end; }
