@@ -12,12 +12,19 @@ import remarkGfm from "remark-gfm";
 import PageUrls from "@/components/util/PageUrl";
 import Banner from "@/components/ui/Banner";
 import { useStudyDetail } from "@/features/study-detail/useStudyDetail";
+import StudyToc from "@/features/study-detail/StudyToc";
+import { createMarkdownHeading } from "@/features/study-detail/markdownHeading";
 
 export default function DesignStudy({ title }: TitleProps) {
-  const { markdown, notFoundState, decodedTitle, currentCard } = useStudyDetail({
+  const { markdown, notFoundState, decodedTitle, currentCard, tocItems, activeTocId, handleTocClick, createHeadingId } = useStudyDetail({
     cards: DesignCard.cards,
     title,
   });
+  // h2/h3 렌더러는 한 번만 만들고 재사용해야 스크롤 중 재마운트를 막을 수 있습니다.
+  const headingComponents = React.useMemo(
+    () => createMarkdownHeading(createHeadingId),
+    [createHeadingId, markdown]
+  );
 
   if (notFoundState) return notFound();
 
@@ -28,12 +35,15 @@ export default function DesignStudy({ title }: TitleProps) {
           {currentCard && <Banner CardFind={currentCard} />}
         </div>
         <div className="common_wrap">
-          <div className="blog">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw, rehypeHighlight]}>
-              {markdown}
-            </ReactMarkdown>
-            <PageUrls hyphenRemoval={decodedTitle} cards={DesignCard.cards} />
-          </div>
+						<StudyToc items={tocItems} activeId={activeTocId} onSelect={handleTocClick} />
+            <div className="blog">
+							<div className="blog_content">
+								<ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw, rehypeHighlight]} components={headingComponents}>
+									{markdown}
+								</ReactMarkdown>
+								<PageUrls hyphenRemoval={decodedTitle} cards={DesignCard.cards} />
+							</div>
+            </div>
         </div>
       </div>
     </div>
