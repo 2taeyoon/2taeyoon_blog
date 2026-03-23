@@ -45,6 +45,25 @@
 	}
 }
 
+@media (max-width: 1280px) {
+	.blog_layout {
+		display: block;
+		max-width: none;
+	}
+
+	.blog_with_toc {
+		display: block;
+	}
+
+	.study_toc {
+		position: static;
+		width: 100%;
+		max-height: none;
+		margin-bottom: 2.0rem;
+		padding: 1.6rem 0 1.6rem 1.2rem;
+	}
+}
+
 .blog h1,
 .post_view h1 {
 	display: block;
@@ -253,6 +272,7 @@
 .blog img,
 .post_view img {
 	max-width: 100%;
+	width: 100%;
 }
 
 .blog strong,
