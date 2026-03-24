@@ -1,7 +1,9 @@
-'use client';
+"use client";
 
-import React, { startTransition, useEffect, useRef, useState } from "react";
+import React, { startTransition, useEffect, useMemo, useRef, useState } from "react";
+import { createTocAnchorItems } from "./headingAnchor";
 import { TocItem } from "./useStudyDetail";
+import { useActiveTocAnchor } from "./useActiveTocAnchor";
 
 interface StudyTocProps {
   items: TocItem[];
@@ -10,6 +12,9 @@ interface StudyTocProps {
 export default function StudyToc({ items }: StudyTocProps) {
   const tocRef = useRef<HTMLElement | null>(null);
   const [isFixed, setIsFixed] = useState(false);
+
+  const tocItemsWithAnchor = useMemo(() => createTocAnchorItems(items), [items]);
+  const activeAnchorId = useActiveTocAnchor(tocItemsWithAnchor);
 
   useEffect(() => {
     const updateFixedState = () => {
@@ -53,9 +58,14 @@ export default function StudyToc({ items }: StudyTocProps) {
         <div className="study_toc_empty">목차를 만들 제목이 아직 없습니다.</div>
       ) : (
         <ul className="study_toc_list">
-          {items.map((item) => (
-            <li key={item.id} className={`study_toc_item level-${item.level}`}>
-              <span className="study_toc_line">{item.text}</span>
+          {tocItemsWithAnchor.map((item) => (
+            <li
+              key={item.id}
+              className={`study_toc_item level-${item.level} ${activeAnchorId === item.anchorId ? "is_active" : ""}`}
+            >
+              <a href={`#${item.anchorId}`} className="study_toc_line">
+                {item.text}
+              </a>
             </li>
           ))}
         </ul>

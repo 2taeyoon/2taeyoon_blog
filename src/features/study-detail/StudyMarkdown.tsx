@@ -5,9 +5,10 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import { rehypeHeadingAnchor } from "./rehypeHeadingAnchor";
 
 const remarkPlugins = [remarkGfm];
-const rehypePlugins = [rehypeRaw, rehypeHighlight];
+const rehypePlugins = [rehypeRaw, rehypeHeadingAnchor, rehypeHighlight];
 
 type StudyMarkdownProps = {
   markdown: string;

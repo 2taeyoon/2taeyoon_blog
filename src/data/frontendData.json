@@ -6,6 +6,23 @@
 				{"text": "Frontend" },
 				{"color": "themaBright"}
 			],
+			"mdFile": "/images/frontend/30/30.md",
+			"image": "/images/frontend/30/main_image.webp",
+			"sortDate": "2026-03-24",
+			"title": "블로그 리뉴얼: Markdown 본문과 목차",
+			"subTitle": "블로그를 리뉴얼하면서 스터디 상세 페이지의 Markdown 본문과 목차(TOC)를 다시 짰습니다. StudyMarkdown.tsx와 StudyToc.tsx 안에 흩어져 있던 heading id 규칙과 스크롤 기반 활성 표시(is_active)를 에이전트와 함께 정리했습니다",
+			"hashs": [
+				{"name": "#React"},
+				{"name": "#NextJS"},
+				{"name": "#TypeScript"}
+			]
+		},
+		{
+			"type": "frontend",
+			"category": [
+				{"text": "Frontend" },
+				{"color": "themaBright"}
+			],
 			"mdFile": "/images/frontend/25/25.md",
 			"image": "/images/frontend/25/main_image.webp",
 			"sortDate": "2025-02-23",
