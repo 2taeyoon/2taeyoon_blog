@@ -18,7 +18,7 @@ export default function BlogHeader() {
   return (
     <header className="blog_header">
       <div className="blog_header_inner">
-        <Link href="/study" className="blog_header_title">
+        <Link href="/blog" className="blog_header_title">
           심오한 개발자
         </Link>
         <button
