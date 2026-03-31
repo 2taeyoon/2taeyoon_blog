@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const MOBILE_BREAKPOINT = 640;
+const MOBILE_BREAKPOINT = 768;
 
 /**
  * 모바일 화면 크기 감지 및 사이드바 상태 관리 훅

@@ -11,9 +11,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { CardProps } from "@/types/props.types";
-import designData from "@/data/designData.json";
-import frontendData from "@/data/frontendData.json";
-import backendData from "@/data/backendData.json";
+import designData from "@/data/blog/designData.json";
+import frontendData from "@/data/blog/frontendData.json";
+import backendData from "@/data/blog/backendData.json";
 import Link from "next/link";
 
 export function SliderFadeComponent() {
@@ -28,9 +28,9 @@ export function SliderFadeComponent() {
   // combinedData 업데이트 (리렌더링될 때마다 실행)
   useEffect(() => {
     setCombinedData([
-      ...designData.cards.map(card => ({ ...card, type: "design" })),
-      ...frontendData.cards.map(card => ({ ...card, type: "frontend" })),
-      ...backendData.cards.map(card => ({ ...card, type: "backend" })),
+      ...designData.cards.map(card => ({ ...card, type: "blog/design" })),
+      ...frontendData.cards.map(card => ({ ...card, type: "blog/frontend" })),
+      ...backendData.cards.map(card => ({ ...card, type: "blog/backend" })),
     ]);
   }, []); // 빈 배열 -> 최초 1회 실행
 
@@ -113,7 +113,7 @@ export function SliderFadeComponent() {
 				>
 					{selectedCards.map((card, index) => (
 						<SwiperSlide key={index}>
-							<Link href={`${card.type}/${card.title?.replace(/\s+/g, '-')}`} className="swiper_image_wrap">
+							<Link href={`/${card.type}/${card.title?.replace(/\s+/g, '-')}`} className="swiper_image_wrap">
 								<div className="swiper_image" style={{ background: card.image ? `url('${card.image}') center center / cover` : "none" }}></div>
 								<div className="description">
 									<div className="title">{card.title}</div>

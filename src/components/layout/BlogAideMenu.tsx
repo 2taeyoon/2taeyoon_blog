@@ -8,7 +8,7 @@ function closeMobileSidebar() {
   if (!layoutRoot) return;
 
   // 모바일에서만 open/close 제거
-  if (window.matchMedia("(max-width: 640px)").matches) {
+  if (window.matchMedia("(max-width: 768px)").matches) {
     layoutRoot.classList.remove("open");
     layoutRoot.classList.remove("close");
   }
@@ -54,13 +54,13 @@ export default function BlogAideMenu({
         // withButtons 타입: 하위 메뉴 있음 (STUDY)
         const sectionOpen = isOpen(section.id);
         const hasActiveItem = section.items.some((item) => isPathActive(item.href));
-        const categoryActive = hasActiveItem || isPathActive("/study");
+        const categoryActive = hasActiveItem || isPathActive("/blog");
 
         return (
           <nav key={section.id} className="blog_aide_menu">
             <div className={`blog_aide_menu_category${categoryActive ? " active" : ""}`}>
               <Link
-                href="/study"
+                href="/blog"
                 className="blog_aide_menu_title"
                 suppressHydrationWarning
                 onClick={closeMobileSidebar}

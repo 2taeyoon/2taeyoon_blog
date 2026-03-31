@@ -1,7 +1,12 @@
 @charset "utf-8";
 
+@media (max-height: 800px) {
+	.blog_wrap .study_toc { display: none; }
+}
+
 @media (max-width: 1680px) {
-	.common_wrap .study_toc { display: none; }
+	.blog_wrap { width: 100%; }
+	.blog_wrap .study_toc { display: none; }
 }
 
 @media (max-width: 1536px) {
@@ -10,28 +15,28 @@
 }
 
 @media (max-width: 1280px) {
-	.common_wrap .blog .page_url { padding: 64px 16px 0; margin: 36px 0 0 0; }
+	.blog_wrap .blog .page_url { padding: 64px 16px 0; margin: 36px 0 0 0; }
 }
 
 @media (max-width: 1024px) {
-	.common_wrap { padding: 32px 32px 64px; }
+	.common_wrap, .blog_wrap { padding: 32px 32px 64px; }
 	.common_pf { padding: 0 0 64px; }
 }
 
 @media (max-width: 768px) {
-	.common_wrap .blog .page_url { flex-direction: column-reverse; align-items: center; padding: 32px 8px 0; margin: 24px 0 0 0; }
-	.common_wrap .blog .page_url .page_url_wrap { width: 100%; margin: 8px 0; }
-	.common_wrap .blog .page_url .page_url_wrap .page_url_item { padding: 0 32px; }
-	.common_wrap .blog .page_url .page_url_wrap .page_url_item .page_url_item_text { width: calc(100% - 36px); }
-}
-
-@media (max-width: 640px) { 
 	.RouteApp.close .layout_wrap .wrap,
 	.layout_wrap .wrap { width: 100%; margin-left: 0; }
 
-	.common_wrap { padding: 16px 16px 32px; }
-	.common_wrap .blog .page_url .page_url_wrap .page_url_prev,
-	.common_wrap .blog .page_url .page_url_wrap .page_url_next { border-radius: 12px; }
+	.blog_wrap .blog .page_url { flex-direction: column-reverse; align-items: center; padding: 32px 8px 0; margin: 24px 0 0 0; }
+	.blog_wrap .blog .page_url .page_url_wrap { width: 100%; margin: 8px 0; }
+	.blog_wrap .blog .page_url .page_url_wrap .page_url_item { padding: 0 32px; }
+	.blog_wrap .blog .page_url .page_url_wrap .page_url_item .page_url_item_text { width: calc(100% - 36px); }
+}
+
+@media (max-width: 640px) {
+	.common_wrap, .blog_wrap { padding: 16px 16px 32px; }
+	.blog_wrap .blog .page_url .page_url_wrap .page_url_prev,
+	.blog_wrap .blog .page_url .page_url_wrap .page_url_next { border-radius: 12px; }
 	.common_pf { padding: 0 0 32px; }
 	.common_info { padding: 8px; }
 	.common_info .info_wrap .info .info_left .info_profile { width: 45px; height: 45px; }
@@ -39,5 +44,5 @@
 	.common_info .info_wrap .info .info_left .info_text .info_title { padding-top: 8px; line-height: 1; }
 	.common_info .info_wrap .info .info_left .info_text .info_nickname_date { line-height: 1; }
 	.common_info .info_wrap .info .info_left .info_text .info_nickname_date div:nth-of-type(2) { margin-left: 8px; }
-	.common_info .info_wrap .info .info_right > div { width: 20px; height: 20px; } .common_tabs { padding: 16px; } 
+	.common_info .info_wrap .info .info_right > div { width: 20px; height: 20px; } .common_tabs { padding: 16px; }
 }

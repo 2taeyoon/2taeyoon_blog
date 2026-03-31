@@ -5,9 +5,9 @@ import Link from "next/link";
 import { CardProps, PageUrlsProps } from "@/types/props.types";
 import { usePathname } from "next/navigation";
 
-import designData from "@/data/designData.json";
-import frontendData from "@/data/frontendData.json";
-import backendData from "@/data/backendData.json";
+import designData from "@/data/blog/designData.json";
+import frontendData from "@/data/blog/frontendData.json";
+import backendData from "@/data/blog/backendData.json";
 
 export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 

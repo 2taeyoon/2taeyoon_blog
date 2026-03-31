@@ -25,7 +25,7 @@ export default function StudyToc({ items }: StudyTocProps) {
       const rawTop = window.getComputedStyle(tocElement).top;
       const parsedTop = Number.parseFloat(rawTop);
       const topFromStyle = Number.isFinite(parsedTop) ? parsedTop : 0;
-      const parentWrap = tocElement.closest(".common_wrap");
+      const parentWrap = tocElement.closest(".blog_wrap");
 
       const reachedTop = window.scrollY > 0 && rect.top <= topFromStyle + 1;
 

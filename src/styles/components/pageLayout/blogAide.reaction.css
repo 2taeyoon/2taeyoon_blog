@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   /* 기본: 모바일에서 사이드바 숨김 */
   .blog_aide_sidebar {
     display: none;

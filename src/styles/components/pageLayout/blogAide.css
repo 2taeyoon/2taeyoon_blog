@@ -23,7 +23,7 @@
 .blog_aide_menu_button { display: flex; align-items: center; justify-content: flex-start; width: 100%; color: inherit; transition: all 0.3s ease; }
 .blog_aide_menu_button p { width: 100%; }
 .blog_aide_menu_button p a { display: flex; justify-content: space-between; align-items: center; padding: 8px 24px; }
-.blog_aide_menu_button p a .menu_title { font-size: 1.6rem; transition: all 0.3s ease; }
+.blog_aide_menu_button p a .menu_title { font-size: 1.6rem; transition: all 0.3s ease; color: var(--black); }
 .blog_aide_menu_button p a .menu_count { transition: all 0.3s ease; }
 .blog_aide_menu_button.active { background-color: var(--bgMuted); }
 .blog_aide_menu_button.active p a .menu_title { color: var(--thema); font-weight: 700; }
