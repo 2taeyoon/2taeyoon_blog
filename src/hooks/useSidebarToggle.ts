@@ -6,7 +6,7 @@ export function useSidebarToggle() {
     const layoutRoot = document.querySelector(".RouteApp") as HTMLElement | null;
     if (!layoutRoot) return;
 
-    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
+    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches;
 
     if (isMobile) {
       // 모바일에서는 close 클래스를 절대 사용하지 않고, open만 제거
@@ -22,7 +22,7 @@ export function useSidebarToggle() {
     const layoutRoot = document.querySelector(".RouteApp") as HTMLElement | null;
     if (!layoutRoot) return;
 
-    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches;
+    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches;
 
     if (isMobile) {
       layoutRoot.classList.add("open");
