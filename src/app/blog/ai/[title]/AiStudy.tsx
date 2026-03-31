@@ -23,12 +23,12 @@ export default function AiStudy({ title }: TitleProps) {
         <div className="common_wrap banner_wrap">
           {currentCard && <Banner CardFind={currentCard} />}
         </div>
-        <div className="common_wrap">
+        <div className="blog_wrap">
+          <div className="blog">
+            <StudyMarkdown markdown={markdown} />
+            <PageUrls hyphenRemoval={decodedTitle} cards={aiData.cards} />
+          </div>
           <StudyToc items={tocItems} />
-            <div className="blog">
-              <StudyMarkdown markdown={markdown} />
-              <PageUrls hyphenRemoval={decodedTitle} cards={aiData.cards} />
-            </div>
         </div>
       </div>
     </div>
