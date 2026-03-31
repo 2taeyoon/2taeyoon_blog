@@ -8,7 +8,7 @@ function closeMobileSidebar() {
   if (!layoutRoot) return;
 
   // 모바일에서만 open/close 제거
-  if (window.matchMedia("(max-width: 640px)").matches) {
+  if (window.matchMedia("(max-width: 768px)").matches) {
     layoutRoot.classList.remove("open");
     layoutRoot.classList.remove("close");
   }
