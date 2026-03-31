@@ -113,7 +113,7 @@ export function SliderFadeComponent() {
 				>
 					{selectedCards.map((card, index) => (
 						<SwiperSlide key={index}>
-							<Link href={`${card.type}/${card.title?.replace(/\s+/g, '-')}`} className="swiper_image_wrap">
+							<Link href={`/${card.type}/${card.title?.replace(/\s+/g, '-')}`} className="swiper_image_wrap">
 								<div className="swiper_image" style={{ background: card.image ? `url('${card.image}') center center / cover` : "none" }}></div>
 								<div className="description">
 									<div className="title">{card.title}</div>
