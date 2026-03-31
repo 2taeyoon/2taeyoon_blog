@@ -2,11 +2,13 @@
 
 @media (max-height: 800px) {
 	.blog_wrap .study_toc { display: none; }
+	.blog_wrap .blog { margin-right: 0; }
 }
 
 @media (max-width: 1680px) {
 	.blog_wrap { width: 100%; }
 	.blog_wrap .study_toc { display: none; }
+	.blog_wrap .blog { margin-right: 0; }
 }
 
 @media (max-width: 1536px) {
