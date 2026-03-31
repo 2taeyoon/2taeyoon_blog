@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+@media (max-height: 800px) {
+	.blog_wrap .study_toc { display: none; }
+}
+
 @media (max-width: 1680px) {
 	.blog_wrap { width: 100%; }
 	.blog_wrap .study_toc { display: none; }
