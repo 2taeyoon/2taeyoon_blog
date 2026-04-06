@@ -18,7 +18,7 @@
 .blog_wrap .study_toc_item.level-2 .study_toc_line { font-size: 1.6rem; font-weight: 500; }
 .blog_wrap .study_toc_item.level-3 .study_toc_line { padding-left: 2rem; font-size: 1.5rem; }
 
-.blog_wrap .blog { display: flex; flex-direction: column; justify-content: center; width: 768px; margin-right: 260px; }
+.blog_wrap .blog { display: flex; flex-direction: column; justify-content: center; max-width: 100%; width: 768px; margin-right: 260px; }
 .blog_wrap .blog .page_url { display: flex; justify-content: space-between; width: 100%; padding: 100px 0 0; margin: 48px 0 0; border-top: 1px solid var(--borderLight); }
 .blog_wrap .blog .page_url .page_url_wrap1 { justify-content: flex-start; }
 .blog_wrap .blog .page_url .page_url_wrap2 { justify-content: flex-end; }
