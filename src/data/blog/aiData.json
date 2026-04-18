@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/6/6.md",
+			"image": "/images/blog/ai/6/main_image.webp",
+			"sortDate": "2026-04-18",
+			"title": "Warp 터미널: 설치와 Windows PowerShell 실행 정책 정리",
+			"subTitle": "Warp 공식 사이트를 기준으로 설치·기본 사용법을 정리하고, warp.dev 랜딩 이미지 예시를 WebP로 넣었습니다. 이어서 PowerShell에서 cursor-agent 실행 시 막히는 실행 정책을 RemoteSigned(CurrentUser)로 푼 뒤 Get-ExecutionPolicy -List로 확인하는 과정도 스크린샷과 함께 기록했습니다.",
+			"hashs": [
+				{"name": "#Warp"},
+				{"name": "#Terminal"},
+				{"name": "#PowerShell"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/5/5.md",
 			"image": "/images/blog/ai/5/main_image.webp",
 			"sortDate": "2026-03-31",
