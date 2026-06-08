@@ -18,7 +18,7 @@ const baubleMaterial = new THREE.MeshLambertMaterial({
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 const sizeSteps = [1.6, 1.2, 0.85]; // 엄청 큰, 큰, 기본
 
-function Bauble({ vec = new THREE.Vector3(), ...props }: { vec?: THREE.Vector3;[key: string]: unknown }) {
+function Bauble({ vec = new THREE.Vector3(), ...props }: { vec?: THREE.Vector3; args: number; [key: string]: any }) {
   const [ref, api] = useBox(() => ({
     ...props,
     args: [props.args, props.args, props.args] as Triplet,
@@ -316,8 +316,8 @@ export default function MainSection() {
           ))}
         </Physics>
         <Environment files="/adamsbridge.hdr" />
-        <EffectComposer disableNormalPass={false} multisampling={0}>
-          <N8AO aoRadius={2} intensity={10} luminanceInfluence={0.6} />
+        <EffectComposer multisampling={0}>
+          <N8AO aoRadius={2} intensity={10} />
           <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
         </EffectComposer>
       </Canvas>
