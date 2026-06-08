@@ -9,7 +9,7 @@ import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
 import { ColorPalette } from "./ColorPalette";
 
-const pointerState = { down: false, x: 0, y: 0, z: 2.5, ndcX: 0, ndcY: 0 };
+const pointerState = { down: false, x: 0, y: 0, z: -100, ndcX: 0, ndcY: 0, moved: false };
 
 const baubleMaterial = new THREE.MeshLambertMaterial({
   color: "#0322ab",
@@ -59,12 +59,14 @@ function PointerInput() {
       pointerState.down = down;
     };
     const onPointerDown = (e: PointerEvent) => {
+      pointerState.moved = true;
       if (e.button === 0) setDown(true);
     };
     const onPointerUp = (e: PointerEvent) => {
       if (e.button === 0) setDown(false);
     };
     const onPointerMove = (e: PointerEvent) => {
+      pointerState.moved = true;
       pointerState.ndcX = (e.clientX / window.innerWidth) * 2 - 1;
       pointerState.ndcY = -(e.clientY / window.innerHeight) * 2 + 1;
     };
@@ -83,6 +85,7 @@ function PointerInput() {
   }, []);
 
   useFrame((state) => {
+    if (!pointerState.moved) return;
     const ndcX = pointerState.ndcX || state.pointer.x; // state.mouse.x is deprecated in newer R3F, replaced with state.pointer.x
     const ndcY = pointerState.ndcY || state.pointer.y;
     pointerState.x = (ndcX * viewport.width) / 2;
@@ -240,6 +243,18 @@ function Overlay() {
 export default function MainSection() {
   const [ballColor, setBallColor] = useState("gradient");
 
+  useEffect(() => {
+    const savedColor = sessionStorage.getItem("baubleColor");
+    if (savedColor) {
+      setBallColor(savedColor);
+    }
+  }, []);
+
+  const handleColorChange = (color: string) => {
+    setBallColor(color);
+    sessionStorage.setItem("baubleColor", color);
+  };
+
   // Create baubles once
   const baubles = useMemo(() => {
     return [...Array(50)].map(() => ({
@@ -284,7 +299,7 @@ export default function MainSection() {
   return (
     <div className="main-section-container">
       <Underlay />
-      <ColorPalette value={ballColor} onChange={setBallColor} />
+      <ColorPalette value={ballColor} onChange={handleColorChange} />
 
       <Canvas
         style={{ position: "absolute", inset: 0, zIndex: 1 }}
