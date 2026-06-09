@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { CardProps } from "@/types/blog/card.types";
-import { TocItem } from "@/components/blog/study-detail/types";
+import { TocItem } from "@/types/blog/toc.types";
 
 interface UseStudyDetailOptions {
   cards: CardProps[];
