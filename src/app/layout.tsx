@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import BlogHeaderWrapper from "@/components/blog/layout/BlogHeaderWrapper";
-import BlogAideWrapper from "@/components/blog/layout/BlogAideWrapper";
+import BlogHeaderWrapper from "@/components/blog/header/BlogHeaderWrapper";
+import BlogAideWrapper from "@/components/blog/aide/BlogAideWrapper";
 
 import "@/styles/base/index.css";
 import "@/styles/blog/index.css";
