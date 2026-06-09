@@ -2,7 +2,7 @@ import React from 'react'
 import { Mapping } from "@/types/blog/card.types"
 import Link from "next/link";
 
-export default function Card({ cards, sessionName }: Mapping) {
+export default function StudyCard({ cards, sessionName }: Mapping) {
 	return (
 		<>
 			{ cards.map((card, index) => (
