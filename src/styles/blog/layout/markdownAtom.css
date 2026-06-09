@@ -1,0 +1,154 @@
+@charset "utf-8";
+
+.blog pre code.hljs,
+.post_view pre code.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 1em;
+}
+
+.blog code.hljs,
+.post_view code.hljs {
+	padding: 3px 5px;
+}
+
+.blog code.hljs::-webkit-scrollbar,
+.post_view code.hljs::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+.blog code.hljs::-webkit-scrollbar-thumb,
+.post_view code.hljs::-webkit-scrollbar-thumb {
+	border-radius: 0;
+}
+
+/*
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+*/
+
+.blog .hljs,
+.post_view .hljs {
+	color: #abb2bf;
+	background: #282c34;
+}
+
+.blog .hljs-comment,
+.blog .hljs-quote,
+.post_view .hljs-comment,
+.post_view .hljs-quote {
+	color: #5c6370;
+	font-style: italic;
+}
+
+.blog .hljs-doctag,
+.blog .hljs-keyword,
+.blog .hljs-formula,
+.post_view .hljs-doctag,
+.post_view .hljs-keyword,
+.post_view .hljs-formula {
+	color: #c678dd;
+}
+
+.blog .hljs-section,
+.blog .hljs-name,
+.blog .hljs-selector-tag,
+.blog .hljs-deletion,
+.blog .hljs-subst,
+.post_view .hljs-section,
+.post_view .hljs-name,
+.post_view .hljs-selector-tag,
+.post_view .hljs-deletion,
+.post_view .hljs-subst {
+	color: #e06c75;
+}
+
+.blog .hljs-literal,
+.post_view .hljs-literal {
+	color: #56b6c2;
+}
+
+.blog .hljs-string,
+.blog .hljs-regexp,
+.blog .hljs-addition,
+.blog .hljs-attribute,
+.blog .hljs-meta .hljs-string,
+.post_view .hljs-string,
+.post_view .hljs-regexp,
+.post_view .hljs-addition,
+.post_view .hljs-attribute,
+.post_view .hljs-meta .hljs-string {
+	color: #98c379;
+}
+
+.blog .hljs-attr,
+.blog .hljs-variable,
+.blog .hljs-template-variable,
+.blog .hljs-type,
+.blog .hljs-selector-class,
+.blog .hljs-selector-attr,
+.blog .hljs-selector-pseudo,
+.blog .hljs-number,
+.post_view .hljs-attr,
+.post_view .hljs-variable,
+.post_view .hljs-template-variable,
+.post_view .hljs-type,
+.post_view .hljs-selector-class,
+.post_view .hljs-selector-attr,
+.post_view .hljs-selector-pseudo,
+.post_view .hljs-number {
+	color: #d19a66;
+}
+
+.blog .hljs-symbol,
+.blog .hljs-bullet,
+.blog .hljs-link,
+.blog .hljs-meta,
+.blog .hljs-selector-id,
+.blog .hljs-title,
+.post_view .hljs-symbol,
+.post_view .hljs-bullet,
+.post_view .hljs-link,
+.post_view .hljs-meta,
+.post_view .hljs-selector-id,
+.post_view .hljs-title {
+	color: #61aeee;
+}
+
+.blog .hljs-built_in,
+.blog .hljs-title.class_,
+.blog .hljs-class .hljs-title,
+.post_view .hljs-built_in,
+.post_view .hljs-title.class_,
+.post_view .hljs-class .hljs-title {
+	color: #e6c07b;
+}
+
+.blog .hljs-emphasis,
+.post_view .hljs-emphasis {
+	font-style: italic;
+}
+
+.blog .hljs-strong,
+.post_view .hljs-strong {
+	font-weight: bold;
+}
+
+.blog .hljs-link,
+.post_view .hljs-link {
+	text-decoration: underline;
+}
