@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import BlogAide from './BlogAide';
+import BlogAide from "@/components/blog/aide/BlogAide";
 
 export default function BlogAideWrapper() {
   const pathname = usePathname();
