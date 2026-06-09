@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+@media (max-width: 1536px) {
+	.saying_all_wrap { width: 65%; }
+}
+
+@media (max-width: 1024px) {
+	.saying_all_wrap { width: 75%; }
+	.saying_all_wrap .saying_wrap { padding: 24px 40px; }
+	.saying_all_wrap .saying_wrap .reset_btn { width: 50px; height: 50px; }
+	.saying_all_wrap .saying_wrap .reset_btn svg { width: 30px; height: 30px; }
+}
+
+@media (max-width: 640px) {
+	.saying_all_wrap { width: 85%; }
+	.saying_all_wrap .saying_wrap { padding: 12px 20px; margin: -32px 0 16px; }
+	.saying_all_wrap .saying_wrap .saying { font-size: 1.6rem; }
+	.saying_all_wrap .saying_wrap .writer_wrap { padding-top: 4px; }
+	.saying_all_wrap .saying_wrap .reset_btn { width: 40px; height: 40px; }
+	.saying_all_wrap .saying_wrap .reset_btn svg { width: 25px; height: 25px; }
+}
+
