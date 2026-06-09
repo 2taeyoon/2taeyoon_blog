@@ -1,5 +1,5 @@
 import React from "react";
-import MainPage from "@/app/MainPage";
+import MainSection from "@/components/portfolio/MainSection";
 
 export const metadata = {
   title: "2taeyoon",
@@ -19,5 +19,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <MainPage />;
+  return <MainSection />;
 }
