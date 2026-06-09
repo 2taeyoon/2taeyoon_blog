@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import StudyCard from "./StudyCard";
-import StudyCardCompact from "./StudyCardCompact";
+import StudyCard from "@/components/blog/study-list/ui/StudyCard";
+import StudyCardCompact from "@/components/blog/study-list/ui/StudyCardCompact";
 import { CardPaginationProps } from "@/types/blog/pagination.types";
 import { useCardPagination } from "@/components/blog/study-list/hooks/useCardPagination";
-import PaginationControls from "./PaginationControls";
+import PaginationControls from "@/components/blog/study-list/ui/PaginationControls";
 export default function CardPagination(props: CardPaginationProps) {
 	const {
 		displayCards,
