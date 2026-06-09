@@ -3,12 +3,12 @@
 
 import React from "react";
 import { MENU_SECTIONS } from "@/data/blog/menuSections";
-import { usePathActive } from "@/components/blog/layout/hooks/usePathActive";
-import { useSidebarToggle } from "@/components/blog/layout/hooks/useSidebarToggle";
-import { useMobileDetection } from "@/components/blog/layout/hooks/useMobileDetection";
-import { useAccordion } from "@/components/blog/layout/hooks/useAccordion";
-import BlogAideHeader from "@/components/blog/layout/BlogAideHeader";
-import BlogAideMenu from "@/components/blog/layout/BlogAideMenu";
+import { usePathActive } from "@/components/blog/aide/hooks/usePathActive";
+import { useSidebarToggle } from "@/components/blog/aide/hooks/useSidebarToggle";
+import { useMobileDetection } from "@/components/blog/aide/hooks/useMobileDetection";
+import { useAccordion } from "@/components/blog/aide/hooks/useAccordion";
+import BlogAideHeader from "@/components/blog/aide/BlogAideHeader";
+import BlogAideMenu from "@/components/blog/aide/BlogAideMenu";
 
 export default function BlogAide() {
   const { isPathActive } = usePathActive();
