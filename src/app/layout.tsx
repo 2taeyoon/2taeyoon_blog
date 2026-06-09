@@ -26,7 +26,6 @@ import "@/styles/components/pageLayout/blogHeader.reaction.css";
 /* Page Styles */
 import "@/styles/pages/markdown.css";
 import "@/styles/pages/markdownAtom.css";
-import "@/styles/pages/home.css";
 import "@/styles/pages/mainSection.css";
 
 /* Common Styles */
