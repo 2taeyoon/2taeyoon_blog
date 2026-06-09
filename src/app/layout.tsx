@@ -3,36 +3,9 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import BlogHeaderWrapper from "@/components/blog/layout/BlogHeaderWrapper";
 import BlogAideWrapper from "@/components/blog/layout/BlogAideWrapper";
 
-/* Blog Styles */
-import "@/styles/blog/ui/banner.css";
-import "@/styles/blog/ui/banner.reaction.css";
-import "@/styles/blog/ui/sliderFade.css";
-import "@/styles/blog/ui/sliderFade.reaction.css";
-import "@/styles/blog/ui/saying.css";
-import "@/styles/blog/ui/saying.reaction.css";
-import "@/styles/blog/ui/customCursor.css";
-import "@/styles/blog/list/card.css";
-import "@/styles/blog/list/card.reaction.css";
-import "@/styles/blog/util/pagination.css";
-import "@/styles/blog/util/pagination.reaction.css";
-import "@/styles/blog/util/studySearch.css";
-import "@/styles/blog/util/animations.css";
-import "@/styles/blog/pageLayout/blogAide.css";
-import "@/styles/blog/pageLayout/blogAide.reaction.css";
-import "@/styles/blog/pageLayout/blogHeader.css";
-import "@/styles/blog/pageLayout/blogHeader.reaction.css";
-import "@/styles/blog/layout/markdown.css";
-import "@/styles/blog/layout/markdownAtom.css";
-
-/* Portfolio Styles */
-import "@/styles/portfolio/mainSection.css";
-
-/* Common Styles */
-import "@/styles/blog/layout/layout.css";
-import "@/styles/blog/layout/layout.reaction.css";
-import "@/styles/base/variables.css";
-import "@/styles/base/reset.css";
-import "@/styles/base/fonts.css";
+import "@/styles/base/index.css";
+import "@/styles/blog/index.css";
+import "@/styles/portfolio/index.css";
 
 export default function RootLayout({
   children,
