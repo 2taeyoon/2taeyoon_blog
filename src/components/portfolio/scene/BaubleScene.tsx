@@ -7,7 +7,7 @@ import { Physics } from "@react-three/cannon";
 import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
-import { baubleMaterial, sizeSteps } from "@/lib/portfolio/bauble/pointerState";
+import { baubleMaterial, sizeSteps } from "@/lib/portfolio/pointerState";
 import Bauble from "@/components/portfolio/scene/Bauble";
 import PointerInput from "@/components/portfolio/scene/PointerInput";
 import Collisions from "@/components/portfolio/scene/Collisions";
