@@ -1,5 +1,7 @@
-import backendData from "@/data/blog/backendData.json";
+import { getBlogCategory } from "@/data/blog/cards";
 import StudyListPage from "@/components/blog/study-list/StudyListPage";
+
+const category = getBlogCategory("backend");
 
 export const metadata = {
   title: "Back Study",
@@ -19,5 +21,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <StudyListPage cards={backendData.cards} sessionName="backend" />;
+  return (
+    <StudyListPage
+      cards={category.data.cards}
+      sessionName={category.sessionName}
+    />
+  );
 }
