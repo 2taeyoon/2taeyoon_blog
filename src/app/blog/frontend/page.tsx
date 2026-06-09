@@ -1,5 +1,7 @@
-import frontendData from "@/data/blog/frontendData.json";
+import { getBlogCategory } from "@/data/blog/cards";
 import StudyListPage from "@/components/blog/study-list/StudyListPage";
+
+const category = getBlogCategory("frontend");
 
 export const metadata = {
   title: "Front Study",
@@ -19,5 +21,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <StudyListPage cards={frontendData.cards} sessionName="frontend" />;
+  return (
+    <StudyListPage
+      cards={category.data.cards}
+      sessionName={category.sessionName}
+    />
+  );
 }
