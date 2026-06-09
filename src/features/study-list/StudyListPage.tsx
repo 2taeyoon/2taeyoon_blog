@@ -1,9 +1,9 @@
 'use client';
 
 import React from "react";
-import SliderFade from "@/components/ui/SliderFade";
-import Saying from "@/components/ui/Saying";
-import CardPagination from "@/components/util/CardPagination";
+import SliderFade from "@/components/blog/ui/SliderFade";
+import Saying from "@/components/blog/ui/Saying";
+import CardPagination from "@/components/blog/util/CardPagination";
 import { StudyListPageProps } from "@/types/props.types";
 import { useStudyList } from "./useStudyList";
 
