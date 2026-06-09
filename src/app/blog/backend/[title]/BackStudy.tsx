@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import backendData from "@/data/blog/backendData.json";
 import { TitleProps } from "@/types/props.types";
 
-import PageUrls from "@/components/util/PageUrl";
-import Banner from "@/components/ui/Banner";
+import PageUrls from "@/components/blog/util/PageUrl";
+import Banner from "@/components/blog/ui/Banner";
 import { useStudyDetail } from "@/features/study-detail/useStudyDetail";
 import StudyToc from "@/features/study-detail/StudyToc";
 import { StudyMarkdown } from "@/features/study-detail/StudyMarkdown";
