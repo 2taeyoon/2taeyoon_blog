@@ -1,5 +1,7 @@
-import designData from "@/data/blog/designData.json";
+import { getBlogCategory } from "@/data/blog/cards";
 import StudyListPage from "@/components/blog/study-list/StudyListPage";
+
+const category = getBlogCategory("design");
 
 export const metadata = {
   title: "Design Study",
@@ -19,5 +21,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <StudyListPage cards={designData.cards} sessionName="design" />;
+  return (
+    <StudyListPage
+      cards={category.data.cards}
+      sessionName={category.sessionName}
+    />
+  );
 }
