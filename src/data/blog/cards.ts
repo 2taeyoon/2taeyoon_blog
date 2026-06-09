@@ -4,33 +4,74 @@ import frontendData from "./frontendData.json";
 import backendData from "./backendData.json";
 import aiData from "./aiData.json";
 
-export type BlogCategory = "design" | "frontend" | "backend" | "ai";
+type CategoryData = { cards: CardProps[] };
 
-export const blogCategoryData = {
-  design: designData,
-  frontend: frontendData,
-  backend: backendData,
-  ai: aiData,
-} as const;
+export const BLOG_CATEGORIES = [
+  {
+    id: "design",
+    label: "Design",
+    href: "/blog/design",
+    sessionName: "design",
+    data: designData,
+  },
+  {
+    id: "frontend",
+    label: "Frontend",
+    href: "/blog/frontend",
+    sessionName: "frontend",
+    data: frontendData,
+  },
+  {
+    id: "backend",
+    label: "Backend",
+    href: "/blog/backend",
+    sessionName: "backend",
+    data: backendData,
+  },
+  {
+    id: "ai",
+    label: "AI",
+    href: "/blog/ai",
+    sessionName: "ai",
+    data: aiData,
+  },
+] as const satisfies readonly {
+  id: string;
+  label: string;
+  href: string;
+  sessionName: string;
+  data: CategoryData;
+}[];
 
-export const allBlogCards: CardProps[] = [
-  ...designData.cards,
-  ...frontendData.cards,
-  ...backendData.cards,
-  ...aiData.cards,
-];
+export type BlogCategory = (typeof BLOG_CATEGORIES)[number]["id"];
+
+export const blogCategoryData = Object.fromEntries(
+  BLOG_CATEGORIES.map((category) => [category.id, category.data]),
+) as Record<BlogCategory, CategoryData>;
+
+export const allBlogCards: CardProps[] = BLOG_CATEGORIES.flatMap(
+  (category) => category.data.cards,
+);
+
+export function getBlogCategory(category: BlogCategory) {
+  const found = BLOG_CATEGORIES.find((item) => item.id === category);
+  if (!found) {
+    throw new Error(`Unknown blog category: ${category}`);
+  }
+  return found;
+}
 
 export function getCategoryCardCount(category: BlogCategory) {
   return blogCategoryData[category].cards.length;
 }
 
 export function getCombinedSliderCards(): CardProps[] {
-  return [
-    ...designData.cards.map((card) => ({ ...card, type: "blog/design" })),
-    ...frontendData.cards.map((card) => ({ ...card, type: "blog/frontend" })),
-    ...backendData.cards.map((card) => ({ ...card, type: "blog/backend" })),
-    ...aiData.cards.map((card) => ({ ...card, type: "blog/ai" })),
-  ];
+  return BLOG_CATEGORIES.flatMap((category) =>
+    category.data.cards.map((card) => ({
+      ...card,
+      type: `blog/${category.id}`,
+    })),
+  );
 }
 
 export function getSortedBlogCards(cards: CardProps[] = allBlogCards) {
