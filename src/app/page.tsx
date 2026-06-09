@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./Home";
+import PortfolioPage from "./portfolio/PortfolioPage";
 
 export const metadata = {
   title: "2taeyoon",
@@ -19,5 +19,5 @@ export const metadata = {
 };
 
 export default function Page() {
-	return <Home />;
+	return <PortfolioPage />;
 }
