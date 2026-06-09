@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+@media (max-width: 1536px) {
+	.swiper_common .swiper { width: 100%; margin-left: 0;	}
+}
+
+@media (max-width: 1024px) {
+	.swiper_common .swiper { height: 500px; }
+	.swiper_common .swiper .description { width: 320px; }
+	.swiper_common .swiper .description .title { font-size: 2.4rem; }
+	.swiper_common .swiper .description .sub_title { font-size: 1.9rem; }
+	.swiper_common .swiper .description .current_page { top: -35px; }
+	.swiper_common .swiper .description .current_page span:nth-child(1) { font-size: 2.4rem; }
+	.swiper_common .swiper .description .current_page span:nth-child(2) { font-size: 1.9rem; }
+	.swiper_common .swiper .description .current_page span:nth-child(3) { font-size: 1.9rem; }
+}
+
+@media (max-width: 640px) {
+	.swiper_common .swiper { height: 400px; }
+	.swiper_common .swiper .description { top: 55%; width: 300px; }
+	.swiper_common .swiper .description .title { font-size: 2.2rem; }
+	.swiper_common .swiper .description .sub_title { font-size: 1.8rem; }
+	.swiper_common .swiper .description .current_page { top: -30px; }
+	.swiper_common .swiper .description .current_page span:nth-child(1) { font-size: 2.2rem; }
+	.swiper_common .swiper .description .current_page span:nth-child(2) { font-size: 1.8rem; }
+	.swiper_common .swiper .description .current_page span:nth-child(3) { font-size: 1.8rem; }
+}
+
