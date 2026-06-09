@@ -7,7 +7,7 @@ import {
   pointerState,
   boxGeometry,
   baubleMaterial,
-} from "@/lib/pointerState";
+} from "@/lib/portfolio/bauble/pointerState";
 
 interface BaubleComponentProps {
   vec?: THREE.Vector3;

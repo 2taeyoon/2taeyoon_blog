@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { pointerState } from "@/lib/pointerState";
+import { pointerState } from "@/lib/portfolio/bauble/pointerState";
 
 export default function PointerInput() {
   const viewport = useThree((state) => state.viewport);

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MenuSection } from "@/types/props.types";
+import { MenuSection } from "@/types/blog/menu.types";
 
 function closeMobileSidebar() {
   if (typeof document === "undefined") return;

@@ -2,11 +2,11 @@
 "use client";
 
 import React from "react";
-import { MENU_SECTIONS } from "@/data/menuSections";
-import { usePathActive } from "@/hooks/usePathActive";
-import { useSidebarToggle } from "@/hooks/useSidebarToggle";
-import { useMobileDetection } from "@/hooks/useMobileDetection";
-import { useAccordion } from "@/hooks/useAccordion";
+import { MENU_SECTIONS } from "@/data/blog/menuSections";
+import { usePathActive } from "@/components/blog/layout/hooks/usePathActive";
+import { useSidebarToggle } from "@/components/blog/layout/hooks/useSidebarToggle";
+import { useMobileDetection } from "@/components/blog/layout/hooks/useMobileDetection";
+import { useAccordion } from "@/components/blog/layout/hooks/useAccordion";
 import BlogAideHeader from "@/components/blog/layout/BlogAideHeader";
 import BlogAideMenu from "@/components/blog/layout/BlogAideMenu";
 
