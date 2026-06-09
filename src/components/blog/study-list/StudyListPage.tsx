@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import SliderFade from "./components/SliderFade";
-import Saying from "./components/Saying";
-import CardPagination from "./components/CardPagination";
+import SliderFade from "@/components/blog/study-list/ui/SliderFade";
+import Saying from "@/components/blog/study-list/ui/Saying";
+import CardPagination from "@/components/blog/study-list/ui/CardPagination";
 import { StudyListPageProps } from "@/types/blog/card.types";
-import { useStudyList } from "./useStudyList";
+import { useStudyList } from "@/components/blog/study-list/hooks/useStudyList";
 
 export default function StudyListPage({ cards, sessionName }: StudyListPageProps) {
   const { filteredCards, currentPage, setCurrentPage, searchQuery, handleSearch } = useStudyList({ cards, sessionName });
