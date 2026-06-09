@@ -1,36 +1,35 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import BlogHeaderWrapper from "@/components/layout/BlogHeaderWrapper";
-import BlogAideWrapper from "@/components/layout/BlogAideWrapper";
+import BlogHeaderWrapper from "@/components/blog/layout/BlogHeaderWrapper";
+import BlogAideWrapper from "@/components/blog/layout/BlogAideWrapper";
 
-/* Component Styles */
-import "@/styles/components/ui/banner.css";
-import "@/styles/components/ui/banner.reaction.css";
-import "@/styles/components/ui/sliderFade.css";
-import "@/styles/components/ui/sliderFade.reaction.css";
-import "@/styles/components/ui/saying.css";
-import "@/styles/components/ui/saying.reaction.css";
-import "@/styles/components/ui/customCursor.css";
-import "@/styles/components/list/card.css";
-import "@/styles/components/list/card.reaction.css";
-import "@/styles/components/util/pagination.css";
-import "@/styles/components/util/pagination.reaction.css";
-import "@/styles/components/util/studySearch.css";
-import "@/styles/components/util/animations.css";
-import "@/styles/components/canvas/dotFieldCanvas.css";
-import "@/styles/components/pageLayout/blogAide.css";
-import "@/styles/components/pageLayout/blogAide.reaction.css";
-import "@/styles/components/pageLayout/blogHeader.css";
-import "@/styles/components/pageLayout/blogHeader.reaction.css";
+/* Blog Styles */
+import "@/styles/blog/ui/banner.css";
+import "@/styles/blog/ui/banner.reaction.css";
+import "@/styles/blog/ui/sliderFade.css";
+import "@/styles/blog/ui/sliderFade.reaction.css";
+import "@/styles/blog/ui/saying.css";
+import "@/styles/blog/ui/saying.reaction.css";
+import "@/styles/blog/ui/customCursor.css";
+import "@/styles/blog/list/card.css";
+import "@/styles/blog/list/card.reaction.css";
+import "@/styles/blog/util/pagination.css";
+import "@/styles/blog/util/pagination.reaction.css";
+import "@/styles/blog/util/studySearch.css";
+import "@/styles/blog/util/animations.css";
+import "@/styles/blog/pageLayout/blogAide.css";
+import "@/styles/blog/pageLayout/blogAide.reaction.css";
+import "@/styles/blog/pageLayout/blogHeader.css";
+import "@/styles/blog/pageLayout/blogHeader.reaction.css";
+import "@/styles/blog/layout/markdown.css";
+import "@/styles/blog/layout/markdownAtom.css";
 
-/* Page Styles */
-import "@/styles/pages/markdown.css";
-import "@/styles/pages/markdownAtom.css";
-import "@/styles/pages/mainSection.css";
+/* Portfolio Styles */
+import "@/styles/portfolio/mainSection.css";
 
 /* Common Styles */
-import "@/styles/layout/layout.css";
-import "@/styles/layout/layout.reaction.css";
+import "@/styles/blog/layout/layout.css";
+import "@/styles/blog/layout/layout.reaction.css";
 import "@/styles/base/variables.css";
 import "@/styles/base/reset.css";
 import "@/styles/base/fonts.css";
