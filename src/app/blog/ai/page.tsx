@@ -1,5 +1,7 @@
-import aiData from "@/data/blog/aiData.json";
+import { getBlogCategory } from "@/data/blog/cards";
 import StudyListPage from "@/components/blog/study-list/StudyListPage";
+
+const category = getBlogCategory("ai");
 
 export const metadata = {
   title: "AI",
@@ -19,5 +21,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <StudyListPage cards={aiData.cards} sessionName="ai" />;
+  return (
+    <StudyListPage
+      cards={category.data.cards}
+      sessionName={category.sessionName}
+    />
+  );
 }
