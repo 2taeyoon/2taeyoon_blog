@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import BlogHeader from "@/components/blog/layout/BlogHeader";
+import BlogHeader from "@/components/blog/header/BlogHeader";
 
 export default function BlogHeaderWrapper() {
   const pathname = usePathname();
