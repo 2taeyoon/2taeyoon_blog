@@ -2,7 +2,7 @@
 
 import React, { startTransition, useEffect, useMemo, useRef, useState } from "react";
 import { createTocAnchorItems } from "@/lib/blog/headingAnchor";
-import { TocItem } from "@/components/blog/study-detail/types";
+import { TocItem } from "@/types/blog/toc.types";
 import { useActiveTocAnchor } from "@/components/blog/study-detail/hooks/useActiveTocAnchor";
 
 interface StudyTocProps {
