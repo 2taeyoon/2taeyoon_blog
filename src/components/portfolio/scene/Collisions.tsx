@@ -2,7 +2,7 @@
 
 import { useFrame } from "@react-three/fiber";
 import { usePlane, useSphere } from "@react-three/cannon";
-import { pointerState } from "@/lib/portfolio/bauble/pointerState";
+import { pointerState } from "@/lib/portfolio/pointerState";
 
 export default function Collisions() {
   usePlane(() => ({ position: [0, 0, 0], rotation: [0, 0, 0] }));
