@@ -22,7 +22,7 @@ export default function MainSection() {
   };
 
   return (
-    <div className="main-section-container">
+    <div className="main_section_container">
       <Underlay />
       <ColorPalette value={ballColor} onChange={handleColorChange} />
       <BaubleScene ballColor={ballColor} />
