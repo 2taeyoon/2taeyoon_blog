@@ -22,9 +22,6 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <StudyListPage
-      cards={category.data.cards}
-      sessionName={category.sessionName}
-    />
+    <StudyListPage cards={category.data.cards} sessionName={category.sessionName} />
   );
 }

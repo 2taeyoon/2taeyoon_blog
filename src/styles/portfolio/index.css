@@ -1,1 +1,5 @@
+@import "./variables.css";
 @import "./mainSection.css";
+@import "./underlay.css";
+@import "./baubleScene.css";
+@import "./skillSection.css";

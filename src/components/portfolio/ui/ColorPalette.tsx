@@ -2,8 +2,11 @@
 
 import React, { useRef } from "react";
 
+/** hex가 아닌 특수 표면 프리셋 (텍스처) */
+const NAMED_PRESETS = ["fabric"];
+
 const PRESET_COLORS = [
-  "gradient",
+  "fabric",
   "#b21210",
   "#e0761f",
   "#c2a10f",
@@ -18,9 +21,9 @@ function normalizeHex(hex: string) {
 }
 
 function isPresetColor(value: string) {
-  if (value === "gradient") return true;
+  if (NAMED_PRESETS.includes(value)) return true;
   return PRESET_COLORS.some(
-    (c) => c !== "gradient" && normalizeHex(c) === normalizeHex(value),
+    (c) => !NAMED_PRESETS.includes(c) && normalizeHex(c) === normalizeHex(value),
   );
 }
 
@@ -32,74 +35,41 @@ export function ColorPalette({
   onChange: (color: string) => void;
 }) {
   const colorInputRef = useRef<HTMLInputElement>(null);
-  const selectedPreset =
-    value === "gradient"
-      ? "gradient"
-      : isPresetColor(value)
-        ? normalizeHex(value)
-        : null;
+  const selectedPreset = NAMED_PRESETS.includes(value)
+    ? value
+    : isPresetColor(value)
+      ? normalizeHex(value)
+      : null;
 
   const openCustomPicker = () => {
     colorInputRef.current?.click();
   };
 
   return (
-    <div
-      className="color-palette"
-      onPointerDown={(e) => e.stopPropagation()}
-    >
-      <p className="color-palette-label">COLOR</p>
+    <div className="color_palette" onPointerDown={(e) => e.stopPropagation()}>
+      <p className="color_palette_label">COLOR</p>
 
-      <div
-        className="color-palette-swatches"
-        role="radiogroup"
-        aria-label="공 색상 선택"
-      >
+      <div className="color_palette_swatches" role="radiogroup" aria-label="공 색상 선택">
         {PRESET_COLORS.map((color) => {
-          const isSelected =
-            selectedPreset ===
-            (color === "gradient" ? "gradient" : normalizeHex(color));
-          const isGradient = color === "gradient";
+          const isNamed = NAMED_PRESETS.includes(color);
+          const isSelected = selectedPreset === (isNamed ? color : normalizeHex(color));
           return (
-            <button
-              key={color}
-              type="button"
-              role="radio"
-              aria-checked={isSelected}
-              className={`color-palette-swatch${isSelected ? " is-selected" : ""}`}
-              style={
-                isGradient
-                  ? { background: "linear-gradient(to bottom, #b21210, #0033ff)" }
-                  : ({ "--swatch-color": color } as React.CSSProperties)
-              }
-              onClick={() => onChange(color)}
-            />
+            <button key={color} type="button" role="radio" aria-checked={isSelected}
+							className={`color_palette_swatch${color === "fabric" ? " color_palette_swatch_fabric" : ""}${isSelected ? " is_selected" : ""}`}
+							style={isNamed ? undefined : ({ "--swatch-color": color } as React.CSSProperties)} onClick={() => onChange(color)} />
           );
         })}
       </div>
 
-      <hr className="color-palette-divider" />
+      <hr className="color_palette_divider" />
 
-      <button
-        type="button"
-        className="color-palette-custom"
-        onClick={openCustomPicker}
-      >
+      <button type="button" className="color_palette_custom" onClick={openCustomPicker}>
         <span>직접 선택</span>
-        <span
-          className="color-palette-custom-preview"
-          style={{ backgroundColor: value }}
-        />
+        <span className="color_palette_custom_preview" style={{ backgroundColor: value }} />
       </button>
 
-      <input
-        ref={colorInputRef}
-        type="color"
-        className="color-palette-input"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        aria-label="직접 색상 선택"
-      />
+      <input ref={colorInputRef} type="color" className="color_palette_input" value={value}
+				onChange={(e) => onChange(e.target.value)} aria-label="직접 색상 선택" />
     </div>
   );
 }

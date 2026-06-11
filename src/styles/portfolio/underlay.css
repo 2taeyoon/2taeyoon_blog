@@ -1,0 +1,422 @@
+.underlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+
+.underlay_top_row {
+  width: 100%;
+  margin-bottom: 60px;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.underlay_logo {
+  font-family: "Nunito Sans", sans-serif;
+  flex: 1 1 0%;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--pfBlack);
+  letter-spacing: -2px;
+}
+
+.underlay_nav {
+  flex: 1 1 0%;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  pointer-events: all;
+}
+
+.underlay_nav_item {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  color: var(--pfBlack);
+  white-space: nowrap;
+}
+
+.underlay_nav_link {
+  cursor: pointer;
+  padding-right: 0;
+  transition: opacity 0.2s;
+}
+
+.underlay_nav_link:hover {
+  opacity: 0.55;
+}
+
+/* 우상단 음악/볼륨/색상 컨트롤 영역 */
+.underlay_controls {
+  flex: 1 1 0%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  pointer-events: all;
+}
+
+.underlay_control_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: var(--pfWhite);
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 4px 20px var(--pfShadow);
+  color: var(--pfBlack);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.underlay_control_button:hover {
+  opacity: 0.75;
+}
+
+.underlay_music_icon {
+  display: block;
+  overflow: hidden;
+}
+
+/* 재생 중 물결 — 한 주기(24 user unit)만큼 이동해 무한 흐름 */
+.underlay_music_wave_path {
+  animation: underlay_wave_flow 1.2s linear infinite;
+}
+
+@keyframes underlay_wave_flow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-24px);
+  }
+}
+
+/* 볼륨 버튼 + 토글 패널 */
+.underlay_volume_wrap {
+  position: relative;
+}
+
+.underlay_volume_panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--pfWhite);
+  box-shadow: 0 4px 20px var(--pfShadow);
+}
+
+.underlay_volume_slider {
+  width: 120px;
+  height: 2px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--pfTrack);
+  outline: none;
+  cursor: pointer;
+}
+
+.underlay_volume_slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--pfBlack);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.underlay_volume_slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--pfBlack);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.underlay_volume_value {
+  font-family: "Nunito Sans", sans-serif;
+  min-width: 3ch;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: right;
+  color: var(--pfBlack);
+}
+
+.underlay_intro_row {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.underlay_intro_text {
+  font-family: "Nunito Sans", sans-serif;
+  flex: 1 1 0%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  line-height: 21px;
+  color: var(--pfBlack);
+}
+
+.underlay_intro_text div {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 21px;
+  color: var(--pfBlack);
+}
+
+.underlay_intro_dash {
+  font-weight: 700;
+}
+
+.underlay_gutter {
+  width: 10px;
+  flex-shrink: 0;
+}
+
+.underlay_title_row {
+  width: 100%;
+  flex: 1 1 0%;
+  margin-bottom: 60px;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.underlay_title_front,
+.underlay_title_end {
+  font-family: "Nunito Sans", sans-serif;
+  flex: 1 1 0%;
+  min-width: 0;
+  font-size: 250px;
+  font-weight: 800;
+  line-height: 250px;
+  color: var(--pfInk);
+  margin: 0;
+  letter-spacing: -20px;
+}
+
+.underlay_title_end {
+  text-align: right;
+}
+
+.underlay_bottom_row {
+  pointer-events: all;
+  cursor: auto;
+  width: 100%;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.underlay_roles {
+  font-family: "Nunito Sans", sans-serif;
+  white-space: nowrap;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  line-height: 21px;
+  color: var(--pfBlack);
+}
+
+.underlay_roles div {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 21px;
+  color: var(--pfBlack);
+}
+
+.underlay_drag_hint {
+  font-family: "Nunito Sans", sans-serif;
+  flex: 1 1 0%;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  color: var(--pfBlack);
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.underlay_roles_right {
+  font-family: "Nunito Sans", sans-serif;
+  white-space: nowrap;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 1.4rem;
+  line-height: 21px;
+  text-align: right;
+  color: var(--pfBlack);
+}
+
+.underlay_roles_right div {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 21px;
+  color: var(--pfBlack);
+}
+
+@media (max-width: 1200px) {
+  .underlay_title_front,
+  .underlay_title_end {
+    font-size: 200px;
+    line-height: 200px;
+    letter-spacing: -16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .underlay {
+    padding: 24px;
+  }
+
+  .underlay_top_row {
+    margin-bottom: 40px;
+  }
+
+  .underlay_title_row {
+    margin-bottom: 40px;
+  }
+
+  .underlay_title_front,
+  .underlay_title_end {
+    font-size: 150px;
+    line-height: 150px;
+    letter-spacing: -12px;
+  }
+
+  .underlay_logo {
+    font-size: 2.4rem;
+  }
+
+  .underlay_nav {
+    gap: 1.2em;
+  }
+
+  .underlay_drag_hint {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .underlay {
+    padding: 16px;
+  }
+
+  .underlay_top_row {
+    flex-wrap: wrap;
+    row-gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .underlay_logo {
+    flex: 1 1 100%;
+    font-size: 2rem;
+  }
+
+  .underlay_nav,
+  .underlay_controls {
+    flex: 1 1 auto;
+  }
+
+  .underlay_controls {
+    justify-content: flex-end;
+  }
+
+  .underlay_intro_row {
+    margin-bottom: 8px;
+  }
+
+  .underlay_intro_text,
+  .underlay_intro_text div {
+    font-size: 1.2rem;
+    line-height: 18px;
+  }
+
+  .underlay_title_row {
+    margin-bottom: 24px;
+  }
+
+  .underlay_title_front,
+  .underlay_title_end {
+    font-size: 88px;
+    line-height: 88px;
+    letter-spacing: -8px;
+  }
+
+  .underlay_bottom_row {
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
+  .underlay_roles,
+  .underlay_roles div,
+  .underlay_roles_right,
+  .underlay_roles_right div {
+    font-size: 1.2rem;
+    line-height: 18px;
+  }
+
+  .underlay_roles {
+    flex: 1 1 45%;
+  }
+
+  .underlay_roles_right {
+    flex: 1 1 45%;
+  }
+
+  .underlay_drag_hint {
+    flex: 1 1 100%;
+    order: 3;
+    font-size: 1.2rem;
+  }
+
+  .underlay_gutter {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .underlay_title_front,
+  .underlay_title_end {
+    font-size: 56px;
+    line-height: 56px;
+    letter-spacing: -5px;
+  }
+}

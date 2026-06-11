@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import BaubleScene from "@/components/portfolio/scene/BaubleScene";
 import Underlay from "@/components/portfolio/ui/Underlay";
-import Overlay from "@/components/portfolio/ui/Overlay";
 import { ColorPalette } from "@/components/portfolio/ui/ColorPalette";
 
 export default function MainSection() {
-  const [ballColor, setBallColor] = useState("gradient");
+  const [ballColor, setBallColor] = useState("fabric");
+  const [paletteOpen, setPaletteOpen] = useState(false);
 
   useEffect(() => {
     const savedColor = sessionStorage.getItem("baubleColor");
@@ -22,11 +22,10 @@ export default function MainSection() {
   };
 
   return (
-    <div className="main-section-container">
-      <Underlay />
-      <ColorPalette value={ballColor} onChange={handleColorChange} />
+    <div className="main_section_container">
+      <Underlay onTogglePalette={() => setPaletteOpen((prev) => !prev)} onClosePalette={() => setPaletteOpen(false)} />
+      {paletteOpen && <ColorPalette value={ballColor} onChange={handleColorChange} />}
       <BaubleScene ballColor={ballColor} />
-      <Overlay />
     </div>
   );
 }

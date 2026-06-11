@@ -1,0 +1,128 @@
+.skill_section {
+  position: relative;
+  width: 100%;
+  padding: 140px 40px;
+  background: linear-gradient(180deg, var(--pfBgGray) 0%, var(--pfBgLavender) 100%);
+  overflow: hidden;
+}
+
+.skill_canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.skill_inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.skill_header {
+  margin-bottom: 72px;
+}
+
+.skill_tag {
+  font-family: "Nunito Sans", sans-serif;
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  background: var(--pfBlack);
+  color: var(--pfWhite);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.skill_title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 7.2rem;
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--pfBlack);
+  letter-spacing: -2px;
+}
+
+.skill_desc {
+  margin-top: 16px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--pfTextSub);
+}
+
+.skill_category_list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.skill_category {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding-top: 32px;
+  border-top: 1px solid var(--pfTrack);
+}
+
+.skill_category_label {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--pfBlack);
+}
+
+.skill_chip_wrap {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+  align-content: flex-start;
+}
+
+.skill_chip {
+  font-family: "Nunito Sans", sans-serif;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  background: var(--pfWhite);
+  box-shadow: 0 4px 20px var(--pfShadow);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--pfTextStrong);
+  transition: box-shadow 0.25s;
+}
+
+.skill_chip:hover {
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 768px) {
+  .skill_section {
+    padding: 96px 24px;
+  }
+
+  .skill_category {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skill_category_label {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .skill_chip_wrap {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}

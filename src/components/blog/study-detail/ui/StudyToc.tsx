@@ -59,10 +59,7 @@ export default function StudyToc({ items }: StudyTocProps) {
       ) : (
         <ul className="study_toc_list">
           {tocItemsWithAnchor.map((item) => (
-            <li
-              key={item.id}
-              className={`study_toc_item level-${item.level} ${activeAnchorId === item.anchorId ? "is_active" : ""}`}
-            >
+            <li key={item.id} className={`study_toc_item level-${item.level} ${activeAnchorId === item.anchorId ? "is_active" : ""}`}>
               <a href={`#${item.anchorId}`} className="study_toc_line">
                 {item.text}
               </a>

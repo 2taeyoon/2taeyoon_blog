@@ -159,23 +159,9 @@ function ImageModal({ src, onClose }: { src: string; onClose: () => void }) {
 
   return createPortal(
     <div className="dusqhd-image-modal" onClick={onClose} role="presentation">
-      <div
-        ref={dialogRef}
-        tabIndex={-1}
-        className="dusqhd-carousel-shell dusqhd-carousel-shell--single"
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-label="확대 이미지"
-      >
-        <Image
-          src={src}
-          alt="확대 이미지"
-          width={1200}
-          height={800}
-          className="dusqhd-carousel-image"
-          style={{ objectFit: "contain" }}
-        />
+      <div ref={dialogRef} tabIndex={-1} className="dusqhd-carousel-shell dusqhd-carousel-shell--single"
+				onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label="확대 이미지">
+        <Image src={src} alt="확대 이미지" width={1200} height={800} className="dusqhd-carousel-image" style={{ objectFit: "contain" }} />
       </div>
     </div>,
     document.body
@@ -248,50 +234,20 @@ function ImageCarouselModal({
 
   return createPortal(
     <div className="dusqhd-image-modal" onClick={onClose} role="presentation">
-      <div
-        ref={dialogRef}
-        tabIndex={-1}
-        className="dusqhd-carousel-shell"
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-label="이미지 갤러리"
-      >
+      <div ref={dialogRef} tabIndex={-1} className="dusqhd-carousel-shell" onClick={(e) => e.stopPropagation()}
+				role="dialog" aria-modal="true" aria-label="이미지 갤러리">
         <div className="dusqhd-carousel-body">
           <div className="dusqhd-carousel-viewport">
-            <Image
-              key={current.src}
-              src={current.src}
-              alt={current.title ?? "확대 이미지"}
-              width={1200}
-              height={800}
-              className="dusqhd-carousel-image"
-              style={{ objectFit: "contain" }}
-            />
+            <Image key={current.src} src={current.src} alt={current.title ?? "확대 이미지"} width={1200} height={800}
+							className="dusqhd-carousel-image" style={{ objectFit: "contain" }} />
             {items.length > 1 ? (
               <>
-                <button
-                  type="button"
-                  className="dusqhd-carousel-nav dusqhd-carousel-nav--prev"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    goPrev();
-                  }}
-                  disabled={!canPrev}
-                  aria-label="이전 이미지"
-                >
+                <button type="button" className="dusqhd-carousel-nav dusqhd-carousel-nav--prev" 
+									onClick={(e) => { e.stopPropagation(); goPrev(); }} disabled={!canPrev} aria-label="이전 이미지">
                   ‹
                 </button>
-                <button
-                  type="button"
-                  className="dusqhd-carousel-nav dusqhd-carousel-nav--next"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    goNext();
-                  }}
-                  disabled={!canNext}
-                  aria-label="다음 이미지"
-                >
+                <button type="button" className="dusqhd-carousel-nav dusqhd-carousel-nav--next" 
+									onClick={(e) => { e.stopPropagation(); goNext(); }} disabled={!canNext} aria-label="다음 이미지">
                   ›
                 </button>
               </>
@@ -339,14 +295,7 @@ function HeroSection() {
         </div>
       </div>
 			<div className="dusqhd-hero-logo">
-				<Image
-					src="/images/blog/dusqhd/logo_w.png"
-					alt="logo"
-					width={200}
-					height={67}
-					style={{ width: "200px", height: "auto" }}
-					priority
-				/>
+				<Image src="/images/blog/dusqhd/logo_w.png" alt="logo" width={200} height={67} style={{ width: "200px", height: "auto" }} priority />
 			</div>
       <div className="dusqhd-scroll-indicator">스크롤</div>
     </section>
@@ -435,21 +384,7 @@ function ModuleSection() {
             <div className="dusqhd-module-card-content">
               <div className="dusqhd-module-card-images">
                 {item.images.map((src, imgIdx) => (
-                  <Image
-                    key={src}
-                    src={src}
-                    alt={item.title}
-                    width={400}
-                    height={260}
-                    className="dusqhd-module-image"
-                    onClick={() =>
-                      setModuleCarousel({
-                        items: item.images.map((s) => ({ src: s, title: item.title })),
-                        startIndex: imgIdx,
-                      })
-                    }
-                    style={{ cursor: "pointer" }}
-                  />
+                  <Image key={src} src={src} alt={item.title} width={400} height={260} className="dusqhd-module-image" onClick={() => setModuleCarousel({ items: item.images.map((s) => ({ src: s, title: item.title })), startIndex: imgIdx })} style={{ cursor: "pointer" }} />
                 ))}
               </div>
             </div>
@@ -459,11 +394,7 @@ function ModuleSection() {
       </div>
 
       {moduleCarousel ? (
-        <ImageCarouselModal
-          items={moduleCarousel.items}
-          startIndex={moduleCarousel.startIndex}
-          onClose={() => setModuleCarousel(null)}
-        />
+        <ImageCarouselModal items={moduleCarousel.items} startIndex={moduleCarousel.startIndex} onClose={() => setModuleCarousel(null)} />
       ) : null}
     </section>
   );
@@ -506,27 +437,13 @@ function ProjectSection() {
       </div>
 
       <div className="dusqhd-project-overview">
-        <Image
-          src="/images/blog/dusqhd/sitelist1.png"
-          alt="프로젝트 담당 사이트 수 (전담, 서브)"
-          width={1200}
-          height={480}
-          className="dusqhd-project-overview-image"
-          onClick={() => setOverviewModal("/images/blog/dusqhd/sitelist1.png")}
-          style={{ cursor: "pointer" }}
-        />
+        <Image src="/images/blog/dusqhd/sitelist1.png" alt="프로젝트 담당 사이트 수 (전담, 서브)" width={1200} height={480} className="dusqhd-project-overview-image" onClick={() => setOverviewModal("/images/blog/dusqhd/sitelist1.png")} style={{ cursor: "pointer" }} />
       </div>
 
       <div className="dusqhd-project-grid">
         {/* 대한병리학회 */}
         <div className="dusqhd-project-card featured">
-          <Image
-            src="/images/blog/dusqhd/sitelist2-2.png"
-            alt="대한병리학회"
-            width={400}
-            height={200}
-            className="dusqhd-project-image"
-          />
+          <Image src="/images/blog/dusqhd/sitelist2-2.png" alt="대한병리학회" width={400} height={200} className="dusqhd-project-image" />
           <div className="dusqhd-project-card-content">
             <span className="dusqhd-project-card-tag">온라인 교육 시스템</span>
             <h3 className="dusqhd-project-card-title">대한병리학회</h3>
@@ -538,13 +455,7 @@ function ProjectSection() {
 
         {/* 서울대병원외과 */}
         <div className="dusqhd-project-card featured">
-          <Image
-            src="/images/blog/dusqhd/sitelist3-2.png"
-            alt="서울대병원외과"
-            width={400}
-            height={200}
-            className="dusqhd-project-image"
-          />
+          <Image src="/images/blog/dusqhd/sitelist3-2.png" alt="서울대병원외과" width={400} height={200} className="dusqhd-project-image" />
           <div className="dusqhd-project-card-content">
             <span className="dusqhd-project-card-tag">온라인 교육 시스템</span>
             <h3 className="dusqhd-project-card-title">서울대병원외과</h3>
@@ -556,13 +467,7 @@ function ProjectSection() {
 
         {/* 대한중환자 */}
         <div className="dusqhd-project-card featured">
-          <Image
-            src="/images/blog/dusqhd/sitelist4-3.png"
-            alt="대한중환자"
-            width={400}
-            height={200}
-            className="dusqhd-project-image"
-          />
+          <Image src="/images/blog/dusqhd/sitelist4-3.png" alt="대한중환자" width={400} height={200} className="dusqhd-project-image" />
           <div className="dusqhd-project-card-content">
             <span className="dusqhd-project-card-tag">연수평점 시스템</span>
             <h3 className="dusqhd-project-card-title">대한중환자의학회</h3>
@@ -575,25 +480,13 @@ function ProjectSection() {
 
       <div className="dusqhd-project-gallery">
         {IMAGES.projectGallery.map((img, i) => (
-          <Image
-            key={img.src}
-            src={img.src}
-            alt={img.title}
-            width={600}
-            height={400}
-            onClick={() => setGalleryIndex(i)}
-            style={{ cursor: "pointer" }}
-          />
+          <Image key={img.src} src={img.src} alt={img.title} width={600} height={400} onClick={() => setGalleryIndex(i)} style={{ cursor: "pointer" }} />
         ))}
       </div>
 
       {overviewModal ? <ImageModal src={overviewModal} onClose={() => setOverviewModal(null)} /> : null}
       {galleryIndex !== null ? (
-        <ImageCarouselModal
-          items={IMAGES.projectGallery}
-          startIndex={galleryIndex}
-          onClose={() => setGalleryIndex(null)}
-        />
+        <ImageCarouselModal items={IMAGES.projectGallery} startIndex={galleryIndex} onClose={() => setGalleryIndex(null)} />
       ) : null}
     </section>
   );
@@ -681,13 +574,7 @@ function ItWorkSection() {
 
       <div className="dusqhd-itwork-gallery">
         {IMAGES.itwork.map((img, i) => (
-          <a
-            key={i}
-            href={img.src}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="dusqhd-itwork-gallery-link"
-          >
+          <a key={i} href={img.src} target="_blank" rel="noopener noreferrer" className="dusqhd-itwork-gallery-link">
             <Image src={img.src} alt={img.title} width={400} height={300} />
           </a>
         ))}
@@ -727,26 +614,8 @@ function GuideSection() {
 
       <div className="dusqhd-guide-grid">
         {IMAGES.guide.map((img, i) => (
-          <div
-            key={i}
-            className="dusqhd-guide-card"
-            onClick={() => setGuideGridIndex(i)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                setGuideGridIndex(i);
-              }
-            }}
-            role="button"
-            tabIndex={0}
-            aria-label={`${img.title} 보기`}
-          >
-            <Image
-              src={img.src}
-              alt={img.title}
-              width={300}
-              height={160}
-            />
+          <div key={i} className="dusqhd-guide-card" onClick={() => setGuideGridIndex(i)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setGuideGridIndex(i); } }} role="button" tabIndex={0} aria-label={`${img.title} 보기`}>
+            <Image src={img.src} alt={img.title} width={300} height={160} />
             <div className="dusqhd-guide-card-content">
               <h4 className="dusqhd-guide-card-title">{img.title}</h4>
               <p className="dusqhd-guide-card-desc">자체 제작 가이드 문서</p>
@@ -765,13 +634,7 @@ function GuideSection() {
             <article key={item.src} className="dusqhd-guide-ai-step">
               <h4 className="dusqhd-guide-ai-step-label">{item.label}</h4>
               <div className="dusqhd-guide-ai-step-body">{item.body}</div>
-              <Image
-                src={item.src}
-                alt={item.label}
-                width={960}
-                height={540}
-                className="dusqhd-guide-ai-step-image"
-              />
+              <Image src={item.src} alt={item.label} width={960} height={540} className="dusqhd-guide-ai-step-image" />
             </article>
           ))}
         </div>
@@ -779,11 +642,7 @@ function GuideSection() {
 
 
       {guideGridIndex !== null ? (
-        <ImageCarouselModal
-          items={IMAGES.guide}
-          startIndex={guideGridIndex}
-          onClose={() => setGuideGridIndex(null)}
-        />
+        <ImageCarouselModal items={IMAGES.guide} startIndex={guideGridIndex} onClose={() => setGuideGridIndex(null)} />
       ) : null}
     </section>
   );

@@ -36,12 +36,8 @@ export default function BlogAideMenu({
           
           return (
             <nav key={section.id} className="blog_aide_menu">
-              <Link
-                href={section.href}
-                className={`blog_aide_menu_category${active ? " active" : ""}`}
-                suppressHydrationWarning
-                onClick={closeMobileSidebar}
-              >
+              <Link href={section.href} className={`blog_aide_menu_category${active ? " active" : ""}`} 
+								suppressHydrationWarning onClick={closeMobileSidebar}>
                 <div className="blog_aide_menu_title">
 									<span className="menu_title">{section.title}</span>
 									{section.count != null && <span className="menu_count">{section.count}</span>}
@@ -59,24 +55,13 @@ export default function BlogAideMenu({
         return (
           <nav key={section.id} className="blog_aide_menu">
             <div className={`blog_aide_menu_category${categoryActive ? " active" : ""}`}>
-              <Link
-                href="/blog"
-                className="blog_aide_menu_title"
-                suppressHydrationWarning
-                onClick={closeMobileSidebar}
-              >
+              <Link href="/blog" className="blog_aide_menu_title" suppressHydrationWarning onClick={closeMobileSidebar}>
                 <span className="menu_title">{section.title}</span>
 								<span className="menu_count_wrap">
 									{section.count != null && <span className="menu_count">{section.count}</span>}
 									{/* 아코디언 열림 상태에 따라 화살표 회전 */}
-									<div className="menu_arrow_wrap"
-										onClick={(e) => {
-											e.preventDefault();
-											e.stopPropagation();
-											onToggleSection(section.id);
-										}}
-										style={{ cursor: "pointer" }}
-									>
+									<div className="menu_arrow_wrap" onClick={(e) => { e.preventDefault(); e.stopPropagation(); onToggleSection(section.id); }}
+										style={{ cursor: "pointer" }}>
 										<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" className={sectionOpen ? "rotated" : ""}>
 											<path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
 										</svg>
@@ -91,16 +76,9 @@ export default function BlogAideMenu({
                 const active = isPathActive(item.href);
                 
                 return (
-                  <div
-                    key={item.label}
-                    className={`blog_aide_menu_button${active ? " active" : ""}`}
-                  >
+                  <div key={item.label} className={`blog_aide_menu_button${active ? " active" : ""}`}>
                     <p>
-                      <Link
-                        href={item.href}
-                        suppressHydrationWarning
-                        onClick={closeMobileSidebar}
-                      >
+                      <Link href={item.href} suppressHydrationWarning onClick={closeMobileSidebar}>
                         <span className="menu_title">{item.label}</span>
 												{item.count != null && <span className="menu_count">{item.count}</span>}
                       </Link>

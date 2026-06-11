@@ -7,13 +7,12 @@ import {
   pointerState,
   boxGeometry,
   baubleMaterial,
+  type BaubleProps,
 } from "@/lib/portfolio/pointerState";
 
-interface BaubleComponentProps {
+type BaubleComponentProps = BaubleProps & {
   vec?: THREE.Vector3;
-  args: number;
-  [key: string]: any;
-}
+};
 
 export default function Bauble({
   vec = new THREE.Vector3(),
@@ -52,13 +51,7 @@ export default function Bauble({
 
   return (
     <group ref={ref as React.Ref<THREE.Group>}>
-      <mesh
-        castShadow
-        receiveShadow
-        scale={props.args}
-        geometry={boxGeometry}
-        material={baubleMaterial}
-      />
+      <mesh castShadow receiveShadow scale={props.args} geometry={boxGeometry} material={baubleMaterial} />
     </group>
   );
 }
