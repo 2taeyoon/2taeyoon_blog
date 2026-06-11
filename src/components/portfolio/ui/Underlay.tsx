@@ -10,32 +10,81 @@ interface UnderlayProps {
 
 export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const volumeRef = useRef(100);
+  const unlockHandlerRef = useRef<(() => void) | null>(null);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [volumeOpen, setVolumeOpen] = useState(false);
 
-  // 언마운트 시 음악 정지
+  volumeRef.current = volume;
+
+  const createAudio = () => {
+    if (audioRef.current) return audioRef.current;
+    const audio = new Audio("/audio/Amber_Angles.mp3");
+    audio.loop = true; // 곡이 끝나면 처음부터 다시 재생
+    audio.volume = volumeRef.current / 100;
+    audioRef.current = audio;
+    return audio;
+  };
+
+  const tryPlay = async () => {
+    const audio = createAudio();
+    try {
+      await audio.play();
+      setPlaying(true);
+      return true;
+    } catch {
+      setPlaying(false);
+      return false;
+    }
+  };
+
+  const removeUnlockListeners = () => {
+    const handler = unlockHandlerRef.current;
+    if (!handler) return;
+    window.removeEventListener("pointerdown", handler);
+    window.removeEventListener("keydown", handler);
+    unlockHandlerRef.current = null;
+  };
+
+  // --- 현재: 처음 렌더링 시 자동 재생 (차단되면 첫 클릭/키 입력에 재시도) ---
   useEffect(() => {
+    void tryPlay();
+
+    // Chrome/Safari 등은 사용자 제스처 없이 audio.play()를 막음 → 첫 상호작용 때 한 번 더 시도
+    const unlockOnInteraction = () => {
+      void tryPlay().then((ok) => {
+        if (ok) removeUnlockListeners();
+      });
+    };
+    unlockHandlerRef.current = unlockOnInteraction;
+    window.addEventListener("pointerdown", unlockOnInteraction);
+    window.addEventListener("keydown", unlockOnInteraction);
+
     return () => {
+      removeUnlockListeners();
       audioRef.current?.pause();
       audioRef.current = null;
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- 마운트 시 1회만 실행
   }, []);
 
+  // --- 나중에 개발 시: 처음 렌더링 시 자동 재생 없음 ---
+  // useEffect(() => {
+  //   return () => {
+  //     audioRef.current?.pause();
+  //     audioRef.current = null;
+  //   };
+  // }, []);
+
   const toggleMusic = () => {
-    if (!audioRef.current) {
-      const audio = new Audio("/audio/Amber_Angles.mp3");
-      audio.loop = true; // 곡이 끝나면 처음부터 다시 재생
-      audio.volume = volume / 100;
-      audioRef.current = audio;
-    }
+    const audio = createAudio();
 
     if (playing) {
-      audioRef.current.pause();
+      audio.pause();
       setPlaying(false);
     } else {
-      audioRef.current.play();
-      setPlaying(true);
+      void tryPlay();
     }
   };
 
