@@ -25,10 +25,9 @@
 .underlay_logo {
   font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
-  height: 30px;
-  font-size: 30px;
+  font-size: 3rem;
   font-weight: 700;
-  line-height: 30px;
+  line-height: 1;
   color: black;
   letter-spacing: -2px;
 }
@@ -41,21 +40,78 @@
 
 .underlay_nav_item {
   flex: 1 1 0%;
-  height: 12px;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 1.4rem;
+  line-height: 1;
   text-align: center;
   color: black;
   white-space: nowrap;
 }
 
-.underlay_bracket {
+.underlay_nav_link {
+  pointer-events: all;
+  cursor: pointer;
+  padding-right: 0;
+  transition: opacity 0.2s;
+}
+
+.underlay_nav_link:hover {
+  opacity: 0.55;
+}
+
+/* 우상단 음악/색상 컨트롤 영역 */
+.underlay_controls {
   flex: 1 1 0%;
-  height: 30px;
-  font-size: 30px;
-  line-height: 30px;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  pointer-events: all;
+}
+
+.underlay_control_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   color: black;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.underlay_control_button:hover {
+  opacity: 0.75;
+}
+
+.underlay_music_button {
+  width: 40px;
+  padding: 0;
+}
+
+.underlay_music_icon {
+  display: block;
+  overflow: hidden;
+}
+
+/* 재생 중 물결 — 한 주기(24 user unit)만큼 이동해 무한 흐름 */
+.underlay_music_wave_path {
+  animation: underlay_wave_flow 1.2s linear infinite;
+}
+
+@keyframes underlay_wave_flow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-24px);
+  }
 }
 
 .underlay_gap {
@@ -82,7 +138,7 @@
 .underlay_intro_text {
   flex: 1 1 0%;
   height: 100%;
-  font-size: 12px;
+  font-size: 1.4rem;
   line-height: 1.5em;
   color: black;
 }
@@ -104,21 +160,21 @@
 
 .underlay_title_front {
   flex: 1 1 0%;
-  font-size: 250px;
+  font-size: clamp(10rem, 18vw, 25rem);
   line-height: 1em;
   color: black;
   margin: 0;
-  letter-spacing: -10px;
+  letter-spacing: -0.04em;
 }
 
 .underlay_title_end {
   flex: 1 1 0%;
-  font-size: 250px;
+  font-size: clamp(10rem, 18vw, 25rem);
   line-height: 100%;
   text-align: right;
   color: black;
   margin: 0;
-  letter-spacing: -10px;
+  letter-spacing: -0.04em;
 }
 
 .underlay_bottom_row {
@@ -135,14 +191,14 @@
 .underlay_roles {
   white-space: nowrap;
   flex: 1 1 0%;
-  font-size: 12px;
+  font-size: 1.4rem;
   line-height: 1.5em;
   color: black;
 }
 
 .underlay_drag_hint {
   flex: 1 1 0%;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1em;
   text-align: center;
@@ -153,7 +209,7 @@
 
 .underlay_bottom_spacer {
   flex: 1 1 0%;
-  font-size: 12px;
+  font-size: 1.4rem;
   line-height: 1em;
   text-align: right;
   color: black;
