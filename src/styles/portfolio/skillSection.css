@@ -1,0 +1,130 @@
+.skill_section {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, var(--pfBgGray) 0%, var(--pfBgLavender) 100%);
+  overflow: hidden;
+}
+
+/* 배경 도형 캔버스 — 마우스 패럴랙스용, 클릭은 통과 */
+.skill_bg_canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.skill_inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.skill_header {
+  margin-bottom: 48px;
+}
+
+.skill_tag {
+  font-family: "Nunito Sans", sans-serif;
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  background: var(--pfBlack);
+  color: var(--pfWhite);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.skill_title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 7.2rem;
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--pfBlack);
+  letter-spacing: -2px;
+}
+
+.skill_desc {
+  margin-top: 16px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--pfTextSub);
+}
+
+/* 카테고리 범례 — 가로 나열 */
+.skill_legend {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill_legend_item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skill_legend_dot {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.skill_legend_label {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--pfTextStrong);
+  white-space: nowrap;
+}
+
+.skill_legend_count {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--pfTextMuted);
+}
+
+/* 단어 구름 캔버스 — 참조 샌드박스와 동일한 다크 배경 */
+.skill_cloud {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 640px;
+  margin-top: 24px;
+  background: #202025;
+  cursor: grab;
+}
+
+.skill_cloud canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.skill_cloud:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 900px) {
+  .skill_cloud {
+    height: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill_section {
+    padding: 96px 24px;
+  }
+
+  .skill_cloud {
+    height: 420px;
+  }
+}
