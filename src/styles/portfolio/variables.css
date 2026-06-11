@@ -1,0 +1,30 @@
+/* 포트폴리오('/') 전용 색상 변수 — 블로그 변수(variables.css)와 충돌하지 않도록 pf 접두사 사용 */
+:root {
+	--pfBlack: #000000;
+	--pfInk: #1b1b1b;
+	--pfTextStrong: #111111;
+	--pfTextSub: #555555;
+	--pfTextMuted: #999999;
+	--pfTextFaint: #b0b0b0;
+	--pfGray: #666666;
+	--pfWhite: #ffffff;
+
+	--pfBgLavender: #e6eaf5;
+	--pfBgGray: #f6f6f6;
+
+	--pfLine: #e8e8e8;
+	--pfTrack: #dddddd;
+	--pfSelectedRing: #3949ab;
+
+	--pfIndigo: #27407c;
+	--pfFabricIndigo: #3a5494;
+	--pfFabricDark: #16224d;
+	--pfOrange: #de7c3a;
+	--pfOrangeGlow: rgba(222, 124, 58, 0.9);
+	--pfOrangeGlowFade: rgba(222, 124, 58, 0);
+	--pfThreadLight: rgba(255, 255, 255, 0.14);
+
+	--pfShadow: rgba(0, 0, 0, 0.1);
+	--pfShadowInset: rgba(0, 0, 0, 0.06);
+	--pfShadowInsetStrong: rgba(0, 0, 0, 0.08);
+}
