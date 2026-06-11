@@ -45,13 +45,13 @@ export function ColorPalette({
 
   return (
     <div
-      className="color-palette"
+      className="color_palette"
       onPointerDown={(e) => e.stopPropagation()}
     >
-      <p className="color-palette-label">COLOR</p>
+      <p className="color_palette_label">COLOR</p>
 
       <div
-        className="color-palette-swatches"
+        className="color_palette_swatches"
         role="radiogroup"
         aria-label="공 색상 선택"
       >
@@ -66,7 +66,7 @@ export function ColorPalette({
               type="button"
               role="radio"
               aria-checked={isSelected}
-              className={`color-palette-swatch${isSelected ? " is-selected" : ""}`}
+              className={`color_palette_swatch${isSelected ? " is_selected" : ""}`}
               style={
                 isGradient
                   ? { background: "linear-gradient(to bottom, #b21210, #0033ff)" }
@@ -78,16 +78,16 @@ export function ColorPalette({
         })}
       </div>
 
-      <hr className="color-palette-divider" />
+      <hr className="color_palette_divider" />
 
       <button
         type="button"
-        className="color-palette-custom"
+        className="color_palette_custom"
         onClick={openCustomPicker}
       >
         <span>직접 선택</span>
         <span
-          className="color-palette-custom-preview"
+          className="color_palette_custom_preview"
           style={{ backgroundColor: value }}
         />
       </button>
@@ -95,7 +95,7 @@ export function ColorPalette({
       <input
         ref={colorInputRef}
         type="color"
-        className="color-palette-input"
+        className="color_palette_input"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         aria-label="직접 색상 선택"
