@@ -23,7 +23,7 @@ export default function MainSection() {
 
   return (
     <div className="main_section_container">
-      <Underlay onTogglePalette={() => setPaletteOpen((prev) => !prev)} />
+      <Underlay onTogglePalette={() => setPaletteOpen((prev) => !prev)} onClosePalette={() => setPaletteOpen(false)} />
       {paletteOpen && <ColorPalette value={ballColor} onChange={handleColorChange} />}
       <BaubleScene ballColor={ballColor} />
     </div>
