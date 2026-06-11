@@ -2,7 +2,11 @@
 
 import React, { useRef } from "react";
 
+/** hex가 아닌 특수 표면 프리셋 (텍스처/그라데이션) */
+const NAMED_PRESETS = ["fabric", "gradient"];
+
 const PRESET_COLORS = [
+  "fabric",
   "gradient",
   "#b21210",
   "#e0761f",
@@ -18,9 +22,9 @@ function normalizeHex(hex: string) {
 }
 
 function isPresetColor(value: string) {
-  if (value === "gradient") return true;
+  if (NAMED_PRESETS.includes(value)) return true;
   return PRESET_COLORS.some(
-    (c) => c !== "gradient" && normalizeHex(c) === normalizeHex(value),
+    (c) => !NAMED_PRESETS.includes(c) && normalizeHex(c) === normalizeHex(value),
   );
 }
 
@@ -32,12 +36,11 @@ export function ColorPalette({
   onChange: (color: string) => void;
 }) {
   const colorInputRef = useRef<HTMLInputElement>(null);
-  const selectedPreset =
-    value === "gradient"
-      ? "gradient"
-      : isPresetColor(value)
-        ? normalizeHex(value)
-        : null;
+  const selectedPreset = NAMED_PRESETS.includes(value)
+    ? value
+    : isPresetColor(value)
+      ? normalizeHex(value)
+      : null;
 
   const openCustomPicker = () => {
     colorInputRef.current?.click();
@@ -49,14 +52,12 @@ export function ColorPalette({
 
       <div className="color_palette_swatches" role="radiogroup" aria-label="공 색상 선택">
         {PRESET_COLORS.map((color) => {
-          const isSelected =
-            selectedPreset ===
-            (color === "gradient" ? "gradient" : normalizeHex(color));
-          const isGradient = color === "gradient";
+          const isNamed = NAMED_PRESETS.includes(color);
+          const isSelected = selectedPreset === (isNamed ? color : normalizeHex(color));
           return (
             <button key={color} type="button" role="radio" aria-checked={isSelected}
-							className={`color_palette_swatch${isGradient ? " color_palette_swatch_gradient" : ""}${isSelected ? " is_selected" : ""}`}
-							style={isGradient ? undefined : ({ "--swatch-color": color } as React.CSSProperties)} onClick={() => onChange(color)} />
+							className={`color_palette_swatch${color === "fabric" ? " color_palette_swatch_fabric" : ""}${color === "gradient" ? " color_palette_swatch_gradient" : ""}${isSelected ? " is_selected" : ""}`}
+							style={isNamed ? undefined : ({ "--swatch-color": color } as React.CSSProperties)} onClick={() => onChange(color)} />
           );
         })}
       </div>
@@ -69,7 +70,7 @@ export function ColorPalette({
       </button>
 
       <input ref={colorInputRef} type="color" className="color_palette_input" value={value}
-				onChange={(e) => onChange(e.target.value)}aria-label="직접 색상 선택" />
+				onChange={(e) => onChange(e.target.value)} aria-label="직접 색상 선택" />
     </div>
   );
 }
