@@ -35,12 +35,15 @@
 .underlay_nav {
   flex: 1 1 0%;
   display: flex;
+  justify-content: center;
   gap: 2em;
+  pointer-events: all;
 }
 
 .underlay_nav_item {
-  flex: 1 1 0%;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
+  font-weight: 600;
   line-height: 1;
   text-align: center;
   color: black;
@@ -48,7 +51,6 @@
 }
 
 .underlay_nav_link {
-  pointer-events: all;
   cursor: pointer;
   padding-right: 0;
   transition: opacity 0.2s;
@@ -58,7 +60,7 @@
   opacity: 0.55;
 }
 
-/* 우상단 음악/색상 컨트롤 영역 */
+/* 우상단 음악/볼륨/색상 컨트롤 영역 */
 .underlay_controls {
   flex: 1 1 0%;
   display: flex;
@@ -72,27 +74,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  width: 40px;
   height: 40px;
-  padding: 0 14px;
+  padding: 0;
   background: #fff;
   border: none;
   border-radius: 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   color: black;
-  font-size: 1.4rem;
-  line-height: 1;
   cursor: pointer;
   transition: opacity 0.2s;
 }
 
 .underlay_control_button:hover {
   opacity: 0.75;
-}
-
-.underlay_music_button {
-  width: 40px;
-  padding: 0;
 }
 
 .underlay_music_icon {
@@ -112,6 +107,62 @@
   to {
     transform: translateX(-24px);
   }
+}
+
+/* 볼륨 버튼 + 토글 패널 */
+.underlay_volume_wrap {
+  position: relative;
+}
+
+.underlay_volume_panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.underlay_volume_slider {
+  width: 120px;
+  height: 2px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #ddd;
+  outline: none;
+  cursor: pointer;
+}
+
+.underlay_volume_slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.underlay_volume_slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #000;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.underlay_volume_value {
+  font-family: "Nunito Sans", sans-serif;
+  min-width: 3ch;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: right;
+  color: black;
 }
 
 .underlay_gap {
@@ -136,6 +187,7 @@
 }
 
 .underlay_intro_text {
+  font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
   height: 100%;
   font-size: 1.4rem;
@@ -159,8 +211,10 @@
 }
 
 .underlay_title_front {
+  font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
   font-size: clamp(10rem, 18vw, 25rem);
+  font-weight: 800;
   line-height: 1em;
   color: black;
   margin: 0;
@@ -168,8 +222,10 @@
 }
 
 .underlay_title_end {
+  font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
   font-size: clamp(10rem, 18vw, 25rem);
+  font-weight: 800;
   line-height: 100%;
   text-align: right;
   color: black;
@@ -189,6 +245,7 @@
 }
 
 .underlay_roles {
+  font-family: "Nunito Sans", sans-serif;
   white-space: nowrap;
   flex: 1 1 0%;
   font-size: 1.4rem;
@@ -197,6 +254,7 @@
 }
 
 .underlay_drag_hint {
+  font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
   font-size: 1.6rem;
   font-weight: 700;
@@ -207,10 +265,12 @@
   white-space: nowrap;
 }
 
-.underlay_bottom_spacer {
+.underlay_roles_right {
+  font-family: "Nunito Sans", sans-serif;
+  white-space: nowrap;
   flex: 1 1 0%;
   font-size: 1.4rem;
-  line-height: 1em;
+  line-height: 1.5em;
   text-align: right;
   color: black;
 }
