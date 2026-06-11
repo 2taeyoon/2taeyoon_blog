@@ -26,8 +26,8 @@
 
 .color_palette {
   position: absolute;
-  top: 100px;
-  right: 100px;
+  top: 92px;
+  right: 40px;
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
 
 .color_palette_label {
   margin: 0;
-  font-size: 10px;
+  font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   color: #b0b0b0;
@@ -76,6 +76,13 @@
   background: linear-gradient(to bottom, #b21210, #0033ff);
 }
 
+.color_palette_swatch_fabric {
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 3px),
+    radial-gradient(circle at 75% 25%, rgba(222, 124, 58, 0.9), rgba(222, 124, 58, 0) 65%),
+    linear-gradient(135deg, #3a5494, #16224d);
+}
+
 .color_palette_divider {
   width: 100%;
   height: 0;
@@ -93,7 +100,7 @@
   border: none;
   background: transparent;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 1.4rem;
   color: #666;
   cursor: pointer;
 }
