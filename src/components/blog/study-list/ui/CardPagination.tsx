@@ -29,16 +29,8 @@ export default function CardPagination(props: CardPaginationProps) {
 					),
 				)}
 			</div>
-			<PaginationControls
-				pageCount={pageCount}
-				currentPage={props.currentPage}
-				visiblePages={visiblePages}
-				onFirst={goToFirst}
-				onLast={goToLast}
-				onPrev={goToPrev}
-				onNext={goToNext}
-				onSelectPage={goToPage}
-			/>
+			<PaginationControls pageCount={pageCount} currentPage={props.currentPage} visiblePages={visiblePages}
+				onFirst={goToFirst} onLast={goToLast} onPrev={goToPrev} onNext={goToNext} onSelectPage={goToPage} />
 		</div>
 	);
 }
