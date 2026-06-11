@@ -60,32 +60,15 @@ export default function BaubleScene({ ballColor }: BaubleSceneProps) {
   }, [ballColor]);
 
   return (
-    <Canvas
-      style={{ position: "absolute", inset: 0, zIndex: 1 }}
-      shadows
-      dpr={1.5}
-      gl={{ alpha: true, stencil: false, antialias: false }}
-      camera={{ position: [0, 0, 20], fov: 35, near: 10, far: 40 }}
-      onCreated={(state) => {
-        state.gl.toneMappingExposure = 1.7;
-      }}
-    >
+    <Canvas className="bauble_scene"
+			shadows dpr={1.5} gl={{ alpha: true, stencil: false, antialias: false }}
+			camera={{ position: [0, 0, 20], fov: 35, near: 10, far: 40 }}
+			onCreated={(state) => { state.gl.toneMappingExposure = 1.7; }}>
+
       <ambientLight intensity={1.0 * Math.PI} />
-      <spotLight
-        position={[20, 20, 25]}
-        penumbra={1}
-        angle={0.2}
-        color="white"
-        castShadow
-        shadow-mapSize={[512, 512]}
-        intensity={Math.PI}
-      />
+      <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[512, 512]} intensity={Math.PI} />
       <directionalLight position={[0, 5, -4]} intensity={4.5 * Math.PI} />
-      <directionalLight
-        position={[0, -15, -0]}
-        intensity={1.5 * Math.PI}
-        color="red"
-      />
+      <directionalLight position={[0, -15, -0]} intensity={1.5 * Math.PI} color="red" />
       <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
         <PointerInput />
         <Collisions />
@@ -98,6 +81,7 @@ export default function BaubleScene({ ballColor }: BaubleSceneProps) {
         <N8AO aoRadius={2} intensity={10} />
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       </EffectComposer>
+
     </Canvas>
   );
 }
