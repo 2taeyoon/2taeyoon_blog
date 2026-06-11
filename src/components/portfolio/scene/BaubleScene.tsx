@@ -87,26 +87,6 @@ export default function BaubleScene({ ballColor }: BaubleSceneProps) {
       baubleMaterial.color.setHex(0xffffff);
       baubleMaterial.emissive.setHex(0xffffff).multiplyScalar(0.2);
       baubleMaterial.needsUpdate = true;
-    } else if (ballColor === "gradient") {
-      const canvas = document.createElement("canvas");
-      canvas.width = 2;
-      canvas.height = 256;
-      const context = canvas.getContext("2d");
-      if (context) {
-        const gradient = context.createLinearGradient(0, 0, 0, 256);
-        gradient.addColorStop(0, "#b21210");
-        gradient.addColorStop(1, "#0033ff");
-        context.fillStyle = gradient;
-        context.fillRect(0, 0, 2, 256);
-      }
-      const texture = new THREE.CanvasTexture(canvas);
-      texture.colorSpace = THREE.SRGBColorSpace;
-
-      baubleMaterial.map = texture;
-      baubleMaterial.emissiveMap = texture;
-      baubleMaterial.color.setHex(0xffffff);
-      baubleMaterial.emissive.setHex(0xffffff).multiplyScalar(0.2);
-      baubleMaterial.needsUpdate = true;
     } else {
       baubleMaterial.map = null;
       baubleMaterial.emissiveMap = null;
