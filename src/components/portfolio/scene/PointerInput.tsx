@@ -6,13 +6,21 @@ import { pointerState } from "@/lib/portfolio/pointerState";
 
 export default function PointerInput() {
   const viewport = useThree((state) => state.viewport);
+  const gl = useThree((state) => state.gl);
 
   useEffect(() => {
+    const canvas = gl.domElement;
+
+    // 메인 섹션 캔버스 영역 안에 있을 때만 반응 (다른 섹션에서의 마우스 이동 무시)
+    const isInside = (e: PointerEvent, rect: DOMRect) =>
+      e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+
     const setDown = (down: boolean) => {
       pointerState.down = down;
     };
 
     const onPointerDown = (e: PointerEvent) => {
+      if (!isInside(e, canvas.getBoundingClientRect())) return;
       pointerState.moved = true;
       if (e.button === 0) setDown(true);
     };
@@ -22,9 +30,11 @@ export default function PointerInput() {
     };
 
     const onPointerMove = (e: PointerEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      if (!isInside(e, rect)) return;
       pointerState.moved = true;
-      pointerState.ndcX = (e.clientX / window.innerWidth) * 2 - 1;
-      pointerState.ndcY = -(e.clientY / window.innerHeight) * 2 + 1;
+      pointerState.ndcX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      pointerState.ndcY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
     };
 
     const onBlur = () => setDown(false);
@@ -40,7 +50,7 @@ export default function PointerInput() {
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("blur", onBlur);
     };
-  }, []);
+  }, [gl]);
 
   useFrame((state) => {
     if (!pointerState.moved) return;
