@@ -10,6 +10,9 @@ import { SKILL_CATEGORIES } from "@/data/portfolio/skills";
 
 gsap.registerPlugin(ScrollTrigger);
 
+/** 참조 샌드박스(App.js)와 동일 — public/Inter-Bold.ttf */
+const WORD_FONT = "/Inter-Bold.ttf";
+
 /** 카테고리별 포인트 컬러 (범례 점 표시용) */
 const CATEGORY_COLORS: Record<string, string> = {
   design: "#de7c3a",
@@ -18,8 +21,6 @@ const CATEGORY_COLORS: Record<string, string> = {
   devtools: "#631e76",
 };
 
-const WORD_FONT = "/fonts/NunitoSans-ExtraBold.ttf";
-
 /** 배경에 떠다니는 와이어프레임 도형들 — 마우스 패럴랙스 반응 */
 function FloatingShapes() {
   const gl = useThree((state) => state.gl);
@@ -27,7 +28,6 @@ function FloatingShapes() {
   const shapesRef = useRef<THREE.Group>(null);
   const pointerRef = useRef({ x: 0, y: 0 });
 
-  // 단어 구름이 중앙을 차지하므로 도형은 좌우 가장자리와 깊은 곳에 배치
   const shapes = useMemo(
     () =>
       [...Array(12)].map((_, i) => {
@@ -42,7 +42,6 @@ function FloatingShapes() {
           rotationSpeed: 0.1 + Math.random() * 0.25,
           floatSpeed: 0.4 + Math.random() * 0.6,
           floatOffset: Math.random() * Math.PI * 2,
-          /* 깊이별 패럴랙스 강도 — 멀리 있는 도형일수록 적게 움직임 */
           parallax: 0.4 + Math.random() * 0.8,
           isBox: i % 3 !== 0,
           color: i % 4 === 0 ? "#de7c3a" : "#27407c",
@@ -53,8 +52,6 @@ function FloatingShapes() {
 
   useEffect(() => {
     const canvas = gl.domElement;
-
-    // 스킬 섹션 캔버스 영역 안에 있을 때만 패럴랙스 반응 (다른 섹션에서의 마우스 이동 무시)
     const onPointerMove = (e: PointerEvent) => {
       const rect = canvas.getBoundingClientRect();
       const inside =
@@ -71,7 +68,6 @@ function FloatingShapes() {
     const t = state.clock.elapsedTime;
     const pointer = pointerRef.current;
 
-    // 전체 그룹이 마우스 방향으로 부드럽게 기울고 이동 (패럴랙스)
     if (parallaxRef.current) {
       const lerp = 1 - Math.exp(-delta * 4);
       parallaxRef.current.rotation.x += (pointer.y * 0.18 - parallaxRef.current.rotation.x) * lerp;
@@ -104,9 +100,16 @@ function FloatingShapes() {
   );
 }
 
-/** 구 표면의 단어 하나 — 항상 카메라를 향하고, 호버 시 색이 변함 */
-function Word({ children, position }: { children: string; position: THREE.Vector3 }) {
+/** 참조 App.js Word 컴포넌트와 동일 */
+function Word({ children, ...props }: { children: string; position: THREE.Vector3 }) {
   const color = useMemo(() => new THREE.Color(), []);
+  const fontProps = {
+    font: WORD_FONT,
+    fontSize: 2.5,
+    letterSpacing: -0.05,
+    lineHeight: 1,
+    "material-toneMapped": false,
+  } as const;
   const ref = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
@@ -116,7 +119,6 @@ function Word({ children, position }: { children: string; position: THREE.Vector
   };
   const out = () => setHovered(false);
 
-  // 호버 시 마우스 커서 변경
   useEffect(() => {
     if (hovered) document.body.style.cursor = "pointer";
     return () => {
@@ -124,27 +126,22 @@ function Word({ children, position }: { children: string; position: THREE.Vector
     };
   }, [hovered]);
 
-  // 렌더 루프에 연결 — 색을 부드럽게 lerp
   useFrame(() => {
     const material = ref.current?.material as THREE.MeshBasicMaterial | undefined;
-    material?.color.lerp(color.set(hovered ? "#fa2720" : "#1a1a1a"), 0.1);
+    material?.color.lerp(color.set(hovered ? "#fa2720" : "white"), 0.1);
   });
 
   return (
-    <Billboard position={position}>
-      <Text ref={ref} font={WORD_FONT} fontSize={2.5} letterSpacing={-0.05} lineHeight={1} material-toneMapped={false}
-				onPointerOver={over} onPointerOut={out}>
-        {children}
-      </Text>
+    <Billboard {...props}>
+      <Text ref={ref} onPointerOver={over} onPointerOut={out} {...fontProps}>{children}</Text>
     </Billboard>
   );
 }
 
-/** count x count 격자를 구면 좌표로 변환해 스킬을 균등 분포 */
-function Cloud({ count = 5, radius = 20 }: { count?: number; radius?: number }) {
+/** 참조 App.js Cloud 컴포넌트와 동일 — count×count 구면 격자 분포 */
+function Cloud({ count = 8, radius = 20 }: { count?: number; radius?: number }) {
   const words = useMemo(() => {
-    // 카테고리 전체 스킬을 중복 없이 평탄화 (PHP는 FE/BE 양쪽에 있어 한 번만)
-    const skills = Array.from(new Set(SKILL_CATEGORIES.flatMap((category) => category.skills)));
+    const skills = SKILL_CATEGORIES.flatMap((category) => category.skills);
     const temp: [THREE.Vector3, string][] = [];
     const spherical = new THREE.Spherical();
     const phiSpan = Math.PI / (count + 1);
@@ -162,9 +159,25 @@ function Cloud({ count = 5, radius = 20 }: { count?: number; radius?: number }) 
   return (
     <>
       {words.map(([pos, word], index) => (
-        <Word key={`${word}-${index}`} position={pos}>{word}</Word>
+        <Word key={index} position={pos}>{word}</Word>
       ))}
     </>
+  );
+}
+
+/** 참조 App.js Canvas와 동일한 단어 구름 */
+function SkillCloudCanvas() {
+  return (
+    <Canvas dpr={[1, 2]} gl={{ alpha: false, antialias: true }} camera={{ position: [0, 0, 35], fov: 90 }}>
+      <color attach="background" args={["#202025"]} />
+      <fog attach="fog" args={["#202025", 0, 80]} />
+      <Suspense fallback={null}>
+        <group rotation={[10, 10.5, 10]}>
+          <Cloud count={8} radius={20} />
+        </group>
+      </Suspense>
+      <TrackballControls noZoom noPan rotateSpeed={1.1} />
+    </Canvas>
   );
 }
 
@@ -188,14 +201,6 @@ export default function SkillSection() {
         stagger: 0.1,
         ease: "power3.out",
         scrollTrigger: { trigger: ".skill_legend", start: "top 88%" },
-      });
-
-      gsap.from(".skill_cloud", {
-        opacity: 0,
-        scale: 0.92,
-        duration: 1.1,
-        ease: "power2.out",
-        scrollTrigger: { trigger: ".skill_cloud", start: "top 85%" },
       });
     }, sectionRef);
 
@@ -229,15 +234,7 @@ export default function SkillSection() {
       </div>
 
       <div className="skill_cloud">
-        <Canvas dpr={[1, 2]} gl={{ alpha: true, antialias: true }} camera={{ position: [0, 0, 35], fov: 90 }}>
-          <fog attach="fog" args={["#f6f6f6", 0, 80]} />
-          <Suspense fallback={null}>
-            <group rotation={[10, 10.5, 10]}>
-              <Cloud count={5} radius={20} />
-            </group>
-          </Suspense>
-          <TrackballControls noZoom noPan rotateSpeed={1.1} />
-        </Canvas>
+        <SkillCloudCanvas />
       </div>
     </section>
   );
