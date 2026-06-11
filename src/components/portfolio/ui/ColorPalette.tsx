@@ -44,62 +44,32 @@ export function ColorPalette({
   };
 
   return (
-    <div
-      className="color_palette"
-      onPointerDown={(e) => e.stopPropagation()}
-    >
+    <div className="color_palette" onPointerDown={(e) => e.stopPropagation()}>
       <p className="color_palette_label">COLOR</p>
 
-      <div
-        className="color_palette_swatches"
-        role="radiogroup"
-        aria-label="공 색상 선택"
-      >
+      <div className="color_palette_swatches" role="radiogroup" aria-label="공 색상 선택">
         {PRESET_COLORS.map((color) => {
           const isSelected =
             selectedPreset ===
             (color === "gradient" ? "gradient" : normalizeHex(color));
           const isGradient = color === "gradient";
           return (
-            <button
-              key={color}
-              type="button"
-              role="radio"
-              aria-checked={isSelected}
-              className={`color_palette_swatch${isSelected ? " is_selected" : ""}`}
-              style={
-                isGradient
-                  ? { background: "linear-gradient(to bottom, #b21210, #0033ff)" }
-                  : ({ "--swatch-color": color } as React.CSSProperties)
-              }
-              onClick={() => onChange(color)}
-            />
+            <button key={color} type="button" role="radio" aria-checked={isSelected}
+							className={`color_palette_swatch${isGradient ? " color_palette_swatch_gradient" : ""}${isSelected ? " is_selected" : ""}`}
+							style={isGradient ? undefined : ({ "--swatch-color": color } as React.CSSProperties)} onClick={() => onChange(color)} />
           );
         })}
       </div>
 
       <hr className="color_palette_divider" />
 
-      <button
-        type="button"
-        className="color_palette_custom"
-        onClick={openCustomPicker}
-      >
+      <button type="button" className="color_palette_custom" onClick={openCustomPicker}>
         <span>직접 선택</span>
-        <span
-          className="color_palette_custom_preview"
-          style={{ backgroundColor: value }}
-        />
+        <span className="color_palette_custom_preview" style={{ backgroundColor: value }} />
       </button>
 
-      <input
-        ref={colorInputRef}
-        type="color"
-        className="color_palette_input"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        aria-label="직접 색상 선택"
-      />
+      <input ref={colorInputRef} type="color" className="color_palette_input" value={value}
+				onChange={(e) => onChange(e.target.value)}aria-label="직접 색상 선택" />
     </div>
   );
 }
