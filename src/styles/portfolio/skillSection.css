@@ -1,12 +1,12 @@
 .skill_section {
   position: relative;
   width: 100%;
+  padding: 140px 40px;
   background: linear-gradient(180deg, var(--pfBgGray) 0%, var(--pfBgLavender) 100%);
   overflow: hidden;
 }
 
-/* 배경 도형 캔버스 — 마우스 패럴랙스용, 클릭은 통과 */
-.skill_bg_canvas {
+.skill_canvas {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -21,7 +21,7 @@
 }
 
 .skill_header {
-  margin-bottom: 48px;
+  margin-bottom: 72px;
 }
 
 .skill_tag {
@@ -52,71 +52,58 @@
   color: var(--pfTextSub);
 }
 
-/* 카테고리 범례 — 가로 나열 */
-.skill_legend {
+.skill_category_list {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 14px 28px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  flex-direction: column;
+  gap: 48px;
 }
 
-.skill_legend_item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.skill_category {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding-top: 32px;
+  border-top: 1px solid var(--pfTrack);
 }
 
-.skill_legend_dot {
-  flex-shrink: 0;
-  width: 12px;
-  height: 12px;
-}
-
-.skill_legend_label {
+.skill_category_label {
+  grid-column: 1;
+  grid-row: 1;
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  line-height: 1;
-  color: var(--pfTextStrong);
-  white-space: nowrap;
+  line-height: 1.3;
+  color: var(--pfBlack);
 }
 
-.skill_legend_count {
+.skill_chip_wrap {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+  align-content: flex-start;
+}
+
+.skill_chip {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  background: var(--pfWhite);
+  box-shadow: 0 4px 20px var(--pfShadow);
+  font-size: 1.4rem;
   font-weight: 600;
   line-height: 1;
-  color: var(--pfTextMuted);
+  color: var(--pfTextStrong);
+  transition: box-shadow 0.25s;
 }
 
-/* 단어 구름 캔버스 — 참조 샌드박스와 동일한 다크 배경 */
-.skill_cloud {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 640px;
-  margin-top: 24px;
-  background: #202025;
-  cursor: grab;
-}
-
-.skill_cloud canvas {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.skill_cloud:active {
-  cursor: grabbing;
-}
-
-@media (max-width: 900px) {
-  .skill_cloud {
-    height: 480px;
-  }
+.skill_chip:hover {
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.12);
 }
 
 @media (max-width: 768px) {
@@ -124,7 +111,18 @@
     padding: 96px 24px;
   }
 
-  .skill_cloud {
-    height: 420px;
+  .skill_category {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skill_category_label {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .skill_chip_wrap {
+    grid-column: 1;
+    grid-row: 2;
   }
 }
