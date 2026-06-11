@@ -1,5 +1,6 @@
 import React from "react";
 import MainSection from "@/components/portfolio/MainSection";
+import SkillSection from "@/components/portfolio/SkillSection";
 
 export const metadata = {
   title: "2taeyoon",
@@ -19,5 +20,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <MainSection />;
+  return (
+    <main>
+      <MainSection />
+      <SkillSection />
+    </main>
+  );
 }
