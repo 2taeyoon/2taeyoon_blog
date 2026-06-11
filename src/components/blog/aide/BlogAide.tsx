@@ -30,22 +30,14 @@ export default function BlogAide() {
       <aside className="blog_aide_sidebar">
         <div className="blog_aide_inner">
           <BlogAideHeader onClose={handleClose} />
-          <BlogAideMenu
-            sections={MENU_SECTIONS}
-            isPathActive={isPathActive}
-            isOpen={isOpen}
-            onToggleSection={toggleSection}
-          />
+          <BlogAideMenu sections={MENU_SECTIONS} isPathActive={isPathActive} isOpen={isOpen} onToggleSection={toggleSection} />
           {/* 사이드바 숨김 상태에서 왼쪽 가장자리 클릭 영역 */}
           <div className="blog_aide_bar" onClick={handleOpen}></div>
         </div>
       </aside>
       {/* 모바일에서 사이드바가 열렸을 때 배경 어둡게 처리하는 오버레이 */}
       {isMobile && (
-        <div
-          className="blog_aide_overlay"
-          onClick={handleMobileOverlayClick}
-        />
+        <div className="blog_aide_overlay" onClick={handleMobileOverlayClick} />
       )}
     </>
   );
