@@ -89,22 +89,9 @@ export function SliderFadeComponent() {
 	return (
     <div className="swiper_common">
 			{selectedCards.length > 1 && (
-				<Swiper
-					key={swiperKey} // 강제 리렌더링
-					loop={true}
-					effect={"fade"}
-					speed={1000} // 슬라이드 전환 속도
-					autoplay={{
-						delay: 5000, // 다음 슬라이드로 넘어가는 시간
-						disableOnInteraction: false, // 상호작용해도 자동 재생이 멈추지 않음
-						pauseOnMouseEnter: false, // 마우스를 올려도 멈추지 않음음
-					}}
-					allowTouchMove={false} // 사용자 상호작용 넘기기 비활성화
-					modules={[Autoplay, EffectFade]}
-					onAutoplayTimeLeft={onAutoplayTimeLeft} 
-					onSwiper={(s) => (swiperRef.current = s)}
-					className="mySwiper"
-				>
+				<Swiper className="mySwiper" key={swiperKey} loop={true} effect={"fade"} speed={1000} 
+					autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: false }} allowTouchMove={false}
+					modules={[Autoplay, EffectFade]} onAutoplayTimeLeft={onAutoplayTimeLeft} onSwiper={(s) => (swiperRef.current = s)}>
 					{selectedCards.map((card, index) => (
 						<SwiperSlide key={index}>
 							<Link href={`/${card.type}/${card.title?.replace(/\s+/g, '-')}`} className="swiper_image_wrap">
