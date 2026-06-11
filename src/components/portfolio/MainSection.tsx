@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import BaubleScene from "@/components/portfolio/scene/BaubleScene";
 import Underlay from "@/components/portfolio/ui/Underlay";
-import Overlay from "@/components/portfolio/ui/Overlay";
 import { ColorPalette } from "@/components/portfolio/ui/ColorPalette";
 
 export default function MainSection() {
@@ -27,7 +26,6 @@ export default function MainSection() {
       <Underlay onTogglePalette={() => setPaletteOpen((prev) => !prev)} />
       {paletteOpen && <ColorPalette value={ballColor} onChange={handleColorChange} />}
       <BaubleScene ballColor={ballColor} />
-      <Overlay />
     </div>
   );
 }
