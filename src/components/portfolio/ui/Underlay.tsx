@@ -3,7 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-export default function Underlay({ onTogglePalette }: { onTogglePalette: () => void }) {
+interface UnderlayProps {
+  onTogglePalette: () => void;
+  onClosePalette: () => void;
+}
+
+export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
@@ -39,6 +44,17 @@ export default function Underlay({ onTogglePalette }: { onTogglePalette: () => v
     if (audioRef.current) audioRef.current.volume = next / 100;
   };
 
+  // 볼륨 창과 팔레트 창은 동시에 열리지 않도록 서로 닫아줌
+  const toggleVolume = () => {
+    setVolumeOpen((prev) => !prev);
+    onClosePalette();
+  };
+
+  const togglePalette = () => {
+    setVolumeOpen(false);
+    onTogglePalette();
+  };
+
   // 클릭이 캔버스(window pointerdown)로 전파되어 큐브가 따라오는 것을 차단
   const blockPointer = (e: React.PointerEvent) => e.stopPropagation();
 
@@ -63,7 +79,7 @@ export default function Underlay({ onTogglePalette }: { onTogglePalette: () => v
             )}
           </button>
           <div className="underlay_volume_wrap">
-            <button type="button" className="underlay_control_button" onClick={() => setVolumeOpen((prev) => !prev)} aria-label="볼륨 조절 열기/닫기" aria-expanded={volumeOpen}>
+            <button type="button" className="underlay_control_button" onClick={toggleVolume} aria-label="볼륨 조절 열기/닫기" aria-expanded={volumeOpen}>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none" />
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
@@ -77,7 +93,7 @@ export default function Underlay({ onTogglePalette }: { onTogglePalette: () => v
               </div>
             )}
           </div>
-          <button type="button" className="underlay_control_button" onClick={onTogglePalette} aria-label="색상 변경 팔레트 열기/닫기">
+          <button type="button" className="underlay_control_button" onClick={togglePalette} aria-label="색상 변경 팔레트 열기/닫기">
             <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z" />
             </svg>
@@ -85,41 +101,30 @@ export default function Underlay({ onTogglePalette }: { onTogglePalette: () => v
         </div>
       </div>
 
-      <div className="underlay_gap underlay_gap_60" />
-
       <div className="underlay_intro_row">
-        <p className="underlay_intro_text">
-          A front-end developer with a sense of design
-          <br />
-          <b>—</b>
-        </p>
-        <div className="underlay_gutter" />
+        <div className="underlay_intro_text">
+          <div>A front-end developer with a sense of design</div>
+          <div className="underlay_intro_dash">—</div>
+        </div>
       </div>
-
-      <div className="underlay_gap underlay_gap_10" />
 
       <div className="underlay_title_row">
         <p className="underlay_title_front">FRONT</p>
-        <div className="underlay_gutter" />
         <p className="underlay_title_end">END</p>
       </div>
 
-      <div className="underlay_gap underlay_gap_60" />
-
       <div className="underlay_bottom_row">
-        <p className="underlay_roles">
-					UI/UX Designer
-          <br />
-          Web Publisher
-        </p>
+        <div className="underlay_roles">
+          <div>UI/UX Designer</div>
+          <div>Web Publisher</div>
+        </div>
         <div className="underlay_gutter" />
         <p className="underlay_drag_hint">Move and drag the mouse</p>
         <div className="underlay_gutter" />
-        <p className="underlay_roles_right">
-          Frontend Developer
-          <br />
-          Backend Developer
-        </p>
+        <div className="underlay_roles_right">
+          <div>Frontend Developer</div>
+          <div>Backend Developer</div>
+        </div>
       </div>
     </div>
   );
