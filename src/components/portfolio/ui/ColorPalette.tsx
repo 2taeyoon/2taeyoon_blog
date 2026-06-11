@@ -2,12 +2,11 @@
 
 import React, { useRef } from "react";
 
-/** hex가 아닌 특수 표면 프리셋 (텍스처/그라데이션) */
-const NAMED_PRESETS = ["fabric", "gradient"];
+/** hex가 아닌 특수 표면 프리셋 (텍스처) */
+const NAMED_PRESETS = ["fabric"];
 
 const PRESET_COLORS = [
   "fabric",
-  "gradient",
   "#b21210",
   "#e0761f",
   "#c2a10f",
@@ -56,7 +55,7 @@ export function ColorPalette({
           const isSelected = selectedPreset === (isNamed ? color : normalizeHex(color));
           return (
             <button key={color} type="button" role="radio" aria-checked={isSelected}
-							className={`color_palette_swatch${color === "fabric" ? " color_palette_swatch_fabric" : ""}${color === "gradient" ? " color_palette_swatch_gradient" : ""}${isSelected ? " is_selected" : ""}`}
+							className={`color_palette_swatch${color === "fabric" ? " color_palette_swatch_fabric" : ""}${isSelected ? " is_selected" : ""}`}
 							style={isNamed ? undefined : ({ "--swatch-color": color } as React.CSSProperties)} onClick={() => onChange(color)} />
           );
         })}
