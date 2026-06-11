@@ -11,6 +11,7 @@ import { baubleMaterial, sizeSteps } from "@/lib/portfolio/pointerState";
 import Bauble from "@/components/portfolio/scene/Bauble";
 import PointerInput from "@/components/portfolio/scene/PointerInput";
 import Collisions from "@/components/portfolio/scene/Collisions";
+import ResponsiveCamera from "@/components/portfolio/scene/ResponsiveCamera";
 
 interface BaubleSceneProps {
   ballColor: string;
@@ -98,11 +99,18 @@ export default function BaubleScene({ ballColor }: BaubleSceneProps) {
   }, [ballColor]);
 
   return (
-    <Canvas className="bauble_scene"
-			shadows dpr={1.5} gl={{ alpha: true, stencil: false, antialias: false }}
-			camera={{ position: [0, 0, 20], fov: 35, near: 10, far: 40 }}
-			onCreated={(state) => { state.gl.toneMappingExposure = 1.7; }}>
-
+    <Canvas
+      className="bauble_scene"
+      shadows
+      dpr={[1, 2]}
+      resize={{ scroll: false, debounce: { scroll: 0, resize: 0 } }}
+      gl={{ alpha: true, stencil: false, antialias: false }}
+      camera={{ position: [0, 0, 20], fov: 35, near: 10, far: 40 }}
+      onCreated={(state) => {
+        state.gl.toneMappingExposure = 1.7;
+      }}
+    >
+      <ResponsiveCamera />
       <ambientLight intensity={1.0 * Math.PI} />
       <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[512, 512]} intensity={Math.PI} />
       <directionalLight position={[0, 5, -4]} intensity={4.5 * Math.PI} />
