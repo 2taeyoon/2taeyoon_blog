@@ -21,20 +21,8 @@ export default function BlogHeader() {
         <Link href="/blog" className="blog_header_title">
           심오한 개발자
         </Link>
-        <button
-          type="button"
-          className="blog_header_avatar"
-          aria-label="사이드바 열기"
-          onClick={openMobileSidebar}
-        >
-          <Image
-            src="/favicon/favicon-48x48.png"
-            alt="프로필 이미지"
-            width={40}
-            height={40}
-            className="blog_header_avatar_image"
-            unoptimized
-          />
+        <button type="button" className="blog_header_avatar" aria-label="사이드바 열기" onClick={openMobileSidebar}>
+          <Image src="/favicon/favicon-48x48.png" alt="프로필 이미지" width={40} height={40} className="blog_header_avatar_image" unoptimized />
         </button>
       </div>
     </header>
