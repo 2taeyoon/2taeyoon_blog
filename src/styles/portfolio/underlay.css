@@ -1,0 +1,160 @@
+.underlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  pointer-events: none;
+}
+
+.underlay_top_row {
+  width: 100%;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.underlay_logo {
+  font-family: "Nunito Sans", sans-serif;
+  flex: 1 1 0%;
+  height: 30px;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 30px;
+  color: black;
+  letter-spacing: -2px;
+}
+
+.underlay_nav {
+  flex: 1 1 0%;
+  display: flex;
+  gap: 2em;
+}
+
+.underlay_nav_item {
+  flex: 1 1 0%;
+  height: 12px;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  color: black;
+  white-space: nowrap;
+}
+
+.underlay_bracket {
+  flex: 1 1 0%;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: right;
+  color: black;
+}
+
+.underlay_gap {
+  flex-shrink: 0;
+}
+
+.underlay_gap_60 {
+  height: 60px;
+}
+
+.underlay_gap_10 {
+  height: 10px;
+}
+
+.underlay_intro_row {
+  width: 100%;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.underlay_intro_text {
+  flex: 1 1 0%;
+  height: 100%;
+  font-size: 12px;
+  line-height: 1.5em;
+  color: black;
+}
+
+.underlay_gutter {
+  width: 10px;
+  flex-shrink: 0;
+}
+
+.underlay_title_row {
+  width: 100%;
+  flex: 1 1 0%;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.underlay_title_front {
+  flex: 1 1 0%;
+  font-size: 250px;
+  line-height: 1em;
+  color: black;
+  margin: 0;
+  letter-spacing: -10px;
+}
+
+.underlay_title_end {
+  flex: 1 1 0%;
+  font-size: 250px;
+  line-height: 100%;
+  text-align: right;
+  color: black;
+  margin: 0;
+  letter-spacing: -10px;
+}
+
+.underlay_bottom_row {
+  pointer-events: all;
+  cursor: auto;
+  width: 100%;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.underlay_roles {
+  white-space: nowrap;
+  flex: 1 1 0%;
+  font-size: 12px;
+  line-height: 1.5em;
+  color: black;
+}
+
+.underlay_drag_hint {
+  flex: 1 1 0%;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1em;
+  text-align: center;
+  color: black;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.underlay_bottom_spacer {
+  flex: 1 1 0%;
+  font-size: 12px;
+  line-height: 1em;
+  text-align: right;
+  color: black;
+}
