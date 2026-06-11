@@ -7,9 +7,6 @@ export const generateMetadata = (params: { params: Promise<{ title: string }> })
 
 export default async function Page({ params }: { params: Promise<{ title: string }> }) {
   return (
-    <StudyDetailPage
-      title={(await params).title}
-      cards={blogCategoryData.backend.cards}
-    />
+    <StudyDetailPage title={(await params).title} cards={blogCategoryData.backend.cards} />
   );
 }
