@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 
 /** hex가 아닌 특수 표면 프리셋 (텍스처) */
 const NAMED_PRESETS = ["fabric"];
@@ -16,8 +16,14 @@ const PRESET_COLORS = [
   "#631e76",
 ];
 
+const DEFAULT_CUSTOM_COLOR = "#0033ff";
+
 function normalizeHex(hex: string) {
   return hex.toLowerCase();
+}
+
+function isHexColor(value: string) {
+  return /^#[0-9a-fA-F]{6}$/.test(value);
 }
 
 function isPresetColor(value: string) {
@@ -27,6 +33,10 @@ function isPresetColor(value: string) {
   );
 }
 
+function toColorInputValue(value: string) {
+  return isHexColor(value) ? normalizeHex(value) : DEFAULT_CUSTOM_COLOR;
+}
+
 export function ColorPalette({
   value,
   onChange,
@@ -34,16 +44,14 @@ export function ColorPalette({
   value: string;
   onChange: (color: string) => void;
 }) {
-  const colorInputRef = useRef<HTMLInputElement>(null);
   const selectedPreset = NAMED_PRESETS.includes(value)
     ? value
     : isPresetColor(value)
       ? normalizeHex(value)
       : null;
 
-  const openCustomPicker = () => {
-    colorInputRef.current?.click();
-  };
+  const inputValue = toColorInputValue(value);
+  const previewIsFabric = value === "fabric";
 
   return (
     <div className="color_palette" onPointerDown={(e) => e.stopPropagation()}>
@@ -54,22 +62,37 @@ export function ColorPalette({
           const isNamed = NAMED_PRESETS.includes(color);
           const isSelected = selectedPreset === (isNamed ? color : normalizeHex(color));
           return (
-            <button key={color} type="button" role="radio" aria-checked={isSelected}
-							className={`color_palette_swatch${color === "fabric" ? " color_palette_swatch_fabric" : ""}${isSelected ? " is_selected" : ""}`}
-							style={isNamed ? undefined : ({ "--swatch-color": color } as React.CSSProperties)} onClick={() => onChange(color)} />
+            <button
+              key={color}
+              type="button"
+              role="radio"
+              aria-checked={isSelected}
+              className={`color_palette_swatch${color === "fabric" ? " color_palette_swatch_fabric" : ""}${isSelected ? " is_selected" : ""}`}
+              style={isNamed ? undefined : ({ "--swatch-color": color } as React.CSSProperties)}
+              onClick={() => onChange(color)}
+            />
           );
         })}
       </div>
 
       <hr className="color_palette_divider" />
 
-      <button type="button" className="color_palette_custom" onClick={openCustomPicker}>
+      {/* 모바일에서 programmatic click()이 막히므로 label + 투명 input 오버레이로 직접 탭 */}
+      <label className="color_palette_custom">
         <span>직접 선택</span>
-        <span className="color_palette_custom_preview" style={{ backgroundColor: value }} />
-      </button>
-
-      <input ref={colorInputRef} type="color" className="color_palette_input" value={value}
-				onChange={(e) => onChange(e.target.value)} aria-label="직접 색상 선택" />
+        <span
+          className={`color_palette_custom_preview${previewIsFabric ? " color_palette_swatch_fabric" : ""}`}
+          style={previewIsFabric ? undefined : { backgroundColor: inputValue }}
+          aria-hidden="true"
+        />
+        <input
+          type="color"
+          className="color_palette_input"
+          value={inputValue}
+          onChange={(e) => onChange(e.target.value)}
+          aria-label="직접 색상 선택"
+        />
+      </label>
     </div>
   );
 }
