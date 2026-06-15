@@ -24,6 +24,7 @@ export default function Page() {
     <main>
       <MainSection />
       <SkillSection />
+			<div style={{ width: "100%", height: "100vh", backgroundColor: "red" }}></div>
     </main>
   );
 }
