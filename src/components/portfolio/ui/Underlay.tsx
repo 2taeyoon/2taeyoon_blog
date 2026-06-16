@@ -18,13 +18,8 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [volumeOpen, setVolumeOpen] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   volumeRef.current = volume;
-
-  useEffect(() => {
-    setIsTouchDevice(window.matchMedia("(pointer: coarse)").matches);
-  }, []);
 
   const wireAudioGraph = () => {
     if (graphWiredRef.current || !audioRef.current) return;
@@ -238,11 +233,6 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
                   />
                   <span className="underlay_volume_value">{volume}</span>
                 </div>
-                {isTouchDevice && (
-                  <p className="underlay_volume_hint">
-                    슬라이더는 이 사이트 음량입니다. 전체 크기는 휴대폰 측면 볼륨 버튼으로 조절하세요.
-                  </p>
-                )}
               </div>
             )}
           </div>
