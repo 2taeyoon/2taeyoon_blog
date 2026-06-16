@@ -11,7 +11,7 @@ interface UnderlayProps {
 export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const volumeRef = useRef(100);
-  // const unlockHandlerRef = useRef<(() => void) | null>(null);
+  const unlockHandlerRef = useRef<(() => void) | null>(null);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [volumeOpen, setVolumeOpen] = useState(false);
@@ -39,43 +39,43 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
     }
   };
 
-  // const removeUnlockListeners = () => {
-  //   const handler = unlockHandlerRef.current;
-  //   if (!handler) return;
-  //   window.removeEventListener("pointerdown", handler);
-  //   window.removeEventListener("keydown", handler);
-  //   unlockHandlerRef.current = null;
-  // };
+  const removeUnlockListeners = () => {
+    const handler = unlockHandlerRef.current;
+    if (!handler) return;
+    window.removeEventListener("pointerdown", handler);
+    window.removeEventListener("keydown", handler);
+    unlockHandlerRef.current = null;
+  };
 
   // --- 현재: 처음 렌더링 시 자동 재생 (차단되면 첫 클릭/키 입력에 재시도) ---
-  // useEffect(() => {
-  //   void tryPlay();
-
-  //   // Chrome/Safari 등은 사용자 제스처 없이 audio.play()를 막음 → 첫 상호작용 때 한 번 더 시도
-  //   const unlockOnInteraction = () => {
-  //     void tryPlay().then((ok) => {
-  //       if (ok) removeUnlockListeners();
-  //     });
-  //   };
-  //   unlockHandlerRef.current = unlockOnInteraction;
-  //   window.addEventListener("pointerdown", unlockOnInteraction);
-  //   window.addEventListener("keydown", unlockOnInteraction);
-
-  //   return () => {
-  //     removeUnlockListeners();
-  //     audioRef.current?.pause();
-  //     audioRef.current = null;
-  //   };
-  // // eslint-disable-next-line react-hooks/exhaustive-deps -- 마운트 시 1회만 실행
-  // }, []);
-
-  // --- 나중에 개발 시: 처음 렌더링 시 자동 재생 없음 ---
   useEffect(() => {
+    void tryPlay();
+
+    // Chrome/Safari 등은 사용자 제스처 없이 audio.play()를 막음 → 첫 상호작용 때 한 번 더 시도
+    const unlockOnInteraction = () => {
+      void tryPlay().then((ok) => {
+        if (ok) removeUnlockListeners();
+      });
+    };
+    unlockHandlerRef.current = unlockOnInteraction;
+    window.addEventListener("pointerdown", unlockOnInteraction);
+    window.addEventListener("keydown", unlockOnInteraction);
+
     return () => {
+      removeUnlockListeners();
       audioRef.current?.pause();
       audioRef.current = null;
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- 마운트 시 1회만 실행
   }, []);
+
+  // --- 개발 시: 처음 렌더링 시 자동 재생 없음 ---
+  // useEffect(() => {
+  //   return () => {
+  //     audioRef.current?.pause();
+  //     audioRef.current = null;
+  //   };
+  // }, []);
 
   const toggleMusic = () => {
     const audio = createAudio();
@@ -93,7 +93,8 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
   const handleVolumeChange = (next: number) => {
     const clamped = Math.min(100, Math.max(0, next));
     setVolume(clamped);
-    if (audioRef.current) audioRef.current.volume = clamped / 100;
+    const audio = audioRef.current ?? createAudio();
+    audio.volume = clamped / 100;
   };
 
   const setVolumeFromClientX = (clientX: number) => {
@@ -105,19 +106,23 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
     handleVolumeChange(Math.round(ratio * 100));
   };
 
+  // 터치 기기에서는 setPointerCapture가 네이티브 range 슬라이더를 막으므로 마우스에서만 사용
   const onVolumeSliderPointerDown = (e: React.PointerEvent<HTMLInputElement>) => {
     e.stopPropagation();
+    if (e.pointerType !== "mouse") return;
     e.currentTarget.setPointerCapture(e.pointerId);
     setVolumeFromClientX(e.clientX);
   };
 
   const onVolumeSliderPointerMove = (e: React.PointerEvent<HTMLInputElement>) => {
+    if (e.pointerType !== "mouse") return;
     if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
     e.stopPropagation();
     setVolumeFromClientX(e.clientX);
   };
 
   const onVolumeSliderPointerUp = (e: React.PointerEvent<HTMLInputElement>) => {
+    if (e.pointerType !== "mouse") return;
     if (!e.currentTarget.hasPointerCapture(e.pointerId)) return;
     e.stopPropagation();
     e.currentTarget.releasePointerCapture(e.pointerId);
