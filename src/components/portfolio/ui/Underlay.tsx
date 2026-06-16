@@ -10,25 +10,67 @@ interface UnderlayProps {
 
 export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const gainRef = useRef<GainNode | null>(null);
+  const graphWiredRef = useRef(false);
   const volumeRef = useRef(100);
   const unlockHandlerRef = useRef<(() => void) | null>(null);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [volumeOpen, setVolumeOpen] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   volumeRef.current = volume;
+
+  useEffect(() => {
+    setIsTouchDevice(window.matchMedia("(pointer: coarse)").matches);
+  }, []);
+
+  const wireAudioGraph = () => {
+    if (graphWiredRef.current || !audioRef.current) return;
+    const ctx = new AudioContext();
+    const source = ctx.createMediaElementSource(audioRef.current);
+    const gain = ctx.createGain();
+    gain.gain.value = volumeRef.current / 100;
+    source.connect(gain);
+    gain.connect(ctx.destination);
+    audioCtxRef.current = ctx;
+    gainRef.current = gain;
+    graphWiredRef.current = true;
+  };
+
+  const resumeAudioContext = async () => {
+    try {
+      await audioCtxRef.current?.resume();
+    } catch {
+      // ignore
+    }
+  };
+
+  const applyVolume = (percent: number) => {
+    const level = percent / 100;
+    if (gainRef.current) {
+      gainRef.current.gain.value = level;
+    }
+    if (audioRef.current) {
+      // iOS 등에서 element.volume만으로는 안 줄어드는 경우가 있어 GainNode가 주 경로
+      audioRef.current.volume = level;
+    }
+  };
 
   const createAudio = () => {
     if (audioRef.current) return audioRef.current;
     const audio = new Audio("/audio/Amber_Angles.mp3");
-    audio.loop = true; // 곡이 끝나면 처음부터 다시 재생
+    audio.loop = true;
     audio.volume = volumeRef.current / 100;
     audioRef.current = audio;
+    wireAudioGraph();
     return audio;
   };
 
   const tryPlay = async () => {
     const audio = createAudio();
+    await resumeAudioContext();
     try {
       await audio.play();
       setPlaying(true);
@@ -65,6 +107,10 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
       removeUnlockListeners();
       audioRef.current?.pause();
       audioRef.current = null;
+      void audioCtxRef.current?.close();
+      audioCtxRef.current = null;
+      gainRef.current = null;
+      graphWiredRef.current = false;
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps -- 마운트 시 1회만 실행
   }, []);
@@ -93,8 +139,9 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
   const handleVolumeChange = (next: number) => {
     const clamped = Math.min(100, Math.max(0, next));
     setVolume(clamped);
-    const audio = audioRef.current ?? createAudio();
-    audio.volume = clamped / 100;
+    createAudio();
+    void resumeAudioContext();
+    applyVolume(clamped);
   };
 
   const setVolumeFromClientX = (clientX: number) => {
@@ -172,23 +219,30 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
             </button>
             {volumeOpen && (
               <div className="underlay_volume_panel" onPointerDown={blockPointer}>
-                <input
-                  ref={volumeSliderRef}
-                  type="range"
-                  min={0}
-                  max={100}
-                  step={1}
-                  value={volume}
-                  onChange={(e) => handleVolumeChange(Number(e.target.value))}
-                  onInput={(e) => handleVolumeChange(Number(e.currentTarget.value))}
-                  onPointerDown={onVolumeSliderPointerDown}
-                  onPointerMove={onVolumeSliderPointerMove}
-                  onPointerUp={onVolumeSliderPointerUp}
-                  onPointerCancel={onVolumeSliderPointerUp}
-                  className="underlay_volume_slider"
-                  aria-label="볼륨"
-                />
-                <span className="underlay_volume_value">{volume}</span>
+                <div className="underlay_volume_row">
+                  <input
+                    ref={volumeSliderRef}
+                    type="range"
+                    min={0}
+                    max={100}
+                    step={1}
+                    value={volume}
+                    onChange={(e) => handleVolumeChange(Number(e.target.value))}
+                    onInput={(e) => handleVolumeChange(Number(e.currentTarget.value))}
+                    onPointerDown={onVolumeSliderPointerDown}
+                    onPointerMove={onVolumeSliderPointerMove}
+                    onPointerUp={onVolumeSliderPointerUp}
+                    onPointerCancel={onVolumeSliderPointerUp}
+                    className="underlay_volume_slider"
+                    aria-label="앱 재생 볼륨"
+                  />
+                  <span className="underlay_volume_value">{volume}</span>
+                </div>
+                {isTouchDevice && (
+                  <p className="underlay_volume_hint">
+                    슬라이더는 이 사이트 음량입니다. 전체 크기는 휴대폰 측면 볼륨 버튼으로 조절하세요.
+                  </p>
+                )}
               </div>
             )}
           </div>
