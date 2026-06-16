@@ -125,7 +125,7 @@
   gap: 8px;
   width: max-content;
   max-width: min(280px, calc(100vw - 32px));
-  padding: 12px 16px;
+  padding: 0 16px;
   background: var(--pfWhite);
   box-shadow: 0 4px 20px var(--pfShadow);
 }
@@ -134,15 +134,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.underlay_volume_hint {
-  margin: 0;
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.45;
-  color: var(--pfTextSub);
-  white-space: normal;
 }
 
 .underlay_volume_slider {
@@ -441,6 +432,10 @@
   }
 
   .underlay_gutter {
+    display: none;
+  }
+
+  .underlay_volume_wrap {
     display: none;
   }
 
