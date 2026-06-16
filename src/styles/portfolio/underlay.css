@@ -125,7 +125,6 @@
   padding: 0px 20px;
   background: var(--pfWhite);
   box-shadow: 0 4px 20px var(--pfShadow);
-  touch-action: none;
 }
 
 .underlay_volume_slider {
@@ -138,7 +137,7 @@
   background: transparent;
   outline: none;
   cursor: pointer;
-  touch-action: none;
+  touch-action: manipulation;
 }
 
 .underlay_volume_slider::-webkit-slider-runnable-track {
