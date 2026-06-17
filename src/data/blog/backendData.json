@@ -6,6 +6,22 @@
 				{"text": "Backend" },
 				{"color": "purpleBright"}
 			],
+			"mdFile": "/images/blog/backend/13/13.md",
+      "image": "/images/blog/backend/13/main_image.webp",
+			"sortDate": "2026-06-17",
+      "title": "행사 일정 UX: 등록형 행사는 직링크, 일반 일정은 팝업",
+			"subTitle": "통합 일정 화면에서 일반 행사 캘린더와 등록·접수형 행사가 한 목록에 섞여 있을 때, 등록형은 상세 페이지로 바로 이동하고 일반 일정만 팝업 UX를 유지하는 방법을 정리합니다. 레거시 PHP 뷰 템플릿에서 팝업용 마크업을 출력하지 않는 한 가지 원칙으로 JS 수정 없이 UX를 갈라 내는 패턴입니다.",
+			"hashs": [
+				{"name": "#PHP"},
+				{"name": "#MySQL"}
+			]
+		},
+		{
+			"type": "blog/backend",
+			"category": [
+				{"text": "Backend" },
+				{"color": "purpleBright"}
+			],
 			"mdFile": "/images/blog/backend/12/12.md",
       "image": "/images/blog/backend/12/main_image.webp",
 			"sortDate": "2026-03-20",

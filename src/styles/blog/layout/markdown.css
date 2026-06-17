@@ -286,7 +286,7 @@
 	max-width: 100%;
 	border: 1px solid var(--borderSubtle);
 	border-collapse: collapse;
-	font-size: 0.875rem;
+	margin: 20px 0;
 }
 
 .blog table thead tr,
