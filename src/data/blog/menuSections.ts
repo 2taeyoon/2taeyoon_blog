@@ -3,6 +3,12 @@ import { allBlogCards, BLOG_CATEGORIES } from "./cards";
 
 export const MENU_SECTIONS: MenuSection[] = [
   {
+    id: "portfolio",
+    title: "PORTFOLIO",
+    href: "/",
+    type: "linkOnly",
+  },
+  {
     id: "blog",
     title: "BLOG",
     count: allBlogCards.length,
