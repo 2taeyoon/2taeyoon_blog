@@ -36,13 +36,12 @@ export default function BlogAideMenu({
           
           return (
             <nav key={section.id} className="blog_aide_menu">
-              <Link href={section.href} className={`blog_aide_menu_category${active ? " active" : ""}`} 
-								suppressHydrationWarning onClick={closeMobileSidebar}>
-                <div className="blog_aide_menu_title">
-									<span className="menu_title">{section.title}</span>
-									{section.count != null && <span className="menu_count">{section.count}</span>}
-								</div>
-              </Link>
+              <div className={`blog_aide_menu_category${active ? " active" : ""}`}>
+                <Link href={section.href} className="blog_aide_menu_title" suppressHydrationWarning onClick={closeMobileSidebar}>
+                  <span className="menu_title">{section.title}</span>
+                  {section.count != null && <span className="menu_count">{section.count}</span>}
+                </Link>
+              </div>
             </nav>
           );
         }

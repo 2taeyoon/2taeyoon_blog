@@ -4,10 +4,10 @@ import SkillSection from "@/components/portfolio/SkillSection";
 
 export const metadata = {
   title: "2taeyoon",
-  description: "2taeyoon의 개인 블로그입니다.",
+  description: "2taeyoon's portfolio",
   openGraph: {
     title: "2taeyoon",
-    description: "2taeyoon의 개인 블로그입니다.",
+    description: "2taeyoon's portfolio",
     url: "https://www.2taeyoon.com/",
     images: [
       {

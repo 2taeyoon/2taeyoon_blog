@@ -9,7 +9,7 @@
 
 .blog_aide_header h1 { font-weight: 700; font-size: 2.0rem; white-space: nowrap; color: var(--black); }
 .blog_aide_menu { position: relative; display: flex; flex-direction: column; align-items: center; }
-.blog_aide_menu_list { width: 100%; padding: 24px 16px; height: calc(100% - 72px); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.blog_aide_menu_list { width: 100%; padding: 24px 16px; height: calc(100% - 72px); overflow-y: auto; display: flex; flex-direction: column; }
 .blog_aide_menu_category { display: flex; justify-content: space-between; align-items: center;  width: 100%; }
 .blog_aide_menu_category svg { width: 18px; height: 18px; margin-left: 10px; fill: var(--blackmute); transition: transform 0.3s ease, fill 0.3s ease; }
 .blog_aide_menu_category svg.rotated { transform: rotate(180deg); }

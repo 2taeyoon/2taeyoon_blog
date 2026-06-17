@@ -14,7 +14,7 @@
 .card_hash_wrap .card_hash .hash_text { color: var(--white); font-size: 1.2rem; letter-spacing: 0; }
 
 @media (hover: hover) {
-	.card:hover .card_top .card_img { scale: 1.02; filter: brightness(0.9); }
+	.card:hover .card_top .card_img { scale: 1.02; filter: brightness(0.7); }
 }
 
 .card .card_top .card_img .card_badge_wrap { display: flex; align-items: center; position: absolute; top: 20px; left: 27px; }

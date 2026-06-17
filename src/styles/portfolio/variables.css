@@ -1,7 +1,6 @@
 /* 포트폴리오('/') 전용 색상 변수 — 블로그 변수(variables.css)와 충돌하지 않도록 pf 접두사 사용 */
 :root {
-	--pfBlack: #000000;
-	--pfInk: #1b1b1b;
+	--pfBlack: #1b1b1f;
 	--pfTextStrong: #111111;
 	--pfTextSub: #555555;
 	--pfTextMuted: #999999;
