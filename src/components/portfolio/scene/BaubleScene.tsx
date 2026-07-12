@@ -8,13 +8,20 @@ import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
 import { baubleMaterial, sizeSteps } from "@/lib/portfolio/pointerState";
+import type { SceneId } from "@/lib/portfolio/scenes";
 import Bauble from "@/components/portfolio/scene/Bauble";
 import PointerInput from "@/components/portfolio/scene/PointerInput";
 import Collisions from "@/components/portfolio/scene/Collisions";
 import ResponsiveCamera from "@/components/portfolio/scene/ResponsiveCamera";
+import GiantGlassCube from "@/components/portfolio/scene/GiantGlassCube";
+import SceneTransition from "@/components/portfolio/scene/SceneTransition";
 
 interface BaubleSceneProps {
   ballColor: string;
+  scene: SceneId;
+  transitionActive: boolean;
+  onTransitionCover: () => void;
+  onTransitionComplete: () => void;
 }
 
 /** 직물(리넨) 질감 + 인디고/오렌지 그라데이션 텍스처 생성 */
@@ -68,7 +75,32 @@ function createFabricTexture() {
   return texture;
 }
 
-export default function BaubleScene({ ballColor }: BaubleSceneProps) {
+/** Main Scene 전용 — 물리 큐브들 (마운트될 때만 물리 월드 존재) */
+function MainScene({ baubles }: { baubles: { args: number; mass: number; angularDamping: number; linearDamping: number }[] }) {
+  return (
+    <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
+      <PointerInput />
+      <Collisions />
+      {baubles.map((props, i) => (
+        <Bauble key={i} {...props} />
+      ))}
+    </Physics>
+  );
+}
+
+/**
+ * 사이트 전체의 단일 3D 월드.
+ * - GiantGlassCube: 항상 존재하는 하나의 거대한 큐브 (천천히 회전)
+ * - Scene 콘텐츠: 같은 큐브 내부에서 교체됨 (Main = 물리 큐브 / 나머지 = SceneDecor)
+ * - SceneTransition: 전환 시 큐브 스웜 + 카메라 전진
+ */
+export default function BaubleScene({
+  ballColor,
+  scene,
+  transitionActive,
+  onTransitionCover,
+  onTransitionComplete,
+}: BaubleSceneProps) {
   const baubles = useMemo(
     () =>
       [...Array(50)].map(() => ({
@@ -105,7 +137,7 @@ export default function BaubleScene({ ballColor }: BaubleSceneProps) {
       dpr={[1, 2]}
       resize={{ scroll: false, debounce: { scroll: 0, resize: 0 } }}
       gl={{ alpha: true, stencil: false, antialias: false }}
-      camera={{ position: [0, 0, 20], fov: 35, near: 10, far: 40 }}
+      camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 160 }}
       onCreated={(state) => {
         state.gl.toneMappingExposure = 1.7;
       }}
@@ -115,19 +147,18 @@ export default function BaubleScene({ ballColor }: BaubleSceneProps) {
       <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[512, 512]} intensity={Math.PI} />
       <directionalLight position={[0, 5, -4]} intensity={4.5 * Math.PI} />
       <directionalLight position={[0, -15, -0]} intensity={1.5 * Math.PI} color="red" />
-      <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
-        <PointerInput />
-        <Collisions />
-        {baubles.map((props, i) => (
-          <Bauble key={i} {...props} />
-        ))}
-      </Physics>
+
+      <GiantGlassCube />
+
+      {scene === "main" && <MainScene baubles={baubles} />}
+
+      <SceneTransition active={transitionActive} onCover={onTransitionCover} onComplete={onTransitionComplete} />
+
       <Environment files="/3d/adamsbridge.hdr" />
       <EffectComposer multisampling={0}>
         <N8AO aoRadius={2} intensity={10} />
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       </EffectComposer>
-
     </Canvas>
   );
 }
