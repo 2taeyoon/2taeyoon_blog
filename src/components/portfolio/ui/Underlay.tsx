@@ -6,9 +6,12 @@ import Link from "next/link";
 interface UnderlayProps {
   onTogglePalette: () => void;
   onClosePalette: () => void;
+  onStart: () => void;
+  /** Main Scene 히어로 콘텐츠 표시 여부 (top bar는 항상 유지) */
+  heroVisible: boolean;
 }
 
-export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayProps) {
+export default function Underlay({ onTogglePalette, onClosePalette, onStart, heroVisible }: UnderlayProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const gainRef = useRef<GainNode | null>(null);
@@ -244,29 +247,43 @@ export default function Underlay({ onTogglePalette, onClosePalette }: UnderlayPr
         </div>
       </div>
 
-      <div className="underlay_intro_row">
-        <div className="underlay_intro_text">
-          <div>A front-end developer with a sense of design</div>
-          <div className="underlay_intro_dash">—</div>
+      <div className={`underlay_hero${heroVisible ? " is_visible" : ""}`} aria-hidden={!heroVisible}>
+        <div className="underlay_intro_row">
+          <div className="underlay_intro_text">
+            <div>A front-end developer with a sense of design</div>
+            <div className="underlay_intro_dash">—</div>
+          </div>
         </div>
-      </div>
 
-      <div className="underlay_title_row">
-        <p className="underlay_title_front">FRONT</p>
-        <p className="underlay_title_end">END</p>
-      </div>
-
-      <div className="underlay_bottom_row">
-        <div className="underlay_roles">
-          <div>UI/UX Designer</div>
-          <div>Web Publisher</div>
+        <div className="underlay_title_row">
+          <p className="underlay_title_front">FRONT</p>
+          <p className="underlay_title_end">END</p>
         </div>
-        <div className="underlay_gutter" />
-        <p className="underlay_drag_hint">Move and drag the mouse</p>
-        <div className="underlay_gutter" />
-        <div className="underlay_roles_right">
-          <div>Frontend Developer</div>
-          <div>Backend Developer</div>
+
+        <div className="underlay_start_row" onPointerDown={blockPointer}>
+          <button
+            type="button"
+            className="underlay_start_button"
+            onClick={onStart}
+            disabled={!heroVisible}
+            aria-label="큐브 안으로 진입"
+          >
+            START
+          </button>
+        </div>
+
+        <div className="underlay_bottom_row">
+          <div className="underlay_roles">
+            <div>UI/UX Designer</div>
+            <div>Web Publisher</div>
+          </div>
+          <div className="underlay_gutter" />
+          <p className="underlay_drag_hint">Move and drag the mouse</p>
+          <div className="underlay_gutter" />
+          <div className="underlay_roles_right">
+            <div>Frontend Developer</div>
+            <div>Backend Developer</div>
+          </div>
         </div>
       </div>
     </div>
