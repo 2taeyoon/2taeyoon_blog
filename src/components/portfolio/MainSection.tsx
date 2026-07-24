@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import BaubleScene from "@/components/portfolio/scene/BaubleScene";
 import Underlay from "@/components/portfolio/ui/Underlay";
 import SceneContent from "@/components/portfolio/ui/SceneContent";
@@ -16,7 +16,6 @@ interface FaceTransition {
 
 /**
  * 사이트 전체 = 하나의 거대한 Glass Cube.
- * - Main ↔ 섹션: 큐브 스웜 + 카메라 전진 (SceneTransition)
  * - 섹션 ↔ 섹션: 화면이 뒤로 빠지며 큐브 면이 90° 회전해 다음 면으로 전환 (CSS 3D)
  */
 export default function MainSection() {
@@ -24,8 +23,6 @@ export default function MainSection() {
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   const [scene, setScene] = useState<SceneId>("main");
-  const [pendingScene, setPendingScene] = useState<SceneId | null>(null);
-  const pendingRef = useRef<SceneId | null>(null);
   const [faceTransition, setFaceTransition] = useState<FaceTransition | null>(null);
 
   useEffect(() => {
@@ -40,34 +37,20 @@ export default function MainSection() {
     sessionStorage.setItem("baubleColor", color);
   };
 
-  const transitioning = pendingScene !== null || faceTransition !== null;
+  const transitioning = faceTransition !== null;
 
   const goToScene = (target: SceneId) => {
     if (transitioning || target === scene) return;
     setPaletteOpen(false);
 
     if (scene !== "main" && target !== "main") {
-      // 섹션 간 이동 — 참조 영상처럼 큐브 면 회전으로 전환
+      // 섹션 간 이동 — 큐브 면 회전으로 전환
       const dir: 1 | -1 = SCENE_ORDER.indexOf(target) > SCENE_ORDER.indexOf(scene) ? 1 : -1;
       cubeSpinState.target += dir * -(Math.PI / 2);
       setFaceTransition({ from: scene, to: target, dir });
     } else {
-      // Main 진입/이탈 — 큐브 스웜 + 카메라 전진
-      pendingRef.current = target;
-      setPendingScene(target);
+      setScene(target);
     }
-  };
-
-  /** 스웜 전환: 화면이 가득 덮인 순간 Scene 교체 */
-  const handleTransitionCover = () => {
-    if (pendingRef.current) {
-      setScene(pendingRef.current);
-    }
-  };
-
-  const handleTransitionComplete = () => {
-    pendingRef.current = null;
-    setPendingScene(null);
   };
 
   /** 면 회전 전환: 회전 애니메이션 종료 시 Scene 교체 확정 */
@@ -82,7 +65,6 @@ export default function MainSection() {
       <Underlay
         onTogglePalette={() => setPaletteOpen((prev) => !prev)}
         onClosePalette={() => setPaletteOpen(false)}
-        onStart={() => goToScene("about")}
         heroVisible={scene === "main" && !transitioning}
       />
 
@@ -110,16 +92,7 @@ export default function MainSection() {
 
       {paletteOpen && <ColorPalette value={ballColor} onChange={handleColorChange} />}
 
-      {/* 스웜 전환 절정에서 화면을 감싸는 글래스 플래시 (Scene 교체 순간을 가림) */}
-      <div className={`scene_flash${pendingScene ? " is_active" : ""}`} aria-hidden="true" />
-
-      <BaubleScene
-        ballColor={ballColor}
-        scene={scene}
-        transitionActive={pendingScene !== null}
-        onTransitionCover={handleTransitionCover}
-        onTransitionComplete={handleTransitionComplete}
-      />
+      <BaubleScene ballColor={ballColor} scene={scene} />
     </div>
   );
 }

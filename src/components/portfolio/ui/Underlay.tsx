@@ -6,18 +6,17 @@ import Link from "next/link";
 interface UnderlayProps {
   onTogglePalette: () => void;
   onClosePalette: () => void;
-  onStart: () => void;
   /** Main Scene 히어로 콘텐츠 표시 여부 (top bar는 항상 유지) */
   heroVisible: boolean;
 }
 
-export default function Underlay({ onTogglePalette, onClosePalette, onStart, heroVisible }: UnderlayProps) {
+export default function Underlay({ onTogglePalette, onClosePalette, heroVisible }: UnderlayProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const gainRef = useRef<GainNode | null>(null);
   const graphWiredRef = useRef(false);
   const volumeRef = useRef(100);
-  const unlockHandlerRef = useRef<(() => void) | null>(null);
+  // const unlockHandlerRef = useRef<(() => void) | null>(null);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [volumeOpen, setVolumeOpen] = useState(false);
@@ -79,47 +78,47 @@ export default function Underlay({ onTogglePalette, onClosePalette, onStart, her
     }
   };
 
-  const removeUnlockListeners = () => {
-    const handler = unlockHandlerRef.current;
-    if (!handler) return;
-    window.removeEventListener("pointerdown", handler);
-    window.removeEventListener("keydown", handler);
-    unlockHandlerRef.current = null;
-  };
+  // const removeUnlockListeners = () => {
+  //   const handler = unlockHandlerRef.current;
+  //   if (!handler) return;
+  //   window.removeEventListener("pointerdown", handler);
+  //   window.removeEventListener("keydown", handler);
+  //   unlockHandlerRef.current = null;
+  // };
 
   // --- 현재: 처음 렌더링 시 자동 재생 (차단되면 첫 클릭/키 입력에 재시도) ---
-  useEffect(() => {
-    void tryPlay();
-
-    // Chrome/Safari 등은 사용자 제스처 없이 audio.play()를 막음 → 첫 상호작용 때 한 번 더 시도
-    const unlockOnInteraction = () => {
-      void tryPlay().then((ok) => {
-        if (ok) removeUnlockListeners();
-      });
-    };
-    unlockHandlerRef.current = unlockOnInteraction;
-    window.addEventListener("pointerdown", unlockOnInteraction);
-    window.addEventListener("keydown", unlockOnInteraction);
-
-    return () => {
-      removeUnlockListeners();
-      audioRef.current?.pause();
-      audioRef.current = null;
-      void audioCtxRef.current?.close();
-      audioCtxRef.current = null;
-      gainRef.current = null;
-      graphWiredRef.current = false;
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- 마운트 시 1회만 실행
-  }, []);
-
-  // --- 개발 시: 처음 렌더링 시 자동 재생 없음 ---
   // useEffect(() => {
+  //   void tryPlay();
+
+  //   // Chrome/Safari 등은 사용자 제스처 없이 audio.play()를 막음 → 첫 상호작용 때 한 번 더 시도
+  //   const unlockOnInteraction = () => {
+  //     void tryPlay().then((ok) => {
+  //       if (ok) removeUnlockListeners();
+  //     });
+  //   };
+  //   unlockHandlerRef.current = unlockOnInteraction;
+  //   window.addEventListener("pointerdown", unlockOnInteraction);
+  //   window.addEventListener("keydown", unlockOnInteraction);
+
   //   return () => {
+  //     removeUnlockListeners();
   //     audioRef.current?.pause();
   //     audioRef.current = null;
+  //     void audioCtxRef.current?.close();
+  //     audioCtxRef.current = null;
+  //     gainRef.current = null;
+  //     graphWiredRef.current = false;
   //   };
+  // // eslint-disable-next-line react-hooks/exhaustive-deps -- 마운트 시 1회만 실행
   // }, []);
+
+  // --- 개발 시: 처음 렌더링 시 자동 재생 없음 ---
+  useEffect(() => {
+    return () => {
+      audioRef.current?.pause();
+      audioRef.current = null;
+    };
+  }, []);
 
   const toggleMusic = () => {
     const audio = createAudio();
@@ -256,20 +255,8 @@ export default function Underlay({ onTogglePalette, onClosePalette, onStart, her
         </div>
 
         <div className="underlay_title_row">
-          <p className="underlay_title_front">FRONT</p>
-          <p className="underlay_title_end">END</p>
-        </div>
-
-        <div className="underlay_start_row" onPointerDown={blockPointer}>
-          <button
-            type="button"
-            className="underlay_start_button"
-            onClick={onStart}
-            disabled={!heroVisible}
-            aria-label="큐브 안으로 진입"
-          >
-            START
-          </button>
+          <p className="underlay_title_front"></p>
+          <p className="underlay_title_end"></p>
         </div>
 
         <div className="underlay_bottom_row">

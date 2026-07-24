@@ -410,42 +410,6 @@
   opacity: 1;
 }
 
-/* ─── 전환 절정 글래스 플래시 — Scene 교체 순간을 부드럽게 가림 ─────────────── */
-.scene_flash {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0;
-  background: linear-gradient(160deg, #eef2fb 0%, #dfe6f7 50%, #f4f0ea 100%);
-}
-
-/* SceneTransition의 DURATION(2.8s)·COVER(0.5)와 동기화된 타임라인 */
-.scene_flash.is_active {
-  animation: scene_flash_veil 2.8s ease forwards;
-}
-
-@keyframes scene_flash_veil {
-  0% {
-    opacity: 0;
-  }
-  35% {
-    opacity: 0.25;
-  }
-  48% {
-    opacity: 1;
-  }
-  56% {
-    opacity: 1;
-  }
-  72% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 /* ─── 반응형 ─────────────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .scene_title {

@@ -275,42 +275,6 @@
   text-align: right;
 }
 
-/* 중앙 하단 START 버튼 — 클릭 시 히어로 큐브 확대 연출 시작 */
-.underlay_start_row {
-  width: 100%;
-  margin-bottom: 40px;
-  display: flex;
-  justify-content: center;
-  pointer-events: all;
-}
-
-.underlay_start_button {
-  font-family: "Nunito Sans", sans-serif;
-  width: 92px;
-  height: 92px;
-  padding: 0;
-  border: 1px solid var(--pfBlack);
-  border-radius: 50%;
-  background: var(--pfWhite);
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: var(--pfBlack);
-  cursor: pointer;
-  box-shadow: 0 4px 20px var(--pfShadow);
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease,
-    opacity 0.4s ease;
-}
-
-.underlay_start_button:hover:not(:disabled) {
-  background: var(--pfBlack);
-  color: var(--pfWhite);
-  transform: scale(1.08);
-}
-
 .underlay_bottom_row {
   pointer-events: all;
   cursor: auto;
@@ -412,15 +376,6 @@
   .underlay_drag_hint {
     font-size: 1.3rem;
   }
-
-  .underlay_start_row {
-    margin-bottom: 32px;
-  }
-
-  .underlay_start_button {
-    width: 76px;
-    height: 76px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -467,16 +422,6 @@
     font-size: 88px;
     line-height: 88px;
     letter-spacing: -8px;
-  }
-
-  .underlay_start_row {
-    margin-bottom: 20px;
-  }
-
-  .underlay_start_button {
-    width: 64px;
-    height: 64px;
-    font-size: 1.2rem;
   }
 
   .underlay_bottom_row {
