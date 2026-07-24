@@ -14,14 +14,10 @@ import PointerInput from "@/components/portfolio/scene/PointerInput";
 import Collisions from "@/components/portfolio/scene/Collisions";
 import ResponsiveCamera from "@/components/portfolio/scene/ResponsiveCamera";
 import GiantGlassCube from "@/components/portfolio/scene/GiantGlassCube";
-import SceneTransition from "@/components/portfolio/scene/SceneTransition";
 
 interface BaubleSceneProps {
   ballColor: string;
   scene: SceneId;
-  transitionActive: boolean;
-  onTransitionCover: () => void;
-  onTransitionComplete: () => void;
 }
 
 /** 직물(리넨) 질감 + 인디고/오렌지 그라데이션 텍스처 생성 */
@@ -91,16 +87,9 @@ function MainScene({ baubles }: { baubles: { args: number; mass: number; angular
 /**
  * 사이트 전체의 단일 3D 월드.
  * - GiantGlassCube: 항상 존재하는 하나의 거대한 큐브 (천천히 회전)
- * - Scene 콘텐츠: 같은 큐브 내부에서 교체됨 (Main = 물리 큐브 / 나머지 = SceneDecor)
- * - SceneTransition: 전환 시 큐브 스웜 + 카메라 전진
+ * - Scene 콘텐츠: 같은 큐브 내부에서 교체됨 (Main = 물리 큐브)
  */
-export default function BaubleScene({
-  ballColor,
-  scene,
-  transitionActive,
-  onTransitionCover,
-  onTransitionComplete,
-}: BaubleSceneProps) {
+export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
   const baubles = useMemo(
     () =>
       [...Array(50)].map(() => ({
@@ -151,8 +140,6 @@ export default function BaubleScene({
       <GiantGlassCube />
 
       {scene === "main" && <MainScene baubles={baubles} />}
-
-      <SceneTransition active={transitionActive} onCover={onTransitionCover} onComplete={onTransitionComplete} />
 
       <Environment files="/3d/adamsbridge.hdr" />
       <EffectComposer multisampling={0}>

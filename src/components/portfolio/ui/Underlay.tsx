@@ -6,12 +6,11 @@ import Link from "next/link";
 interface UnderlayProps {
   onTogglePalette: () => void;
   onClosePalette: () => void;
-  onStart: () => void;
   /** Main Scene 히어로 콘텐츠 표시 여부 (top bar는 항상 유지) */
   heroVisible: boolean;
 }
 
-export default function Underlay({ onTogglePalette, onClosePalette, onStart, heroVisible }: UnderlayProps) {
+export default function Underlay({ onTogglePalette, onClosePalette, heroVisible }: UnderlayProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const gainRef = useRef<GainNode | null>(null);
@@ -256,20 +255,8 @@ export default function Underlay({ onTogglePalette, onClosePalette, onStart, her
         </div>
 
         <div className="underlay_title_row">
-          <p className="underlay_title_front">FRONT</p>
-          <p className="underlay_title_end">END</p>
-        </div>
-
-        <div className="underlay_start_row" onPointerDown={blockPointer}>
-          <button
-            type="button"
-            className="underlay_start_button"
-            onClick={onStart}
-            disabled={!heroVisible}
-            aria-label="큐브 안으로 진입"
-          >
-            START
-          </button>
+          <p className="underlay_title_front"></p>
+          <p className="underlay_title_end"></p>
         </div>
 
         <div className="underlay_bottom_row">
