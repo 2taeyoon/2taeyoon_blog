@@ -108,14 +108,30 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
       baubleMaterial.color.setHex(0xffffff);
       baubleMaterial.emissive.setHex(0xffffff).multiplyScalar(0.2);
       baubleMaterial.needsUpdate = true;
-    } else {
-      baubleMaterial.map = null;
-      baubleMaterial.emissiveMap = null;
-      const c = new THREE.Color(ballColor);
-      baubleMaterial.color.copy(c);
-      baubleMaterial.emissive.copy(c).multiplyScalar(0.2);
-      baubleMaterial.needsUpdate = true;
+      return;
     }
+
+    baubleMaterial.map = null;
+    baubleMaterial.emissiveMap = null;
+
+    const c = new THREE.Color(ballColor);
+    const hsl = { h: 0, s: 0, l: 0 };
+    c.getHSL(hsl);
+
+    if (hsl.l < 0.08) {
+      // #000 — 순검정이면 Lambert 음영이 사라져 실루엣만 남음 → 약간 띄워 볼륨 유지
+      baubleMaterial.color.setRGB(0.16, 0.16, 0.18);
+      baubleMaterial.emissive.setRGB(0.02, 0.02, 0.025);
+    } else if (hsl.l > 0.9) {
+      // #fff — 순백+노출로 날아가지 않게 쿨 오프화이트 + 낮은 emissive
+      baubleMaterial.color.setRGB(0.86, 0.88, 0.92);
+      baubleMaterial.emissive.setRGB(0.035, 0.04, 0.05);
+    } else {
+      baubleMaterial.color.copy(c);
+      const em = THREE.MathUtils.clamp(0.06 + (1 - hsl.l) * 0.18, 0.05, 0.22);
+      baubleMaterial.emissive.copy(c).multiplyScalar(em);
+    }
+    baubleMaterial.needsUpdate = true;
   }, [ballColor]);
 
   return (
@@ -137,7 +153,7 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
       <directionalLight position={[0, 5, -4]} intensity={2.6 * Math.PI} color="#c8d4f8" />
       <directionalLight position={[0, -15, -0]} intensity={0.6 * Math.PI} color="#de7c3a" />
 
-      <GiantGlassCube />
+      <GiantGlassCube ballColor={ballColor} />
 
       {scene === "main" && <MainScene baubles={baubles} />}
 

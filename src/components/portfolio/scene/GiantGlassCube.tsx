@@ -1,23 +1,97 @@
 "use client";
 
 import * as THREE from "three";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { pointerState } from "@/lib/portfolio/pointerState";
 
 const PLANE_Z = -28;
 const FLOW_SIZE = 256;
 
+/** 팔레트 색 → 다크 배경/격자용 톤 세트 */
+function buildPalette(ballColor: string) {
+  if (ballColor === "fabric") {
+    return {
+      deep: new THREE.Color(0.008, 0.012, 0.03),
+      navy: new THREE.Color(0.015, 0.025, 0.07),
+      mid: new THREE.Color(0.025, 0.04, 0.11),
+      accent: new THREE.Color(0.04, 0.065, 0.16),
+      soft: new THREE.Color(0.05, 0.08, 0.18),
+      grid: new THREE.Color(0.04, 0.06, 0.12),
+      glow: new THREE.Color(0.025, 0.05, 0.14),
+      cssDeep: "#03050c",
+      cssMid: "#04070f",
+    };
+  }
+
+  const base = new THREE.Color(ballColor);
+  const hsl = { h: 0, s: 0, l: 0 };
+  base.getHSL(hsl);
+
+  // 무채색(흰/검/회색) — hue가 없어 s를 억지로 넣으면 빨강으로 튀므로 쿨 그레이 팔레트 사용
+  const achromatic = hsl.s < 0.08 || hsl.l > 0.9 || hsl.l < 0.08;
+  if (achromatic) {
+    const cool = (r: number, g: number, b: number) => new THREE.Color(r, g, b);
+    if (hsl.l > 0.5) {
+      // #ffffff 계열 → 쿨 다크 그레이
+      const deep = cool(0.035, 0.04, 0.05);
+      const navy = cool(0.06, 0.07, 0.085);
+      return {
+        deep,
+        navy,
+        mid: cool(0.1, 0.11, 0.135),
+        accent: cool(0.16, 0.175, 0.2),
+        soft: cool(0.2, 0.22, 0.25),
+        grid: cool(0.09, 0.1, 0.12),
+        glow: cool(0.12, 0.13, 0.15),
+        cssDeep: `#${deep.getHexString()}`,
+        cssMid: `#${navy.getHexString()}`,
+      };
+    }
+    // #000000 계열 → 딥 차콜
+    const deep = cool(0.012, 0.013, 0.018);
+    const navy = cool(0.03, 0.032, 0.04);
+    return {
+      deep,
+      navy,
+      mid: cool(0.055, 0.058, 0.07),
+      accent: cool(0.085, 0.09, 0.105),
+      soft: cool(0.11, 0.115, 0.13),
+      grid: cool(0.065, 0.07, 0.085),
+      glow: cool(0.07, 0.075, 0.09),
+      cssDeep: `#${deep.getHexString()}`,
+      cssMid: `#${navy.getHexString()}`,
+    };
+  }
+
+  const h = hsl.h;
+  const s = THREE.MathUtils.clamp(hsl.s, 0.25, 1);
+  const mk = (l: number, sat = s) => new THREE.Color().setHSL(h, sat, l);
+  const deep = mk(0.028, s * 0.75);
+  const navy = mk(0.055, s * 0.85);
+  return {
+    deep,
+    navy,
+    mid: mk(0.1, s * 0.9),
+    accent: mk(0.16, s),
+    soft: mk(0.2, s * 0.75),
+    grid: mk(0.09, s * 0.65),
+    glow: mk(0.14, s * 0.8),
+    cssDeep: `#${deep.getHexString()}`,
+    cssMid: `#${navy.getHexString()}`,
+  };
+}
+
 /**
- * Alche 감성 참고 — 브랜드 없이 코드로 구현한 몽환 배경.
- * 화면 100% 고정 평면 + 곡면감 격자 + 모핑 색면 + 마우스 유체.
+ * 몽환 배경 — 팔레트 색에 맞춰 배경·격자 톤이 함께 바뀐다.
  */
-export default function GiantGlassCube() {
+export default function GiantGlassCube({ ballColor = "fabric" }: { ballColor?: string }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const mouseSmooth = useRef(new THREE.Vector2(0, 0));
   const mouseVel = useRef(new THREE.Vector2(0, 0));
   const mouseTarget = useRef(new THREE.Vector2(0, 0));
   const flowPos = useRef(new THREE.Vector2(0.5, 0.5));
+  const paletteTarget = useRef(buildPalette(ballColor));
 
   const { flowTexture, flowCtx } = useMemo(() => {
     const canvas = document.createElement("canvas");
@@ -32,204 +106,206 @@ export default function GiantGlassCube() {
     return { flowTexture: texture, flowCtx: ctx };
   }, []);
 
-  const material = useMemo(
-    () =>
-      new THREE.ShaderMaterial({
-        transparent: false,
-        depthWrite: false,
-        toneMapped: false,
-        uniforms: {
-          uTime: { value: 0 },
-          uAspect: { value: 1 },
-          uMouse: { value: new THREE.Vector2(0, 0) },
-          uMouseVel: { value: new THREE.Vector2(0, 0) },
-          uFlow: { value: flowTexture },
-        },
-        vertexShader: /* glsl */ `
-          varying vec2 vUv;
-          void main() {
-            vUv = uv;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  const material = useMemo(() => {
+    const p = buildPalette("fabric");
+    return new THREE.ShaderMaterial({
+      transparent: false,
+      depthWrite: false,
+      toneMapped: false,
+      uniforms: {
+        uTime: { value: 0 },
+        uAspect: { value: 1 },
+        uMouse: { value: new THREE.Vector2(0, 0) },
+        uMouseVel: { value: new THREE.Vector2(0, 0) },
+        uFlow: { value: flowTexture },
+        uDeep: { value: p.deep.clone() },
+        uNavy: { value: p.navy.clone() },
+        uMid: { value: p.mid.clone() },
+        uAccent: { value: p.accent.clone() },
+        uSoft: { value: p.soft.clone() },
+        uGrid: { value: p.grid.clone() },
+        uGlow: { value: p.glow.clone() },
+      },
+      vertexShader: /* glsl */ `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: /* glsl */ `
+        uniform float uTime;
+        uniform float uAspect;
+        uniform vec2 uMouse;
+        uniform vec2 uMouseVel;
+        uniform sampler2D uFlow;
+        uniform vec3 uDeep;
+        uniform vec3 uNavy;
+        uniform vec3 uMid;
+        uniform vec3 uAccent;
+        uniform vec3 uSoft;
+        uniform vec3 uGrid;
+        uniform vec3 uGlow;
+        varying vec2 vUv;
+
+        float hash(vec2 p) {
+          return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+        }
+
+        float noise(vec2 p) {
+          vec2 i = floor(p);
+          vec2 f = fract(p);
+          float a = hash(i);
+          float b = hash(i + vec2(1.0, 0.0));
+          float c = hash(i + vec2(0.0, 1.0));
+          float d = hash(i + vec2(1.0, 1.0));
+          vec2 u = f * f * (3.0 - 2.0 * f);
+          return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+        }
+
+        float fbm(vec2 p) {
+          float v = 0.0;
+          float a = 0.5;
+          mat2 m = mat2(1.6, 1.2, -1.2, 1.6);
+          for (int i = 0; i < 5; i++) {
+            v += a * noise(p);
+            p = m * p;
+            a *= 0.5;
           }
-        `,
-        fragmentShader: /* glsl */ `
-          uniform float uTime;
-          uniform float uAspect;
-          uniform vec2 uMouse;
-          uniform vec2 uMouseVel;
-          uniform sampler2D uFlow;
-          varying vec2 vUv;
+          return v;
+        }
 
-          float hash(vec2 p) {
-            return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
-          }
+        vec2 curveUv(vec2 uv) {
+          vec2 c = uv - 0.5;
+          c.x *= uAspect;
+          float r2 = dot(c, c);
+          c *= 1.0 - r2 * 0.12;
+          c.x /= uAspect;
+          return c + 0.5;
+        }
 
-          float noise(vec2 p) {
-            vec2 i = floor(p);
-            vec2 f = fract(p);
-            float a = hash(i);
-            float b = hash(i + vec2(1.0, 0.0));
-            float c = hash(i + vec2(0.0, 1.0));
-            float d = hash(i + vec2(1.0, 1.0));
-            vec2 u = f * f * (3.0 - 2.0 * f);
-            return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
-          }
+        void main() {
+          vec2 uv = vUv;
+          vec2 cuv = curveUv(uv);
 
-          float fbm(vec2 p) {
-            float v = 0.0;
-            float a = 0.5;
-            mat2 m = mat2(1.6, 1.2, -1.2, 1.6);
-            for (int i = 0; i < 5; i++) {
-              v += a * noise(p);
-              p = m * p;
-              a *= 0.5;
-            }
-            return v;
-          }
+          float flow = texture2D(uFlow, clamp(uv, 0.0, 1.0)).r;
+          vec2 m = uMouse * 0.5 + 0.5;
+          vec2 toMouse = uv - m;
+          toMouse.x *= uAspect;
+          float md = length(toMouse);
+          vec2 dir = normalize(toMouse + 1e-4);
 
-          // 오목한 구면감 — 안쪽으로 들어간 느낌
-          vec2 curveUv(vec2 uv) {
-            vec2 c = uv - 0.5;
-            c.x *= uAspect;
-            float r2 = dot(c, c);
-            c *= 1.0 - r2 * 0.12;
-            c.x /= uAspect;
-            return c + 0.5;
-          }
+          float speed = length(uMouseVel);
+          float trail = smoothstep(0.015, 0.22, flow);
+          float motionAmt = max(smoothstep(0.002, 0.02, speed), trail * 0.9);
+          vec2 distort = vec2(0.0);
+          vec2 vel = uMouseVel * vec2(1.0 / max(uAspect, 1.0), 1.0);
+          distort += vel * flow * 0.045 * motionAmt;
+          distort += dir * flow * 0.018 * trail;
+          distort += dir * flow * 0.014 * motionAmt;
+          distort += dir * flow * exp(-md * 2.5) * 0.008 * sin(md * 28.0 - uTime * 2.2) * motionAmt;
 
-          void main() {
-            vec2 uv = vUv;
-            vec2 cuv = curveUv(uv);
-            vec2 aspectUv = vec2(cuv.x * uAspect, cuv.y);
+          vec2 duv = cuv + distort;
+          vec2 fieldUv = vec2(duv.x * uAspect, duv.y);
 
-            float flow = texture2D(uFlow, clamp(uv, 0.0, 1.0)).r;
-            vec2 m = uMouse * 0.5 + 0.5;
-            vec2 toMouse = uv - m;
-            toMouse.x *= uAspect;
-            float md = length(toMouse);
-            vec2 dir = normalize(toMouse + 1e-4);
+          vec3 deep = uDeep;
+          vec3 navy = uNavy;
+          vec3 indigo = uMid;
+          vec3 blue = uAccent;
+          vec3 softBlue = uSoft;
 
-            // 마우스 유체 + 붓 잔상 (flow가 남아 있으면 계속 일렁임)
-            float speed = length(uMouseVel);
-            float trail = smoothstep(0.015, 0.22, flow);
-            float motionAmt = max(smoothstep(0.002, 0.02, speed), trail * 0.9);
-            vec2 distort = vec2(0.0);
-            vec2 vel = uMouseVel * vec2(1.0 / max(uAspect, 1.0), 1.0);
-            distort += vel * flow * 0.045 * motionAmt;
-            distort += dir * flow * 0.018 * trail; // 잔상 붓 밀림
-            distort += dir * flow * 0.014 * motionAmt;
-            distort += dir * flow * exp(-md * 2.5) * 0.008 * sin(md * 28.0 - uTime * 2.2) * motionAmt;
+          float a1 = fbm(fieldUv * 1.4 + 2.0);
+          float a2 = fbm(fieldUv * 2.2 + 19.0);
+          float marble = smoothstep(0.05, 0.5, abs(a1 - a2));
+          vec3 patA = deep;
+          patA = mix(patA, navy, smoothstep(0.28, 0.7, a1));
+          patA = mix(patA, indigo, marble * 0.4);
+          patA = mix(patA, blue, smoothstep(0.55, 0.9, a2) * 0.2);
 
-            float t = uTime * 0.1;
+          float b1 = fbm(fieldUv * 0.7 + 5.0);
+          float b2 = fbm(fieldUv * 1.1 + vec2(8.0, 3.0));
+          vec3 patB = deep;
+          patB = mix(patB, navy, smoothstep(0.35, 0.65, b1));
+          patB = mix(patB, indigo, smoothstep(0.45, 0.8, b2) * 0.45);
+          patB = mix(patB, softBlue, smoothstep(0.7, 0.95, b1 * b2) * 0.18);
 
-            vec2 duv = cuv + distort;
-            vec2 fieldUv = vec2(duv.x * uAspect, duv.y);
+          float c1 = fbm(fieldUv * vec2(1.1, 2.4) + 40.0);
+          float c2 = fbm(fieldUv * vec2(2.0, 0.9) + vec2(14.0, 6.0));
+          float wave = smoothstep(0.3, 0.7, c1 * 0.55 + c2 * 0.45);
+          vec3 patC = deep;
+          patC = mix(patC, navy, smoothstep(0.2, 0.65, c1));
+          patC = mix(patC, indigo, wave * 0.42);
+          patC = mix(patC, blue, smoothstep(0.65, 0.92, c2) * 0.2);
 
-            // ── 배경 무늬 A~E — 3초마다 순서 전환 ──
-            vec3 deep = vec3(0.008, 0.012, 0.03);
-            vec3 navy = vec3(0.015, 0.025, 0.07);
-            vec3 indigo = vec3(0.025, 0.04, 0.11);
-            vec3 blue = vec3(0.04, 0.065, 0.16);
-            vec3 softBlue = vec3(0.05, 0.08, 0.18);
+          float band = fbm(vec2(fieldUv.x + fieldUv.y, fieldUv.x - fieldUv.y) * 1.8 + 22.0);
+          float d1 = fbm(fieldUv * 1.2 + 27.0);
+          vec3 patD = deep;
+          patD = mix(patD, navy, smoothstep(0.25, 0.6, band));
+          patD = mix(patD, indigo, abs(band - 0.5) * 0.7);
+          patD = mix(patD, blue, smoothstep(0.6, 0.9, d1) * 0.22);
 
-            // A: 마블 결
-            float a1 = fbm(fieldUv * 1.4 + 2.0);
-            float a2 = fbm(fieldUv * 2.2 + 19.0);
-            float marble = smoothstep(0.05, 0.5, abs(a1 - a2));
-            vec3 patA = deep;
-            patA = mix(patA, navy, smoothstep(0.28, 0.7, a1));
-            patA = mix(patA, indigo, marble * 0.4);
-            patA = mix(patA, blue, smoothstep(0.55, 0.9, a2) * 0.2);
+          float e1 = fbm(fieldUv * 3.2 + 50.0);
+          float e2 = noise(fieldUv * 14.0 + 60.0);
+          float cell = smoothstep(0.35, 0.75, e1) * (0.4 + 0.6 * e2);
+          vec3 patE = deep;
+          patE = mix(patE, navy, 0.5);
+          patE = mix(patE, indigo, cell * 0.5);
+          patE = mix(patE, softBlue, smoothstep(0.8, 1.0, e2) * 0.12);
 
-            // B: 큰 소프트 블롭
-            float b1 = fbm(fieldUv * 0.7 + 5.0);
-            float b2 = fbm(fieldUv * 1.1 + vec2(8.0, 3.0));
-            vec3 patB = deep;
-            patB = mix(patB, navy, smoothstep(0.35, 0.65, b1));
-            patB = mix(patB, indigo, smoothstep(0.45, 0.8, b2) * 0.45);
-            patB = mix(patB, softBlue, smoothstep(0.7, 0.95, b1 * b2) * 0.18);
+          float cycle = uTime / 3.0;
+          float idx = mod(floor(cycle), 5.0);
+          float fade = smoothstep(0.0, 0.2, fract(cycle));
+          vec3 prevCol = patA;
+          vec3 nextCol = patA;
+          if (idx < 0.5) { prevCol = patE; nextCol = patA; }
+          else if (idx < 1.5) { prevCol = patA; nextCol = patB; }
+          else if (idx < 2.5) { prevCol = patB; nextCol = patC; }
+          else if (idx < 3.5) { prevCol = patC; nextCol = patD; }
+          else { prevCol = patD; nextCol = patE; }
 
-            // C: 부드러운 물결 레이어 (유기적 흐름)
-            float c1 = fbm(fieldUv * vec2(1.1, 2.4) + 40.0);
-            float c2 = fbm(fieldUv * vec2(2.0, 0.9) + vec2(14.0, 6.0));
-            float wave = smoothstep(0.3, 0.7, c1 * 0.55 + c2 * 0.45);
-            vec3 patC = deep;
-            patC = mix(patC, navy, smoothstep(0.2, 0.65, c1));
-            patC = mix(patC, indigo, wave * 0.42);
-            patC = mix(patC, blue, smoothstep(0.65, 0.92, c2) * 0.2);
+          vec3 col = mix(prevCol, nextCol, fade);
+          float gAmt = exp(-length((uv - 0.5) * vec2(uAspect * 0.55, 1.0)) * 2.8);
+          col += uGlow * gAmt * 0.05;
 
-            // D: 대각 밴드
-            float band = fbm(vec2(fieldUv.x + fieldUv.y, fieldUv.x - fieldUv.y) * 1.8 + 22.0);
-            float d1 = fbm(fieldUv * 1.2 + 27.0);
-            vec3 patD = deep;
-            patD = mix(patD, navy, smoothstep(0.25, 0.6, band));
-            patD = mix(patD, indigo, abs(band - 0.5) * 0.7);
-            patD = mix(patD, blue, smoothstep(0.6, 0.9, d1) * 0.22);
+          float gridScale = 36.0;
+          vec2 guv = (duv - 0.5);
+          guv.x *= uAspect;
+          vec2 gridCoord = guv * gridScale;
+          vec2 gf = fract(gridCoord);
+          vec2 fw = max(fwidth(gridCoord), vec2(1e-5));
+          float px = 1.15;
+          float lx = 1.0 - smoothstep(0.0, px, min(gf.x, 1.0 - gf.x) / fw.x);
+          float ly = 1.0 - smoothstep(0.0, px, min(gf.y, 1.0 - gf.y) / fw.y);
+          float grid = max(lx, ly);
 
-            // E: 셀/스페클
-            float e1 = fbm(fieldUv * 3.2 + 50.0);
-            float e2 = noise(fieldUv * 14.0 + 60.0);
-            float cell = smoothstep(0.35, 0.75, e1) * (0.4 + 0.6 * e2);
-            vec3 patE = deep;
-            patE = mix(patE, navy, 0.5);
-            patE = mix(patE, indigo, cell * 0.5);
-            patE = mix(patE, softBlue, smoothstep(0.8, 1.0, e2) * 0.12);
+          vec2 majorUv = guv * (gridScale * 0.25);
+          vec2 fm = fract(majorUv);
+          vec2 fwm = max(fwidth(majorUv), vec2(1e-5));
+          float mxL = 1.0 - smoothstep(0.0, px * 1.35, min(fm.x, 1.0 - fm.x) / fwm.x);
+          float myL = 1.0 - smoothstep(0.0, px * 1.35, min(fm.y, 1.0 - fm.y) / fwm.y);
+          float major = max(mxL, myL);
 
-            // 3초 주기, A→B→C→D→E→A… (0.6초 크로스페이드)
-            float cycle = uTime / 3.0;
-            float idx = mod(floor(cycle), 5.0);
-            float fade = smoothstep(0.0, 0.2, fract(cycle)); // 앞 0.6초 페이드인
-            // 이전 패턴과 현재 패턴 블렌드
-            vec3 prevCol = patA;
-            vec3 nextCol = patA;
-            if (idx < 0.5) { prevCol = patE; nextCol = patA; }
-            else if (idx < 1.5) { prevCol = patA; nextCol = patB; }
-            else if (idx < 2.5) { prevCol = patB; nextCol = patC; }
-            else if (idx < 3.5) { prevCol = patC; nextCol = patD; }
-            else { prevCol = patD; nextCol = patE; }
+          float gridFade = smoothstep(1.15, 0.2, length((uv - 0.5) * vec2(uAspect * 0.7, 1.0)));
+          float gridA = (grid * 0.11 + major * 0.07) * (0.65 + 0.35 * gridFade);
+          gridA += flow * 0.03 * motionAmt;
+          col += uGrid * gridA;
 
-            vec3 col = mix(prevCol, nextCol, fade);
+          float vig = smoothstep(1.2, 0.35, length((uv - 0.5) * vec2(uAspect * 0.75, 1.0)));
+          col *= 0.72 + 0.28 * vig;
+          col += (hash(uv * 1200.0 + fract(uTime) * 0.01) - 0.5) * 0.01;
 
-            float glow = exp(-length((uv - 0.5) * vec2(uAspect * 0.55, 1.0)) * 2.8);
-            col += vec3(0.025, 0.05, 0.14) * glow * 0.05;
+          gl_FragColor = vec4(col, 1.0);
+        }
+      `,
+    });
+  }, [flowTexture]);
 
-            // ── 격자 — 화면에서 정사각 셀 ──
-            float gridScale = 36.0;
-            vec2 guv = (duv - 0.5);
-            guv.x *= uAspect; // 가로·세로 셀 크기 동일
-            vec2 gridUv = guv * gridScale;
-            vec2 f = fract(gridUv);
-            vec2 fw = max(fwidth(gridUv), vec2(1e-5));
-            float px = 1.15; // ~1px 선
-            float lx = 1.0 - smoothstep(0.0, px, min(f.x, 1.0 - f.x) / fw.x);
-            float ly = 1.0 - smoothstep(0.0, px, min(f.y, 1.0 - f.y) / fw.y);
-            float grid = max(lx, ly);
-
-            vec2 majorUv = guv * (gridScale * 0.25);
-            vec2 fm = fract(majorUv);
-            vec2 fwm = max(fwidth(majorUv), vec2(1e-5));
-            float mxL = 1.0 - smoothstep(0.0, px * 1.35, min(fm.x, 1.0 - fm.x) / fwm.x);
-            float myL = 1.0 - smoothstep(0.0, px * 1.35, min(fm.y, 1.0 - fm.y) / fwm.y);
-            float major = max(mxL, myL);
-
-            float gridFade = smoothstep(1.15, 0.2, length((uv - 0.5) * vec2(uAspect * 0.7, 1.0)));
-            float gridA = (grid * 0.11 + major * 0.07) * (0.65 + 0.35 * gridFade);
-            gridA += flow * 0.03 * motionAmt;
-            col += vec3(0.04, 0.06, 0.12) * gridA;
-
-            // 비네팅
-            float vig = smoothstep(1.2, 0.35, length((uv - 0.5) * vec2(uAspect * 0.75, 1.0)));
-            col *= 0.72 + 0.28 * vig;
-
-            // 미세 그레인
-            col += (hash(uv * 1200.0 + fract(uTime) * 0.01) - 0.5) * 0.01;
-
-            gl_FragColor = vec4(col, 1.0);
-          }
-        `,
-      }),
-    [flowTexture],
-  );
+  useEffect(() => {
+    paletteTarget.current = buildPalette(ballColor);
+    const root = document.documentElement;
+    root.style.setProperty("--pfBgLavender", paletteTarget.current.cssDeep);
+    root.style.setProperty("--pfBgGray", paletteTarget.current.cssMid);
+  }, [ballColor]);
 
   useFrame((state, delta) => {
     const mesh = meshRef.current;
@@ -241,6 +317,17 @@ export default function GiantGlassCube() {
 
     material.uniforms.uTime.value = state.clock.elapsedTime;
     material.uniforms.uAspect.value = v.width / Math.max(v.height, 1);
+
+    // 팔레트 색 부드럽게 보간
+    const t = 1 - Math.exp(-delta * 4);
+    const p = paletteTarget.current;
+    (material.uniforms.uDeep.value as THREE.Color).lerp(p.deep, t);
+    (material.uniforms.uNavy.value as THREE.Color).lerp(p.navy, t);
+    (material.uniforms.uMid.value as THREE.Color).lerp(p.mid, t);
+    (material.uniforms.uAccent.value as THREE.Color).lerp(p.accent, t);
+    (material.uniforms.uSoft.value as THREE.Color).lerp(p.soft, t);
+    (material.uniforms.uGrid.value as THREE.Color).lerp(p.grid, t);
+    (material.uniforms.uGlow.value as THREE.Color).lerp(p.glow, t);
 
     mouseTarget.current.set(
       pointerState.moved ? pointerState.ndcX : state.pointer.x,
@@ -258,7 +345,6 @@ export default function GiantGlassCube() {
     material.uniforms.uMouseVel.value.lerp(mouseVel.current, 1 - Math.exp(-delta * 8));
 
     const ctx = flowCtx;
-    // 천천히 사라져 붓 잔상처럼 남김
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = "rgba(0,0,0,0.018)";
     ctx.fillRect(0, 0, FLOW_SIZE, FLOW_SIZE);
