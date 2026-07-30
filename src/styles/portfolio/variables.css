@@ -1,29 +1,29 @@
 /* 포트폴리오('/') 전용 색상 변수 — 블로그 변수(variables.css)와 충돌하지 않도록 pf 접두사 사용 */
 :root {
-	--pfBlack: #1b1b1f;
-	--pfTextStrong: #111111;
-	--pfTextSub: #555555;
-	--pfTextMuted: #999999;
-	--pfTextFaint: #b0b0b0;
-	--pfGray: #666666;
-	--pfWhite: #ffffff;
+	--pfBlack: #ececf1;
+	--pfTextStrong: #ffffff;
+	--pfTextSub: #9ca3af;
+	--pfTextMuted: #6b7280;
+	--pfTextFaint: #52525b;
+	--pfGray: #9ca3af;
+	--pfWhite: #1a1a26;
 
-	--pfBgLavender: #e6eaf5;
-	--pfBgGray: #f6f6f6;
+	--pfBgLavender: #0f2566;
+	--pfBgGray: #0f1425;
 
-	--pfLine: #e8e8e8;
-	--pfTrack: #dddddd;
-	--pfSelectedRing: #3949ab;
+	--pfLine: #2a2a38;
+	--pfTrack: #3a3a4d;
+	--pfSelectedRing: #7c8fd4;
 
-	--pfIndigo: #27407c;
+	--pfIndigo: #5a7fd4;
 	--pfFabricIndigo: #3a5494;
 	--pfFabricDark: #16224d;
-	--pfOrange: #de7c3a;
-	--pfOrangeGlow: rgba(222, 124, 58, 0.9);
-	--pfOrangeGlowFade: rgba(222, 124, 58, 0);
+	--pfOrange: #e08850;
+	--pfOrangeGlow: rgba(224, 136, 80, 0.9);
+	--pfOrangeGlowFade: rgba(224, 136, 80, 0);
 	--pfThreadLight: rgba(255, 255, 255, 0.14);
 
-	--pfShadow: rgba(0, 0, 0, 0.1);
-	--pfShadowInset: rgba(0, 0, 0, 0.06);
-	--pfShadowInsetStrong: rgba(0, 0, 0, 0.08);
+	--pfShadow: rgba(0, 0, 0, 0.45);
+	--pfShadowInset: rgba(255, 255, 255, 0.06);
+	--pfShadowInsetStrong: rgba(255, 255, 255, 0.1);
 }

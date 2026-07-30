@@ -79,7 +79,7 @@
   height: 40px;
   padding: 0;
   background: var(--pfWhite);
-  border: none;
+  border: 1px solid var(--pfLine);
   border-radius: 0;
   box-shadow: 0 4px 20px var(--pfShadow);
   color: var(--pfBlack);
@@ -127,6 +127,7 @@
   max-width: min(280px, calc(100vw - 32px));
   padding: 0 16px;
   background: var(--pfWhite);
+  border: 1px solid var(--pfLine);
   box-shadow: 0 4px 20px var(--pfShadow);
 }
 

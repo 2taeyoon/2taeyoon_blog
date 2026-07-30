@@ -19,13 +19,13 @@ export default function GiantGlassCube() {
   const wallMaterial = useMemo(
     () =>
       new THREE.MeshPhysicalMaterial({
-        color: "#cfd9f4",
-        roughness: 0.06,
-        metalness: 0.1,
+        color: "#1e2640",
+        roughness: 0.04,
+        metalness: 0.15,
         transparent: true,
-        opacity: 0.08,
+        opacity: 0.14,
         side: THREE.DoubleSide,
-        envMapIntensity: 1.4,
+        envMapIntensity: 1.1,
         depthWrite: false,
       }),
     [],

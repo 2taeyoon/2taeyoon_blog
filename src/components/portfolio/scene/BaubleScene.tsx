@@ -128,14 +128,14 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
       gl={{ alpha: true, stencil: false, antialias: false }}
       camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 160 }}
       onCreated={(state) => {
-        state.gl.toneMappingExposure = 1.7;
+        state.gl.toneMappingExposure = 1.35;
       }}
     >
       <ResponsiveCamera />
-      <ambientLight intensity={1.0 * Math.PI} />
-      <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[512, 512]} intensity={Math.PI} />
-      <directionalLight position={[0, 5, -4]} intensity={4.5 * Math.PI} />
-      <directionalLight position={[0, -15, -0]} intensity={1.5 * Math.PI} color="red" />
+      <ambientLight intensity={0.55 * Math.PI} color="#8899cc" />
+      <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="#dde4ff" castShadow shadow-mapSize={[512, 512]} intensity={0.85 * Math.PI} />
+      <directionalLight position={[0, 5, -4]} intensity={3.2 * Math.PI} color="#c8d4f8" />
+      <directionalLight position={[0, -15, -0]} intensity={0.8 * Math.PI} color="#de7c3a" />
 
       <GiantGlassCube />
 
