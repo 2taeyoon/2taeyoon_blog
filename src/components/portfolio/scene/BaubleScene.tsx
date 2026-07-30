@@ -75,7 +75,6 @@ function createFabricTexture() {
 function MainScene({ baubles }: { baubles: { args: number; mass: number; angularDamping: number; linearDamping: number }[] }) {
   return (
     <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
-      <PointerInput />
       <Collisions />
       {baubles.map((props, i) => (
         <Bauble key={i} {...props} />
@@ -86,8 +85,8 @@ function MainScene({ baubles }: { baubles: { args: number; mass: number; angular
 
 /**
  * 사이트 전체의 단일 3D 월드.
- * - GiantGlassCube: 항상 존재하는 하나의 거대한 큐브 (천천히 회전)
- * - Scene 콘텐츠: 같은 큐브 내부에서 교체됨 (Main = 물리 큐브)
+ * - GiantGlassCube: 쉐이더 몽환 배경 (격자 + 모핑 + 마우스 유체)
+ * - Main: 물리 큐브들
  */
 export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
   const baubles = useMemo(
@@ -109,14 +108,30 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
       baubleMaterial.color.setHex(0xffffff);
       baubleMaterial.emissive.setHex(0xffffff).multiplyScalar(0.2);
       baubleMaterial.needsUpdate = true;
-    } else {
-      baubleMaterial.map = null;
-      baubleMaterial.emissiveMap = null;
-      const c = new THREE.Color(ballColor);
-      baubleMaterial.color.copy(c);
-      baubleMaterial.emissive.copy(c).multiplyScalar(0.2);
-      baubleMaterial.needsUpdate = true;
+      return;
     }
+
+    baubleMaterial.map = null;
+    baubleMaterial.emissiveMap = null;
+
+    const c = new THREE.Color(ballColor);
+    const hsl = { h: 0, s: 0, l: 0 };
+    c.getHSL(hsl);
+
+    if (hsl.l < 0.08) {
+      // #000 — 순검정이면 Lambert 음영이 사라져 실루엣만 남음 → 약간 띄워 볼륨 유지
+      baubleMaterial.color.setRGB(0.16, 0.16, 0.18);
+      baubleMaterial.emissive.setRGB(0.02, 0.02, 0.025);
+    } else if (hsl.l > 0.9) {
+      // #fff — 순백+노출로 날아가지 않게 쿨 오프화이트 + 낮은 emissive
+      baubleMaterial.color.setRGB(0.86, 0.88, 0.92);
+      baubleMaterial.emissive.setRGB(0.035, 0.04, 0.05);
+    } else {
+      baubleMaterial.color.copy(c);
+      const em = THREE.MathUtils.clamp(0.06 + (1 - hsl.l) * 0.18, 0.05, 0.22);
+      baubleMaterial.emissive.copy(c).multiplyScalar(em);
+    }
+    baubleMaterial.needsUpdate = true;
   }, [ballColor]);
 
   return (
@@ -128,22 +143,23 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
       gl={{ alpha: true, stencil: false, antialias: false }}
       camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 160 }}
       onCreated={(state) => {
-        state.gl.toneMappingExposure = 1.7;
+        state.gl.toneMappingExposure = 1.35;
       }}
     >
       <ResponsiveCamera />
-      <ambientLight intensity={1.0 * Math.PI} />
-      <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="white" castShadow shadow-mapSize={[512, 512]} intensity={Math.PI} />
-      <directionalLight position={[0, 5, -4]} intensity={4.5 * Math.PI} />
-      <directionalLight position={[0, -15, -0]} intensity={1.5 * Math.PI} color="red" />
+      <PointerInput />
+      <ambientLight intensity={0.5 * Math.PI} color="#8899cc" />
+      <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="#dde4ff" castShadow shadow-mapSize={[512, 512]} intensity={0.75 * Math.PI} />
+      <directionalLight position={[0, 5, -4]} intensity={2.6 * Math.PI} color="#c8d4f8" />
+      <directionalLight position={[0, -15, -0]} intensity={0.6 * Math.PI} color="#de7c3a" />
 
-      <GiantGlassCube />
+      <GiantGlassCube ballColor={ballColor} />
 
       {scene === "main" && <MainScene baubles={baubles} />}
 
       <Environment files="/3d/adamsbridge.hdr" />
       <EffectComposer multisampling={0}>
-        <N8AO aoRadius={2} intensity={10} />
+        <N8AO aoRadius={2} intensity={7} />
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       </EffectComposer>
     </Canvas>

@@ -32,7 +32,7 @@
         "./src/*"
       ]
     },
-    "moduleResolution": "node"
+    "moduleResolution": "bundler"
   },
   "include": [
     "next-env.d.ts",
