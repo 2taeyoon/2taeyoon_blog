@@ -109,13 +109,14 @@ export default function GiantGlassCube() {
             float md = length(toMouse);
             vec2 dir = normalize(toMouse + 1e-4);
 
-            // 마우스 움직일 때만 유체 왜곡 (작게, 원형에 가깝게)
+            // 마우스 유체 + 붓 잔상 (flow가 남아 있으면 계속 일렁임)
             float speed = length(uMouseVel);
-            float motionAmt = smoothstep(0.002, 0.02, speed + flow * 0.12);
+            float trail = smoothstep(0.015, 0.22, flow);
+            float motionAmt = max(smoothstep(0.002, 0.02, speed), trail * 0.9);
             vec2 distort = vec2(0.0);
-            // 가로 과도한 스트레치 완화
             vec2 vel = uMouseVel * vec2(1.0 / max(uAspect, 1.0), 1.0);
             distort += vel * flow * 0.045 * motionAmt;
+            distort += dir * flow * 0.018 * trail; // 잔상 붓 밀림
             distort += dir * flow * 0.014 * motionAmt;
             distort += dir * flow * exp(-md * 2.5) * 0.008 * sin(md * 28.0 - uTime * 2.2) * motionAmt;
 
@@ -257,24 +258,25 @@ export default function GiantGlassCube() {
     material.uniforms.uMouseVel.value.lerp(mouseVel.current, 1 - Math.exp(-delta * 8));
 
     const ctx = flowCtx;
+    // 천천히 사라져 붓 잔상처럼 남김
     ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = "rgba(0,0,0,0.085)";
+    ctx.fillStyle = "rgba(0,0,0,0.018)";
     ctx.fillRect(0, 0, FLOW_SIZE, FLOW_SIZE);
 
     const mx = (mouseSmooth.current.x * 0.5 + 0.5) * FLOW_SIZE;
     const my = (1 - (mouseSmooth.current.y * 0.5 + 0.5)) * FLOW_SIZE;
     const speed = Math.min(Math.hypot(mx - flowPos.current.x, my - flowPos.current.y), 40);
 
-    if (speed > 0.35) {
+    if (speed > 0.2) {
       const aspect = Math.max(material.uniforms.uAspect.value as number, 0.01);
-      // 화면에서 원형으로 보이도록 UV 가로를 압축해 브러시 그림
       const radius = 21 + speed * 0.84;
       ctx.save();
       ctx.translate(mx, my);
       ctx.scale(1 / aspect, 1);
       const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, radius);
-      const strength = Math.min(0.85, 0.28 + speed * 0.02);
+      const strength = Math.min(0.9, 0.32 + speed * 0.022);
       grad.addColorStop(0, `rgba(255,255,255,${strength})`);
+      grad.addColorStop(0.45, `rgba(255,255,255,${strength * 0.45})`);
       grad.addColorStop(1, "rgba(255,255,255,0)");
       ctx.globalCompositeOperation = "lighter";
       ctx.fillStyle = grad;
