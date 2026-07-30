@@ -75,7 +75,6 @@ function createFabricTexture() {
 function MainScene({ baubles }: { baubles: { args: number; mass: number; angularDamping: number; linearDamping: number }[] }) {
   return (
     <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
-      <PointerInput />
       <Collisions />
       {baubles.map((props, i) => (
         <Bauble key={i} {...props} />
@@ -86,8 +85,8 @@ function MainScene({ baubles }: { baubles: { args: number; mass: number; angular
 
 /**
  * 사이트 전체의 단일 3D 월드.
- * - GiantGlassCube: 항상 존재하는 하나의 거대한 큐브 (천천히 회전)
- * - Scene 콘텐츠: 같은 큐브 내부에서 교체됨 (Main = 물리 큐브)
+ * - GiantGlassCube: 쉐이더 몽환 배경 (격자 + 모핑 + 마우스 유체)
+ * - Main: 물리 큐브들
  */
 export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
   const baubles = useMemo(
@@ -132,10 +131,11 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
       }}
     >
       <ResponsiveCamera />
-      <ambientLight intensity={0.55 * Math.PI} color="#8899cc" />
-      <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="#dde4ff" castShadow shadow-mapSize={[512, 512]} intensity={0.85 * Math.PI} />
-      <directionalLight position={[0, 5, -4]} intensity={3.2 * Math.PI} color="#c8d4f8" />
-      <directionalLight position={[0, -15, -0]} intensity={0.8 * Math.PI} color="#de7c3a" />
+      <PointerInput />
+      <ambientLight intensity={0.5 * Math.PI} color="#8899cc" />
+      <spotLight position={[20, 20, 25]} penumbra={1} angle={0.2} color="#dde4ff" castShadow shadow-mapSize={[512, 512]} intensity={0.75 * Math.PI} />
+      <directionalLight position={[0, 5, -4]} intensity={2.6 * Math.PI} color="#c8d4f8" />
+      <directionalLight position={[0, -15, -0]} intensity={0.6 * Math.PI} color="#de7c3a" />
 
       <GiantGlassCube />
 
@@ -143,7 +143,7 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
 
       <Environment files="/3d/adamsbridge.hdr" />
       <EffectComposer multisampling={0}>
-        <N8AO aoRadius={2} intensity={10} />
+        <N8AO aoRadius={2} intensity={7} />
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       </EffectComposer>
     </Canvas>
