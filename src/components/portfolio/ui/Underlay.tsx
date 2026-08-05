@@ -20,8 +20,10 @@ export default function Underlay({ onTogglePalette, onClosePalette, heroVisible 
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [volumeOpen, setVolumeOpen] = useState(false);
+  const playingRef = useRef(false);
 
   volumeRef.current = volume;
+  playingRef.current = playing;
 
   const wireAudioGraph = () => {
     if (graphWiredRef.current || !audioRef.current) return;
@@ -118,6 +120,29 @@ export default function Underlay({ onTogglePalette, onClosePalette, heroVisible 
       audioRef.current?.pause();
       audioRef.current = null;
     };
+  }, []);
+
+  // 다른 탭/창으로 포커스가 떠나면 일시정지, 다시 돌아오면 재생 중이던 경우만 재개
+  useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        audioRef.current?.pause();
+        void audioCtxRef.current?.suspend();
+        return;
+      }
+      if (!playingRef.current || !audioRef.current) return;
+      void (async () => {
+        try {
+          await audioCtxRef.current?.resume();
+          await audioRef.current?.play();
+        } catch {
+          // 브라우저 자동재생 정책 등으로 실패하면 UI는 유지
+        }
+      })();
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", onVisibilityChange);
   }, []);
 
   const toggleMusic = () => {
@@ -249,7 +274,7 @@ export default function Underlay({ onTogglePalette, onClosePalette, heroVisible 
       <div className={`underlay_hero${heroVisible ? " is_visible" : ""}`} aria-hidden={!heroVisible}>
         <div className="underlay_intro_row">
           <div className="underlay_intro_text">
-            <div>A front-end developer with a sense of design</div>
+            <div>Assembling aesthetics and technology piece by piece.</div>
             <div className="underlay_intro_dash">—</div>
           </div>
         </div>
@@ -261,15 +286,14 @@ export default function Underlay({ onTogglePalette, onClosePalette, heroVisible 
 
         <div className="underlay_bottom_row">
           <div className="underlay_roles">
-            <div>UI/UX Designer</div>
-            <div>Web Publisher</div>
+            <div>Frontend</div>
+            <div>Backend</div>
           </div>
           <div className="underlay_gutter" />
           <p className="underlay_drag_hint">Move and drag the mouse</p>
           <div className="underlay_gutter" />
           <div className="underlay_roles_right">
-            <div>Frontend Developer</div>
-            <div>Backend Developer</div>
+            <div>Developer</div>
           </div>
         </div>
       </div>
