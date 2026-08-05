@@ -28,7 +28,6 @@
   flex: 1 1 0%;
   font-size: 3rem;
   font-weight: 700;
-  line-height: 1;
   color: var(--pfBlack);
   letter-spacing: -2px;
 }
@@ -43,9 +42,8 @@
 
 .underlay_nav_item {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  line-height: 1;
+  font-size: 1.8rem;
+  font-weight: 700;
   text-align: center;
   color: var(--pfBlack);
   white-space: nowrap;
@@ -228,14 +226,12 @@
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;
-  line-height: 21px;
   color: var(--pfBlack);
 }
 
 .underlay_intro_text div {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.4rem;
-  line-height: 21px;
+  font-size: 1.6rem;
   color: var(--pfBlack);
 }
 
@@ -266,7 +262,6 @@
   min-width: 0;
   font-size: 250px;
   font-weight: 800;
-  line-height: 250px;
   color: var(--pfBlack);
   margin: 0;
   letter-spacing: -20px;
@@ -294,23 +289,20 @@
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;
-  line-height: 21px;
   color: var(--pfBlack);
 }
 
 .underlay_roles div {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.4rem;
-  line-height: 21px;
+  font-size: 1.6rem;
   color: var(--pfBlack);
 }
 
 .underlay_drag_hint {
   font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 16px;
+  font-size: 1.8rem;
+  font-weight: 600;
   text-align: center;
   color: var(--pfBlack);
   letter-spacing: -0.5px;
@@ -325,15 +317,13 @@
   flex-direction: column;
   align-items: flex-end;
   font-size: 1.4rem;
-  line-height: 21px;
   text-align: right;
   color: var(--pfBlack);
 }
 
 .underlay_roles_right div {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.4rem;
-  line-height: 21px;
+  font-size: 1.6rem;
   color: var(--pfBlack);
 }
 
@@ -341,7 +331,6 @@
   .underlay_title_front,
   .underlay_title_end {
     font-size: 200px;
-    line-height: 200px;
     letter-spacing: -16px;
   }
 }
@@ -362,7 +351,6 @@
   .underlay_title_front,
   .underlay_title_end {
     font-size: 150px;
-    line-height: 150px;
     letter-spacing: -12px;
   }
 
@@ -411,7 +399,6 @@
   .underlay_intro_text,
   .underlay_intro_text div {
     font-size: 1.2rem;
-    line-height: 18px;
   }
 
   .underlay_title_row {
@@ -421,7 +408,6 @@
   .underlay_title_front,
   .underlay_title_end {
     font-size: 88px;
-    line-height: 88px;
     letter-spacing: -8px;
   }
 
@@ -435,7 +421,6 @@
   .underlay_roles_right,
   .underlay_roles_right div {
     font-size: 1.2rem;
-    line-height: 18px;
   }
 
   .underlay_roles {
@@ -486,7 +471,6 @@
   .underlay_title_front,
   .underlay_title_end {
     font-size: 56px;
-    line-height: 56px;
     letter-spacing: -5px;
   }
 }
