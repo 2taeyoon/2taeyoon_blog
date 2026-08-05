@@ -12,7 +12,7 @@ export const metadata = {
     url: "https://www.2taeyoon.com/blog/ai",
     images: [
       {
-        url: "https://www.2taeyoon.com/favicon/main_meta_image.png",
+        url: "https://www.2taeyoon.com/favicon/blog/blog_meta_image.png",
         alt: "Thumbnail",
       },
     ],

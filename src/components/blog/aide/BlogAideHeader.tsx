@@ -7,7 +7,7 @@ interface BlogAideHeaderProps {
 export default function BlogAideHeader({ onClose }: BlogAideHeaderProps) {
   return (
     <div className="blog_aide_header">
-      <Image src="/favicon/favicon-48x48.png" className="blog_aide_logo" alt="로고" width={40} height={40} unoptimized />
+      <Image src="/favicon/blog/favicon-48x48.png" className="blog_aide_logo" alt="로고" width={40} height={40} unoptimized />
       <h1>2taeyoon</h1>
       <button className="blog_aide_toggle" type="button" onClick={onClose}>
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">

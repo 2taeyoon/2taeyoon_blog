@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import BlogHeaderWrapper from "@/components/blog/header/BlogHeaderWrapper";
@@ -6,6 +7,31 @@ import BlogAideWrapper from "@/components/blog/aide/BlogAideWrapper";
 import "@/styles/base/index.css";
 import "@/styles/blog/index.css";
 import "@/styles/portfolio/index.css";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: [
+      { url: "/favicon/portfolio/main_favicon.ico", type: "image/x-icon" },
+      { url: "/favicon/portfolio/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/portfolio/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon/portfolio/favicon-72x72.png", sizes: "72x72", type: "image/png" },
+      { url: "/favicon/portfolio/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon/portfolio/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon/portfolio/main_favicon.ico",
+    apple: [
+      { url: "/favicon/portfolio/apple-icon-57x57.png", sizes: "57x57" },
+      { url: "/favicon/portfolio/apple-icon-60x60.png", sizes: "60x60" },
+      { url: "/favicon/portfolio/apple-icon-72x72.png", sizes: "72x72" },
+      { url: "/favicon/portfolio/apple-icon-76x76.png", sizes: "76x76" },
+      { url: "/favicon/portfolio/apple-icon-114x114.png", sizes: "114x114" },
+      { url: "/favicon/portfolio/apple-icon-120x120.png", sizes: "120x120" },
+      { url: "/favicon/portfolio/apple-icon-144x144.png", sizes: "144x144" },
+      { url: "/favicon/portfolio/apple-icon-152x152.png", sizes: "152x152" },
+      { url: "/favicon/portfolio/apple-icon-180x180.png", sizes: "180x180" },
+    ],
+  },
+};
 
 export default function RootLayout({
   children,
@@ -19,23 +45,6 @@ export default function RootLayout({
         <meta name="color-scheme" content="light"/>
         <meta name="supported-color-schemes" content="light"/>
 				<meta name="format-detection" content="telephone=no, date=no, email=no, address=no"/>
-				<link rel="icon" href="/favicon.ico" title="icon"/>
-				<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
-				<link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png"/>
-				<link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png"/>
-				<link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png"/>
-				<link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png"/>
-				<link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png"/>
-				<link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png"/>
-				<link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png"/>
-				<link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png"/>
-				<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png"/>
-				<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
-				<link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png"/>
-				<link rel="icon" type="image/png" sizes="72x72" href="/favicon/favicon-72x72.png"/>
-				<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png"/>
-				<link rel="icon" type="image/png" sizes="192x192"  href="/favicon/favicon-192x192.png"/>
-				<link rel="icon" type="image/png" sizes="512x512"  href="/favicon/favicon-512x512.png"/>
 				<meta name="naver-site-verification" content="b31001398f78b93a5261e498862e5905546ebe94" />
 				<meta name="google-site-verification" content="JjftBsdUusKSonsp6gVw-ivUUVv5sVXF0rtETJu280Q" />
       </head>

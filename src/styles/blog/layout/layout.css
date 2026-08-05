@@ -23,7 +23,7 @@
 .blog_wrap .blog .page_url .page_url_wrap1 { justify-content: flex-start; }
 .blog_wrap .blog .page_url .page_url_wrap2 { justify-content: flex-end; }
 .blog_wrap .blog .page_url .page_url_wrap { display: flex; align-items: center; position: relative; width: calc(50% - 16px); height: 120px; transition: .3s; }
-.blog_wrap .blog .page_url .page_url_wrap .page_url_prev, .blog_wrap .blog .page_url .page_url_wrap .page_url_next { display: block; position: relative; width: 100%; height: 100%; border-radius: 16px; filter: brightness(0.3); }
+.blog_wrap .blog .page_url .page_url_wrap .page_url_prev, .blog_wrap .blog .page_url .page_url_wrap .page_url_next { display: block; position: relative; width: 100%; height: 100%; filter: brightness(0.3); }
 .blog_wrap .blog .page_url .page_url_wrap .page_url_item { display: flex; align-items: center; justify-content: center; position: absolute; width: 100%; padding: 0 16px; color: var(--white); }
 
 .blog_wrap .blog .page_url .page_url_wrap .page_url_item .page_url_item_arrow1, .blog_wrap .blog .page_url .page_url_wrap .page_url_item .page_url_item_arrow2 { position: relative; width: 30px; height: 30px; filter: invert(1) brightness(.7); }
