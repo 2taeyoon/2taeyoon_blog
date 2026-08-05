@@ -267,7 +267,7 @@ export default function GiantGlassCube({ ballColor = "fabric" }: { ballColor?: s
           float gAmt = exp(-length((uv - 0.5) * vec2(uAspect * 0.55, 1.0)) * 2.8);
           col += uGlow * gAmt * 0.05;
 
-          float gridScale = 36.0;
+          float gridScale = 23.4;
           vec2 guv = (duv - 0.5);
           guv.x *= uAspect;
           vec2 gridCoord = guv * gridScale;
@@ -285,9 +285,11 @@ export default function GiantGlassCube({ ballColor = "fabric" }: { ballColor?: s
           float myL = 1.0 - smoothstep(0.0, px * 1.35, min(fm.y, 1.0 - fm.y) / fwm.y);
           float major = max(mxL, myL);
 
-          float gridFade = smoothstep(1.15, 0.2, length((uv - 0.5) * vec2(uAspect * 0.7, 1.0)));
-          float gridA = (grid * 0.11 + major * 0.07) * (0.65 + 0.35 * gridFade);
-          gridA += flow * 0.03 * motionAmt;
+          // 가로로 긴 타원 비네팅 — 좌우도 살짝 페이드, 모서리는 더 강하게
+          vec2 gridEllip = (uv - 0.5) * vec2(1.58, 1.92);
+          float gridVignette = smoothstep(1.0, 0.18, length(gridEllip));
+          float gridA = (grid * 0.11 + major * 0.07) * gridVignette;
+          gridA += flow * 0.03 * motionAmt * gridVignette;
           col += uGrid * gridA;
 
           float vig = smoothstep(1.2, 0.35, length((uv - 0.5) * vec2(uAspect * 0.75, 1.0)));
