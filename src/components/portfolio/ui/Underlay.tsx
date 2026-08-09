@@ -2,24 +2,26 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { ColorPalette } from "@/components/portfolio/ui/ColorPalette";
 
 interface UnderlayProps {
-  onTogglePalette: () => void;
-  onClosePalette: () => void;
+  ballColor: string;
+  onColorChange: (color: string) => void;
   /** Main Scene 히어로 콘텐츠 표시 여부 (top bar는 항상 유지) */
   heroVisible: boolean;
 }
 
-export default function Underlay({ onTogglePalette, onClosePalette, heroVisible }: UnderlayProps) {
+export default function Underlay({ ballColor, onColorChange, heroVisible }: UnderlayProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const gainRef = useRef<GainNode | null>(null);
   const graphWiredRef = useRef(false);
   const volumeRef = useRef(100);
+  const settingsRef = useRef<HTMLDivElement | null>(null);
   // const unlockHandlerRef = useRef<(() => void) | null>(null);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
-  const [volumeOpen, setVolumeOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const playingRef = useRef(false);
 
   volumeRef.current = volume;
@@ -197,16 +199,18 @@ export default function Underlay({ onTogglePalette, onClosePalette, heroVisible 
     e.currentTarget.releasePointerCapture(e.pointerId);
   };
 
-  // 볼륨 창과 팔레트 창은 동시에 열리지 않도록 서로 닫아줌
-  const toggleVolume = () => {
-    setVolumeOpen((prev) => !prev);
-    onClosePalette();
-  };
+  useEffect(() => {
+    if (!settingsOpen) return;
 
-  const togglePalette = () => {
-    setVolumeOpen(false);
-    onTogglePalette();
-  };
+    const onPointerDown = (e: PointerEvent) => {
+      if (!settingsRef.current?.contains(e.target as Node)) {
+        setSettingsOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [settingsOpen]);
 
   // 클릭이 캔버스(window pointerdown)로 전파되어 큐브가 따라오는 것을 차단
   const blockPointer = (e: React.PointerEvent) => e.stopPropagation();
@@ -219,28 +223,44 @@ export default function Underlay({ onTogglePalette, onClosePalette, heroVisible 
           <Link href="/blog" className="underlay_nav_item underlay_nav_link">BLOG</Link>
           <a href="https://github.com/2taeyoon" target="_blank" rel="noreferrer" className="underlay_nav_item underlay_nav_link">GITHUB</a>
         </div>
-        <div className="underlay_controls" onPointerDown={blockPointer}>
-          <button type="button" className="underlay_control_button" onClick={toggleMusic} aria-label={playing ? "배경 음악 정지" : "배경 음악 재생"} aria-pressed={playing}>
-            {playing ? (
-              <svg className="underlay_music_icon" viewBox="0 0 48 24" width="24" height="24" aria-hidden="true">
-                <path className="underlay_music_wave_path" d="M0 12 Q 6 4 12 12 T 24 12 T 36 12 T 48 12 T 60 12 T 72 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            ) : (
-              <svg className="underlay_music_icon" viewBox="0 0 48 24" width="24" height="24" aria-hidden="true">
-                <line x1="6" y1="12" x2="42" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            )}
+        <div className="underlay_controls" ref={settingsRef} onPointerDown={blockPointer}>
+          <button
+            type="button"
+            className="underlay_control_button"
+            onClick={() => setSettingsOpen((prev) => !prev)}
+            aria-label="설정 열기/닫기"
+            aria-expanded={settingsOpen}
+            aria-haspopup="menu"
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" />
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+            </svg>
           </button>
-          <div className="underlay_volume_wrap">
-            <button type="button" className="underlay_control_button" onClick={toggleVolume} aria-label="볼륨 조절 열기/닫기" aria-expanded={volumeOpen}>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none" />
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-              </svg>
-            </button>
-            {volumeOpen && (
-              <div className="underlay_volume_panel" onPointerDown={blockPointer}>
+
+          {settingsOpen && (
+            <div className="underlay_settings_dropdown" role="menu" aria-label="설정 메뉴">
+              <button
+                type="button"
+                className="underlay_settings_item"
+                role="menuitem"
+                onClick={toggleMusic}
+                aria-pressed={playing}
+              >
+                <span className="underlay_settings_item_label">Music</span>
+                <span className="underlay_settings_item_control">
+                  {playing ? (
+                    <svg className="underlay_music_icon" viewBox="0 0 48 24" width="28" height="16" aria-hidden="true">
+                      <path className="underlay_music_wave_path" d="M0 12 Q 6 4 12 12 T 24 12 T 36 12 T 48 12 T 60 12 T 72 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  ) : (
+                    <span className="underlay_settings_status">OFF</span>
+                  )}
+                </span>
+              </button>
+
+              <div className="underlay_settings_item underlay_settings_item_volume" role="menuitem">
+                <span className="underlay_settings_item_label">Volume</span>
                 <div className="underlay_volume_row">
                   <input
                     ref={volumeSliderRef}
@@ -261,13 +281,12 @@ export default function Underlay({ onTogglePalette, onClosePalette, heroVisible 
                   <span className="underlay_volume_value">{volume}</span>
                 </div>
               </div>
-            )}
-          </div>
-          <button type="button" className="underlay_control_button" onClick={togglePalette} aria-label="색상 변경 팔레트 열기/닫기">
-            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-              <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z" />
-            </svg>
-          </button>
+
+              <div className="underlay_settings_palette">
+                <ColorPalette value={ballColor} onChange={onColorChange} embedded />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
