@@ -59,13 +59,13 @@
   opacity: 0.55;
 }
 
-/* 우상단 음악/볼륨/색상 컨트롤 영역 */
+/* 우상단 설정(톱니바퀴) + 드롭다운 */
 .underlay_controls {
+  position: relative;
   flex: 1 1 0%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
   pointer-events: all;
 }
 
@@ -78,8 +78,6 @@
   padding: 0;
   background: var(--pfWhite);
   border: 1px solid var(--pfLine);
-  border-radius: 0;
-  box-shadow: 0 4px 20px var(--pfShadow);
   color: var(--pfBlack);
   cursor: pointer;
   transition: opacity 0.2s;
@@ -108,36 +106,192 @@
   }
 }
 
-/* 볼륨 버튼 + 토글 패널 */
-.underlay_volume_wrap {
-  position: relative;
+.underlay_settings_dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  width: min(280px, calc(100vw - 32px));
+  background: var(--pfWhite);
+  border: 1px solid var(--pfLine);
+  box-shadow: 0 8px 24px var(--pfShadow);
+  transform-origin: top right;
+  animation: underlay_dropdown_in 0.16s ease;
 }
 
-.underlay_volume_panel {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
+@keyframes underlay_dropdown_in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.underlay_settings_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--pfBlack);
+  cursor: pointer;
+  text-align: left;
+}
+
+button.underlay_settings_item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.underlay_settings_item_volume {
+  cursor: default;
+}
+
+.underlay_settings_item_label {
+  font-family: "Nunito Sans", sans-serif;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--pfTextMuted);
+}
+
+.underlay_settings_item_control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: var(--pfBlack);
+}
+
+.underlay_settings_status {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--pfTextFaint);
+}
+
+.underlay_settings_palette {
+  padding: 8px 16px;
+}
+
+/* ColorPalette — Underlay 설정 드롭다운 전용 */
+.color_palette {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 8px;
-  width: max-content;
-  max-width: min(280px, calc(100vw - 32px));
-  padding: 0 16px;
-  background: var(--pfWhite);
-  border: 1px solid var(--pfLine);
-  box-shadow: 0 4px 20px var(--pfShadow);
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  pointer-events: all;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
+
+.color_palette_label {
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--pfTextMuted);
+}
+
+.color_palette_swatches {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.color_palette_swatch {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  background: var(--swatch-color);
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px var(--pfShadowInset);
+}
+
+.color_palette_swatch.is_selected {
+  box-shadow:
+    0 0 0 2px var(--pfWhite),
+    0 0 0 3.5px var(--pfSelectedRing);
+}
+
+.color_palette_swatch_fabric {
+  background:
+    repeating-linear-gradient(0deg, var(--pfThreadLight) 0 1px, transparent 1px 3px),
+    radial-gradient(circle at 75% 25%, var(--pfOrangeGlow), var(--pfOrangeGlowFade) 65%),
+    linear-gradient(135deg, var(--pfFabricIndigo), var(--pfFabricDark));
+}
+
+.color_palette_custom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.color_palette_custom_label {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--pfTextMuted);
+}
+
+.color_palette_custom_preview {
+  position: relative;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  box-shadow: inset 0 0 0 1px var(--pfShadowInsetStrong);
+  pointer-events: none;
+}
+
+.color_palette_input {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  opacity: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
 
 .underlay_volume_row {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .underlay_volume_slider {
-  width: 120px;
-  height: 44px;
+  width: 100%;
+  min-width: 0;
+  height: 36px;
   margin: 0;
   padding: 0;
   appearance: none;
@@ -156,9 +310,9 @@
 .underlay_volume_slider::-webkit-slider-thumb {
   appearance: none;
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  margin-top: -8px;
+  width: 14px;
+  height: 14px;
+  margin-top: -5.5px;
   background: var(--pfBlack);
   border: none;
   border-radius: 0;
@@ -172,8 +326,8 @@
 }
 
 .underlay_volume_slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   background: var(--pfBlack);
   border: none;
   border-radius: 0;
