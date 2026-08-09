@@ -5,7 +5,6 @@ import BaubleScene from "@/components/portfolio/scene/BaubleScene";
 import Underlay from "@/components/portfolio/ui/Underlay";
 import SceneContent from "@/components/portfolio/ui/SceneContent";
 import SceneNav from "@/components/portfolio/ui/SceneNav";
-import { ColorPalette } from "@/components/portfolio/ui/ColorPalette";
 import { SCENE_ORDER, cubeSpinState, type SceneId } from "@/lib/portfolio/scenes";
 
 interface FaceTransition {
@@ -70,20 +69,14 @@ function useSceneNavigation() {
  * - 섹션 ↔ 섹션: 화면이 뒤로 빠지며 큐브 면이 90° 회전해 다음 면으로 전환 (CSS 3D)
  */
 export default function MainSection() {
-  const [paletteOpen, setPaletteOpen] = useState(false);
   const { ballColor, handleColorChange } = usePersistedBallColor();
   const { scene, faceTransition, transitioning, goToScene, handleFaceAnimationEnd } = useSceneNavigation();
-
-  const navigate = (target: SceneId) => {
-    setPaletteOpen(false);
-    goToScene(target);
-  };
 
   return (
     <div className="main_section_container">
       <Underlay
-        onTogglePalette={() => setPaletteOpen((prev) => !prev)}
-        onClosePalette={() => setPaletteOpen(false)}
+        ballColor={ballColor}
+        onColorChange={handleColorChange}
         heroVisible={scene === "main" && !transitioning}
       />
 
@@ -107,9 +100,7 @@ export default function MainSection() {
         <SceneContent scene={scene} visible={!transitioning} />
       )}
 
-      <SceneNav scene={scene} transitioning={transitioning} onNavigate={navigate} />
-
-      {paletteOpen && <ColorPalette value={ballColor} onChange={handleColorChange} />}
+      <SceneNav scene={scene} transitioning={transitioning} onNavigate={goToScene} />
 
       <BaubleScene ballColor={ballColor} scene={scene} />
     </div>
