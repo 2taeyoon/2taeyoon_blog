@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 import { CardProps } from "@/types/blog/card.types";
 import { getCombinedSliderCards } from "@/data/blog/cards";
 import Link from "next/link";
+import { toBlogSlug } from "@/lib/blog/slug";
 
 export function SliderFadeComponent() {
 
@@ -94,7 +95,7 @@ export function SliderFadeComponent() {
 					modules={[Autoplay, EffectFade]} onAutoplayTimeLeft={onAutoplayTimeLeft} onSwiper={(s) => (swiperRef.current = s)}>
 					{selectedCards.map((card, index) => (
 						<SwiperSlide key={index}>
-							<Link href={`/${card.type}/${card.title?.replace(/\s+/g, '-')}`} className="swiper_image_wrap">
+							<Link href={`/${card.type}/${toBlogSlug(card.title ?? "")}`} className="swiper_image_wrap">
 								<div className="swiper_image" style={{ background: card.image ? `url('${card.image}') center center / cover` : "none" }}></div>
 								<div className="description">
 									<div className="title">{card.title}</div>
