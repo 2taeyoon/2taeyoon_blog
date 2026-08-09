@@ -120,13 +120,3 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
-
-@media (max-width: 640px) {
-  .color_palette {
-    top: 84px;
-    right: 16px;
-    left: 16px;
-    width: auto;
-    max-width: calc(100% - 32px);
-  }
-}
