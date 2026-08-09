@@ -14,34 +14,31 @@ interface FaceTransition {
   dir: 1 | -1;
 }
 
-/**
- * 사이트 전체 = 하나의 거대한 Glass Cube.
- * - 섹션 ↔ 섹션: 화면이 뒤로 빠지며 큐브 면이 90° 회전해 다음 면으로 전환 (CSS 3D)
- */
-export default function MainSection() {
-  const [ballColor, setBallColor] = useState("fabric");
-  const [paletteOpen, setPaletteOpen] = useState(false);
+const STORAGE_KEY = "baubleColor";
 
-  const [scene, setScene] = useState<SceneId>("main");
-  const [faceTransition, setFaceTransition] = useState<FaceTransition | null>(null);
+function usePersistedBallColor() {
+  const [ballColor, setBallColor] = useState("fabric");
 
   useEffect(() => {
-    const savedColor = sessionStorage.getItem("baubleColor");
-    if (savedColor) {
-      setBallColor(savedColor);
-    }
+    const savedColor = sessionStorage.getItem(STORAGE_KEY);
+    if (savedColor) setBallColor(savedColor);
   }, []);
 
   const handleColorChange = (color: string) => {
     setBallColor(color);
-    sessionStorage.setItem("baubleColor", color);
+    sessionStorage.setItem(STORAGE_KEY, color);
   };
 
+  return { ballColor, handleColorChange };
+}
+
+function useSceneNavigation() {
+  const [scene, setScene] = useState<SceneId>("main");
+  const [faceTransition, setFaceTransition] = useState<FaceTransition | null>(null);
   const transitioning = faceTransition !== null;
 
   const goToScene = (target: SceneId) => {
     if (transitioning || target === scene) return;
-    setPaletteOpen(false);
 
     if (scene !== "main" && target !== "main") {
       // 섹션 간 이동 — 큐브 면 회전으로 전환
@@ -53,11 +50,33 @@ export default function MainSection() {
     }
   };
 
-  /** 면 회전 전환: 회전 애니메이션 종료 시 Scene 교체 확정 */
   const handleFaceAnimationEnd = () => {
     if (!faceTransition) return;
     setScene(faceTransition.to);
     setFaceTransition(null);
+  };
+
+  return {
+    scene,
+    faceTransition,
+    transitioning,
+    goToScene,
+    handleFaceAnimationEnd,
+  };
+}
+
+/**
+ * 사이트 전체 = 하나의 거대한 Glass Cube.
+ * - 섹션 ↔ 섹션: 화면이 뒤로 빠지며 큐브 면이 90° 회전해 다음 면으로 전환 (CSS 3D)
+ */
+export default function MainSection() {
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const { ballColor, handleColorChange } = usePersistedBallColor();
+  const { scene, faceTransition, transitioning, goToScene, handleFaceAnimationEnd } = useSceneNavigation();
+
+  const navigate = (target: SceneId) => {
+    setPaletteOpen(false);
+    goToScene(target);
   };
 
   return (
@@ -88,7 +107,7 @@ export default function MainSection() {
         <SceneContent scene={scene} visible={!transitioning} />
       )}
 
-      <SceneNav scene={scene} transitioning={transitioning} onNavigate={goToScene} />
+      <SceneNav scene={scene} transitioning={transitioning} onNavigate={navigate} />
 
       {paletteOpen && <ColorPalette value={ballColor} onChange={handleColorChange} />}
 
