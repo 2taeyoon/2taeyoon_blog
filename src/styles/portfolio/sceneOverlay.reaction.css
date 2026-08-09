@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+@media (max-width: 900px) {
+  .scene_overlay {
+    padding: 110px 24px 90px;
+  }
+
+  .scene_project_list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .scene_project_card {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .scene_overlay {
+    padding: 96px 16px 96px;
+  }
+
+  .scene_nav {
+    bottom: 20px;
+    gap: 10px;
+  }
+
+  .scene_nav_dots {
+    gap: 8px;
+  }
+
+  .scene_nav_dot_label {
+    display: none;
+  }
+}
