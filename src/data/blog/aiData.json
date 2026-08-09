@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/8/8.md",
+			"image": "/images/blog/ai/8/main_image.webp",
+			"sortDate": "2026-07-09",
+			"title": "테라팹, 스타십, 옵티머스가 어떻게 함께 작동하는가?",
+			"subTitle": "AI 시대의 에너지·칩 병목을 풀기 위한 우주 기반 컴퓨팅과 로봇 자동화 논의를 정리했습니다. 테라팹, 스타십, 옵티머스가 어떻게 맞물리는지, 그리고 공급망·리더십·문명 확장까지 핵심만 번호 목록으로 재구성했습니다.",
+			"hashs": [
+				{"name": "#Terafab"},
+				{"name": "#Starship"},
+				{"name": "#Optimus"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/7/7.md",
 			"image": "/images/blog/ai/7/main_image.webp",
 			"sortDate": "2026-06-30",
