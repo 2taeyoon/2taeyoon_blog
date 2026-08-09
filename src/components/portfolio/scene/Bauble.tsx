@@ -1,8 +1,8 @@
 "use client";
 
 import * as THREE from "three";
-import { useEffect } from "react";
-import { useBox, Triplet } from "@react-three/cannon";
+import { useEffect, useRef } from "react";
+import { useBox, type Triplet } from "@react-three/cannon";
 import {
   pointerState,
   boxGeometry,
@@ -10,20 +10,15 @@ import {
   type BaubleProps,
 } from "@/lib/portfolio/pointerState";
 
-type BaubleComponentProps = BaubleProps & {
-  vec?: THREE.Vector3;
-};
-
-export default function Bauble({
-  vec = new THREE.Vector3(),
-  ...props
-}: BaubleComponentProps) {
+export default function Bauble(props: BaubleProps) {
+  const force = useRef(new THREE.Vector3());
   const [ref, api] = useBox(() => ({
     ...props,
     args: [props.args, props.args, props.args] as Triplet,
   }));
 
   useEffect(() => {
+    const vec = force.current;
     const unsubscribe = api.position.subscribe((p) => {
       if (pointerState.down) {
         vec.set(
@@ -47,7 +42,7 @@ export default function Bauble({
       }
     });
     return () => unsubscribe();
-  }, [api, props.args, vec]);
+  }, [api, props.args]);
 
   return (
     <group ref={ref as React.Ref<THREE.Group>}>
