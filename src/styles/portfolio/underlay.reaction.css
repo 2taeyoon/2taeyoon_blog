@@ -60,6 +60,10 @@
     justify-content: flex-end;
   }
 
+  .underlay_settings_dropdown {
+    width: min(300px, calc(100vw - 32px));
+  }
+
   .underlay_intro_row {
     margin-bottom: 8px;
   }
@@ -96,29 +100,19 @@
     display: none;
   }
 
-  .underlay_volume_wrap {
-    display: none;
-  }
-
-  .underlay_volume_panel {
-    right: -8px;
-    padding: 0 8px;
-  }
-
   .underlay_volume_slider {
-    width: 160px;
-    height: 48px;
+    height: 44px;
   }
 
   .underlay_volume_slider::-webkit-slider-thumb {
-    width: 24px;
-    height: 24px;
-    margin-top: -10px;
+    width: 20px;
+    height: 20px;
+    margin-top: -8.5px;
   }
 
   .underlay_volume_slider::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 }
 
