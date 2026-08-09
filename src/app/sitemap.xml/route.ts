@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { allBlogCards } from "@/data/blog/cards";
+import { toBlogSlug } from "@/lib/blog/slug";
 
 async function getDynamicPaths(): Promise<{ url: string }[]> {
   return allBlogCards.map((item) => {
-    const encodedTitle = encodeURIComponent(item.title.replace(/\s+/g, "-"));
+    const encodedTitle = encodeURIComponent(toBlogSlug(item.title));
     return {
       url: `/${item.type}/${encodedTitle}`,
     };

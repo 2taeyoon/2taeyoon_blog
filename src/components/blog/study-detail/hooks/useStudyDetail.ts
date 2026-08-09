@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { CardProps } from "@/types/blog/card.types";
 import { TocItem } from "@/types/blog/toc.types";
+import { toBlogSlug } from "@/lib/blog/slug";
 
 interface UseStudyDetailOptions {
   cards: CardProps[];
@@ -56,7 +57,7 @@ export function useStudyDetail({ cards, title }: UseStudyDetailOptions) {
 
   const decodedParam = decodeURIComponent(title);
   const currentCard = cards.find(
-    (item: CardProps) => item.title.replace(/\s+/g, "-") === decodedParam,
+    (item: CardProps) => toBlogSlug(item.title) === toBlogSlug(decodedParam),
   );
   const decodedTitle = currentCard ? currentCard.title : decodedParam.replace(/-/g, " ");
 

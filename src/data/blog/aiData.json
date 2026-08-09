@@ -6,6 +6,57 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/9/9.md",
+			"image": "/images/blog/ai/9/main_image.webp",
+			"sortDate": "2026-08-10",
+			"title": "Cursor가 갑자기 사라진다면?",
+			"subTitle": "Cursor.exe를 찾을 수 없다는 바로 가기 오류와 앱이 통째로 사라진 듯한 증상을 정리했습니다. Windows Defender 오탐·격리 가능성과 예외 설정, 보호 기록 복원 순서를 중심으로 재구성했습니다.",
+			"hashs": [
+				{"name": "#Cursor"},
+				{"name": "#WindowsDefender"},
+				{"name": "#오탐"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/8/8.md",
+			"image": "/images/blog/ai/8/main_image.webp",
+			"sortDate": "2026-07-09",
+			"title": "테라팹, 스타십, 옵티머스가 어떻게 함께 작동하는가?",
+			"subTitle": "AI 시대의 에너지·칩 병목을 풀기 위한 우주 기반 컴퓨팅과 로봇 자동화 논의를 정리했습니다. 테라팹, 스타십, 옵티머스가 어떻게 맞물리는지, 그리고 공급망·리더십·문명 확장까지 핵심만 번호 목록으로 재구성했습니다.",
+			"hashs": [
+				{"name": "#Terafab"},
+				{"name": "#Starship"},
+				{"name": "#Optimus"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/7/7.md",
+			"image": "/images/blog/ai/7/main_image.webp",
+			"sortDate": "2026-06-30",
+			"title": "AI 시대, 사회는 어떻게 대비해야 할까?",
+			"subTitle": "Anthropic CEO 다리오 아모데이의 WEF 인터뷰를 정리했습니다. AI 발전 속도에 비해 사회적·정책적 대비가 부족하며, 특히 고성장-고실업이라는 전례 없는 경제 상황에 대한 고민과 준비가 필요하다는 메시지를 중심으로 재구성했습니다.",
+			"hashs": [
+				{"name": "#Anthropic"},
+				{"name": "#DarioAmodei"},
+				{"name": "#고성장고실업"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/6/6.md",
 			"image": "/images/blog/ai/6/main_image.webp",
 			"sortDate": "2026-04-18",

@@ -7,6 +7,7 @@ import { PageUrlsProps } from "@/types/blog/pagination.types";
 import { usePathname } from "next/navigation";
 
 import { getSortedBlogCards } from "@/data/blog/cards";
+import { toBlogSlug } from "@/lib/blog/slug";
 
 export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 
@@ -39,7 +40,7 @@ export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 		// 이전 페이지가 존재하는 경우
 		if (prevIndex < cards.length) {
       const prevCard = cards[prevIndex];
-      prevPageUrl = prevCard?.title?.replace(/\s+/g, '-'); // URL 형식으로 변환
+      prevPageUrl = prevCard?.title ? toBlogSlug(prevCard.title) : null;
       prevPageTitle = prevCard.title; // 제목 설정
       prevPageImage = prevCard.image; // 이미지 설정
 			prevPageBasePath = `/${prevCard.type}`; // ✅ `type` 기반으로 동적 설정
@@ -48,7 +49,7 @@ export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 		// 다음 페이지가 존재하는 경우
 		if (nextIndex >= 0) {
       const nextCard = cards[nextIndex];
-      nextPageUrl = nextCard?.title?.replace(/\s+/g, '-'); // URL 형식으로 변환
+      nextPageUrl = nextCard?.title ? toBlogSlug(nextCard.title) : null;
       nextPageTitle = nextCard.title; // 제목 설정
       nextPageImage = nextCard.image; // 이미지 설정
 			nextPageBasePath = `/${nextCard.type}`; // ✅ `type` 기반으로 동적 설정

@@ -1,21 +1,21 @@
 import { notFound } from "next/navigation";
 import { CardProps } from "@/types/blog/card.types";
 import { blogCategoryData, type BlogCategory } from "@/data/blog/cards";
+import { toBlogSlug } from "@/lib/blog/slug";
 
 function findCardBySlug(cards: CardProps[], slug: string) {
   const decodedTitle = decodeURIComponent(slug);
+  const normalizedSlug = toBlogSlug(decodedTitle);
 
-  const byHyphenSlug = cards.find(
-    (item) => item.title.replace(/\s+/g, "-") === decodedTitle,
-  );
+  const byHyphenSlug = cards.find((item) => toBlogSlug(item.title) === normalizedSlug);
   if (byHyphenSlug) {
-    return { card: byHyphenSlug, decodedTitle };
+    return { card: byHyphenSlug, decodedTitle: toBlogSlug(byHyphenSlug.title) };
   }
 
   const replaceTitle = decodedTitle.replace(/-/g, " ");
   const byTitle = cards.find((item) => item.title === replaceTitle);
   if (byTitle) {
-    return { card: byTitle, decodedTitle };
+    return { card: byTitle, decodedTitle: toBlogSlug(byTitle.title) };
   }
 
   return null;
