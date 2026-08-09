@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/7/7.md",
+			"image": "/images/blog/ai/7/main_image.webp",
+			"sortDate": "2026-06-30",
+			"title": "AI 시대, 사회는 어떻게 대비해야 할까?",
+			"subTitle": "Anthropic CEO 다리오 아모데이의 WEF 인터뷰를 정리했습니다. AI 발전 속도에 비해 사회적·정책적 대비가 부족하며, 특히 고성장-고실업이라는 전례 없는 경제 상황에 대한 고민과 준비가 필요하다는 메시지를 중심으로 재구성했습니다.",
+			"hashs": [
+				{"name": "#Anthropic"},
+				{"name": "#DarioAmodei"},
+				{"name": "#고성장고실업"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/6/6.md",
 			"image": "/images/blog/ai/6/main_image.webp",
 			"sortDate": "2026-04-18",
