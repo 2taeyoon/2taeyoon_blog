@@ -40,22 +40,27 @@ function toColorInputValue(value: string) {
 export function ColorPalette({
   value,
   onChange,
+  embedded = false,
 }: {
   value: string;
   onChange: (color: string) => void;
+  embedded?: boolean;
 }) {
   const selectedPreset = NAMED_PRESETS.includes(value)
     ? value
     : isPresetColor(value)
-      ? normalizeHex(value)
-      : null;
+    ? normalizeHex(value)
+    : null;
 
   const inputValue = toColorInputValue(value);
   const previewIsFabric = value === "fabric";
 
   return (
-    <div className="color_palette" onPointerDown={(e) => e.stopPropagation()}>
-      <p className="color_palette_label">COLOR</p>
+    <div
+      className={`color_palette${embedded ? " is_embedded" : ""}`}
+      onPointerDown={(e) => e.stopPropagation()}
+    >
+      <p className="color_palette_label">Color</p>
 
       <div className="color_palette_swatches" role="radiogroup" aria-label="공 색상 선택">
         {PRESET_COLORS.map((color) => {
@@ -75,11 +80,9 @@ export function ColorPalette({
         })}
       </div>
 
-      <hr className="color_palette_divider" />
-
       {/* 모바일에서 programmatic click()이 막히므로 label + 투명 input 오버레이로 직접 탭 */}
       <label className="color_palette_custom">
-        <span>직접 선택</span>
+        <span className="color_palette_custom_label">직접 선택</span>
         <span
           className={`color_palette_custom_preview${previewIsFabric ? " color_palette_swatch_fabric" : ""}`}
           style={previewIsFabric ? undefined : { backgroundColor: inputValue }}
