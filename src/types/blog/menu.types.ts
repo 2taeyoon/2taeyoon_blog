@@ -12,6 +12,7 @@ export interface MenuSectionLinkOnly {
   count?: number;
   href: string;
   type: "linkOnly";
+  exact?: boolean;
 }
 
 export type MenuSection = MenuSectionWithButtons | MenuSectionLinkOnly;
