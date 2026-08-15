@@ -6,8 +6,8 @@
 .blog_aide_toggle svg { width: 18px; height: 18px; fill: var(--black); }
 .blog_aide_inner { position: relative; height: 100%; }
 .blog_aide_header { display: flex; align-items: center; justify-content: center; gap: 12px; position: relative; height: 72px; width: 260px; border-bottom: 1px solid var(--borderSubtle); }
-
-.blog_aide_header h1 { font-weight: 700; font-size: 2.0rem; white-space: nowrap; color: var(--black); }
+.blog_aide_header_brand { display: flex; align-items: center; justify-content: center; gap: 12px; text-decoration: none; color: inherit; }
+.blog_aide_header_title { font-weight: 700; font-size: 2.0rem; white-space: nowrap; color: var(--black); }
 .blog_aide_menu { position: relative; display: flex; flex-direction: column; align-items: center; }
 .blog_aide_menu_list { width: 100%; padding: 24px 16px; height: calc(100% - 72px); overflow-y: auto; display: flex; flex-direction: column; }
 .blog_aide_menu_category { display: flex; justify-content: space-between; align-items: center;  width: 100%; }

@@ -16,7 +16,7 @@ function closeMobileSidebar() {
 
 interface BlogAideMenuProps {
   sections: MenuSection[];
-  isPathActive: (href: string) => boolean;
+  isPathActive: (href: string, exact?: boolean) => boolean;
   isOpen: (sectionId: string) => boolean;
   onToggleSection: (sectionId: string) => void;
 }
@@ -32,8 +32,8 @@ export default function BlogAideMenu({
       {sections.map((section) => {
         // linkOnly 타입: 단순 링크 (INSIGHT)
         if (section.type === "linkOnly") {
-          const active = isPathActive(section.href);
-          
+          const active = isPathActive(section.href, section.exact);
+
           return (
             <nav key={section.id} className="blog_aide_menu">
               <div className={`blog_aide_menu_category${active ? " active" : ""}`}>
