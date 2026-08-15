@@ -1,22 +1,19 @@
 import { MenuSection } from "@/types/blog/menu.types";
-import { allBlogCards, BLOG_CATEGORIES } from "./cards";
+import { BLOG_CATEGORIES } from "./cards";
 
 export const MENU_SECTIONS: MenuSection[] = [
   {
-    id: "portfolio",
-    title: "PORTFOLIO",
-    href: "/",
+    id: "home",
+    title: "HOME",
+    href: "/blog",
     type: "linkOnly",
+    exact: true,
   },
-  {
-    id: "blog",
-    title: "BLOG",
-    count: allBlogCards.length,
-    items: BLOG_CATEGORIES.map(({ label, href, data }) => ({
-      label,
-      href,
-      count: data.cards.length,
-    })),
-    type: "withButtons",
-  },
+  ...BLOG_CATEGORIES.map(({ id, label, href, data }) => ({
+    id,
+    title: label,
+    href,
+    count: data.cards.length,
+    type: "linkOnly" as const,
+  })),
 ];
