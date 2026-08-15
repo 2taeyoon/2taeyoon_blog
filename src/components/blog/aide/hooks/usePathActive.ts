@@ -13,10 +13,11 @@ export function usePathActive() {
     setIsMounted(true);
   }, []);
 
-  const isPathActive = (href: string): boolean => {
+  const isPathActive = (href: string, exact = false): boolean => {
     if (!isMounted) return false;
     if (!pathname) return false;
     if (pathname === href) return true;
+    if (exact) return false;
     return pathname.startsWith(href + "/");
   };
 
