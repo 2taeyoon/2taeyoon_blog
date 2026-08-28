@@ -71,18 +71,32 @@ export function applyBallColor(ballColor: string) {
   const hsl = { h: 0, s: 0, l: 0 };
   c.getHSL(hsl);
 
-  if (hsl.l < 0.08) {
+  const achromatic = hsl.s < 0.08;
+
+  if (achromatic && hsl.l < 0.08) {
     // #000 — 순검정이면 Lambert 음영이 사라져 실루엣만 남음 → 약간 띄워 볼륨 유지
     baubleMaterial.color.setRGB(0.16, 0.16, 0.18);
     baubleMaterial.emissive.setRGB(0.02, 0.02, 0.025);
-  } else if (hsl.l > 0.9) {
+  } else if (achromatic && hsl.l > 0.9) {
     // #fff — 순백+노출로 날아가지 않게 쿨 오프화이트 + 낮은 emissive
     baubleMaterial.color.setRGB(0.86, 0.88, 0.92);
     baubleMaterial.emissive.setRGB(0.035, 0.04, 0.05);
   } else {
-    baubleMaterial.color.copy(c);
-    const em = THREE.MathUtils.clamp(0.06 + (1 - hsl.l) * 0.18, 0.05, 0.22);
-    baubleMaterial.emissive.copy(c).multiplyScalar(em);
+    const visibleColor = c.clone();
+    const minimumSurfaceLightness = 0.14;
+    const isDarkChromatic = !achromatic && hsl.l < minimumSurfaceLightness;
+
+    if (isDarkChromatic) {
+      visibleColor.setHSL(hsl.h, hsl.s, minimumSurfaceLightness);
+    }
+
+    baubleMaterial.color.copy(visibleColor);
+    const emissiveStrength = isDarkChromatic
+      ? 0.32
+      : THREE.MathUtils.clamp(0.06 + (1 - hsl.l) * 0.18, 0.05, 0.22);
+    baubleMaterial.emissive
+      .copy(visibleColor)
+      .multiplyScalar(emissiveStrength);
   }
   baubleMaterial.needsUpdate = true;
 }
