@@ -1,5 +1,5 @@
 import React from "react";
-import MainSection from "@/components/portfolio/MainSection";
+import PortfolioSections from "@/components/portfolio/PortfolioSections";
 
 export const metadata = {
   title: "2taeyoon",
@@ -21,7 +21,7 @@ export const metadata = {
 export default function Page() {
   return (
     <main>
-      <MainSection />
+      <PortfolioSections />
     </main>
   );
 }

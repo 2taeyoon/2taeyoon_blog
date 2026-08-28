@@ -32,8 +32,9 @@ export function buildPalette(ballColor: string): BackdropPalette {
   const hsl = { h: 0, s: 0, l: 0 };
   base.getHSL(hsl);
 
-  // 무채색(흰/검/회색) — hue가 없어 s를 억지로 넣으면 빨강으로 튀므로 쿨 그레이 팔레트 사용
-  const achromatic = hsl.s < 0.08 || hsl.l > 0.9 || hsl.l < 0.08;
+  // 실제 채도가 낮은 색만 무채색으로 처리한다.
+  // 어두운 유채색을 명도만으로 무채색 처리하면 특정 지점에서 색조가 갑자기 사라진다.
+  const achromatic = hsl.s < 0.08;
   if (achromatic) {
     const cool = (r: number, g: number, b: number) => new THREE.Color(r, g, b);
     if (hsl.l > 0.5) {
