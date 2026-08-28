@@ -1,0 +1,48 @@
+.portfolio_sections {
+  position: relative;
+  width: 100%;
+  height: 214vh;
+  height: 214dvh;
+  background: var(--pfBgLavender);
+}
+
+.portfolio_main_layer {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.portfolio_project_layer {
+  --project-edge-feather: 96px;
+
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin-top: 14vh;
+  margin-top: 14dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--project-edge-feather),
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--project-edge-feather),
+    #000 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio_project_layer {
+    --project-edge-feather: 0px;
+  }
+}

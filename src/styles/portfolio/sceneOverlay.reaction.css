@@ -1,6 +1,10 @@
 @charset "utf-8";
 
-@media (max-width: 900px) {
+@media (width <= 900px) {
+  .scene_overlay_inner {
+    width: 100%;
+  }
+
   .scene_overlay {
     padding: 110px 24px 90px;
   }
@@ -12,12 +16,11 @@
 
   .scene_project_card {
     flex-basis: auto;
-    width: 100%;
-    max-width: 420px;
+    width: 42rem;
   }
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .scene_overlay {
     padding: 96px 16px 96px;
   }

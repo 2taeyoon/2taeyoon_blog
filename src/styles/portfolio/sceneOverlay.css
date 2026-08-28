@@ -22,8 +22,7 @@
 }
 
 .scene_overlay_inner {
-  max-width: 860px;
-  width: 100%;
+  width: 86rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,7 +42,6 @@
   font-family: "Nunito Sans", sans-serif;
   font-size: 6.4rem;
   font-weight: 800;
-  line-height: 1.05;
   letter-spacing: -3px;
   color: var(--pfBlack);
   margin: 0;
@@ -52,7 +50,6 @@
 .scene_desc {
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.6rem;
-  line-height: 1.7;
   color: var(--pfTextSub);
   margin: 0;
 }
@@ -141,7 +138,6 @@
 .scene_project_desc {
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.3rem;
-  line-height: 1.6;
   color: var(--pfTextSub);
   margin: 0;
 }

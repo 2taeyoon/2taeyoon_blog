@@ -23,6 +23,16 @@
   justify-content: center;
 }
 
+.underlay_top_row_global {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  margin-bottom: 0;
+  padding: 40px;
+  pointer-events: none;
+}
+
 .underlay_logo {
   font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
@@ -113,7 +123,7 @@
   z-index: 20;
   display: flex;
   flex-direction: column;
-  width: min(280px, calc(100vw - 32px));
+  width: 28rem;
   background: var(--pfWhite);
   border: 1px solid var(--pfLine);
   box-shadow: 0 8px 24px var(--pfShadow);
@@ -284,13 +294,12 @@ button.underlay_settings_item:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 0;
+  overflow: hidden;
   flex: 1 1 auto;
 }
 
 .underlay_volume_slider {
   width: 100%;
-  min-width: 0;
   height: 36px;
   margin: 0;
   padding: 0;
@@ -336,7 +345,7 @@ button.underlay_settings_item:hover {
 
 .underlay_volume_value {
   font-family: "Nunito Sans", sans-serif;
-  min-width: 3ch;
+  width: 3ch;
   font-size: 1.3rem;
   font-weight: 600;
   text-align: right;
@@ -347,7 +356,8 @@ button.underlay_settings_item:hover {
 .underlay_hero {
   flex: 1 1 auto;
   width: 100%;
-  min-height: 0;
+  height: 0;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   opacity: 0;
@@ -383,10 +393,20 @@ button.underlay_settings_item:hover {
   color: var(--pfBlack);
 }
 
-.underlay_intro_text div {
-  font-family: "Nunito Sans", sans-serif;
+.underlay_intro_text_ko,
+.underlay_intro_text_en,
+.underlay_intro_dash {
   font-size: 1.6rem;
   color: var(--pfBlack);
+}
+
+.underlay_intro_text_ko {
+  font-family: "Pretendard", "Malgun Gothic", sans-serif;
+}
+
+.underlay_intro_text_en,
+.underlay_intro_dash {
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .underlay_intro_dash {
@@ -413,7 +433,7 @@ button.underlay_settings_item:hover {
 .underlay_title_end {
   font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
-  min-width: 0;
+  width: 0;
   font-size: 250px;
   font-weight: 800;
   color: var(--pfBlack);
