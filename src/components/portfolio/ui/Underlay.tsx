@@ -313,10 +313,7 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
           </div>
         </div>
 
-        <div className="underlay_title_row">
-          <p className="underlay_title_front"></p>
-          <p className="underlay_title_end"></p>
-        </div>
+        <div className="underlay_title_row" />
 
         <div className="underlay_bottom_row">
           <div className="underlay_roles">
