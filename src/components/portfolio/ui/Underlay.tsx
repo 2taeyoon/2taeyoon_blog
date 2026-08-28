@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { ColorPalette } from "@/components/portfolio/ui/ColorPalette";
 
@@ -22,6 +23,7 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(100);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const playingRef = useRef(false);
 
   volumeRef.current = volume;
@@ -117,6 +119,10 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
   // }, []);
 
   // --- 개발 시: 처음 렌더링 시 자동 재생 없음 ---
+  useEffect(() => {
+    setPortalTarget(document.body);
+  }, []);
+
   useEffect(() => {
     return () => {
       audioRef.current?.pause();
@@ -215,9 +221,8 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
   // 클릭이 캔버스(window pointerdown)로 전파되어 큐브가 따라오는 것을 차단
   const blockPointer = (e: React.PointerEvent) => e.stopPropagation();
 
-  return (
-    <div className="underlay">
-      <div className="underlay_top_row">
+  const topRow = (
+      <div className="underlay_top_row underlay_top_row_global">
         <p className="underlay_logo">2taeyoon.com</p>
         <div className="underlay_nav" onPointerDown={blockPointer}>
           <Link href="/blog" className="underlay_nav_item underlay_nav_link">BLOG</Link>
@@ -243,9 +248,9 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
               <button
                 type="button"
                 className="underlay_settings_item"
-                role="menuitem"
+                role="menuitemcheckbox"
                 onClick={toggleMusic}
-                aria-pressed={playing}
+                aria-checked={playing}
               >
                 <span className="underlay_settings_item_label">Music</span>
                 <span className="underlay_settings_item_control">
@@ -289,12 +294,22 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
           )}
         </div>
       </div>
+  );
 
+  return (
+    <>
+      {portalTarget ? createPortal(topRow, portalTarget) : topRow}
+      <div className="underlay">
       <div className={`underlay_hero${heroVisible ? " is_visible" : ""}`} aria-hidden={!heroVisible}>
         <div className="underlay_intro_row">
           <div className="underlay_intro_text">
-            <div>Assembling aesthetics and technology piece by piece.</div>
+            <div className="underlay_intro_text_ko">
+              미학과 기술을 하나씩 조립해 완성해 나갑니다.
+            </div>
             <div className="underlay_intro_dash">—</div>
+            <div className="underlay_intro_text_en">
+              Assembling aesthetics and technology piece by piece.
+            </div>
           </div>
         </div>
 
@@ -316,6 +331,7 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
