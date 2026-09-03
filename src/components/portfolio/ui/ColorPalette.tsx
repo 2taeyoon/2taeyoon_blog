@@ -60,7 +60,7 @@ export function ColorPalette({
       className={`color_palette${embedded ? " is_embedded" : ""}`}
       onPointerDown={(e) => e.stopPropagation()}
     >
-      <p className="color_palette_label">Color</p>
+      <p className="color_palette_label">Theme Color</p>
 
       <div className="color_palette_swatches" role="radiogroup" aria-label="공 색상 선택">
         {PRESET_COLORS.map((color) => {
