@@ -50,6 +50,47 @@ function modulo(value: number, divisor: number) {
   return ((value % divisor) + divisor) % divisor;
 }
 
+function createWavyRingPath(
+  cx: number,
+  cy: number,
+  rx: number,
+  ry: number,
+  amplitude: number,
+  waves: number,
+  phase: number,
+) {
+  const steps = 72;
+  let path = "";
+
+  for (let index = 0; index <= steps; index += 1) {
+    const angle = (index / steps) * Math.PI * 2;
+    const wobble = 1 + (amplitude / ry) * Math.sin(waves * angle + phase);
+    const x = cx + Math.cos(angle) * rx * wobble;
+    const y = cy + Math.sin(angle) * ry * wobble;
+    path += `${index === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
+  }
+
+  return `${path} Z`;
+}
+
+function setRippleWave(svg: SVGSVGElement, phase: number, progress: number) {
+  const rings = svg.querySelectorAll("path");
+  const amplitude = 2.4 + progress * 6.2;
+
+  rings[0]?.setAttribute(
+    "d",
+    createWavyRingPath(100, 40, 88, 22, amplitude, 7, phase),
+  );
+  rings[1]?.setAttribute(
+    "d",
+    createWavyRingPath(100, 40, 62, 15, amplitude * 0.72, 6, phase + 1.15),
+  );
+  rings[2]?.setAttribute(
+    "d",
+    createWavyRingPath(100, 40, 36, 9, amplitude * 0.48, 5, phase + 2.2),
+  );
+}
+
 export default function ProjectSection() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -84,10 +125,11 @@ export default function ProjectSection() {
     let waterTime = 0;
     let rippleIndex = 0;
     let previousRippleTime = 0;
-    const pointerRipples =
+    const pointerRipples = Array.from(
       waterOverlay.querySelectorAll<SVGSVGElement>(
         ".project_section_pointer_ripple",
-      );
+      ),
+    );
 
     const applyPosition = () => {
       if (!period) return;
@@ -193,7 +235,8 @@ export default function ProjectSection() {
       if (now - previousRippleTime < 48 || pointerRipples.length === 0) return;
 
       const bounds = viewport.getBoundingClientRect();
-      const ripple = pointerRipples[rippleIndex % pointerRipples.length];
+      const slot = rippleIndex % pointerRipples.length;
+      const ripple = pointerRipples[slot];
       const elapsed = Math.max(now - previousWaterTime, 8);
       const movement = hasWaterPointer
         ? Math.hypot(
@@ -202,23 +245,35 @@ export default function ProjectSection() {
           ) / elapsed
         : 0;
       const strength = gsap.utils.clamp(0.9, 1.8, 0.9 + movement * 1.5);
+      let phase = Math.random() * Math.PI * 2;
+      const anim = { progress: 0 };
 
       gsap.killTweensOf(ripple);
+      setRippleWave(ripple, phase, 0);
       gsap.set(ripple, {
         x: event.clientX - bounds.left,
         y: event.clientY - bounds.top,
         xPercent: -50,
         yPercent: -50,
-        scaleX: 0.35,
-        scaleY: 0.35,
-        opacity: 0.72,
+        scaleX: 0.28,
+        scaleY: 0.42,
+        opacity: 0.86,
       });
       gsap.to(ripple, {
-        scaleX: 2.5 * strength,
-        scaleY: 1.45 * strength,
+        scaleX: 2.7 * strength,
+        scaleY: 1.35 * strength,
         opacity: 0,
-        duration: 1.15,
-        ease: "power2.out",
+        duration: 1.35,
+        ease: "power1.out",
+      });
+      gsap.to(anim, {
+        progress: 1,
+        duration: 1.35,
+        ease: "power1.out",
+        onUpdate: () => {
+          phase += 0.22;
+          setRippleWave(ripple, phase, anim.progress);
+        },
       });
 
       previousWaterX = event.clientX;
@@ -378,16 +433,45 @@ export default function ProjectSection() {
             />
             <feGaussianBlur stdDeviation="0.35" />
           </filter>
+          <filter
+            id="projectSectionPointerWave"
+            x="-45%"
+            y="-55%"
+            width="190%"
+            height="210%"
+          >
+            <feTurbulence
+              type="turbulence"
+              baseFrequency="0.018 0.14"
+              numOctaves="3"
+              seed="4"
+              result="pointerNoise"
+            >
+              <animate
+                attributeName="baseFrequency"
+                dur="1.6s"
+                values="0.018 0.14;0.03 0.09;0.014 0.18;0.018 0.14"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="pointerNoise"
+              scale="16"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
         </defs>
       </svg>
 
       <header className="project_section_header">
-        <p className="project_section_eyebrow">
-          미학과 기술의 조각을 하나의 경험으로 연결합니다.
-        </p>
         <h2 id="projectSectionTitle" className="project_section_title">
           Project
         </h2>
+        <p className="project_section_eyebrow">
+          미학과 기술의 조각을 하나의 경험으로 연결합니다.
+        </p>
         <p className="project_section_description">
           Building digital experiences, one piece at a time.
         </p>
@@ -453,11 +537,12 @@ export default function ProjectSection() {
           {Array.from({ length: 6 }, (_, index) => (
             <svg
               className="project_section_pointer_ripple"
-              viewBox="0 0 120 36"
+              viewBox="0 0 200 80"
               key={index}
             >
-              <ellipse cx="60" cy="18" rx="57" ry="14" />
-              <ellipse cx="60" cy="18" rx="39" ry="9" />
+              <path />
+              <path />
+              <path />
             </svg>
           ))}
         </div>
