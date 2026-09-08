@@ -1,7 +1,8 @@
 @import "./variables.css";
-@import "./portfolioSections.css";
 @import "./mainSection.css";
+@import "./portfolioSections.css";
 @import "./projectSection.css";
+@import "./projectSection.reaction.css";
 @import "./underlay.css";
 @import "./underlay.reaction.css";
 @import "./sceneOverlay.css";
