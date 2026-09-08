@@ -2,7 +2,7 @@
 
 import { useFrame } from "@react-three/fiber";
 import { usePlane, useSphere } from "@react-three/cannon";
-import { pointerState, puzzleSimulation } from "@/lib/portfolio/pointerState";
+import { pointerState, puzzleSimulation, MOUSE_SPHERE_RADIUS } from "@/lib/portfolio/pointerState";
 
 export default function Collisions() {
   usePlane(() => ({ position: [0, 0, 0], rotation: [0, 0, 0] }));
@@ -10,7 +10,7 @@ export default function Collisions() {
   usePlane(() => ({ position: [0, -4, 0], rotation: [-Math.PI / 2, 0, 0] }));
   usePlane(() => ({ position: [0, 4, 0], rotation: [Math.PI / 2, 0, 0] }));
 
-  const [, api] = useSphere(() => ({ type: "Kinematic", args: [2.4] }));
+  const [, api] = useSphere(() => ({ type: "Kinematic", args: [MOUSE_SPHERE_RADIUS] }));
 
   useFrame(() => {
     if (puzzleSimulation.paused) {
