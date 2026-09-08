@@ -17,8 +17,15 @@ export function createFabricTexture() {
     ctx.fillStyle = base;
     ctx.fillRect(0, 0, size, size);
 
-    // 우상단 오렌지 글로우
-    const glow = ctx.createRadialGradient(size * 0.78, size * 0.22, 0, size * 0.78, size * 0.22, size * 0.75);
+    // 조각 중앙에 퍼지는 오렌지 글로우
+    const glow = ctx.createRadialGradient(
+      size * 0.5,
+      size * 0.46,
+      0,
+      size * 0.5,
+      size * 0.46,
+      size * 0.58,
+    );
     glow.addColorStop(0, "rgba(222, 124, 58, 0.95)");
     glow.addColorStop(0.45, "rgba(205, 108, 52, 0.4)");
     glow.addColorStop(1, "rgba(205, 108, 52, 0)");
@@ -49,6 +56,9 @@ export function createFabricTexture() {
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
+  texture.wrapS = THREE.ClampToEdgeWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
+  texture.needsUpdate = true;
   return texture;
 }
 
