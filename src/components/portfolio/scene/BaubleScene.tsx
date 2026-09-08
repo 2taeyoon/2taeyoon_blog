@@ -6,7 +6,7 @@ import { Physics } from "@react-three/cannon";
 import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
-import type { BaubleProps } from "@/lib/portfolio/pointerState";
+import { type BaubleProps } from "@/lib/portfolio/pointerState";
 import { createBaubleConfigs } from "@/lib/portfolio/createBaubles";
 import { applyBallColor } from "@/lib/portfolio/baubleAppearance";
 import type { SceneId } from "@/lib/portfolio/scenes";
@@ -15,13 +15,14 @@ import PointerInput from "@/components/portfolio/scene/PointerInput";
 import Collisions from "@/components/portfolio/scene/Collisions";
 import ResponsiveCamera from "@/components/portfolio/scene/ResponsiveCamera";
 import GiantGlassCube from "@/components/portfolio/scene/GiantGlassCube";
+import PuzzleBackdropTitle from "@/components/portfolio/scene/PuzzleBackdropTitle";
 
 interface BaubleSceneProps {
   ballColor: string;
   scene: SceneId;
 }
 
-/** Main Scene 전용 — 물리 큐브들 (마운트될 때만 물리 월드 존재) */
+/** Main Scene 전용 — 물리 퍼즐 조각들 (마운트될 때만 물리 월드 존재) */
 function MainScene({ baubles }: { baubles: BaubleProps[] }) {
   return (
     <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
@@ -36,7 +37,7 @@ function MainScene({ baubles }: { baubles: BaubleProps[] }) {
 /**
  * 사이트 전체의 단일 3D 월드.
  * - GiantGlassCube: 쉐이더 몽환 배경 (격자 + 모핑 + 마우스 유체)
- * - Main: 물리 큐브들
+ * - Main: 물리 퍼즐 조각들
  */
 export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
   const baubles = useMemo(() => createBaubleConfigs(), []);
@@ -74,6 +75,7 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
 
       <GiantGlassCube ballColor={ballColor} />
 
+      {scene === "main" && <PuzzleBackdropTitle />}
       {scene === "main" && <MainScene baubles={baubles} />}
 
       <Environment files="/3d/adamsbridge.hdr" />

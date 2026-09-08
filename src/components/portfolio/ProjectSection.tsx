@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { puzzleSimulation } from "@/lib/portfolio/pointerState";
 
 const PROJECT_ITEMS = [
   {
@@ -53,17 +54,19 @@ function modulo(value: number, divisor: number) {
 export default function ProjectSection() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const waterOverlayRef = useRef<HTMLDivElement>(null);
   const waterDisplacementRef = useRef<SVGFEDisplacementMapElement>(null);
   const navigateRef = useRef<(index: number) => void>(() => {});
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useEffect(() => {
+    return () => puzzleSimulation.setPaused(false);
+  }, []);
+
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
     const track = trackRef.current;
-    const waterOverlay = waterOverlayRef.current;
-    if (!viewport || !track || !waterOverlay) return;
+    if (!viewport || !track) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const position = { x: 0 };
@@ -79,15 +82,9 @@ export default function ProjectSection() {
     let previousWaterX = 0;
     let previousWaterY = 0;
     let previousWaterTime = 0;
-    let hasWaterPointer = false;
     let isHoveringCard = false;
     let waterTime = 0;
-    let rippleIndex = 0;
-    let previousRippleTime = 0;
-    const pointerRipples =
-      waterOverlay.querySelectorAll<SVGSVGElement>(
-        ".project_section_pointer_ripple",
-      );
+    let waterBoost = 0;
 
     const applyPosition = () => {
       if (!period) return;
@@ -188,45 +185,19 @@ export default function ProjectSection() {
 
     navigateRef.current = goToIndex;
 
-    const emitPointerRipple = (event: PointerEvent) => {
+    const stirWater = (event: PointerEvent) => {
       const now = performance.now();
-      if (now - previousRippleTime < 48 || pointerRipples.length === 0) return;
-
-      const bounds = viewport.getBoundingClientRect();
-      const ripple = pointerRipples[rippleIndex % pointerRipples.length];
       const elapsed = Math.max(now - previousWaterTime, 8);
-      const movement = hasWaterPointer
+      const movement = previousWaterTime
         ? Math.hypot(
             event.clientX - previousWaterX,
             event.clientY - previousWaterY,
           ) / elapsed
         : 0;
-      const strength = gsap.utils.clamp(0.9, 1.8, 0.9 + movement * 1.5);
-
-      gsap.killTweensOf(ripple);
-      gsap.set(ripple, {
-        x: event.clientX - bounds.left,
-        y: event.clientY - bounds.top,
-        xPercent: -50,
-        yPercent: -50,
-        scaleX: 0.35,
-        scaleY: 0.35,
-        opacity: 0.72,
-      });
-      gsap.to(ripple, {
-        scaleX: 2.5 * strength,
-        scaleY: 1.45 * strength,
-        opacity: 0,
-        duration: 1.15,
-        ease: "power2.out",
-      });
-
+      waterBoost = Math.min(1, waterBoost + movement * 2.4);
       previousWaterX = event.clientX;
       previousWaterY = event.clientY;
       previousWaterTime = now;
-      previousRippleTime = now;
-      rippleIndex += 1;
-      hasWaterPointer = true;
     };
 
     const handlePointerDown = (event: PointerEvent) => {
@@ -246,12 +217,7 @@ export default function ProjectSection() {
       const target =
         event.target instanceof Element ? event.target : null;
       isHoveringCard = Boolean(target?.closest(".project_section_card"));
-
-      if (target?.closest(".project_panel_reflection")) {
-        emitPointerRipple(event);
-      } else {
-        hasWaterPointer = false;
-      }
+      stirWater(event);
 
       if (pointerId !== event.pointerId) return;
 
@@ -276,19 +242,19 @@ export default function ProjectSection() {
     };
 
     const handlePointerLeave = () => {
-      hasWaterPointer = false;
       isHoveringCard = false;
     };
 
     const tick = () => {
       const frameRatio = gsap.ticker.deltaRatio(60);
       waterTime += frameRatio / 60;
+      waterBoost *= Math.pow(0.9, frameRatio);
       const idleWave =
         Math.sin(waterTime * 1.7) * 3 +
         Math.sin(waterTime * 0.83 + 1.4) * 2;
       waterDisplacementRef.current?.setAttribute(
         "scale",
-        String(18 + idleWave),
+        String(16 + idleWave + waterBoost * 28),
       );
 
       if (!period || pointerId !== null || navigating) return;
@@ -321,13 +287,17 @@ export default function ProjectSection() {
       viewport.removeEventListener("pointercancel", releasePointer);
       viewport.removeEventListener("pointerleave", handlePointerLeave);
       gsap.ticker.remove(tick);
-      gsap.killTweensOf(pointerRipples);
       navigateRef.current = () => {};
     };
   }, []);
 
   return (
-    <section className="project_section" aria-labelledby="projectSectionTitle">
+    <section
+      className="project_section"
+      aria-labelledby="projectSectionTitle"
+      onPointerEnter={() => puzzleSimulation.setPaused(true)}
+      onPointerLeave={() => puzzleSimulation.setPaused(false)}
+    >
       <svg className="project_section_filter" aria-hidden="true">
         <defs>
           <filter id="projectSectionFluid" x="-8%" y="-8%" width="116%" height="116%">
@@ -382,12 +352,12 @@ export default function ProjectSection() {
       </svg>
 
       <header className="project_section_header">
-        <p className="project_section_eyebrow">
-          미학과 기술의 조각을 하나의 경험으로 연결합니다.
-        </p>
         <h2 id="projectSectionTitle" className="project_section_title">
           Project
         </h2>
+        <p className="project_section_eyebrow">
+          미학과 기술의 조각을 하나의 경험으로 연결합니다.
+        </p>
         <p className="project_section_description">
           Building digital experiences, one piece at a time.
         </p>
@@ -443,22 +413,6 @@ export default function ProjectSection() {
                 </article>
               ))}
             </div>
-          ))}
-        </div>
-        <div
-          ref={waterOverlayRef}
-          className="project_section_pointer_water"
-          aria-hidden="true"
-        >
-          {Array.from({ length: 6 }, (_, index) => (
-            <svg
-              className="project_section_pointer_ripple"
-              viewBox="0 0 120 36"
-              key={index}
-            >
-              <ellipse cx="60" cy="18" rx="57" ry="14" />
-              <ellipse cx="60" cy="18" rx="39" ry="9" />
-            </svg>
           ))}
         </div>
       </div>

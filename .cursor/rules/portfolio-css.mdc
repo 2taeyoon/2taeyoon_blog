@@ -1,0 +1,15 @@
+---
+description: 포트폴리오 CSS 금지 항목과 변수 규칙
+globs: src/styles/portfolio/**/*.css
+alwaysApply: false
+---
+
+# Portfolio CSS hard rules
+
+- Tailwind 금지. 일반 CSS만 사용.
+- `clamp()`, `min()`, `max()`, `min-width`, `max-width`, `min-height`, `max-height` 금지.
+- `line-height` 금지. `reset.css`를 따른다.
+- `font-size`에 미디어쿼리/`em` 금지. `rem` 또는 `px`.
+- 색은 `src/styles/portfolio/variables.css`의 `--pf*`만. 섹션 전용 `:root` 색 변수를 만들지 않는다.
+- 반응형은 `*.reaction.css`, `@media (width <= Npx)`.
+- `projectSection2.css`는 삭제하지 않는다.

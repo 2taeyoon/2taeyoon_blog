@@ -393,15 +393,16 @@ button.underlay_settings_item:hover {
 .underlay_intro_text_en,
 .underlay_intro_dash {
   font-size: 1.6rem;
-  color: var(--pfBlack);
 }
 
 .underlay_intro_text_ko {
+  color: #fff;
   font-family: "Pretendard", "Malgun Gothic", sans-serif;
 }
 
 .underlay_intro_text_en,
 .underlay_intro_dash {
+  color: var(--pfTextSub);
   font-family: "Nunito Sans", sans-serif;
 }
 
