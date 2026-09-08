@@ -17,14 +17,14 @@ export function createFabricTexture() {
     ctx.fillStyle = base;
     ctx.fillRect(0, 0, size, size);
 
-    // 조각 중앙에 퍼지는 오렌지 글로우
+    // 조각 왼쪽 상단에 퍼지는 오렌지 글로우
     const glow = ctx.createRadialGradient(
-      size * 0.5,
-      size * 0.46,
+      size * 0.32,
+      size * 0.3,
       0,
-      size * 0.5,
-      size * 0.46,
-      size * 0.58,
+      size * 0.32,
+      size * 0.3,
+      size * 0.52,
     );
     glow.addColorStop(0, "rgba(222, 124, 58, 0.95)");
     glow.addColorStop(0.45, "rgba(205, 108, 52, 0.4)");
