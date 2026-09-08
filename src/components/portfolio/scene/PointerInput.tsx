@@ -55,7 +55,7 @@ export default function PointerInput() {
   }, [gl]);
 
   useFrame((state) => {
-    if (!pointerState.moved) return;
+    if (puzzleSimulation.paused || !pointerState.moved) return;
     const ndcX = pointerState.ndcX || state.pointer.x;
     const ndcY = pointerState.ndcY || state.pointer.y;
     pointerState.x = (ndcX * viewport.width) / 2;
