@@ -8,11 +8,15 @@ export function createBaubleConfigs(count = BAUBLE_COUNT): BaubleProps[] {
   return Array.from({ length: count }, (_, index) => {
     const spread = count === 1 ? 0 : index / (count - 1);
 
+    const angle = (index / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+
     return {
       args: sizeSteps[Math.floor(Math.random() * sizeSteps.length)],
       variant: Math.floor(Math.random() * PUZZLE_VARIANT_COUNT),
       homeX: (spread - 0.5) * 7.4 + (Math.random() - 0.5) * 0.7,
       homeY: (Math.random() - 0.5) * 1.8,
+      explodeX: Math.cos(angle),
+      explodeY: Math.sin(angle) * 0.62,
       mass: 1,
       angularDamping: 0.2,
       linearDamping: 0.95,
