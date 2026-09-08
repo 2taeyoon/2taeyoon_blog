@@ -8,10 +8,17 @@ import MainSection from "@/components/portfolio/MainSection";
 import { mainExit } from "@/lib/portfolio/pointerState";
 
 function applyScrollProgress(progress: number, sections: HTMLElement | null, project: HTMLDivElement | null) {
-  mainExit.progress = progress;
-  sections?.style.setProperty("--main-exit", String(progress));
-  sections?.style.setProperty("--project-enter", String(progress));
-  project?.classList.toggle("is_ready", progress >= 0.92);
+  const next = progress < 0.02 ? 0 : progress;
+  mainExit.progress = next;
+  sections?.style.setProperty("--main-exit", String(next));
+  sections?.style.setProperty("--project-enter", String(next));
+  project?.classList.toggle("is_ready", next >= 0.92);
+}
+
+function resetScrollTop() {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 }
 
 export default function PortfolioSections() {
@@ -19,6 +26,12 @@ export default function PortfolioSections() {
   const projectLayerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    const previousRestoration = history.scrollRestoration;
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    resetScrollTop();
+
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
 
@@ -41,7 +54,23 @@ export default function PortfolioSections() {
       });
     }, sectionsRef);
 
+    const pinTop = () => {
+      resetScrollTop();
+      applyScrollProgress(0, sectionsRef.current, projectLayerRef.current);
+      ScrollTrigger.refresh();
+    };
+
+    const frame = window.requestAnimationFrame(pinTop);
+    const timer = window.setTimeout(pinTop, 80);
+    window.addEventListener("pageshow", pinTop);
+
     return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+      window.removeEventListener("pageshow", pinTop);
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = previousRestoration;
+      }
       applyScrollProgress(0, sectionsRef.current, projectLayerRef.current);
       media.revert();
       context.revert();
