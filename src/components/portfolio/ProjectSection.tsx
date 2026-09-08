@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { puzzleSimulation } from "@/lib/portfolio/pointerState";
 
 const PROJECT_ITEMS = [
   {
@@ -99,6 +100,10 @@ export default function ProjectSection() {
   const navigateRef = useRef<(index: number) => void>(() => {});
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    return () => puzzleSimulation.setPaused(false);
+  }, []);
 
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
@@ -382,7 +387,12 @@ export default function ProjectSection() {
   }, []);
 
   return (
-    <section className="project_section" aria-labelledby="projectSectionTitle">
+    <section
+      className="project_section"
+      aria-labelledby="projectSectionTitle"
+      onPointerEnter={() => puzzleSimulation.setPaused(true)}
+      onPointerLeave={() => puzzleSimulation.setPaused(false)}
+    >
       <svg className="project_section_filter" aria-hidden="true">
         <defs>
           <filter id="projectSectionFluid" x="-8%" y="-8%" width="116%" height="116%">
