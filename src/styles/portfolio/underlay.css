@@ -6,6 +6,7 @@
   width: 100%;
   height: 100%;
   padding: 40px;
+  overflow: hidden;
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
@@ -387,6 +388,8 @@ button.underlay_settings_item:hover {
   height: 100%;
   display: flex;
   flex-direction: column;
+  transform: translate(calc(var(--main-exit, 0) * -12rem), calc(var(--main-exit, 0) * -8rem));
+  opacity: calc(1 - var(--main-exit, 0));
 }
 
 .underlay_intro_text_ko,
@@ -445,6 +448,8 @@ button.underlay_settings_item:hover {
   flex-direction: column;
   font-size: 1.4rem;
   color: var(--pfBlack);
+  transform: translate(calc(var(--main-exit, 0) * -14rem), calc(var(--main-exit, 0) * 12rem));
+  opacity: calc(1 - var(--main-exit, 0));
 }
 
 .underlay_roles div {
@@ -460,6 +465,8 @@ button.underlay_settings_item:hover {
   color: var(--pfBlack);
   letter-spacing: -0.5px;
   white-space: nowrap;
+  transform: translateY(calc(var(--main-exit, 0) * 14rem));
+  opacity: calc(1 - var(--main-exit, 0));
 }
 
 .underlay_roles_right {
@@ -472,6 +479,8 @@ button.underlay_settings_item:hover {
   font-size: 1.4rem;
   text-align: right;
   color: var(--pfBlack);
+  transform: translate(calc(var(--main-exit, 0) * 14rem), calc(var(--main-exit, 0) * 12rem));
+  opacity: calc(1 - var(--main-exit, 0));
 }
 
 .underlay_roles_right div {
