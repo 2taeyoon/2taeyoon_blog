@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useSyncExternalStore } from "react";
+import { useEffect, useMemo } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
 import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
-import { puzzleSimulation, type BaubleProps } from "@/lib/portfolio/pointerState";
+import { type BaubleProps } from "@/lib/portfolio/pointerState";
 import { createBaubleConfigs } from "@/lib/portfolio/createBaubles";
 import { applyBallColor } from "@/lib/portfolio/baubleAppearance";
 import type { SceneId } from "@/lib/portfolio/scenes";
@@ -15,6 +15,7 @@ import PointerInput from "@/components/portfolio/scene/PointerInput";
 import Collisions from "@/components/portfolio/scene/Collisions";
 import ResponsiveCamera from "@/components/portfolio/scene/ResponsiveCamera";
 import GiantGlassCube from "@/components/portfolio/scene/GiantGlassCube";
+import PuzzleBackdropTitle from "@/components/portfolio/scene/PuzzleBackdropTitle";
 
 interface BaubleSceneProps {
   ballColor: string;
@@ -23,20 +24,8 @@ interface BaubleSceneProps {
 
 /** Main Scene 전용 — 물리 퍼즐 조각들 (마운트될 때만 물리 월드 존재) */
 function MainScene({ baubles }: { baubles: BaubleProps[] }) {
-  const paused = useSyncExternalStore(
-    puzzleSimulation.subscribe,
-    () => puzzleSimulation.paused,
-    () => false,
-  );
-
   return (
-    <Physics
-      gravity={[0, 0, 0]}
-      iterations={10}
-      broadphase="SAP"
-      allowSleep
-      isPaused={paused}
-    >
+    <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
       <Collisions />
       {baubles.map((props, i) => (
         <Bauble key={i} {...props} />
@@ -86,6 +75,7 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
 
       <GiantGlassCube ballColor={ballColor} />
 
+      {scene === "main" && <PuzzleBackdropTitle />}
       {scene === "main" && <MainScene baubles={baubles} />}
 
       <Environment files="/3d/adamsbridge.hdr" />
