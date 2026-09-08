@@ -15,22 +15,45 @@ import {
   puzzleGeometries,
 } from "@/lib/portfolio/puzzleGeometry";
 
+const INTRO_KICK = 18;
+const INTRO_MS = 720;
+
 export default function Bauble(props: BaubleProps) {
   const force = useRef(new THREE.Vector3());
   const wasExit = useRef(false);
+  const introUntil = useRef(performance.now() + INTRO_MS);
   const geometry =
     puzzleGeometries[props.variant % puzzleGeometries.length];
   const [ref, api] = useBox(() => ({
-    args: [props.args, props.args, props.args * PUZZLE_DEPTH] as Triplet,
-    mass: props.mass,
-    angularDamping: props.angularDamping,
-    linearDamping: props.linearDamping,
-    rotation: [
-      Math.random() * Math.PI,
-      Math.random() * Math.PI,
-      Math.random() * Math.PI,
-    ],
+      args: [props.args, props.args, props.args * PUZZLE_DEPTH] as Triplet,
+      mass: props.mass,
+      angularDamping: props.angularDamping,
+      linearDamping: props.linearDamping,
+      position: [
+        (Math.random() - 0.5) * 0.35,
+        (Math.random() - 0.5) * 0.35,
+        (Math.random() - 0.5) * 0.35,
+      ],
+      velocity: [
+        props.explodeX * INTRO_KICK,
+        props.explodeY * INTRO_KICK,
+        (Math.random() - 0.5) * 5,
+      ],
+      angularVelocity: [
+        (Math.random() - 0.5) * 8,
+        (Math.random() - 0.5) * 8,
+        (Math.random() - 0.5) * 8,
+      ],
+      rotation: [
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+        Math.random() * Math.PI,
+      ],
   }));
+
+  useEffect(() => {
+    introUntil.current = performance.now() + INTRO_MS;
+  }, []);
 
   useEffect(() => {
     const vec = force.current;
@@ -54,6 +77,8 @@ export default function Bauble(props: BaubleProps) {
         api.velocity.set(0, 0, 0);
         return;
       }
+
+      if (performance.now() < introUntil.current) return;
 
       if (!puzzleSimulation.paused && pointerState.down) {
         vec.set(
