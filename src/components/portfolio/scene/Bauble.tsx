@@ -5,20 +5,45 @@ import { useEffect, useRef } from "react";
 import { useBox, type Triplet } from "@react-three/cannon";
 import {
   pointerState,
-  boxGeometry,
   baubleMaterial,
   type BaubleProps,
 } from "@/lib/portfolio/pointerState";
+import {
+  PUZZLE_DEPTH,
+  puzzleGeometries,
+} from "@/lib/portfolio/puzzleGeometry";
 
 export default function Bauble(props: BaubleProps) {
   const force = useRef(new THREE.Vector3());
+  const velocity = useRef(new THREE.Vector3());
+  const geometry =
+    puzzleGeometries[props.variant % puzzleGeometries.length];
   const [ref, api] = useBox(() => ({
-    ...props,
-    args: [props.args, props.args, props.args] as Triplet,
+    args: [props.args, props.args, props.args * PUZZLE_DEPTH] as Triplet,
+    mass: props.mass,
+    angularDamping: props.angularDamping,
+    linearDamping: props.linearDamping,
+    allowSleep: true,
+    sleepSpeedLimit: 0.18,
+    sleepTimeLimit: 0.35,
+    position: [
+      props.homeX,
+      props.homeY,
+      (Math.random() - 0.5) * 1.1,
+    ],
+    rotation: [
+      Math.random() * Math.PI,
+      Math.random() * Math.PI,
+      Math.random() * Math.PI,
+    ],
   }));
 
   useEffect(() => {
     const vec = force.current;
+    const vel = velocity.current;
+    const unsubVelocity = api.velocity.subscribe((value) => {
+      vel.set(value[0], value[1], value[2]);
+    });
     const unsubscribe = api.position.subscribe((p) => {
       if (pointerState.down) {
         vec.set(
@@ -33,25 +58,43 @@ export default function Bauble(props: BaubleProps) {
         return;
       }
 
-      // 중심에 모인 뒤에도 당기는 힘이 계속 들어가면 미세 진동이 생김 → 데드존
-      const distFromOrigin = Math.hypot(p[0], p[1], p[2]);
-      if (distFromOrigin < 0.22) return;
+      const distFromHome = Math.hypot(
+        p[0] - props.homeX,
+        p[1] - props.homeY,
+        p[2],
+      );
+      const speed = vel.length();
+      if (distFromHome < 1.05 && speed < 0.42) {
+        api.velocity.set(0, 0, 0);
+        api.angularVelocity.set(0, 0, 0);
+        return;
+      }
+      if (distFromHome < 0.72) return;
 
       api.applyForce(
         vec
-          .set(p[0], p[1], p[2])
+          .set(p[0] - props.homeX, p[1] - props.homeY, p[2])
           .normalize()
-          .multiplyScalar(-props.args * 35)
+          .multiplyScalar(-props.args * 16)
           .toArray(),
         [0, 0, 0],
       );
     });
-    return () => unsubscribe();
-  }, [api, props.args]);
+    return () => {
+      unsubVelocity();
+      unsubscribe();
+    };
+  }, [api, props.args, props.homeX, props.homeY]);
 
   return (
     <group ref={ref as React.Ref<THREE.Group>}>
-      <mesh castShadow receiveShadow scale={props.args} geometry={boxGeometry} material={baubleMaterial} />
+      <mesh
+        castShadow
+        receiveShadow
+        scale={props.args}
+        geometry={geometry}
+        material={baubleMaterial}
+      />
     </group>
   );
 }
