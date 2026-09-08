@@ -86,9 +86,9 @@
   width: 40px;
   height: 40px;
   padding: 0;
-  background: var(--pfWhite);
-  border: 1px solid var(--pfLine);
-  color: var(--pfBlack);
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 24, 0.12);
+  color: #17171c;
   cursor: pointer;
   transition: opacity 0.2s;
 }
@@ -124,9 +124,9 @@
   display: flex;
   flex-direction: column;
   width: 28rem;
-  background: var(--pfWhite);
-  border: 1px solid var(--pfLine);
-  box-shadow: 0 8px 24px var(--pfShadow);
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 24, 0.1);
+  box-shadow: 0 8px 24px rgba(15, 15, 22, 0.16);
   transform-origin: top right;
   animation: underlay_dropdown_in 0.16s ease;
 }
@@ -151,13 +151,13 @@
   padding: 8px 16px;
   border: none;
   background: transparent;
-  color: var(--pfBlack);
+  color: #17171c;
   cursor: pointer;
   text-align: left;
 }
 
 button.underlay_settings_item:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(17, 17, 24, 0.05);
 }
 
 .underlay_settings_item_volume {
@@ -170,14 +170,14 @@ button.underlay_settings_item:hover {
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.4px;
-  color: var(--pfTextMuted);
+  color: #3f3f46;
 }
 
 .underlay_settings_item_control {
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  color: var(--pfBlack);
+  color: #17171c;
 }
 
 .underlay_settings_status {
@@ -185,7 +185,7 @@ button.underlay_settings_item:hover {
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.6px;
-  color: var(--pfTextFaint);
+  color: #27272a;
 }
 
 .underlay_settings_palette {
@@ -212,7 +212,7 @@ button.underlay_settings_item:hover {
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.8px;
-  color: var(--pfTextMuted);
+  color: #3f3f46;
 }
 
 .color_palette_swatches {
@@ -235,8 +235,8 @@ button.underlay_settings_item:hover {
 
 .color_palette_swatch.is_selected {
   box-shadow:
-    0 0 0 2px var(--pfWhite),
-    0 0 0 3.5px var(--pfSelectedRing);
+    0 0 0 2px #ffffff,
+    0 0 0 3.5px #3f3f46;
 }
 
 .color_palette_swatch_fabric {
@@ -263,7 +263,7 @@ button.underlay_settings_item:hover {
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--pfTextMuted);
+  color: #3f3f46;
 }
 
 .color_palette_custom_preview {
@@ -313,7 +313,7 @@ button.underlay_settings_item:hover {
 
 .underlay_volume_slider::-webkit-slider-runnable-track {
   height: 3px;
-  background: var(--pfTrack);
+  background: #d4d4d8;
 }
 
 .underlay_volume_slider::-webkit-slider-thumb {
@@ -322,7 +322,7 @@ button.underlay_settings_item:hover {
   width: 14px;
   height: 14px;
   margin-top: -5.5px;
-  background: var(--pfBlack);
+  background: #17171c;
   border: none;
   border-radius: 0;
   cursor: pointer;
@@ -330,14 +330,14 @@ button.underlay_settings_item:hover {
 
 .underlay_volume_slider::-moz-range-track {
   height: 3px;
-  background: var(--pfTrack);
+  background: #d4d4d8;
   border: none;
 }
 
 .underlay_volume_slider::-moz-range-thumb {
   width: 14px;
   height: 14px;
-  background: var(--pfBlack);
+  background: #17171c;
   border: none;
   border-radius: 0;
   cursor: pointer;
@@ -349,7 +349,7 @@ button.underlay_settings_item:hover {
   font-size: 1.3rem;
   font-weight: 600;
   text-align: right;
-  color: var(--pfBlack);
+  color: #17171c;
 }
 
 /* Main Scene 히어로 콘텐츠 래퍼 — Scene 전환 시 페이드, top bar는 항상 유지 */
@@ -393,8 +393,7 @@ button.underlay_settings_item:hover {
 }
 
 .underlay_intro_text_ko,
-.underlay_intro_text_en,
-.underlay_intro_dash {
+.underlay_intro_text_en {
   font-size: 1.6rem;
 }
 
@@ -403,14 +402,9 @@ button.underlay_settings_item:hover {
   font-family: "Pretendard", "Malgun Gothic", sans-serif;
 }
 
-.underlay_intro_text_en,
-.underlay_intro_dash {
+.underlay_intro_text_en {
   color: var(--pfTextSub);
   font-family: "Nunito Sans", sans-serif;
-}
-
-.underlay_intro_dash {
-  font-weight: 700;
 }
 
 .underlay_gutter {
