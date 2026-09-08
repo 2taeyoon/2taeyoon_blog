@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { useBox, type Triplet } from "@react-three/cannon";
 import {
   pointerState,
+  puzzleSimulation,
   baubleMaterial,
   type BaubleProps,
 } from "@/lib/portfolio/pointerState";
@@ -45,6 +46,8 @@ export default function Bauble(props: BaubleProps) {
       vel.set(value[0], value[1], value[2]);
     });
     const unsubscribe = api.position.subscribe((p) => {
+      if (puzzleSimulation.paused) return;
+
       if (pointerState.down) {
         vec.set(
           pointerState.x - p[0],
