@@ -34,6 +34,7 @@ function letterHomes(fontSize: number) {
 
 export default function PuzzleBackdropTitle() {
   const viewport = useThree((state) => state.viewport);
+  const size = useThree((state) => state.size);
   const fontSize = viewport.width * 0.15;
   const letterRefs = useRef<(THREE.Group | null)[]>([]);
   const homes = letterHomes(fontSize);
@@ -48,6 +49,8 @@ export default function PuzzleBackdropTitle() {
       letter.visible = burst < 0.98;
     });
   });
+
+  if (size.width <= 640) return null;
 
   return (
     <group position={[0, 0.12, -3.6]}>
