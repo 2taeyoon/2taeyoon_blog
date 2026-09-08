@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { puzzleSimulation } from "@/lib/portfolio/pointerState";
+import { playUiHover } from "@/lib/portfolio/uiSound";
+import { WaterRippleSim } from "@/lib/portfolio/waterRipple";
 
 const PROJECT_ITEMS = [
   {
@@ -54,6 +56,7 @@ function modulo(value: number, divisor: number) {
 export default function ProjectSection() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const waterOverlayRef = useRef<HTMLCanvasElement>(null);
   const waterDisplacementRef = useRef<SVGFEDisplacementMapElement>(null);
   const navigateRef = useRef<(index: number) => void>(() => {});
   const activeIndexRef = useRef(0);
@@ -66,7 +69,8 @@ export default function ProjectSection() {
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
     const track = trackRef.current;
-    if (!viewport || !track) return;
+    const overlay = waterOverlayRef.current;
+    if (!viewport || !track || !overlay) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const position = { x: 0 };
@@ -84,7 +88,56 @@ export default function ProjectSection() {
     let previousWaterTime = 0;
     let isHoveringCard = false;
     let waterTime = 0;
-    let waterBoost = 0;
+    const waterSim = new WaterRippleSim(overlay);
+
+    const stirWaterSurface = (event: PointerEvent) => {
+      if (reducedMotion.matches) return;
+
+      const rect = overlay.getBoundingClientRect();
+      if (
+        rect.width <= 0 ||
+        rect.height <= 0 ||
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom
+      ) {
+        previousWaterTime = 0;
+        return;
+      }
+
+      const now = performance.now();
+      const elapsed = Math.max(now - previousWaterTime, 8);
+      const lastX = previousWaterX;
+      const lastY = previousWaterY;
+      const hadPrev = previousWaterTime > 0;
+      const travel = hadPrev
+        ? Math.hypot(event.clientX - lastX, event.clientY - lastY)
+        : 8;
+      const speed = travel / elapsed;
+      previousWaterX = event.clientX;
+      previousWaterY = event.clientY;
+      previousWaterTime = now;
+      if (hadPrev && travel < 0.4) return;
+
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = (event.clientY - rect.top) / rect.height;
+      waterSim.resize();
+      waterSim.disturb(nx, ny, Math.min(0.48, 0.14 + speed * 1.6), 1.8 + Math.min(speed * 3, 1.2));
+
+      if (travel > 2) {
+        const steps = Math.min(3, Math.floor(travel / 12));
+        for (let i = 1; i <= steps; i += 1) {
+          const t = i / (steps + 1);
+          waterSim.disturb(
+            (lastX + (event.clientX - lastX) * t - rect.left) / rect.width,
+            (lastY + (event.clientY - lastY) * t - rect.top) / rect.height,
+            0.08,
+            1.5,
+          );
+        }
+      }
+    };
 
     const applyPosition = () => {
       if (!period) return;
@@ -141,6 +194,7 @@ export default function ProjectSection() {
       period = sets[1].offsetLeft - sets[0].offsetLeft;
       cardWidth = cards[0].offsetWidth;
       stride = cards[1].offsetLeft - cards[0].offsetLeft;
+      waterSim.resize();
 
       const center = viewport.clientWidth / 2;
       position.x =
@@ -185,21 +239,6 @@ export default function ProjectSection() {
 
     navigateRef.current = goToIndex;
 
-    const stirWater = (event: PointerEvent) => {
-      const now = performance.now();
-      const elapsed = Math.max(now - previousWaterTime, 8);
-      const movement = previousWaterTime
-        ? Math.hypot(
-            event.clientX - previousWaterX,
-            event.clientY - previousWaterY,
-          ) / elapsed
-        : 0;
-      waterBoost = Math.min(1, waterBoost + movement * 2.4);
-      previousWaterX = event.clientX;
-      previousWaterY = event.clientY;
-      previousWaterTime = now;
-    };
-
     const handlePointerDown = (event: PointerEvent) => {
       if (event.pointerType === "mouse" && event.button !== 0) return;
 
@@ -217,7 +256,7 @@ export default function ProjectSection() {
       const target =
         event.target instanceof Element ? event.target : null;
       isHoveringCard = Boolean(target?.closest(".project_section_card"));
-      stirWater(event);
+      stirWaterSurface(event);
 
       if (pointerId !== event.pointerId) return;
 
@@ -248,14 +287,14 @@ export default function ProjectSection() {
     const tick = () => {
       const frameRatio = gsap.ticker.deltaRatio(60);
       waterTime += frameRatio / 60;
-      waterBoost *= Math.pow(0.9, frameRatio);
       const idleWave =
         Math.sin(waterTime * 1.7) * 3 +
         Math.sin(waterTime * 0.83 + 1.4) * 2;
       waterDisplacementRef.current?.setAttribute(
         "scale",
-        String(16 + idleWave + waterBoost * 28),
+        String(16 + idleWave),
       );
+      waterSim.step();
 
       if (!period || pointerId !== null || navigating) return;
 
@@ -382,7 +421,7 @@ export default function ProjectSection() {
                   key={`${copy}-${work.title}`}
                 >
                   <p className="project_panel_title">{work.title}</p>
-                  <div className="project_panel_surface">
+                  <div className="project_panel_surface" onMouseEnter={playUiHover}>
                     <div className="project_panel_art">
                       <Image
                         className="project_panel_image"
@@ -415,6 +454,11 @@ export default function ProjectSection() {
             </div>
           ))}
         </div>
+        <canvas
+          ref={waterOverlayRef}
+          className="project_section_water_overlay"
+          aria-hidden="true"
+        />
       </div>
 
       <footer className="project_section_footer">
@@ -435,6 +479,7 @@ export default function ProjectSection() {
               aria-label={`${work.title} 보기`}
               aria-current={index === activeIndex ? "true" : undefined}
               onClick={() => navigateRef.current(index)}
+              onMouseEnter={playUiHover}
             />
           ))}
         </div>
