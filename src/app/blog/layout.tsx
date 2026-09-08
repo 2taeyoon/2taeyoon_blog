@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BlogHeaderWrapper from "@/components/blog/header/BlogHeaderWrapper";
 
 export const metadata: Metadata = {
   icons: {
@@ -30,5 +31,10 @@ export default function BlogLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <>
+      <BlogHeaderWrapper />
+      {children}
+    </>
+  );
 }
