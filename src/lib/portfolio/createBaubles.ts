@@ -2,6 +2,14 @@ import { sizeSteps, type BaubleProps } from "@/lib/portfolio/pointerState";
 import { PUZZLE_VARIANT_COUNT } from "@/lib/portfolio/puzzleGeometry";
 
 export const BAUBLE_COUNT = 50;
+export const BAUBLE_COUNT_MOBILE = 15;
+
+export function getBaubleCount() {
+  if (typeof window === "undefined") return BAUBLE_COUNT;
+  return window.matchMedia("(width <= 640px)").matches
+    ? BAUBLE_COUNT_MOBILE
+    : BAUBLE_COUNT;
+}
 
 /** 메인 씬 물리 퍼즐 조각 설정 목록 생성 */
 export function createBaubleConfigs(count = BAUBLE_COUNT): BaubleProps[] {
