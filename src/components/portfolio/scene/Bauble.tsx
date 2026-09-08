@@ -7,6 +7,7 @@ import {
   pointerState,
   puzzleSimulation,
   baubleMaterial,
+  mainExit,
   type BaubleProps,
 } from "@/lib/portfolio/pointerState";
 import {
@@ -16,6 +17,7 @@ import {
 
 export default function Bauble(props: BaubleProps) {
   const force = useRef(new THREE.Vector3());
+  const wasExit = useRef(false);
   const geometry =
     puzzleGeometries[props.variant % puzzleGeometries.length];
   const [ref, api] = useBox(() => ({
@@ -33,6 +35,26 @@ export default function Bauble(props: BaubleProps) {
   useEffect(() => {
     const vec = force.current;
     const unsubscribe = api.position.subscribe((p) => {
+      const burst = mainExit.progress;
+      if (burst > 0.001) {
+        wasExit.current = true;
+        const d = 36 * burst;
+        api.position.set(
+          props.homeX + props.explodeX * d,
+          props.homeY + props.explodeY * d,
+          burst * 8,
+        );
+        api.velocity.set(0, 0, 0);
+        return;
+      }
+
+      if (wasExit.current) {
+        wasExit.current = false;
+        api.position.set(props.homeX, props.homeY, 0);
+        api.velocity.set(0, 0, 0);
+        return;
+      }
+
       if (!puzzleSimulation.paused && pointerState.down) {
         vec.set(
           pointerState.x - p[0],
@@ -65,7 +87,7 @@ export default function Bauble(props: BaubleProps) {
       );
     });
     return () => unsubscribe();
-  }, [api, props.args, props.homeX, props.homeY]);
+  }, [api, props.args, props.homeX, props.homeY, props.explodeX, props.explodeY]);
 
   return (
     <group ref={ref as React.Ref<THREE.Group>}>
