@@ -5,6 +5,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectSection from "@/components/portfolio/ProjectSection";
 import MainSection from "@/components/portfolio/MainSection";
+import { mainExit } from "@/lib/portfolio/pointerState";
+
+function applyScrollProgress(progress: number, sections: HTMLElement | null, project: HTMLDivElement | null) {
+  mainExit.progress = progress;
+  sections?.style.setProperty("--main-exit", String(progress));
+  sections?.style.setProperty("--project-enter", String(progress));
+  project?.classList.toggle("is_ready", progress >= 0.92);
+}
 
 export default function PortfolioSections() {
   const sectionsRef = useRef<HTMLElement>(null);
@@ -16,33 +24,25 @@ export default function PortfolioSections() {
 
     const context = gsap.context(() => {
       media.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.fromTo(
-          projectLayerRef.current,
-          {
-            "--project-edge-feather": "96px",
+        ScrollTrigger.create({
+          trigger: sectionsRef.current,
+          start: "top top",
+          end: () => `+=${window.innerHeight * 2}`,
+          scrub: true,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            applyScrollProgress(self.progress, sectionsRef.current, projectLayerRef.current);
           },
-          {
-            "--project-edge-feather": "0px",
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionsRef.current,
-              start: "top top",
-              end: "+=114%",
-              scrub: 0.65,
-              invalidateOnRefresh: true,
-            },
-          },
-        );
+        });
       });
 
       media.add("(prefers-reduced-motion: reduce)", () => {
-        gsap.set(projectLayerRef.current, {
-          clearProps: "all",
-        });
+        applyScrollProgress(0, sectionsRef.current, projectLayerRef.current);
       });
     }, sectionsRef);
 
     return () => {
+      applyScrollProgress(0, sectionsRef.current, projectLayerRef.current);
       media.revert();
       context.revert();
     };
