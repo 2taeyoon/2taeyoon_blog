@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import BlogHeaderWrapper from "@/components/blog/header/BlogHeaderWrapper";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import BlogAideWrapper from "@/components/blog/aide/BlogAideWrapper";
 
 import "@/styles/base/index.css";
@@ -50,7 +49,6 @@ export default function RootLayout({
       </head>
       <body>
 				<div className="RouteApp">
-					<BlogHeaderWrapper />
 					<BlogAideWrapper />
 					{children}
 				</div>
