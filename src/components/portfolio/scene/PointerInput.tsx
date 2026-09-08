@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { pointerState } from "@/lib/portfolio/pointerState";
+import { pointerState, puzzleSimulation } from "@/lib/portfolio/pointerState";
 
 export default function PointerInput() {
   const viewport = useThree((state) => state.viewport);
@@ -20,6 +20,7 @@ export default function PointerInput() {
     };
 
     const onPointerDown = (e: PointerEvent) => {
+      if (puzzleSimulation.paused) return;
       if (!isInside(e, canvas.getBoundingClientRect())) return;
       pointerState.moved = true;
       if (e.button === 0) setDown(true);
@@ -30,6 +31,7 @@ export default function PointerInput() {
     };
 
     const onPointerMove = (e: PointerEvent) => {
+      if (puzzleSimulation.paused) return;
       const rect = canvas.getBoundingClientRect();
       if (!isInside(e, rect)) return;
       pointerState.moved = true;
