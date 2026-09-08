@@ -21,7 +21,7 @@ interface BaubleSceneProps {
   scene: SceneId;
 }
 
-/** Main Scene 전용 — 물리 큐브들 (마운트될 때만 물리 월드 존재) */
+/** Main Scene 전용 — 물리 퍼즐 조각들 (마운트될 때만 물리 월드 존재) */
 function MainScene({ baubles }: { baubles: BaubleProps[] }) {
   return (
     <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
@@ -36,7 +36,7 @@ function MainScene({ baubles }: { baubles: BaubleProps[] }) {
 /**
  * 사이트 전체의 단일 3D 월드.
  * - GiantGlassCube: 쉐이더 몽환 배경 (격자 + 모핑 + 마우스 유체)
- * - Main: 물리 큐브들
+ * - Main: 물리 퍼즐 조각들
  */
 export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
   const baubles = useMemo(() => createBaubleConfigs(), []);
