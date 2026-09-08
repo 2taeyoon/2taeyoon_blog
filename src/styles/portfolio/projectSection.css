@@ -84,7 +84,6 @@
   right: 0;
   left: 0;
   height: 75vh;
-  overflow: hidden;
   perspective: 1100px;
   perspective-origin: 50% 36%;
   touch-action: pan-y;
@@ -107,12 +106,12 @@
 
 .project_section_track {
   position: absolute;
-  top: 6px;
+  top: 32px;
   left: 0;
   display: flex;
   gap: 2.15vw;
   width: fit-content;
-  height: calc(100% - 6px);
+  height: calc(100% - 32px);
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -304,20 +303,35 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 120px;
-  height: 36px;
+  width: 200px;
+  height: 80px;
   overflow: visible;
   opacity: 0;
-  color: rgba(135, 159, 255, 0.68);
-  filter: blur(0.35px) drop-shadow(0 0 8px rgba(70, 101, 224, 0.42));
+  color: rgba(168, 186, 255, 0.78);
+  filter:
+    url("#projectSectionPointerWave")
+    blur(0.25px)
+    drop-shadow(0 0 10px rgba(70, 101, 224, 0.5));
   mix-blend-mode: screen;
   will-change: transform, opacity;
 }
 
-.project_section_pointer_ripple ellipse {
+.project_section_pointer_ripple path {
   fill: none;
   stroke: currentcolor;
-  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.15;
+}
+
+.project_section_pointer_ripple path:nth-child(2) {
+  stroke-width: 0.9;
+  opacity: 0.78;
+}
+
+.project_section_pointer_ripple path:nth-child(3) {
+  stroke-width: 0.7;
+  opacity: 0.55;
 }
 
 .project_section_footer {
@@ -363,11 +377,11 @@
 .project_section_pagination {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
 }
 
 .project_section_pagination button {
-  width: 4px;
+  width: 24px;
   height: 4px;
   padding: 0;
   border: 0;
@@ -382,8 +396,6 @@
 .project_section_pagination button:hover,
 .project_section_pagination button:focus-visible {
   background: rgba(209, 216, 250, 0.78);
-  outline: 1px solid rgba(209, 216, 250, 0.5);
-  outline-offset: 4px;
 }
 
 .project_section_pagination button.is_active {
