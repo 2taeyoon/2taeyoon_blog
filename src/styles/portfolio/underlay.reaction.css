@@ -83,27 +83,15 @@
   }
 
   .underlay_drag_hint {
-    flex: 1 1 100%;
-    order: 3;
+    display: none;
   }
 
   .underlay_gutter {
     display: none;
   }
 
-  .underlay_volume_slider {
-    height: 44px;
-  }
-
-  .underlay_volume_slider::-webkit-slider-thumb {
-    width: 20px;
-    height: 20px;
-    margin-top: -8.5px;
-  }
-
-  .underlay_volume_slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+  .underlay_settings_item_volume {
+    display: none;
   }
 }
 
