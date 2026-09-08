@@ -2,17 +2,29 @@ import { sizeSteps, type BaubleProps } from "@/lib/portfolio/pointerState";
 import { PUZZLE_VARIANT_COUNT } from "@/lib/portfolio/puzzleGeometry";
 
 export const BAUBLE_COUNT = 50;
+export const BAUBLE_COUNT_MOBILE = 15;
+
+export function getBaubleCount() {
+  if (typeof window === "undefined") return BAUBLE_COUNT;
+  return window.matchMedia("(width <= 640px)").matches
+    ? BAUBLE_COUNT_MOBILE
+    : BAUBLE_COUNT;
+}
 
 /** 메인 씬 물리 퍼즐 조각 설정 목록 생성 */
 export function createBaubleConfigs(count = BAUBLE_COUNT): BaubleProps[] {
   return Array.from({ length: count }, (_, index) => {
     const spread = count === 1 ? 0 : index / (count - 1);
 
+    const angle = (index / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+
     return {
       args: sizeSteps[Math.floor(Math.random() * sizeSteps.length)],
       variant: Math.floor(Math.random() * PUZZLE_VARIANT_COUNT),
       homeX: (spread - 0.5) * 7.4 + (Math.random() - 0.5) * 0.7,
       homeY: (Math.random() - 0.5) * 1.8,
+      explodeX: Math.cos(angle),
+      explodeY: Math.sin(angle) * 0.62,
       mass: 1,
       angularDamping: 0.2,
       linearDamping: 0.95,

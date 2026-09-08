@@ -5,6 +5,7 @@
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
+  opacity: var(--project-enter, 0);
   background:
     radial-gradient(circle at 9% 10%, rgba(255, 255, 255, 0.16) 0 1px, transparent 1.4px),
     radial-gradient(circle at 79% 17%, rgba(114, 136, 255, 0.15) 0 1px, transparent 1.4px),
@@ -46,9 +47,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc(100% - 48px);
+  width: calc(100% - 32px);
   text-align: center;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(calc((1 - var(--project-enter, 0)) * -10rem));
+  opacity: var(--project-enter, 0);
   pointer-events: none;
 }
 
@@ -64,7 +66,7 @@
   margin: 0;
   color: var(--pfTextStrong);
   font-family: "Nunito Sans", sans-serif;
-  font-size: 7.2rem;
+  font-size: 6.4rem;
   font-weight: 700;
   text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
 }
@@ -86,6 +88,9 @@
   height: 75vh;
   perspective: 1100px;
   perspective-origin: 50% 36%;
+  transform-origin: 50% 36%;
+  transform: scale(calc(0.22 + var(--project-enter, 0) * 0.78));
+  opacity: var(--project-enter, 0);
   touch-action: pan-y;
   user-select: none;
   -webkit-mask-image: linear-gradient(
@@ -294,13 +299,14 @@
 .project_section_footer {
   position: absolute;
   z-index: 12;
-  bottom: 2.6vh;
+  bottom: 6vh;
   left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(calc((1 - var(--project-enter, 0)) * 10rem));
+  opacity: var(--project-enter, 0);
 }
 
 .project_section_fraction {
@@ -356,7 +362,7 @@
 }
 
 .project_section_pagination button.is_active {
-  background: #dce2ff;
+  background: var(--pfTextStrong);
   box-shadow: 0 0 8px rgba(114, 136, 255, 0.8);
   transform: scale(1.2);
 }
@@ -425,72 +431,6 @@
       100% 100%,
       0 100%
     );
-  }
-}
-
-@media (width <= 900px) {
-  .project_section_header {
-    top: 9rem;
-  }
-
-  .project_section_viewport {
-    top: 30rem;
-  }
-
-  .project_section_track,
-  .project_section_set {
-    gap: 2.6vw;
-  }
-
-  .project_section_card {
-    width: 15.8rem;
-  }
-
-  .project_panel_art {
-    height: 27rem;
-  }
-
-  .project_panel_reflection {
-    top: 27rem;
-    height: 24.3rem;
-  }
-}
-
-@media (width <= 560px) {
-  .project_section_header {
-    top: 14rem;
-  }
-
-  .project_section_viewport {
-    top: 36rem;
-    height: 62vh;
-  }
-
-  .project_section_track,
-  .project_section_set {
-    gap: 14px;
-  }
-
-  .project_section_card {
-    width: 14.2rem;
-  }
-
-  .project_panel_art {
-    height: 24.4rem;
-  }
-
-  .project_panel_reflection {
-    top: 24.4rem;
-    height: 22rem;
-  }
-
-  .project_section_footer {
-    bottom: 20px;
-    gap: 10px;
-  }
-
-  .project_section_active_title {
-    width: 26rem;
   }
 }
 

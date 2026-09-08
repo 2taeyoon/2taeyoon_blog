@@ -55,7 +55,13 @@ export interface BaubleProps {
   variant: number;
   homeX: number;
   homeY: number;
+  explodeX: number;
+  explodeY: number;
   mass: number;
   angularDamping: number;
   linearDamping: number;
 }
+
+export const mainExit = {
+  progress: 0,
+};

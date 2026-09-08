@@ -1,8 +1,10 @@
 .portfolio_sections {
+  --main-exit: 0;
+  --project-enter: 0;
   position: relative;
   width: 100%;
-  height: 214vh;
-  height: 214dvh;
+  height: 300vh;
+  height: 300dvh;
   background: var(--pfBgLavender);
 }
 
@@ -17,32 +19,18 @@
 }
 
 .portfolio_project_layer {
-  --project-edge-feather: 96px;
-
-  position: relative;
+  position: sticky;
   z-index: 2;
+  top: 0;
   width: 100%;
-  margin-top: 14vh;
-  margin-top: 14dvh;
   height: 100vh;
   height: 100dvh;
+  margin-top: -100vh;
+  margin-top: -100dvh;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 var(--project-edge-feather),
-    #000 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 var(--project-edge-feather),
-    #000 100%
-  );
+  pointer-events: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .portfolio_project_layer {
-    --project-edge-feather: 0px;
-  }
+.portfolio_project_layer.is_ready {
+  pointer-events: auto;
 }

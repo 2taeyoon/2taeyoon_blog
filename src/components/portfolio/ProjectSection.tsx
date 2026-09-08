@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { puzzleSimulation } from "@/lib/portfolio/pointerState";
+import { playUiHover } from "@/lib/portfolio/uiSound";
 
 const PROJECT_ITEMS = [
   {
@@ -79,12 +80,8 @@ export default function ProjectSection() {
     let previousTime = 0;
     let navigating = false;
     let navigationTween: gsap.core.Tween | null = null;
-    let previousWaterX = 0;
-    let previousWaterY = 0;
-    let previousWaterTime = 0;
     let isHoveringCard = false;
     let waterTime = 0;
-    let waterBoost = 0;
 
     const applyPosition = () => {
       if (!period) return;
@@ -185,21 +182,6 @@ export default function ProjectSection() {
 
     navigateRef.current = goToIndex;
 
-    const stirWater = (event: PointerEvent) => {
-      const now = performance.now();
-      const elapsed = Math.max(now - previousWaterTime, 8);
-      const movement = previousWaterTime
-        ? Math.hypot(
-            event.clientX - previousWaterX,
-            event.clientY - previousWaterY,
-          ) / elapsed
-        : 0;
-      waterBoost = Math.min(1, waterBoost + movement * 2.4);
-      previousWaterX = event.clientX;
-      previousWaterY = event.clientY;
-      previousWaterTime = now;
-    };
-
     const handlePointerDown = (event: PointerEvent) => {
       if (event.pointerType === "mouse" && event.button !== 0) return;
 
@@ -217,7 +199,6 @@ export default function ProjectSection() {
       const target =
         event.target instanceof Element ? event.target : null;
       isHoveringCard = Boolean(target?.closest(".project_section_card"));
-      stirWater(event);
 
       if (pointerId !== event.pointerId) return;
 
@@ -248,13 +229,12 @@ export default function ProjectSection() {
     const tick = () => {
       const frameRatio = gsap.ticker.deltaRatio(60);
       waterTime += frameRatio / 60;
-      waterBoost *= Math.pow(0.9, frameRatio);
       const idleWave =
         Math.sin(waterTime * 1.7) * 3 +
         Math.sin(waterTime * 0.83 + 1.4) * 2;
       waterDisplacementRef.current?.setAttribute(
         "scale",
-        String(16 + idleWave + waterBoost * 28),
+        String(16 + idleWave),
       );
 
       if (!period || pointerId !== null || navigating) return;
@@ -382,7 +362,7 @@ export default function ProjectSection() {
                   key={`${copy}-${work.title}`}
                 >
                   <p className="project_panel_title">{work.title}</p>
-                  <div className="project_panel_surface">
+                  <div className="project_panel_surface" onMouseEnter={playUiHover}>
                     <div className="project_panel_art">
                       <Image
                         className="project_panel_image"
@@ -435,6 +415,7 @@ export default function ProjectSection() {
               aria-label={`${work.title} 보기`}
               aria-current={index === activeIndex ? "true" : undefined}
               onClick={() => navigateRef.current(index)}
+              onMouseEnter={playUiHover}
             />
           ))}
         </div>

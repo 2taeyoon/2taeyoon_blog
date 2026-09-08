@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { ColorPalette } from "@/components/portfolio/ui/ColorPalette";
+import { playUiHover, uiSound } from "@/lib/portfolio/uiSound";
 
 interface UnderlayProps {
   ballColor: string;
@@ -28,6 +29,8 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
 
   volumeRef.current = volume;
   playingRef.current = playing;
+  uiSound.musicOn = playing;
+  uiSound.volume = volume / 100;
 
   const wireAudioGraph = () => {
     if (graphWiredRef.current || !audioRef.current) return;
@@ -127,6 +130,7 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
     return () => {
       audioRef.current?.pause();
       audioRef.current = null;
+      uiSound.musicOn = false;
     };
   }, []);
 
@@ -225,13 +229,14 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
       <div className="underlay_top_row underlay_top_row_global">
         <p className="underlay_logo">2taeyoon.com</p>
         <div className="underlay_nav" onPointerDown={blockPointer}>
-          <Link href="/blog" className="underlay_nav_item underlay_nav_link">BLOG</Link>
-          <a href="https://github.com/2taeyoon" target="_blank" rel="noreferrer" className="underlay_nav_item underlay_nav_link">GITHUB</a>
+          <Link href="/blog" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>BLOG</Link>
+          <a href="https://github.com/2taeyoon" target="_blank" rel="noreferrer" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>GITHUB</a>
         </div>
         <div className="underlay_controls" ref={settingsRef} onPointerDown={blockPointer}>
           <button
             type="button"
             className="underlay_control_button"
+            onMouseEnter={playUiHover}
             onClick={() => setSettingsOpen((prev) => !prev)}
             aria-label="설정 열기/닫기"
             aria-expanded={settingsOpen}
@@ -306,7 +311,6 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
             <div className="underlay_intro_text_ko">
               미학과 기술을 하나씩 조립해 완성해 나갑니다.
             </div>
-            <div className="underlay_intro_dash">—</div>
             <div className="underlay_intro_text_en">
               Assembling aesthetics and technology piece by piece.
             </div>

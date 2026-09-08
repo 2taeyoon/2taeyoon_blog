@@ -19,7 +19,19 @@ export default function PointerInput() {
       pointerState.down = down;
     };
 
+    const parkPointer = () => {
+      pointerState.down = false;
+      pointerState.moved = false;
+      pointerState.x = 0;
+      pointerState.y = 0;
+      pointerState.z = -100;
+    };
+
     const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === "touch") {
+        parkPointer();
+        return;
+      }
       if (puzzleSimulation.paused) return;
       if (!isInside(e, canvas.getBoundingClientRect())) return;
       pointerState.moved = true;
@@ -27,10 +39,18 @@ export default function PointerInput() {
     };
 
     const onPointerUp = (e: PointerEvent) => {
+      if (e.pointerType === "touch") {
+        parkPointer();
+        return;
+      }
       if (e.button === 0) setDown(false);
     };
 
     const onPointerMove = (e: PointerEvent) => {
+      if (e.pointerType === "touch") {
+        parkPointer();
+        return;
+      }
       if (puzzleSimulation.paused) return;
       const rect = canvas.getBoundingClientRect();
       if (!isInside(e, rect)) return;
