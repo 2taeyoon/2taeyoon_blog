@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc(100% - 48px);
+  width: calc(100% - 32px);
   text-align: center;
   transform: translateX(-50%) translateY(calc((1 - var(--project-enter, 0)) * -10rem));
   opacity: var(--project-enter, 0);
@@ -66,7 +66,7 @@
   margin: 0;
   color: var(--pfTextStrong);
   font-family: "Nunito Sans", sans-serif;
-  font-size: 7.2rem;
+  font-size: 6.4rem;
   font-weight: 700;
   text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
 }
@@ -299,7 +299,7 @@
 .project_section_footer {
   position: absolute;
   z-index: 12;
-  bottom: 8vh;
+  bottom: 6vh;
   left: 50%;
   display: flex;
   flex-direction: column;
@@ -362,7 +362,7 @@
 }
 
 .project_section_pagination button.is_active {
-  background: #dce2ff;
+  background: var(--pfTextStrong);
   box-shadow: 0 0 8px rgba(114, 136, 255, 0.8);
   transform: scale(1.2);
 }
@@ -431,72 +431,6 @@
       100% 100%,
       0 100%
     );
-  }
-}
-
-@media (width <= 900px) {
-  .project_section_header {
-    top: 9rem;
-  }
-
-  .project_section_viewport {
-    top: 30rem;
-  }
-
-  .project_section_track,
-  .project_section_set {
-    gap: 2.6vw;
-  }
-
-  .project_section_card {
-    width: 15.8rem;
-  }
-
-  .project_panel_art {
-    height: 27rem;
-  }
-
-  .project_panel_reflection {
-    top: 27rem;
-    height: 24.3rem;
-  }
-}
-
-@media (width <= 560px) {
-  .project_section_header {
-    top: 14rem;
-  }
-
-  .project_section_viewport {
-    top: 36rem;
-    height: 62vh;
-  }
-
-  .project_section_track,
-  .project_section_set {
-    gap: 14px;
-  }
-
-  .project_section_card {
-    width: 14.2rem;
-  }
-
-  .project_panel_art {
-    height: 24.4rem;
-  }
-
-  .project_panel_reflection {
-    top: 24.4rem;
-    height: 22rem;
-  }
-
-  .project_section_footer {
-    bottom: 20px;
-    gap: 10px;
-  }
-
-  .project_section_active_title {
-    width: 26rem;
   }
 }
 
