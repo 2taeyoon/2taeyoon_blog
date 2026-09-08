@@ -51,51 +51,9 @@ function modulo(value: number, divisor: number) {
   return ((value % divisor) + divisor) % divisor;
 }
 
-function createWavyRingPath(
-  cx: number,
-  cy: number,
-  rx: number,
-  ry: number,
-  amplitude: number,
-  waves: number,
-  phase: number,
-) {
-  const steps = 72;
-  let path = "";
-
-  for (let index = 0; index <= steps; index += 1) {
-    const angle = (index / steps) * Math.PI * 2;
-    const wobble = 1 + (amplitude / ry) * Math.sin(waves * angle + phase);
-    const x = cx + Math.cos(angle) * rx * wobble;
-    const y = cy + Math.sin(angle) * ry * wobble;
-    path += `${index === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`;
-  }
-
-  return `${path} Z`;
-}
-
-function setRippleWave(svg: SVGSVGElement, phase: number, progress: number) {
-  const rings = svg.querySelectorAll("path");
-  const amplitude = 2.4 + progress * 6.2;
-
-  rings[0]?.setAttribute(
-    "d",
-    createWavyRingPath(100, 40, 88, 22, amplitude, 7, phase),
-  );
-  rings[1]?.setAttribute(
-    "d",
-    createWavyRingPath(100, 40, 62, 15, amplitude * 0.72, 6, phase + 1.15),
-  );
-  rings[2]?.setAttribute(
-    "d",
-    createWavyRingPath(100, 40, 36, 9, amplitude * 0.48, 5, phase + 2.2),
-  );
-}
-
 export default function ProjectSection() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const waterOverlayRef = useRef<HTMLDivElement>(null);
   const waterDisplacementRef = useRef<SVGFEDisplacementMapElement>(null);
   const navigateRef = useRef<(index: number) => void>(() => {});
   const activeIndexRef = useRef(0);
@@ -108,8 +66,7 @@ export default function ProjectSection() {
   useLayoutEffect(() => {
     const viewport = viewportRef.current;
     const track = trackRef.current;
-    const waterOverlay = waterOverlayRef.current;
-    if (!viewport || !track || !waterOverlay) return;
+    if (!viewport || !track) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const position = { x: 0 };
@@ -125,16 +82,9 @@ export default function ProjectSection() {
     let previousWaterX = 0;
     let previousWaterY = 0;
     let previousWaterTime = 0;
-    let hasWaterPointer = false;
     let isHoveringCard = false;
     let waterTime = 0;
-    let rippleIndex = 0;
-    let previousRippleTime = 0;
-    const pointerRipples = Array.from(
-      waterOverlay.querySelectorAll<SVGSVGElement>(
-        ".project_section_pointer_ripple",
-      ),
-    );
+    let waterBoost = 0;
 
     const applyPosition = () => {
       if (!period) return;
@@ -235,58 +185,19 @@ export default function ProjectSection() {
 
     navigateRef.current = goToIndex;
 
-    const emitPointerRipple = (event: PointerEvent) => {
+    const stirWater = (event: PointerEvent) => {
       const now = performance.now();
-      if (now - previousRippleTime < 48 || pointerRipples.length === 0) return;
-
-      const bounds = viewport.getBoundingClientRect();
-      const slot = rippleIndex % pointerRipples.length;
-      const ripple = pointerRipples[slot];
       const elapsed = Math.max(now - previousWaterTime, 8);
-      const movement = hasWaterPointer
+      const movement = previousWaterTime
         ? Math.hypot(
             event.clientX - previousWaterX,
             event.clientY - previousWaterY,
           ) / elapsed
         : 0;
-      const strength = gsap.utils.clamp(0.9, 1.8, 0.9 + movement * 1.5);
-      let phase = Math.random() * Math.PI * 2;
-      const anim = { progress: 0 };
-
-      gsap.killTweensOf(ripple);
-      setRippleWave(ripple, phase, 0);
-      gsap.set(ripple, {
-        x: event.clientX - bounds.left,
-        y: event.clientY - bounds.top,
-        xPercent: -50,
-        yPercent: -50,
-        scaleX: 0.28,
-        scaleY: 0.42,
-        opacity: 0.86,
-      });
-      gsap.to(ripple, {
-        scaleX: 2.7 * strength,
-        scaleY: 1.35 * strength,
-        opacity: 0,
-        duration: 1.35,
-        ease: "power1.out",
-      });
-      gsap.to(anim, {
-        progress: 1,
-        duration: 1.35,
-        ease: "power1.out",
-        onUpdate: () => {
-          phase += 0.22;
-          setRippleWave(ripple, phase, anim.progress);
-        },
-      });
-
+      waterBoost = Math.min(1, waterBoost + movement * 2.4);
       previousWaterX = event.clientX;
       previousWaterY = event.clientY;
       previousWaterTime = now;
-      previousRippleTime = now;
-      rippleIndex += 1;
-      hasWaterPointer = true;
     };
 
     const handlePointerDown = (event: PointerEvent) => {
@@ -306,12 +217,7 @@ export default function ProjectSection() {
       const target =
         event.target instanceof Element ? event.target : null;
       isHoveringCard = Boolean(target?.closest(".project_section_card"));
-
-      if (target?.closest(".project_panel_reflection")) {
-        emitPointerRipple(event);
-      } else {
-        hasWaterPointer = false;
-      }
+      stirWater(event);
 
       if (pointerId !== event.pointerId) return;
 
@@ -336,19 +242,19 @@ export default function ProjectSection() {
     };
 
     const handlePointerLeave = () => {
-      hasWaterPointer = false;
       isHoveringCard = false;
     };
 
     const tick = () => {
       const frameRatio = gsap.ticker.deltaRatio(60);
       waterTime += frameRatio / 60;
+      waterBoost *= Math.pow(0.9, frameRatio);
       const idleWave =
         Math.sin(waterTime * 1.7) * 3 +
         Math.sin(waterTime * 0.83 + 1.4) * 2;
       waterDisplacementRef.current?.setAttribute(
         "scale",
-        String(18 + idleWave),
+        String(16 + idleWave + waterBoost * 28),
       );
 
       if (!period || pointerId !== null || navigating) return;
@@ -381,7 +287,6 @@ export default function ProjectSection() {
       viewport.removeEventListener("pointercancel", releasePointer);
       viewport.removeEventListener("pointerleave", handlePointerLeave);
       gsap.ticker.remove(tick);
-      gsap.killTweensOf(pointerRipples);
       navigateRef.current = () => {};
     };
   }, []);
@@ -442,35 +347,6 @@ export default function ProjectSection() {
               yChannelSelector="B"
             />
             <feGaussianBlur stdDeviation="0.35" />
-          </filter>
-          <filter
-            id="projectSectionPointerWave"
-            x="-45%"
-            y="-55%"
-            width="190%"
-            height="210%"
-          >
-            <feTurbulence
-              type="turbulence"
-              baseFrequency="0.018 0.14"
-              numOctaves="3"
-              seed="4"
-              result="pointerNoise"
-            >
-              <animate
-                attributeName="baseFrequency"
-                dur="1.6s"
-                values="0.018 0.14;0.03 0.09;0.014 0.18;0.018 0.14"
-                repeatCount="indefinite"
-              />
-            </feTurbulence>
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="pointerNoise"
-              scale="16"
-              xChannelSelector="R"
-              yChannelSelector="G"
-            />
           </filter>
         </defs>
       </svg>
@@ -537,23 +413,6 @@ export default function ProjectSection() {
                 </article>
               ))}
             </div>
-          ))}
-        </div>
-        <div
-          ref={waterOverlayRef}
-          className="project_section_pointer_water"
-          aria-hidden="true"
-        >
-          {Array.from({ length: 6 }, (_, index) => (
-            <svg
-              className="project_section_pointer_ripple"
-              viewBox="0 0 200 80"
-              key={index}
-            >
-              <path />
-              <path />
-              <path />
-            </svg>
           ))}
         </div>
       </div>
