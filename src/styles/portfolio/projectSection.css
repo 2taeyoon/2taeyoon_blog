@@ -5,6 +5,7 @@
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
+  opacity: var(--project-enter, 0);
   background:
     radial-gradient(circle at 9% 10%, rgba(255, 255, 255, 0.16) 0 1px, transparent 1.4px),
     radial-gradient(circle at 79% 17%, rgba(114, 136, 255, 0.15) 0 1px, transparent 1.4px),
@@ -48,7 +49,8 @@
   align-items: center;
   width: calc(100% - 48px);
   text-align: center;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(calc((1 - var(--project-enter, 0)) * -10rem));
+  opacity: var(--project-enter, 0);
   pointer-events: none;
 }
 
@@ -86,6 +88,9 @@
   height: 75vh;
   perspective: 1100px;
   perspective-origin: 50% 36%;
+  transform-origin: 50% 36%;
+  transform: scale(calc(0.22 + var(--project-enter, 0) * 0.78));
+  opacity: var(--project-enter, 0);
   touch-action: pan-y;
   user-select: none;
   -webkit-mask-image: linear-gradient(
@@ -294,13 +299,14 @@
 .project_section_footer {
   position: absolute;
   z-index: 12;
-  bottom: 2.6vh;
+  bottom: 8vh;
   left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(calc((1 - var(--project-enter, 0)) * 10rem));
+  opacity: var(--project-enter, 0);
 }
 
 .project_section_fraction {
