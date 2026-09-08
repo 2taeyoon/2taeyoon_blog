@@ -291,49 +291,6 @@
   animation: projectSectionWaterRipple 5.5s linear infinite;
 }
 
-.project_section_pointer_water {
-  position: absolute;
-  z-index: 8;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.project_section_pointer_ripple {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 80px;
-  overflow: visible;
-  opacity: 0;
-  color: rgba(168, 186, 255, 0.78);
-  filter:
-    url("#projectSectionPointerWave")
-    blur(0.25px)
-    drop-shadow(0 0 10px rgba(70, 101, 224, 0.5));
-  mix-blend-mode: screen;
-  will-change: transform, opacity;
-}
-
-.project_section_pointer_ripple path {
-  fill: none;
-  stroke: currentcolor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.15;
-}
-
-.project_section_pointer_ripple path:nth-child(2) {
-  stroke-width: 0.9;
-  opacity: 0.78;
-}
-
-.project_section_pointer_ripple path:nth-child(3) {
-  stroke-width: 0.7;
-  opacity: 0.55;
-}
-
 .project_section_footer {
   position: absolute;
   z-index: 12;
