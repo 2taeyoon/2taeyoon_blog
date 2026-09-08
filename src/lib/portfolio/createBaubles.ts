@@ -12,10 +12,10 @@ export function createBaubleConfigs(count = BAUBLE_COUNT): BaubleProps[] {
       args: sizeSteps[Math.floor(Math.random() * sizeSteps.length)],
       variant: Math.floor(Math.random() * PUZZLE_VARIANT_COUNT),
       homeX: (spread - 0.5) * 7.4 + (Math.random() - 0.5) * 0.7,
-      homeY: (Math.random() - 0.5) * 2.4,
+      homeY: (Math.random() - 0.5) * 1.8,
       mass: 1,
-      angularDamping: 0.82,
-      linearDamping: 0.988,
+      angularDamping: 0.2,
+      linearDamping: 0.95,
     };
   });
 }
