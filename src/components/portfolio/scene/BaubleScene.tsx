@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useSyncExternalStore } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
 import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
-import type { BaubleProps } from "@/lib/portfolio/pointerState";
+import { puzzleSimulation, type BaubleProps } from "@/lib/portfolio/pointerState";
 import { createBaubleConfigs } from "@/lib/portfolio/createBaubles";
 import { applyBallColor } from "@/lib/portfolio/baubleAppearance";
 import type { SceneId } from "@/lib/portfolio/scenes";
@@ -23,8 +23,20 @@ interface BaubleSceneProps {
 
 /** Main Scene 전용 — 물리 퍼즐 조각들 (마운트될 때만 물리 월드 존재) */
 function MainScene({ baubles }: { baubles: BaubleProps[] }) {
+  const paused = useSyncExternalStore(
+    puzzleSimulation.subscribe,
+    () => puzzleSimulation.paused,
+    () => false,
+  );
+
   return (
-    <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
+    <Physics
+      gravity={[0, 0, 0]}
+      iterations={10}
+      broadphase="SAP"
+      allowSleep
+      isPaused={paused}
+    >
       <Collisions />
       {baubles.map((props, i) => (
         <Bauble key={i} {...props} />
