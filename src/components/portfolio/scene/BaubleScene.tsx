@@ -7,7 +7,7 @@ import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
 import { type BaubleProps } from "@/lib/portfolio/pointerState";
-import { createBaubleConfigs } from "@/lib/portfolio/createBaubles";
+import { createBaubleConfigs, getBaubleCount } from "@/lib/portfolio/createBaubles";
 import { applyBallColor } from "@/lib/portfolio/baubleAppearance";
 import type { SceneId } from "@/lib/portfolio/scenes";
 import Bauble from "@/components/portfolio/scene/Bauble";
@@ -40,7 +40,7 @@ function MainScene({ baubles }: { baubles: BaubleProps[] }) {
  * - Main: 물리 퍼즐 조각들
  */
 export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
-  const baubles = useMemo(() => createBaubleConfigs(), []);
+  const baubles = useMemo(() => createBaubleConfigs(getBaubleCount()), []);
 
   useEffect(() => {
     applyBallColor(ballColor);
@@ -51,11 +51,13 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
       className="bauble_scene"
       shadows
       dpr={[1, 2]}
+      style={{ touchAction: "pan-y" }}
       resize={{ scroll: false, debounce: { scroll: 0, resize: 0 } }}
       gl={{ alpha: true, stencil: false, antialias: false }}
       camera={{ position: [0, 0, 20], fov: 35, near: 1, far: 160 }}
       onCreated={(state) => {
         state.gl.toneMappingExposure = 1.35;
+        state.gl.domElement.style.touchAction = "pan-y";
       }}
     >
       <ResponsiveCamera />
