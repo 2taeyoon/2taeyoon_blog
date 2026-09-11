@@ -80,7 +80,60 @@ export default function ProjectSection() {
     let previousTime = 0;
     let navigating = false;
     let navigationTween: gsap.core.Tween | null = null;
+    let hoveredCard: HTMLElement | null = null;
     let isHoveringCard = false;
+
+    const setHoveredCard = (next: HTMLElement | null) => {
+      if (hoveredCard === next) return;
+      hoveredCard?.classList.remove("is_hovered");
+      hoveredCard = next;
+      if (hoveredCard) {
+        hoveredCard.classList.add("is_hovered");
+        playUiHover();
+      }
+      isHoveringCard = hoveredCard !== null;
+    };
+
+    const cardAtPoint = (clientX: number, clientY: number) => {
+      const cards = track.querySelectorAll<HTMLElement>(".project_section_card");
+      let best: HTMLElement | null = null;
+      let bestDist = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card) => {
+        const rect = card.getBoundingClientRect();
+        const reflection = card.querySelector(".project_panel_reflection");
+        const reflectionRect = reflection?.getBoundingClientRect();
+        const overCard =
+          clientX >= rect.left &&
+          clientX <= rect.right &&
+          clientY >= rect.top &&
+          clientY <= rect.bottom;
+        const overReflection = Boolean(
+          reflectionRect &&
+            clientX >= reflectionRect.left &&
+            clientX <= reflectionRect.right &&
+            clientY >= reflectionRect.top &&
+            clientY <= reflectionRect.bottom,
+        );
+        if (!overCard && !overReflection) return;
+
+        const dist = Math.abs(clientX - (rect.left + rect.width / 2));
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = card;
+        }
+      });
+
+      return best;
+    };
+
+    const updateHover = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse" || pointerId !== null) {
+        setHoveredCard(null);
+        return;
+      }
+      setHoveredCard(cardAtPoint(event.clientX, event.clientY));
+    };
     let waterTime = 0;
 
     const applyPosition = () => {
@@ -196,9 +249,7 @@ export default function ProjectSection() {
     };
 
     const handlePointerMove = (event: PointerEvent) => {
-      const target =
-        event.target instanceof Element ? event.target : null;
-      isHoveringCard = Boolean(target?.closest(".project_section_card"));
+      updateHover(event);
 
       if (pointerId !== event.pointerId) return;
 
@@ -223,7 +274,7 @@ export default function ProjectSection() {
     };
 
     const handlePointerLeave = () => {
-      isHoveringCard = false;
+      setHoveredCard(null);
     };
 
     const tick = () => {
@@ -259,6 +310,7 @@ export default function ProjectSection() {
     measure();
 
     return () => {
+      setHoveredCard(null);
       navigationTween?.kill();
       resizeObserver.disconnect();
       viewport.removeEventListener("pointerdown", handlePointerDown);
@@ -362,7 +414,7 @@ export default function ProjectSection() {
                   key={`${copy}-${work.title}`}
                 >
                   <p className="project_panel_title">{work.title}</p>
-                  <div className="project_panel_surface" onMouseEnter={playUiHover}>
+                  <div className="project_panel_surface">
                     <div className="project_panel_art">
                       <Image
                         className="project_panel_image"
@@ -373,7 +425,7 @@ export default function ProjectSection() {
                             : ""
                         }
                         fill
-                        sizes="(max-width: 560px) 35vw, (max-width: 960px) 22vw, 14vw"
+                        sizes="(max-width: 560px) 70vw, (max-width: 900px) 42vw, 32rem"
                         draggable={false}
                       />
                     </div>
@@ -384,7 +436,7 @@ export default function ProjectSection() {
                         src={work.image}
                         alt=""
                         fill
-                        sizes="(max-width: 560px) 35vw, (max-width: 960px) 22vw, 14vw"
+                        sizes="(max-width: 560px) 70vw, (max-width: 900px) 42vw, 32rem"
                         draggable={false}
                       />
                       <span className="project_panel_ripple" />
