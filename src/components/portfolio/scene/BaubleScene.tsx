@@ -1,12 +1,16 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
-import { Canvas } from "@react-three/fiber";
+import { useEffect, useMemo, useState } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
 import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
-import { type BaubleProps } from "@/lib/portfolio/pointerState";
+import {
+  mainExit,
+  mainRenderState,
+  type BaubleProps,
+} from "@/lib/portfolio/pointerState";
 import { createBaubleConfigs, getBaubleCount } from "@/lib/portfolio/createBaubles";
 import { applyBallColor } from "@/lib/portfolio/baubleAppearance";
 import type { SceneId } from "@/lib/portfolio/scenes";
@@ -23,14 +27,96 @@ interface BaubleSceneProps {
 }
 
 /** Main Scene 전용 — 물리 퍼즐 조각들 (마운트될 때만 물리 월드 존재) */
-function MainScene({ baubles }: { baubles: BaubleProps[] }) {
+function MainScene({
+  baubles,
+  paused,
+}: {
+  baubles: BaubleProps[];
+  paused: boolean;
+}) {
   return (
-    <Physics gravity={[0, 0, 0]} iterations={10} broadphase="SAP">
+    <Physics
+      gravity={[0, 0, 0]}
+      iterations={8}
+      maxSubSteps={2}
+      broadphase="SAP"
+      allowSleep
+      isPaused={paused}
+      shouldInvalidate={false}
+    >
       <Collisions />
       {baubles.map((props, i) => (
         <Bauble key={i} {...props} />
       ))}
     </Physics>
+  );
+}
+
+function SceneFrameLoop() {
+  const invalidate = useThree((state) => state.invalidate);
+
+  useEffect(
+    () => mainRenderState.subscribe(invalidate),
+    [invalidate],
+  );
+
+  useFrame(() => {
+    if (mainExit.progress < 0.98) invalidate();
+  });
+
+  return null;
+}
+
+function SceneEffects() {
+  const isMobile = useThree((state) => state.size.width <= 640);
+
+  if (isMobile) {
+    return (
+      <EffectComposer multisampling={0}>
+        <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
+      </EffectComposer>
+    );
+  }
+
+  return (
+    <EffectComposer multisampling={0}>
+      <N8AO
+        aoRadius={2}
+        intensity={7}
+        halfRes
+        quality="medium"
+      />
+      <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
+    </EffectComposer>
+  );
+}
+
+function SceneLighting() {
+  const isMobile = useThree((state) => state.size.width <= 640);
+
+  return (
+    <>
+      <ambientLight intensity={0.5 * Math.PI} color="#8899cc" />
+      <spotLight
+        position={[20, 20, 25]}
+        penumbra={1}
+        angle={0.2}
+        color="#dde4ff"
+        castShadow={!isMobile}
+        shadow-mapSize={[512, 512]}
+        intensity={0.75 * Math.PI}
+      />
+      <directionalLight
+        position={[0, 5, -4]}
+        intensity={2.6 * Math.PI}
+        color="#c8d4f8"
+      />
+      <directionalLight
+        position={[0, -15, 0]}
+        intensity={0.6 * Math.PI}
+        color="#de7c3a"
+      />
+    </>
   );
 }
 
@@ -41,16 +127,26 @@ function MainScene({ baubles }: { baubles: BaubleProps[] }) {
  */
 export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
   const baubles = useMemo(() => createBaubleConfigs(getBaubleCount()), []);
+  const [mainActive, setMainActive] = useState(true);
 
   useEffect(() => {
     applyBallColor(ballColor);
   }, [ballColor]);
 
+  useEffect(
+    () =>
+      mainRenderState.subscribe(() => {
+        setMainActive(mainExit.progress < 0.98);
+      }),
+    [],
+  );
+
   return (
     <Canvas
       className="bauble_scene"
       shadows
-      dpr={[1, 2]}
+      dpr={[1, 1.5]}
+      frameloop="demand"
       style={{ touchAction: "pan-y" }}
       resize={{ scroll: false, debounce: { scroll: 0, resize: 0 } }}
       gl={{ alpha: true, stencil: false, antialias: false }}
@@ -60,31 +156,20 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
         state.gl.domElement.style.touchAction = "pan-y";
       }}
     >
+      <SceneFrameLoop />
       <ResponsiveCamera />
       <PointerInput />
-      <ambientLight intensity={0.5 * Math.PI} color="#8899cc" />
-      <spotLight
-        position={[20, 20, 25]}
-        penumbra={1}
-        angle={0.2}
-        color="#dde4ff"
-        castShadow
-        shadow-mapSize={[512, 512]}
-        intensity={0.75 * Math.PI}
-      />
-      <directionalLight position={[0, 5, -4]} intensity={2.6 * Math.PI} color="#c8d4f8" />
-      <directionalLight position={[0, -15, -0]} intensity={0.6 * Math.PI} color="#de7c3a" />
+      <SceneLighting />
 
       <GiantGlassCube ballColor={ballColor} />
 
       {scene === "main" && <PuzzleBackdropTitle />}
-      {scene === "main" && <MainScene baubles={baubles} />}
+      {scene === "main" && (
+        <MainScene baubles={baubles} paused={!mainActive} />
+      )}
 
       <Environment files="/3d/adamsbridge.hdr" />
-      <EffectComposer multisampling={0}>
-        <N8AO aoRadius={2} intensity={7} />
-        <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
-      </EffectComposer>
+      <SceneEffects />
     </Canvas>
   );
 }
