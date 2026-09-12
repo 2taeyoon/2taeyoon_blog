@@ -43,12 +43,33 @@
   .underlay_logo {
     order: 1;
     flex: 1 1 auto;
+    padding-right: 52px;
   }
 
   .underlay_controls {
-    order: 2;
-    flex: 0 0 auto;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+    flex: none;
     justify-content: flex-end;
+  }
+
+  .underlay_control_button {
+    width: 36px;
+    height: 36px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .underlay_control_button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .underlay_control_button:active {
+    opacity: 0.6;
+    transform: scale(0.96);
   }
 
   .underlay_nav {

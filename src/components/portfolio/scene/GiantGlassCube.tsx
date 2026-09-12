@@ -12,7 +12,8 @@ import {
 } from "@/lib/portfolio/dreamyBackdropShader";
 
 const PLANE_Z = -28;
-const FLOW_SIZE = 256;
+const FLOW_SIZE = 192;
+const FLOW_FRAME_TIME = 1 / 30;
 
 /**
  * 몽환 배경 — 팔레트 색에 맞춰 배경·격자 톤이 함께 바뀐다.
@@ -23,6 +24,8 @@ export default function GiantGlassCube({ ballColor = "fabric" }: { ballColor?: s
   const mouseVel = useRef(new THREE.Vector2(0, 0));
   const mouseTarget = useRef(new THREE.Vector2(0, 0));
   const flowPos = useRef(new THREE.Vector2(0.5, 0.5));
+  const flowElapsed = useRef(0);
+  const planeSize = useRef(new THREE.Vector2());
   const paletteTarget = useRef(buildPalette(ballColor));
 
   const { flowTexture, flowCtx } = useMemo(() => {
@@ -45,19 +48,42 @@ export default function GiantGlassCube({ ballColor = "fabric" }: { ballColor?: s
     syncPaletteCssVars(paletteTarget.current);
   }, [ballColor]);
 
+  useEffect(
+    () => () => {
+      flowTexture.dispose();
+      material.dispose();
+    },
+    [flowTexture, material],
+  );
+
   useFrame((state, delta) => {
     const mesh = meshRef.current;
     if (!mesh) return;
 
     const v = state.viewport.getCurrentViewport(state.camera, [0, 0, PLANE_Z]);
-    mesh.position.set(0, 0, PLANE_Z);
-    mesh.scale.set(v.width, v.height, 1);
+    if (
+      planeSize.current.x !== v.width ||
+      planeSize.current.y !== v.height
+    ) {
+      planeSize.current.set(v.width, v.height);
+      mesh.position.set(0, 0, PLANE_Z);
+      mesh.scale.set(v.width, v.height, 1);
+      material.uniforms.uAspect.value = v.width / Math.max(v.height, 1);
+    }
 
     material.uniforms.uTime.value = state.clock.elapsedTime;
-    material.uniforms.uAspect.value = v.width / Math.max(v.height, 1);
 
     // 팔레트 색 부드럽게 보간
     lerpDreamyPalette(material.uniforms, paletteTarget.current, 1 - Math.exp(-delta * 4));
+
+    const isMobile = state.size.width <= 640;
+    if (isMobile) {
+      mouseTarget.current.set(0, 0);
+      mouseVel.current.set(0, 0);
+      material.uniforms.uMouse.value.set(0, 0);
+      material.uniforms.uMouseVel.value.set(0, 0);
+      return;
+    }
 
     mouseTarget.current.set(
       pointerState.moved ? pointerState.ndcX : state.pointer.x,
@@ -73,6 +99,10 @@ export default function GiantGlassCube({ ballColor = "fabric" }: { ballColor?: s
     mouseVel.current.multiplyScalar(0.018);
     material.uniforms.uMouse.value.copy(mouseSmooth.current);
     material.uniforms.uMouseVel.value.lerp(mouseVel.current, 1 - Math.exp(-delta * 8));
+
+    flowElapsed.current += delta;
+    if (flowElapsed.current < FLOW_FRAME_TIME) return;
+    flowElapsed.current %= FLOW_FRAME_TIME;
 
     paintFlowMap({
       ctx: flowCtx,

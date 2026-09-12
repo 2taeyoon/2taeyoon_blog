@@ -52,7 +52,7 @@
 
 .underlay_nav_item {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
   color: var(--pfBlack);
@@ -479,4 +479,36 @@ button.underlay_settings_item:hover {
 
 .underlay_roles_right div {
   font-size: 1.6rem;
+}
+
+.underlay_scroll_down {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  animation: underlay_scroll_down 1.6s ease-in-out infinite;
+}
+
+.underlay_scroll_down_icon {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes underlay_scroll_down {
+  0%,
+  100% {
+    transform: translateY(-2px);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
 }

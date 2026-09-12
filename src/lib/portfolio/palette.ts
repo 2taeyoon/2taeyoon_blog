@@ -10,6 +10,7 @@ export type BackdropPalette = {
   glow: THREE.Color;
   cssDeep: string;
   cssMid: string;
+  cssHighlight: string;
 };
 
 /** 팔레트 색 → 다크 배경/격자용 톤 세트 */
@@ -25,12 +26,13 @@ export function buildPalette(ballColor: string): BackdropPalette {
       glow: new THREE.Color(0.025, 0.05, 0.14),
       cssDeep: "#03050c",
       cssMid: "#04070f",
+      cssHighlight: "#17295f",
     };
   }
 
   const base = new THREE.Color(ballColor);
   const hsl = { h: 0, s: 0, l: 0 };
-  base.getHSL(hsl);
+  base.getHSL(hsl, THREE.SRGBColorSpace);
 
   // 실제 채도가 낮은 색만 무채색으로 처리한다.
   // 어두운 유채색을 명도만으로 무채색 처리하면 특정 지점에서 색조가 갑자기 사라진다.
@@ -51,6 +53,7 @@ export function buildPalette(ballColor: string): BackdropPalette {
         glow: cool(0.12, 0.13, 0.15),
         cssDeep: `#${deep.getHexString()}`,
         cssMid: `#${navy.getHexString()}`,
+        cssHighlight: "#343944",
       };
     }
     // #000000 계열 → 딥 차콜
@@ -66,6 +69,7 @@ export function buildPalette(ballColor: string): BackdropPalette {
       glow: cool(0.07, 0.075, 0.09),
       cssDeep: `#${deep.getHexString()}`,
       cssMid: `#${navy.getHexString()}`,
+      cssHighlight: "#20232b",
     };
   }
 
@@ -74,6 +78,7 @@ export function buildPalette(ballColor: string): BackdropPalette {
   const mk = (l: number, sat = s) => new THREE.Color().setHSL(h, sat, l);
   const deep = mk(0.028, s * 0.75);
   const navy = mk(0.055, s * 0.85);
+  const highlight = mk(0.22, s * 0.82);
   return {
     deep,
     navy,
@@ -84,6 +89,7 @@ export function buildPalette(ballColor: string): BackdropPalette {
     glow: mk(0.14, s * 0.8),
     cssDeep: `#${deep.getHexString()}`,
     cssMid: `#${navy.getHexString()}`,
+    cssHighlight: `#${highlight.getHexString()}`,
   };
 }
 
@@ -92,4 +98,5 @@ export function syncPaletteCssVars(palette: BackdropPalette) {
   const root = document.documentElement;
   root.style.setProperty("--pfBgLavender", palette.cssDeep);
   root.style.setProperty("--pfBgGray", palette.cssMid);
+  root.style.setProperty("--pfProjectHighlight", palette.cssHighlight);
 }

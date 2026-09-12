@@ -10,10 +10,19 @@ export default function PointerInput() {
 
   useEffect(() => {
     const canvas = gl.domElement;
+    let canvasRect = canvas.getBoundingClientRect();
+    const updateCanvasRect = () => {
+      canvasRect = canvas.getBoundingClientRect();
+    };
+    const resizeObserver = new ResizeObserver(updateCanvasRect);
+    resizeObserver.observe(canvas);
 
     // 메인 섹션 캔버스 영역 안에 있을 때만 반응 (다른 섹션에서의 마우스 이동 무시)
-    const isInside = (e: PointerEvent, rect: DOMRect) =>
-      e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+    const isInside = (e: PointerEvent) =>
+      e.clientX >= canvasRect.left &&
+      e.clientX <= canvasRect.right &&
+      e.clientY >= canvasRect.top &&
+      e.clientY <= canvasRect.bottom;
 
     const setDown = (down: boolean) => {
       pointerState.down = down;
@@ -33,7 +42,7 @@ export default function PointerInput() {
         return;
       }
       if (puzzleSimulation.paused) return;
-      if (!isInside(e, canvas.getBoundingClientRect())) return;
+      if (!isInside(e)) return;
       pointerState.moved = true;
       if (e.button === 0) setDown(true);
     };
@@ -52,11 +61,12 @@ export default function PointerInput() {
         return;
       }
       if (puzzleSimulation.paused) return;
-      const rect = canvas.getBoundingClientRect();
-      if (!isInside(e, rect)) return;
+      if (!isInside(e)) return;
       pointerState.moved = true;
-      pointerState.ndcX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      pointerState.ndcY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      pointerState.ndcX =
+        ((e.clientX - canvasRect.left) / canvasRect.width) * 2 - 1;
+      pointerState.ndcY =
+        -((e.clientY - canvasRect.top) / canvasRect.height) * 2 + 1;
     };
 
     const onBlur = () => setDown(false);
@@ -67,6 +77,7 @@ export default function PointerInput() {
     window.addEventListener("blur", onBlur);
 
     return () => {
+      resizeObserver.disconnect();
       window.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("pointerup", onPointerUp);
       window.removeEventListener("pointermove", onPointerMove);
