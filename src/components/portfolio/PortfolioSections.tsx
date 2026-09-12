@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectSection from "@/components/portfolio/ProjectSection";
 import MainSection from "@/components/portfolio/MainSection";
-import { mainExit } from "@/lib/portfolio/pointerState";
+import { mainExit, mainRenderState } from "@/lib/portfolio/pointerState";
 
 function applyScrollProgress(progress: number, sections: HTMLElement | null, project: HTMLDivElement | null) {
   const next = progress < 0.02 ? 0 : progress;
@@ -13,6 +13,7 @@ function applyScrollProgress(progress: number, sections: HTMLElement | null, pro
   sections?.style.setProperty("--main-exit", String(next));
   sections?.style.setProperty("--project-enter", String(next));
   project?.classList.toggle("is_ready", next >= 0.92);
+  mainRenderState.request();
 }
 
 function resetScrollTop() {
