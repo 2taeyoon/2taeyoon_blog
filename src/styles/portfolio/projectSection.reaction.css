@@ -11,6 +11,18 @@
   }
 }
 
+@media (width <= 640px) {
+  .project_panel_image,
+  .project_panel_reflection,
+  .project_panel_ripple {
+    animation: none;
+  }
+
+  .project_panel_reflection_image {
+    filter: blur(0.4px);
+  }
+}
+
 @media (width <= 560px) {
   .project_section_track,
   .project_section_set {
