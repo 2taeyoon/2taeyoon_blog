@@ -11,9 +11,9 @@
     radial-gradient(circle at 79% 17%, rgba(114, 136, 255, 0.15) 0 1px, transparent 1.4px),
     radial-gradient(circle at 31% 24%, rgba(255, 255, 255, 0.12) 0 0.7px, transparent 1.2px),
     radial-gradient(
-      circle at 50% 33%,
-      color-mix(in srgb, var(--pfBgGray) 72%, transparent),
-      transparent 34%
+      circle at 50% 27%,
+      color-mix(in srgb, var(--pfProjectHighlight) 55%, transparent),
+      transparent 36%
     ),
     radial-gradient(
       circle at 8% 65%,
@@ -82,7 +82,7 @@
 .project_section_viewport {
   position: absolute;
   z-index: 3;
-  top: 40%;
+  top: 38%;
   right: 0;
   left: 0;
   height: 75vh;
@@ -133,12 +133,12 @@
 .project_section_card {
   position: relative;
   flex: none;
+  visibility: hidden;
   width: 32rem;
   height: auto;
   margin: 0;
   transform-origin: center top;
   transform-style: preserve-3d;
-  will-change: transform, opacity;
 }
 
 .project_panel_title {
@@ -322,13 +322,13 @@
 }
 
 .project_section_fraction span:first-child {
-  color: #dce2ff;
+  color: var(--pfTextStrong);
 }
 
 .project_section_active_title {
   width: 32rem;
   margin-bottom: 2rem;
-  color: rgba(232, 235, 255, 0.9);
+  color: var(--pfTextStrong);
   font-family: "Nunito Sans", sans-serif;
   font-size: 3rem;
   font-weight: 300;
