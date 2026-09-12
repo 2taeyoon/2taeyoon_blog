@@ -65,3 +65,19 @@ export interface BaubleProps {
 export const mainExit = {
   progress: 0,
 };
+
+type MainRenderListener = () => void;
+const mainRenderListeners = new Set<MainRenderListener>();
+
+/** 스크롤 진행도가 바뀔 때 demand frameloop과 물리 pause 상태를 깨운다. */
+export const mainRenderState = {
+  request() {
+    mainRenderListeners.forEach((listener) => listener());
+  },
+  subscribe(listener: MainRenderListener) {
+    mainRenderListeners.add(listener);
+    return () => {
+      mainRenderListeners.delete(listener);
+    };
+  },
+};
