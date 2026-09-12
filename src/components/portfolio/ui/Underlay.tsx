@@ -229,8 +229,8 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
       <div className="underlay_top_row underlay_top_row_global">
         <p className="underlay_logo">2taeyoon.com</p>
         <div className="underlay_nav" onPointerDown={blockPointer}>
-          <Link href="/blog" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>BLOG</Link>
-          <a href="https://github.com/2taeyoon" target="_blank" rel="noreferrer" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>GITHUB</a>
+          <Link href="/blog" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Blog</Link>
+          <a href="https://github.com/2taeyoon" target="_blank" rel="noreferrer" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Github</a>
         </div>
         <div className="underlay_controls" ref={settingsRef} onPointerDown={blockPointer}>
           <button
@@ -328,7 +328,17 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
           <p className="underlay_drag_hint">Move and drag the mouse</p>
           <div className="underlay_gutter" />
           <div className="underlay_roles_right">
-            <div>Developer</div>
+            <div className="underlay_scroll_down">
+              <span>Scroll Down</span>
+              <svg
+                className="underlay_scroll_down_icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path d="M12 4V19M6.5 13.5L12 19L17.5 13.5" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
