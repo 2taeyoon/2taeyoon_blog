@@ -60,6 +60,53 @@ export const DREAMY_FRAGMENT_SHADER = /* glsl */ `
     return c + 0.5;
   }
 
+  vec3 patternA(vec2 fieldUv) {
+    float a1 = fbm(fieldUv * 1.4 + 2.0);
+    float a2 = fbm(fieldUv * 2.2 + 19.0);
+    float marble = smoothstep(0.05, 0.5, abs(a1 - a2));
+    vec3 col = uDeep;
+    col = mix(col, uNavy, smoothstep(0.28, 0.7, a1));
+    col = mix(col, uMid, marble * 0.4);
+    return mix(col, uAccent, smoothstep(0.55, 0.9, a2) * 0.2);
+  }
+
+  vec3 patternB(vec2 fieldUv) {
+    float b1 = fbm(fieldUv * 0.7 + 5.0);
+    float b2 = fbm(fieldUv * 1.1 + vec2(8.0, 3.0));
+    vec3 col = uDeep;
+    col = mix(col, uNavy, smoothstep(0.35, 0.65, b1));
+    col = mix(col, uMid, smoothstep(0.45, 0.8, b2) * 0.45);
+    return mix(col, uSoft, smoothstep(0.7, 0.95, b1 * b2) * 0.18);
+  }
+
+  vec3 patternC(vec2 fieldUv) {
+    float c1 = fbm(fieldUv * vec2(1.1, 2.4) + 40.0);
+    float c2 = fbm(fieldUv * vec2(2.0, 0.9) + vec2(14.0, 6.0));
+    float wave = smoothstep(0.3, 0.7, c1 * 0.55 + c2 * 0.45);
+    vec3 col = uDeep;
+    col = mix(col, uNavy, smoothstep(0.2, 0.65, c1));
+    col = mix(col, uMid, wave * 0.42);
+    return mix(col, uAccent, smoothstep(0.65, 0.92, c2) * 0.2);
+  }
+
+  vec3 patternD(vec2 fieldUv) {
+    float band = fbm(vec2(fieldUv.x + fieldUv.y, fieldUv.x - fieldUv.y) * 1.8 + 22.0);
+    float d1 = fbm(fieldUv * 1.2 + 27.0);
+    vec3 col = uDeep;
+    col = mix(col, uNavy, smoothstep(0.25, 0.6, band));
+    col = mix(col, uMid, abs(band - 0.5) * 0.7);
+    return mix(col, uAccent, smoothstep(0.6, 0.9, d1) * 0.22);
+  }
+
+  vec3 patternE(vec2 fieldUv) {
+    float e1 = fbm(fieldUv * 3.2 + 50.0);
+    float e2 = noise(fieldUv * 14.0 + 60.0);
+    float cell = smoothstep(0.35, 0.75, e1) * (0.4 + 0.6 * e2);
+    vec3 col = mix(uDeep, uNavy, 0.5);
+    col = mix(col, uMid, cell * 0.5);
+    return mix(col, uSoft, smoothstep(0.8, 1.0, e2) * 0.12);
+  }
+
   void main() {
     vec2 uv = vUv;
     vec2 cuv = curveUv(uv);
@@ -84,60 +131,27 @@ export const DREAMY_FRAGMENT_SHADER = /* glsl */ `
     vec2 duv = cuv + distort;
     vec2 fieldUv = vec2(duv.x * uAspect, duv.y);
 
-    vec3 deep = uDeep;
-    vec3 navy = uNavy;
-    vec3 indigo = uMid;
-    vec3 blue = uAccent;
-    vec3 softBlue = uSoft;
-
-    float a1 = fbm(fieldUv * 1.4 + 2.0);
-    float a2 = fbm(fieldUv * 2.2 + 19.0);
-    float marble = smoothstep(0.05, 0.5, abs(a1 - a2));
-    vec3 patA = deep;
-    patA = mix(patA, navy, smoothstep(0.28, 0.7, a1));
-    patA = mix(patA, indigo, marble * 0.4);
-    patA = mix(patA, blue, smoothstep(0.55, 0.9, a2) * 0.2);
-
-    float b1 = fbm(fieldUv * 0.7 + 5.0);
-    float b2 = fbm(fieldUv * 1.1 + vec2(8.0, 3.0));
-    vec3 patB = deep;
-    patB = mix(patB, navy, smoothstep(0.35, 0.65, b1));
-    patB = mix(patB, indigo, smoothstep(0.45, 0.8, b2) * 0.45);
-    patB = mix(patB, softBlue, smoothstep(0.7, 0.95, b1 * b2) * 0.18);
-
-    float c1 = fbm(fieldUv * vec2(1.1, 2.4) + 40.0);
-    float c2 = fbm(fieldUv * vec2(2.0, 0.9) + vec2(14.0, 6.0));
-    float wave = smoothstep(0.3, 0.7, c1 * 0.55 + c2 * 0.45);
-    vec3 patC = deep;
-    patC = mix(patC, navy, smoothstep(0.2, 0.65, c1));
-    patC = mix(patC, indigo, wave * 0.42);
-    patC = mix(patC, blue, smoothstep(0.65, 0.92, c2) * 0.2);
-
-    float band = fbm(vec2(fieldUv.x + fieldUv.y, fieldUv.x - fieldUv.y) * 1.8 + 22.0);
-    float d1 = fbm(fieldUv * 1.2 + 27.0);
-    vec3 patD = deep;
-    patD = mix(patD, navy, smoothstep(0.25, 0.6, band));
-    patD = mix(patD, indigo, abs(band - 0.5) * 0.7);
-    patD = mix(patD, blue, smoothstep(0.6, 0.9, d1) * 0.22);
-
-    float e1 = fbm(fieldUv * 3.2 + 50.0);
-    float e2 = noise(fieldUv * 14.0 + 60.0);
-    float cell = smoothstep(0.35, 0.75, e1) * (0.4 + 0.6 * e2);
-    vec3 patE = deep;
-    patE = mix(patE, navy, 0.5);
-    patE = mix(patE, indigo, cell * 0.5);
-    patE = mix(patE, softBlue, smoothstep(0.8, 1.0, e2) * 0.12);
-
     float cycle = uTime / 3.0;
     float idx = mod(floor(cycle), 5.0);
     float fade = smoothstep(0.0, 0.2, fract(cycle));
-    vec3 prevCol = patA;
-    vec3 nextCol = patA;
-    if (idx < 0.5) { prevCol = patE; nextCol = patA; }
-    else if (idx < 1.5) { prevCol = patA; nextCol = patB; }
-    else if (idx < 2.5) { prevCol = patB; nextCol = patC; }
-    else if (idx < 3.5) { prevCol = patC; nextCol = patD; }
-    else { prevCol = patD; nextCol = patE; }
+    vec3 prevCol;
+    vec3 nextCol;
+    if (idx < 0.5) {
+      prevCol = patternE(fieldUv);
+      nextCol = patternA(fieldUv);
+    } else if (idx < 1.5) {
+      prevCol = patternA(fieldUv);
+      nextCol = patternB(fieldUv);
+    } else if (idx < 2.5) {
+      prevCol = patternB(fieldUv);
+      nextCol = patternC(fieldUv);
+    } else if (idx < 3.5) {
+      prevCol = patternC(fieldUv);
+      nextCol = patternD(fieldUv);
+    } else {
+      prevCol = patternD(fieldUv);
+      nextCol = patternE(fieldUv);
+    }
 
     vec3 col = mix(prevCol, nextCol, fade);
     float gAmt = exp(-length((uv - 0.5) * vec2(uAspect * 0.55, 1.0)) * 2.8);
