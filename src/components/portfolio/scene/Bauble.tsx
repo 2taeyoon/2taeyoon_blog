@@ -21,6 +21,7 @@ const INTRO_MS = 720;
 export default function Bauble(props: BaubleProps) {
   const force = useRef(new THREE.Vector3());
   const wasExit = useRef(false);
+  const lastBurst = useRef(-1);
   const introUntil = useRef(performance.now() + INTRO_MS);
   const geometry =
     puzzleGeometries[props.variant % puzzleGeometries.length];
@@ -61,6 +62,8 @@ export default function Bauble(props: BaubleProps) {
       const burst = mainExit.progress;
       if (burst > 0.001) {
         wasExit.current = true;
+        if (Math.abs(lastBurst.current - burst) < 0.0005) return;
+        lastBurst.current = burst;
         const d = 36 * burst;
         api.position.set(
           props.homeX + props.explodeX * d,
@@ -73,6 +76,7 @@ export default function Bauble(props: BaubleProps) {
 
       if (wasExit.current) {
         wasExit.current = false;
+        lastBurst.current = -1;
         api.position.set(props.homeX, props.homeY, 0);
         api.velocity.set(0, 0, 0);
         return;
