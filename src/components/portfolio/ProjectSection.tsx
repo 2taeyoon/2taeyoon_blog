@@ -3,7 +3,10 @@
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { puzzleSimulation } from "@/lib/portfolio/pointerState";
+import {
+  mainExit,
+  puzzleSimulation,
+} from "@/lib/portfolio/pointerState";
 import { playUiHover } from "@/lib/portfolio/uiSound";
 
 const PROJECT_ITEMS = [
@@ -43,6 +46,14 @@ const PROJECT_ITEMS = [
 
 const TRACK_COPIES = [0, 1, 2];
 const AUTO_SPEED = 0.34;
+const WATER_FRAME_TIME = 1 / 30;
+
+interface CardLayout {
+  element: HTMLElement;
+  reflection: Element | null;
+  trackLeft: number;
+  visible: boolean;
+}
 
 function formatIndex(index: number) {
   return String(index + 1).padStart(2, "0");
@@ -82,6 +93,7 @@ export default function ProjectSection() {
     let navigationTween: gsap.core.Tween | null = null;
     let hoveredCard: HTMLElement | null = null;
     let isHoveringCard = false;
+    let cardLayouts: CardLayout[] = [];
 
     const setHoveredCard = (next: HTMLElement | null) => {
       if (hoveredCard === next) return;
@@ -95,13 +107,12 @@ export default function ProjectSection() {
     };
 
     const cardAtPoint = (clientX: number, clientY: number) => {
-      const cards = track.querySelectorAll<HTMLElement>(".project_section_card");
       let best: HTMLElement | null = null;
       let bestDist = Number.POSITIVE_INFINITY;
 
-      cards.forEach((card) => {
+      cardLayouts.forEach(({ element: card, reflection, visible }) => {
+        if (!visible) return;
         const rect = card.getBoundingClientRect();
-        const reflection = card.querySelector(".project_panel_reflection");
         const reflectionRect = reflection?.getBoundingClientRect();
         const overCard =
           clientX >= rect.left &&
@@ -135,24 +146,35 @@ export default function ProjectSection() {
       setHoveredCard(cardAtPoint(event.clientX, event.clientY));
     };
     let waterTime = 0;
+    let waterElapsed = 0;
 
     const applyPosition = () => {
       if (!period) return;
 
       while (position.x <= -period * 2) position.x += period;
       while (position.x > -period) position.x -= period;
-      gsap.set(track, { x: position.x });
+      track.style.transform = `translate3d(${position.x}px, 0, 0)`;
 
       const center = viewport.clientWidth / 2;
       const cylinderRadius = Math.max(viewport.clientWidth * 0.82, 520);
       const maxAngle = (58 * Math.PI) / 180;
-      const cards = track.querySelectorAll<HTMLElement>(".project_section_card");
+      const renderLimit = center + cardWidth * 1.5;
 
-      cards.forEach((card) => {
-        const set = card.parentElement;
-        const cardTrackLeft = (set?.offsetLeft ?? 0) + card.offsetLeft;
+      cardLayouts.forEach((layout) => {
+        const card = layout.element;
         const linearX =
-          cardTrackLeft + position.x + cardWidth / 2 - center;
+          layout.trackLeft + position.x + cardWidth / 2 - center;
+        const visible = Math.abs(linearX) <= renderLimit;
+        if (layout.visible !== visible) {
+          layout.visible = visible;
+          card.style.visibility = visible ? "visible" : "hidden";
+          card.style.willChange = visible ? "transform, opacity" : "auto";
+        }
+        if (!visible) {
+          if (hoveredCard === card) setHoveredCard(null);
+          return;
+        }
+
         const angle = gsap.utils.clamp(
           -maxAngle,
           maxAngle,
@@ -162,14 +184,10 @@ export default function ProjectSection() {
         const cylindricalZ = cylinderRadius * (1 - Math.cos(angle));
         const edgeRatio = Math.min(Math.abs(angle) / maxAngle, 1);
 
-        gsap.set(card, {
-          x: cylindricalX - linearX,
-          y: 0,
-          z: cylindricalZ,
-          rotationY: (-angle * 180) / Math.PI,
-          scale: 1,
-          opacity: 1 - edgeRatio * 0.24,
-        });
+        card.style.transform =
+          `translate3d(${cylindricalX - linearX}px, 0, ${cylindricalZ}px) ` +
+          `rotateY(${(-angle * 180) / Math.PI}deg)`;
+        card.style.opacity = String(1 - edgeRatio * 0.24);
       });
 
       const virtualIndex = Math.round(
@@ -191,6 +209,13 @@ export default function ProjectSection() {
       period = sets[1].offsetLeft - sets[0].offsetLeft;
       cardWidth = cards[0].offsetWidth;
       stride = cards[1].offsetLeft - cards[0].offsetLeft;
+      cardLayouts = Array.from(cards, (card) => ({
+        element: card,
+        reflection: card.querySelector(".project_panel_reflection"),
+        trackLeft:
+          (card.parentElement?.offsetLeft ?? 0) + card.offsetLeft,
+        visible: false,
+      }));
 
       const center = viewport.clientWidth / 2;
       position.x =
@@ -279,14 +304,21 @@ export default function ProjectSection() {
 
     const tick = () => {
       const frameRatio = gsap.ticker.deltaRatio(60);
-      waterTime += frameRatio / 60;
-      const idleWave =
-        Math.sin(waterTime * 1.7) * 3 +
-        Math.sin(waterTime * 0.83 + 1.4) * 2;
-      waterDisplacementRef.current?.setAttribute(
-        "scale",
-        String(16 + idleWave),
-      );
+      const elapsed = frameRatio / 60;
+      if (mainExit.progress < 0.75) return;
+
+      waterTime += elapsed;
+      waterElapsed += elapsed;
+      if (waterElapsed >= WATER_FRAME_TIME) {
+        waterElapsed %= WATER_FRAME_TIME;
+        const idleWave =
+          Math.sin(waterTime * 1.7) * 3 +
+          Math.sin(waterTime * 0.83 + 1.4) * 2;
+        waterDisplacementRef.current?.setAttribute(
+          "scale",
+          String(16 + idleWave),
+        );
+      }
 
       if (!period || pointerId !== null || navigating) return;
 
@@ -339,14 +371,7 @@ export default function ProjectSection() {
               numOctaves="2"
               seed="7"
               result="noise"
-            >
-              <animate
-                attributeName="baseFrequency"
-                dur="11s"
-                values="0.008 0.014;0.012 0.009;0.007 0.016;0.008 0.014"
-                repeatCount="indefinite"
-              />
-            </feTurbulence>
+            />
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
@@ -362,14 +387,7 @@ export default function ProjectSection() {
               numOctaves="2"
               seed="12"
               result="waterNoise"
-            >
-              <animate
-                attributeName="baseFrequency"
-                dur="7s"
-                values="0.008 0.065;0.014 0.052;0.006 0.074;0.008 0.065"
-                repeatCount="indefinite"
-              />
-            </feTurbulence>
+            />
             <feDisplacementMap
               ref={waterDisplacementRef}
               in="SourceGraphic"
