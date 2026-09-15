@@ -1,11 +1,12 @@
 import { MenuSection } from "@/types/blog/menu.types";
-import { BLOG_CATEGORIES } from "./cards";
+import { allBlogCards, BLOG_CATEGORIES } from "./cards";
 
 export const MENU_SECTIONS: MenuSection[] = [
   {
     id: "home",
-    title: "HOME",
+    title: "Home",
     href: "/blog",
+    count: allBlogCards.length,
     type: "linkOnly",
     exact: true,
   },
