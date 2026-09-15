@@ -1,30 +1,24 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Link from "next/link";
 import { CardProps } from "@/types/blog/card.types";
 import { PageUrlsProps } from "@/types/blog/pagination.types";
-import { usePathname } from "next/navigation";
 
 import { getSortedBlogCards } from "@/data/blog/cards";
 import { toBlogSlug } from "@/lib/blog/slug";
+import {
+	useBlogSessionStore,
+	useHydrateBlogSessionStore,
+} from "@/stores/useBlogSessionStore";
+
+const sortedBlogCards = getSortedBlogCards();
 
 export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
+	useHydrateBlogSessionStore();
+	const navigationScope = useBlogSessionStore((state) => state.navigationScope);
 
-	const pathname = usePathname(); // 현재 경로 확인
-	const [isFromHome, setIsFromHome] = useState(false);
-
-	useEffect(() => {
-		// 세션 스토리지에 fromHome이 있을 경우 isFromHome 활성화
-		if (sessionStorage.getItem("fromHome") === "/") {
-			setIsFromHome(true);
-		}
-	}, [pathname]);
-
-	const sorted = getSortedBlogCards();
-
-	// fromHome에 따라서 사용 데이터 결정
-	const dataSource = isFromHome ? sorted : cards;
+	const dataSource = navigationScope === "all" ? sortedBlogCards : cards;
 
 	// 현재 페이지의 JSON 배열을 받아 이전 페이지와 다음 페이지 URL 구현 START!
 	function getPageUrls(currentTitle: string, cards: CardProps[]) {
@@ -61,9 +55,9 @@ export default function PageUrls({ hyphenRemoval, cards }: PageUrlsProps) {
 	const { nextPageUrl, prevPageUrl, nextPageTitle, prevPageTitle, nextPageImage, prevPageImage, prevPageBasePath, nextPageBasePath } = getPageUrls(hyphenRemoval, dataSource);
 
 	// 스크롤 초기화 함수 START!
-	useEffect(()=>{
+	useEffect(() => {
 		window.scrollTo(0, 0);
-	})
+	}, []);
 	// 스크롤 초기화 함수 END!
 
 	return (
