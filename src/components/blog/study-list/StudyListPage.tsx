@@ -6,8 +6,10 @@ import Saying from "@/components/blog/study-list/ui/Saying";
 import CardPagination from "@/components/blog/study-list/ui/CardPagination";
 import { StudyListPageProps } from "@/types/blog/card.types";
 import { useStudyList } from "@/components/blog/study-list/hooks/useStudyList";
+import { useHydrateBlogSessionStore } from "@/stores/useBlogSessionStore";
 
 export default function StudyListPage({ cards, sessionName }: StudyListPageProps) {
+  useHydrateBlogSessionStore();
   const { filteredCards, currentPage, setCurrentPage, searchQuery, handleSearch } = useStudyList({ cards, sessionName });
 
   return (
