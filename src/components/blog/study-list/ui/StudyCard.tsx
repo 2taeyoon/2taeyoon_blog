@@ -1,13 +1,16 @@
+"use client";
+
 import React from 'react'
 import { Mapping } from "@/types/blog/card.types"
 import Link from "next/link";
 import { toBlogSlug } from "@/lib/blog/slug";
+import { useBlogSessionStore } from "@/stores/useBlogSessionStore";
 
 export default function StudyCard({ cards, sessionName }: Mapping) {
 	return (
 		<>
 			{ cards.map((card, index) => (
-				<Link href={`/${sessionName}/${toBlogSlug(card.title ?? "")}`} key={index} className="card">
+				<Link href={`/${sessionName}/${toBlogSlug(card.title ?? "")}`} key={index} className="card" onClick={() => useBlogSessionStore.getState().setNavigationScope("category")}>
 					<div className="card_top">
 						<div className="card_img" style={{ background: `url('${card.image}') center center / cover` }}>
 							<div className="card_badge_wrap">

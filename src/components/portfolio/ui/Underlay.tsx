@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { ColorPalette } from "@/components/portfolio/ui/ColorPalette";
 import { playUiHover, uiSound } from "@/lib/portfolio/uiSound";
+import { usePortfolioSessionStore } from "@/stores/usePortfolioSessionStore";
 
 interface UnderlayProps {
   ballColor: string;
@@ -19,20 +20,24 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
   const gainRef = useRef<GainNode | null>(null);
   const graphWiredRef = useRef(false);
   const volumeRef = useRef(100);
+  const restoredMusicRef = useRef(false);
   const settingsRef = useRef<HTMLDivElement | null>(null);
   // const unlockHandlerRef = useRef<(() => void) | null>(null);
-  const [playing, setPlaying] = useState(false);
-  const [volume, setVolume] = useState(100);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const playingRef = useRef(false);
+  const playing = usePortfolioSessionStore((state) => state.musicEnabled);
+  const volume = usePortfolioSessionStore((state) => state.volume);
+  const hasHydrated = usePortfolioSessionStore((state) => state.hasHydrated);
+  const setPlaying = usePortfolioSessionStore(
+    (state) => state.setMusicEnabled,
+  );
+  const setVolume = usePortfolioSessionStore((state) => state.setVolume);
 
   volumeRef.current = volume;
   playingRef.current = playing;
-  uiSound.musicOn = playing;
-  uiSound.volume = volume / 100;
 
-  const wireAudioGraph = () => {
+  const wireAudioGraph = useCallback(() => {
     if (graphWiredRef.current || !audioRef.current) return;
     const ctx = new AudioContext();
     const source = ctx.createMediaElementSource(audioRef.current);
@@ -43,17 +48,17 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
     audioCtxRef.current = ctx;
     gainRef.current = gain;
     graphWiredRef.current = true;
-  };
+  }, []);
 
-  const resumeAudioContext = async () => {
+  const resumeAudioContext = useCallback(async () => {
     try {
       await audioCtxRef.current?.resume();
     } catch {
       // ignore
     }
-  };
+  }, []);
 
-  const applyVolume = (percent: number) => {
+  const applyVolume = useCallback((percent: number) => {
     const level = percent / 100;
     if (gainRef.current) {
       gainRef.current.gain.value = level;
@@ -62,9 +67,9 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
       // iOS 등에서 element.volume만으로는 안 줄어드는 경우가 있어 GainNode가 주 경로
       audioRef.current.volume = level;
     }
-  };
+  }, []);
 
-  const createAudio = () => {
+  const createAudio = useCallback(() => {
     if (audioRef.current) return audioRef.current;
     const audio = new Audio("/audio/Amber_Angles.mp3");
     audio.loop = true;
@@ -72,9 +77,9 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
     audioRef.current = audio;
     wireAudioGraph();
     return audio;
-  };
+  }, [wireAudioGraph]);
 
-  const tryPlay = async () => {
+  const tryPlay = useCallback(async () => {
     const audio = createAudio();
     await resumeAudioContext();
     try {
@@ -85,7 +90,7 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
       setPlaying(false);
       return false;
     }
-  };
+  }, [createAudio, resumeAudioContext, setPlaying]);
 
   // const removeUnlockListeners = () => {
   //   const handler = unlockHandlerRef.current;
@@ -127,9 +132,26 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
   }, []);
 
   useEffect(() => {
+    uiSound.musicOn = playing;
+    uiSound.volume = volume / 100;
+  }, [playing, volume]);
+
+  useEffect(() => {
+    if (!hasHydrated || restoredMusicRef.current) return;
+    restoredMusicRef.current = true;
+    if (playing) {
+      void tryPlay();
+    }
+  }, [hasHydrated, playing, tryPlay]);
+
+  useEffect(() => {
     return () => {
       audioRef.current?.pause();
       audioRef.current = null;
+      void audioCtxRef.current?.close();
+      audioCtxRef.current = null;
+      gainRef.current = null;
+      graphWiredRef.current = false;
       uiSound.musicOn = false;
     };
   }, []);

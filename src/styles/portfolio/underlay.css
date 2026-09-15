@@ -485,7 +485,6 @@ button.underlay_settings_item:hover {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  gap: 6px;
   font-weight: 600;
   letter-spacing: 0.3px;
   animation: underlay_scroll_down 1.6s ease-in-out infinite;

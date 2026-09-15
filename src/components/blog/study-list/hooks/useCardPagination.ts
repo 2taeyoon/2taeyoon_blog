@@ -6,7 +6,6 @@ const MAX_PAGE_BUTTONS = 5;
 
 export function useCardPagination({
 	filteredCards,
-	sessionName,
 	currentPage,
 	setCurrentPage,
 }: CardPaginationHookArgs) {
@@ -19,25 +18,12 @@ export function useCardPagination({
 	const goToPage = (targetPage: number) => {
 		const newPage = Math.min(Math.max(targetPage, 0), pageCount - 1);
 
-		if (typeof window !== "undefined") {
-			const storedData = JSON.parse(sessionStorage.getItem(sessionName) || "{}");
-			const updatedData = { ...storedData, Pagination: newPage };
-			sessionStorage.setItem(sessionName, JSON.stringify(updatedData));
-
-			if (window.innerWidth <= 640) {
-				window.scrollTo(0, 0);
-			}
+		if (window.innerWidth <= 640) {
+			window.scrollTo(0, 0);
 		}
 
 		setCurrentPage(newPage);
 	};
-
-	useEffect(() => {
-		const storedData = JSON.parse(sessionStorage.getItem(sessionName) || "{}");
-		if (storedData.Pagination !== undefined) {
-			setCurrentPage(storedData.Pagination);
-		}
-	}, [sessionName, setCurrentPage]);
 
 	useEffect(() => {
 		if (currentPage >= pageCount) {

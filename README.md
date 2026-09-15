@@ -1,3 +1,3 @@
-# 2taeyoon 블로그 사이트
+# 2taeyoon’s Portfolio & Blog
 
-리뉴얼 중입니다.
+현재 리뉴얼 중입니다.

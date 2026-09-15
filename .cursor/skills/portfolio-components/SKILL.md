@@ -48,7 +48,8 @@ paths:
 설정 라벨은 `Theme Color` 하나다. `ballColor`가 큐브 재질과 배경 팔레트에 같이 들어간다.
 
 - UI: `ColorPalette` (`fabric` 프리셋 + hex)
-- 상태: `MainSection`의 `baubleColor` sessionStorage
+- 전역 상태: `src/stores/usePortfolioSessionStore.ts`
+- 세션 유지: Zustand `persist` + `sessionStorage` (`themeColor`, `musicEnabled`, `volume`)
 - 큐브 재질: `src/lib/portfolio/baubleAppearance.ts` (`applyBallColor`)
 - 배경/CSS 변수: `src/lib/portfolio/palette.ts` (`buildPalette`, `syncPaletteCssVars`) → `GiantGlassCube`
 

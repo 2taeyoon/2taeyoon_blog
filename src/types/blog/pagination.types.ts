@@ -1,16 +1,15 @@
-import type { Dispatch, SetStateAction } from "react";
 import type { CardProps } from "@/types/blog/card.types";
 
 export interface CardPaginationProps {
   filteredCards: CardProps[];
   sessionName: string;
   currentPage: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
+  setCurrentPage: (page: number) => void;
 }
 
 export type CardPaginationHookArgs = Pick<
   CardPaginationProps,
-  "filteredCards" | "sessionName" | "currentPage" | "setCurrentPage"
+  "filteredCards" | "currentPage" | "setCurrentPage"
 >;
 
 export type PaginationControlsProps = {

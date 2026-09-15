@@ -14,9 +14,9 @@ import { CardProps } from "@/types/blog/card.types";
 import { getCombinedSliderCards } from "@/data/blog/cards";
 import Link from "next/link";
 import { toBlogSlug } from "@/lib/blog/slug";
+import { useBlogSessionStore } from "@/stores/useBlogSessionStore";
 
 export function SliderFadeComponent() {
-
   const [combinedData, setCombinedData] = useState<CardProps[]>([]);
   const [selectedCards, setSelectedCards] = useState<CardProps[]>([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -95,7 +95,7 @@ export function SliderFadeComponent() {
 					modules={[Autoplay, EffectFade]} onAutoplayTimeLeft={onAutoplayTimeLeft} onSwiper={(s) => (swiperRef.current = s)}>
 					{selectedCards.map((card, index) => (
 						<SwiperSlide key={index}>
-							<Link href={`/${card.type}/${toBlogSlug(card.title ?? "")}`} className="swiper_image_wrap">
+							<Link href={`/${card.type}/${toBlogSlug(card.title ?? "")}`} className="swiper_image_wrap" onClick={() => useBlogSessionStore.getState().setNavigationScope("all")}>
 								<div className="swiper_image" style={{ background: card.image ? `url('${card.image}') center center / cover` : "none" }}></div>
 								<div className="description">
 									<div className="title">{card.title}</div>
