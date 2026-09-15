@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { CardProps } from "@/types/blog/card.types";
+import { useBlogSessionStore } from "@/stores/useBlogSessionStore";
 
 interface UseStudyListOptions {
   cards: CardProps[];
@@ -7,29 +8,26 @@ interface UseStudyListOptions {
 }
 
 export function useStudyList({ cards, sessionName }: UseStudyListOptions) {
-  const [filteredCards, setFilteredCards] = useState<CardProps[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [searchQuery, setSearchQuery] = useState("");
+  const searchQuery = useBlogSessionStore(
+    (state) => state.sessions[sessionName]?.searchQuery ?? "",
+  );
+  const currentPage = useBlogSessionStore(
+    (state) => state.sessions[sessionName]?.currentPage ?? 0,
+  );
+  const updateSearchQuery = useBlogSessionStore(
+    (state) => state.setSearchQuery,
+  );
+  const updateCurrentPage = useBlogSessionStore(
+    (state) => state.setCurrentPage,
+  );
 
-  // 세션스토리지에서 검색어 불러오기
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const savedData = JSON.parse(sessionStorage.getItem(sessionName) || "{}");
-      if (savedData.Search) {
-        setSearchQuery(savedData.Search);
-      }
-    }
-  }, [sessionName]);
-
-  // 검색어로 카드 필터링
-  useEffect(() => {
+  const filteredCards = useMemo(() => {
     if (!searchQuery.trim()) {
-      setFilteredCards(cards);
-      return;
+      return cards;
     }
 
     const query = searchQuery.toLowerCase();
-    const filtered = cards.filter((card) => {
+    return cards.filter((card) => {
       // 제목, 부제목, 해시태그에서 검색
       const titleMatch = card.title?.toLowerCase().includes(query);
       const subTitleMatch = card.subTitle?.toLowerCase().includes(query);
@@ -39,24 +37,17 @@ export function useStudyList({ cards, sessionName }: UseStudyListOptions) {
       
       return titleMatch || subTitleMatch || hashMatch;
     });
-
-    setFilteredCards(filtered);
-    // 검색 시 첫 페이지로 이동
-    setCurrentPage(0);
   }, [cards, searchQuery]);
 
-  // 검색어 변경 및 세션스토리지 저장
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    
-    if (typeof window !== "undefined") {
-      const savedData = JSON.parse(sessionStorage.getItem(sessionName) || "{}");
-      sessionStorage.setItem(
-        sessionName,
-        JSON.stringify({ ...savedData, Search: query })
-      );
-    }
-  };
+  const handleSearch = useCallback(
+    (query: string) => updateSearchQuery(sessionName, query),
+    [sessionName, updateSearchQuery],
+  );
+
+  const setCurrentPage = useCallback(
+    (page: number) => updateCurrentPage(sessionName, page),
+    [sessionName, updateCurrentPage],
+  );
 
   return {
     filteredCards,
