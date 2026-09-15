@@ -1,34 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BaubleScene from "@/components/portfolio/scene/BaubleScene";
 import Underlay from "@/components/portfolio/ui/Underlay";
 import SceneContent from "@/components/portfolio/ui/SceneContent";
 import SceneNav from "@/components/portfolio/ui/SceneNav";
 import { SCENE_ORDER, cubeSpinState, type SceneId } from "@/lib/portfolio/scenes";
+import {
+  useHydratePortfolioSessionStore,
+  usePortfolioSessionStore,
+} from "@/stores/usePortfolioSessionStore";
 
 interface FaceTransition {
   from: SceneId;
   to: SceneId;
   dir: 1 | -1;
-}
-
-const STORAGE_KEY = "baubleColor";
-
-function usePersistedBallColor() {
-  const [ballColor, setBallColor] = useState("fabric");
-
-  useEffect(() => {
-    const savedColor = sessionStorage.getItem(STORAGE_KEY);
-    if (savedColor) setBallColor(savedColor);
-  }, []);
-
-  const handleColorChange = (color: string) => {
-    setBallColor(color);
-    sessionStorage.setItem(STORAGE_KEY, color);
-  };
-
-  return { ballColor, handleColorChange };
 }
 
 function useSceneNavigation() {
@@ -69,7 +55,11 @@ function useSceneNavigation() {
  * - 섹션 ↔ 섹션: 화면이 뒤로 빠지며 큐브 면이 90° 회전해 다음 면으로 전환 (CSS 3D)
  */
 export default function MainSection() {
-  const { ballColor, handleColorChange } = usePersistedBallColor();
+  useHydratePortfolioSessionStore();
+  const ballColor = usePortfolioSessionStore((state) => state.themeColor);
+  const handleColorChange = usePortfolioSessionStore(
+    (state) => state.setThemeColor,
+  );
   const { scene, faceTransition, transitioning, goToScene, handleFaceAnimationEnd } = useSceneNavigation();
 
   return (
