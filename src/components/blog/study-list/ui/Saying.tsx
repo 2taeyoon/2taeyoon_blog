@@ -1,47 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SayingComponentProps, SayingProps } from "@/types/blog/saying.types";
 import { sayings } from "@/data/blog/sayingList";
+import { useBlogSessionStore } from "@/stores/useBlogSessionStore";
+
+function getRandomSaying(): SayingProps {
+  const randomIndex = Math.floor(Math.random() * sayings.length);
+  return sayings[randomIndex];
+}
 
 export default function Saying({sessionName}: SayingComponentProps) {
-  // 랜덤으로 명언을 가져오는 함수
-	function getRandomSaying() {
-    const randomIndex = Math.floor(Math.random() * sayings.length); // sayings 배열에서 무작위 인덱스를 선택
-    return sayings[randomIndex]; // 해당 인덱스에 있는 명언 객체를 반환
-  }
-
-  // 현재 화면에 표시할 명언을 저장하는 state (초기값은 null)
-  const [currentSaying, setCurrentSaying] = useState<SayingProps | null>(null);
+  const currentSaying = useBlogSessionStore(
+    (state) => state.sessions[sessionName]?.saying ?? null,
+  );
+  const hasHydrated = useBlogSessionStore((state) => state.hasHydrated);
+  const setSaying = useBlogSessionStore((state) => state.setSaying);
 
   useEffect(() => {
-		// 클라이언트 사이드에서 실행할 때 (서버에서는 실행되지 않도록 방지)
-    if (typeof window !== "undefined") {
-			// sessionStorage에서 해당 sessionName에 저장된 데이터를 가져옴
-      const savedData = JSON.parse(sessionStorage.getItem(sessionName) || "{}");
-
-			// 만약 sessionStorage에 명언이 저장되어 있다면, 그대로 사용
-      if (savedData.Saying) {
-        setCurrentSaying(savedData.Saying);
-      } else {
-				// 저장된 명언이 없으면 새로운 랜덤 명언을 가져와서 state에 저장
-        const initialSaying = getRandomSaying();
-        setCurrentSaying(initialSaying);
-
-				// 새로운 명언을 sessionStorage에 저장 (이후 새로고침해도 유지됨)
-        sessionStorage.setItem(sessionName, JSON.stringify({ ...savedData, Saying: initialSaying }));
-      }
+    if (hasHydrated && !currentSaying) {
+      setSaying(sessionName, getRandomSaying());
     }
-  }, [sessionName]); // sessionName이 변경될 때만 실행
+  }, [currentSaying, hasHydrated, sessionName, setSaying]);
 
-	// "새로운 명언 가져오기" 버튼을 클릭했을 때 실행되는 함수
   const handleRefreshClick = () => {
-    const newSaying = getRandomSaying();
-    setCurrentSaying(newSaying);
-
-		// sessionStorage에도 새로운 명언을 저장
-    if (typeof window !== "undefined") {
-      const savedData = JSON.parse(sessionStorage.getItem(sessionName) || "{}");
-      sessionStorage.setItem(sessionName, JSON.stringify({ ...savedData, Saying: newSaying }));
-    }
+    setSaying(sessionName, getRandomSaying());
   };
 
   return (
