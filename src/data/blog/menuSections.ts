@@ -4,7 +4,7 @@ import { BLOG_CATEGORIES } from "./cards";
 export const MENU_SECTIONS: MenuSection[] = [
   {
     id: "home",
-    title: "HOME",
+    title: "Home",
     href: "/blog",
     type: "linkOnly",
     exact: true,

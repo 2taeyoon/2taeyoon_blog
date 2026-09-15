@@ -8,13 +8,6 @@ type CategoryData = { cards: CardProps[] };
 
 export const BLOG_CATEGORIES = [
   {
-    id: "design",
-    label: "Design",
-    href: "/blog/design",
-    sessionName: "design",
-    data: designData,
-  },
-  {
     id: "frontend",
     label: "Frontend",
     href: "/blog/frontend",
@@ -27,6 +20,13 @@ export const BLOG_CATEGORIES = [
     href: "/blog/backend",
     sessionName: "backend",
     data: backendData,
+  },
+  {
+    id: "design",
+    label: "Design",
+    href: "/blog/design",
+    sessionName: "design",
+    data: designData,
   },
   {
     id: "ai",
