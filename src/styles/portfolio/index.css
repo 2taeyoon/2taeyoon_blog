@@ -3,6 +3,9 @@
 @import "./portfolioSections.css";
 @import "./projectSection.css";
 @import "./projectSection.reaction.css";
+@import "./projectPage.css";
+@import "./projectDetail.css";
+@import "./projectPage.reaction.css";
 @import "./underlay.css";
 @import "./underlay.reaction.css";
 @import "./sceneOverlay.css";
