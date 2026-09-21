@@ -8,7 +8,7 @@
 			],
 			"mdFile": "/images/blog/ai/10/10.md",
 			"image": "/images/blog/ai/10/main_image.webp",
-			"sortDate": "2026-09-16",
+			"sortDate": "2026-08-30",
 			"title": "Cursor 지침 폴더 구성",
 			"subTitle": "Cursor의 Rules, AGENTS.md, Skills, Subagents, Hooks 차이를 공식 문서 기준으로 정리했습니다. 사용자 .cursor 폴더를 그대로 복사하지 않고 프로젝트에 맞는 지침과 워크플로를 직접 구성하는 방법을 예제로 설명합니다.",
 			"hashs": [

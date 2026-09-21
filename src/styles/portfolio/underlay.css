@@ -33,6 +33,11 @@
   pointer-events: none;
 }
 
+.underlay_top_row_global.is_blurred {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
 .underlay_logo {
   font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
@@ -40,6 +45,8 @@
   font-weight: 700;
   color: var(--pfBlack);
   letter-spacing: -2px;
+  pointer-events: all;
+  text-decoration: none;
 }
 
 .underlay_nav {
