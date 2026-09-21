@@ -1,0 +1,172 @@
+{
+  "projects": [
+    {
+      "id": "solar-tide",
+      "slug": "solar-tide",
+      "mdFile": "/projects/solar-tide.md",
+      "image": "/images/portfolio/project-section/mirror-01-solar-tide.png",
+      "sortDate": "2026-08-18",
+      "title": "Solar Tide",
+      "subTitle": "빛의 흐름과 유체적인 움직임을 결합한 인터랙티브 웹 경험입니다.",
+      "subTitleEn": "An interactive web experience combining the flow of light with fluid motion.",
+      "hashs": [
+        { "name": "#Interaction" },
+        { "name": "#CreativeCoding" },
+        { "name": "#Frontend" }
+      ],
+      "contribution": "Art Direction, UI/UX Design, Frontend Development",
+      "period": "2026.07 — 2026.08",
+      "role": "Designer & Frontend Developer",
+      "team": "Personal Project",
+      "techStack": ["Next.js", "TypeScript", "GSAP", "Three.js"],
+      "accentColor": "#557cff"
+    },
+    {
+      "id": "copper-vein",
+      "slug": "copper-vein",
+      "mdFile": "/projects/copper-vein.md",
+      "image": "/images/portfolio/project-section/mirror-02-copper-vein.png",
+      "sortDate": "2026-07-12",
+      "title": "Copper Vein",
+      "subTitle": "금속성 질감과 정제된 정보 구조를 하나의 화면 언어로 연결했습니다.",
+      "subTitleEn": "A refined interface language shaped by metallic texture and structured information.",
+      "hashs": [
+        { "name": "#WebDesign" },
+        { "name": "#Motion" },
+        { "name": "#Publishing" }
+      ],
+      "contribution": "UI/UX Design, Web Publishing, Motion Interaction",
+      "period": "2026.06 — 2026.07",
+      "role": "UI Designer & Publisher",
+      "team": "Personal Project",
+      "techStack": ["Next.js", "TypeScript", "CSS", "GSAP"],
+      "accentColor": "#c8794b"
+    },
+    {
+      "id": "amber-flux",
+      "slug": "amber-flux",
+      "mdFile": "/projects/amber-flux.md",
+      "image": "/images/portfolio/project-section/mirror-03-amber-flux.png",
+      "sortDate": "2026-06-20",
+      "title": "Amber Flux",
+      "subTitle": "따뜻한 색의 변화와 빠른 피드백을 중심으로 설계한 디지털 프로토타입입니다.",
+      "subTitleEn": "A digital prototype centered on warm color transitions and immediate feedback.",
+      "hashs": [
+        { "name": "#Prototype" },
+        { "name": "#UIUX" },
+        { "name": "#Motion" }
+      ],
+      "contribution": "Product Design, Interaction Design, Frontend Development",
+      "period": "2026.05 — 2026.06",
+      "role": "Product Designer & Frontend Developer",
+      "team": "Personal Project",
+      "techStack": ["React", "TypeScript", "CSS", "Framer Motion"],
+      "accentColor": "#d79742"
+    },
+    {
+      "id": "tide-pool",
+      "slug": "tide-pool",
+      "mdFile": "/projects/tide-pool.md",
+      "image": "/images/portfolio/project-section/mirror-04-tide-pool.png",
+      "sortDate": "2026-05-08",
+      "title": "Tide Pool",
+      "subTitle": "콘텐츠를 탐색하는 과정이 잔잔한 파동처럼 이어지도록 구성한 웹 인터페이스입니다.",
+      "subTitleEn": "A web interface where content exploration flows like a gentle ripple.",
+      "hashs": [
+        { "name": "#Responsive" },
+        { "name": "#Accessibility" },
+        { "name": "#Frontend" }
+      ],
+      "contribution": "UX Planning, Responsive UI, Frontend Development",
+      "period": "2026.04 — 2026.05",
+      "role": "UX Designer & Frontend Developer",
+      "team": "Personal Project",
+      "techStack": ["Next.js", "TypeScript", "CSS", "Web APIs"],
+      "accentColor": "#3b9ca0"
+    },
+    {
+      "id": "gilded-smoke",
+      "slug": "gilded-smoke",
+      "mdFile": "/projects/gilded-smoke.md",
+      "image": "/images/portfolio/project-section/mirror-05-gilded-smoke.png",
+      "sortDate": "2026-04-16",
+      "title": "Gilded Smoke",
+      "subTitle": "절제된 레이아웃 위에 깊이감 있는 시각 효과를 더한 포트폴리오 실험입니다.",
+      "subTitleEn": "A portfolio experiment layering visual depth over a restrained layout.",
+      "hashs": [
+        { "name": "#Portfolio" },
+        { "name": "#ArtDirection" },
+        { "name": "#Performance" }
+      ],
+      "contribution": "Art Direction, Visual Design, Performance Optimization",
+      "period": "2026.03 — 2026.04",
+      "role": "Designer & Frontend Developer",
+      "team": "Personal Project",
+      "techStack": ["Next.js", "Three.js", "GSAP", "CSS"],
+      "accentColor": "#b69b63"
+    },
+    {
+      "id": "ink-bloom",
+      "slug": "ink-bloom",
+      "mdFile": "/projects/ink-bloom.md",
+      "image": "/images/portfolio/project-section/mirror-06-ink-bloom.png",
+      "sortDate": "2026-03-11",
+      "title": "Ink Bloom",
+      "subTitle": "강한 대비와 확산되는 움직임으로 콘텐츠의 집중도를 높인 인터랙션 연구입니다.",
+      "subTitleEn": "An interaction study using contrast and diffusion to strengthen content focus.",
+      "hashs": [
+        { "name": "#Typography" },
+        { "name": "#Interaction" },
+        { "name": "#CreativeWeb" }
+      ],
+      "contribution": "Visual Design, Interaction Design, Web Development",
+      "period": "2026.02 — 2026.03",
+      "role": "Visual Designer & Developer",
+      "team": "Personal Project",
+      "techStack": ["React", "TypeScript", "Canvas", "CSS"],
+      "accentColor": "#7160a8"
+    },
+    {
+      "id": "blue-orbit",
+      "slug": "blue-orbit",
+      "mdFile": "/projects/blue-orbit.md",
+      "image": "/images/portfolio/project-section/mirror-07-blue-orbit.png",
+      "sortDate": "2026-02-14",
+      "title": "Blue Orbit",
+      "subTitle": "순환하는 탐색 구조와 공간감을 활용해 정보를 단계적으로 보여주는 웹 경험입니다.",
+      "subTitleEn": "A spatial web experience that reveals information through circular navigation.",
+      "hashs": [
+        { "name": "#Navigation" },
+        { "name": "#WebGL" },
+        { "name": "#Experience" }
+      ],
+      "contribution": "Information Architecture, UI Design, Frontend Development",
+      "period": "2026.01 — 2026.02",
+      "role": "UI Designer & Frontend Developer",
+      "team": "Personal Project",
+      "techStack": ["Next.js", "TypeScript", "React Three Fiber", "GSAP"],
+      "accentColor": "#315bd7"
+    },
+    {
+      "id": "eclipse-current",
+      "slug": "eclipse-current",
+      "mdFile": "/projects/eclipse-current.md",
+      "image": "/images/portfolio/project-section/mirror-08-eclipse-current.png",
+      "sortDate": "2026-01-09",
+      "title": "Eclipse Current",
+      "subTitle": "어두운 배경과 선명한 흐름을 대비시켜 핵심 정보에 집중하도록 설계했습니다.",
+      "subTitleEn": "A focused interface built through the contrast of a dark canvas and vivid currents.",
+      "hashs": [
+        { "name": "#DarkUI" },
+        { "name": "#DesignSystem" },
+        { "name": "#Frontend" }
+      ],
+      "contribution": "Design System, UI/UX Design, Frontend Development",
+      "period": "2025.12 — 2026.01",
+      "role": "UI Designer & Frontend Developer",
+      "team": "Personal Project",
+      "techStack": ["Next.js", "TypeScript", "CSS", "Zustand"],
+      "accentColor": "#465b91"
+    }
+  ]
+}
