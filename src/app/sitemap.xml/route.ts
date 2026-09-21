@@ -1,14 +1,21 @@
 import { NextResponse } from "next/server";
 import { allBlogCards } from "@/data/blog/cards";
+import { projects } from "@/data/portfolio/projects";
 import { toBlogSlug } from "@/lib/blog/slug";
 
 async function getDynamicPaths(): Promise<{ url: string }[]> {
-  return allBlogCards.map((item) => {
+  const blogPaths = allBlogCards.map((item) => {
     const encodedTitle = encodeURIComponent(toBlogSlug(item.title));
     return {
       url: `/${item.type}/${encodedTitle}`,
     };
   });
+
+  const projectPaths = projects.map((project) => ({
+    url: `/project/${encodeURIComponent(project.slug)}`,
+  }));
+
+  return [...blogPaths, ...projectPaths];
 }
 
 function generateSitemap(paths: { url: string }[]) {
@@ -45,6 +52,11 @@ function generateSitemap(paths: { url: string }[]) {
       <loc>${domain}/blog/ai</loc>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
+    </url>
+    <url>
+      <loc>${domain}/project</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.9</priority>
     </url>
     ${paths
       .map(
