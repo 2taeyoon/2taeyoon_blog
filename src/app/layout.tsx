@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import BlogAideWrapper from "@/components/blog/aide/BlogAideWrapper";
+import PortfolioChrome from "@/components/portfolio/PortfolioChrome";
 
 import "@/styles/base/index.css";
 import "@/styles/blog/index.css";
@@ -49,6 +50,7 @@ export default function RootLayout({
       </head>
       <body>
 				<div className="RouteApp">
+					<PortfolioChrome />
 					<BlogAideWrapper />
 					{children}
 				</div>
