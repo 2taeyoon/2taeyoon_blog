@@ -3,18 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ColorPalette } from "@/components/portfolio/ui/ColorPalette";
 import { playUiHover, uiSound } from "@/lib/portfolio/uiSound";
 import { usePortfolioSessionStore } from "@/stores/usePortfolioSessionStore";
 
-interface UnderlayProps {
-  ballColor: string;
-  onColorChange: (color: string) => void;
-  /** Main Scene 히어로 콘텐츠 표시 여부 (top bar는 항상 유지) */
-  heroVisible: boolean;
-}
-
-export default function Underlay({ ballColor, onColorChange, heroVisible }: UnderlayProps) {
+export default function Underlay() {
+  const pathname = usePathname();
+  const shouldBlurHeader = pathname.startsWith("/project");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const gainRef = useRef<GainNode | null>(null);
@@ -26,9 +22,13 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const playingRef = useRef(false);
+  const themeColor = usePortfolioSessionStore((state) => state.themeColor);
   const playing = usePortfolioSessionStore((state) => state.musicEnabled);
   const volume = usePortfolioSessionStore((state) => state.volume);
   const hasHydrated = usePortfolioSessionStore((state) => state.hasHydrated);
+  const setThemeColor = usePortfolioSessionStore(
+    (state) => state.setThemeColor,
+  );
   const setPlaying = usePortfolioSessionStore(
     (state) => state.setMusicEnabled,
   );
@@ -248,8 +248,26 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
   const blockPointer = (e: React.PointerEvent) => e.stopPropagation();
 
   const topRow = (
-      <div className="underlay_top_row underlay_top_row_global">
-        <p className="underlay_logo">2taeyoon.com</p>
+      <div
+        className={`underlay_top_row underlay_top_row_global${
+          shouldBlurHeader ? " is_blurred" : ""
+        }`}
+        style={
+          shouldBlurHeader
+            ? {
+                backdropFilter: "blur(5px)",
+                WebkitBackdropFilter: "blur(5px)",
+              }
+            : undefined
+        }
+      >
+        <Link
+          href="/"
+          className="underlay_logo"
+          aria-label="2taeyoon.com 홈으로 이동"
+        >
+          2taeyoon.com
+        </Link>
         <div className="underlay_nav" onPointerDown={blockPointer}>
           <Link href="/blog" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Blog</Link>
           <a href="https://github.com/2taeyoon" target="_blank" rel="noreferrer" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Github</a>
@@ -315,7 +333,11 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
               </div>
 
               <div className="underlay_settings_palette">
-                <ColorPalette value={ballColor} onChange={onColorChange} embedded />
+                <ColorPalette
+                  value={themeColor}
+                  onChange={setThemeColor}
+                  embedded
+                />
               </div>
             </div>
           )}
@@ -323,48 +345,5 @@ export default function Underlay({ ballColor, onColorChange, heroVisible }: Unde
       </div>
   );
 
-  return (
-    <>
-      {portalTarget ? createPortal(topRow, portalTarget) : topRow}
-      <div className="underlay">
-      <div className={`underlay_hero${heroVisible ? " is_visible" : ""}`} aria-hidden={!heroVisible}>
-        <div className="underlay_intro_row">
-          <div className="underlay_intro_text">
-            <div className="underlay_intro_text_ko">
-              미학과 기술을 하나씩 조립해 완성해 나갑니다.
-            </div>
-            <div className="underlay_intro_text_en">
-              Assembling aesthetics and technology piece by piece.
-            </div>
-          </div>
-        </div>
-
-        <div className="underlay_title_row" />
-
-        <div className="underlay_bottom_row">
-          <div className="underlay_roles">
-            <div>Frontend</div>
-            <div>Backend</div>
-          </div>
-          <div className="underlay_gutter" />
-          <p className="underlay_drag_hint">Move and drag the mouse</p>
-          <div className="underlay_gutter" />
-          <div className="underlay_roles_right">
-            <div className="underlay_scroll_down">
-              <span>Scroll Down</span>
-              <svg
-                className="underlay_scroll_down_icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path d="M12 4V19M6.5 13.5L12 19L17.5 13.5" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    </>
-  );
+  return portalTarget ? createPortal(topRow, portalTarget) : topRow;
 }
