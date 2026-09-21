@@ -13,7 +13,7 @@ export interface ProjectLink {
 export interface Project {
   id: string;
   slug: string;
-  mdFile: string;
+  content: string;
   image: string;
   sortDate: string;
   title: string;
