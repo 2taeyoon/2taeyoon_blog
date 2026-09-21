@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Project } from "@/data/portfolio/projects";
-import ProjectMarkdown from "@/components/portfolio/project/ProjectMarkdown";
+import ProjectMarkdownLoader from "@/components/portfolio/project/ProjectMarkdownLoader";
 
 type ProjectDetailStyle = CSSProperties & {
   "--project-detail-accent": string;
@@ -105,7 +105,7 @@ export default function ProjectCaseStudy({
 
         <section className="project_detail_content" aria-label="프로젝트 상세 내용">
           <p className="project_detail_content_label">Case Study</p>
-          <ProjectMarkdown markdown={project.content} />
+          <ProjectMarkdownLoader mdFile={project.mdFile} />
         </section>
 
         <footer className="project_detail_footer">
