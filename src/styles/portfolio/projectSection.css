@@ -365,6 +365,35 @@
   transform: scale(1.2);
 }
 
+.project_section_view_all {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+  color: var(--pfTextSub);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  pointer-events: auto;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 220ms ease;
+}
+
+.project_section_view_all:hover,
+.project_section_view_all:focus-visible {
+  color: var(--pfTextStrong);
+}
+
+.project_section_view_all svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
 @keyframes projectSectionImageDrift {
   0% {
     transform: scale(1.045) translate3d(-1.2%, -1%, 0);
