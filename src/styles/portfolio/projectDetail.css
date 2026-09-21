@@ -200,6 +200,14 @@
   word-break: keep-all;
 }
 
+.project_markdown_status {
+  margin: 0;
+  color: var(--pfTextSub);
+  font-family: "Nunito Sans", "Pretendard", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 .project_markdown h2,
 .project_markdown h3,
 .project_markdown h4 {
