@@ -1,48 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { projects } from "@/data/portfolio/projects";
 import {
   mainExit,
   puzzleSimulation,
 } from "@/lib/portfolio/pointerState";
 import { playUiHover } from "@/lib/portfolio/uiSound";
 
-const PROJECT_ITEMS = [
-  {
-    title: "project1",
-    image: "/images/portfolio/project-section/mirror-01-solar-tide.png",
-  },
-  {
-    title: "project2",
-    image: "/images/portfolio/project-section/mirror-02-copper-vein.png",
-  },
-  {
-    title: "project3",
-    image: "/images/portfolio/project-section/mirror-03-amber-flux.png",
-  },
-  {
-    title: "project4",
-    image: "/images/portfolio/project-section/mirror-04-tide-pool.png",
-  },
-  {
-    title: "project5",
-    image: "/images/portfolio/project-section/mirror-05-gilded-smoke.png",
-  },
-  {
-    title: "project6",
-    image: "/images/portfolio/project-section/mirror-06-ink-bloom.png",
-  },
-  {
-    title: "project7",
-    image: "/images/portfolio/project-section/mirror-07-blue-orbit.png",
-  },
-  {
-    title: "project8",
-    image: "/images/portfolio/project-section/mirror-08-eclipse-current.png",
-  },
-];
+const PROJECT_ITEMS = projects.map(({ title, image }) => ({ title, image }));
 
 const TRACK_COPIES = [0, 1, 2];
 const AUTO_SPEED = 0.34;
@@ -489,6 +458,16 @@ export default function ProjectSection() {
             />
           ))}
         </div>
+        <Link
+          className="project_section_view_all"
+          href="/project"
+          onMouseEnter={playUiHover}
+        >
+          View All Projects
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 19L19 5M9 5h10v10" />
+          </svg>
+        </Link>
       </footer>
     </section>
   );
