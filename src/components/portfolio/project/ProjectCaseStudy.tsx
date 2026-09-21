@@ -10,12 +10,10 @@ type ProjectDetailStyle = CSSProperties & {
 
 interface ProjectCaseStudyProps {
   project: Project;
-  markdown: string;
 }
 
 export default function ProjectCaseStudy({
   project,
-  markdown,
 }: ProjectCaseStudyProps) {
   const style: ProjectDetailStyle = {
     "--project-detail-accent": project.accentColor,
@@ -107,7 +105,7 @@ export default function ProjectCaseStudy({
 
         <section className="project_detail_content" aria-label="프로젝트 상세 내용">
           <p className="project_detail_content_label">Case Study</p>
-          <ProjectMarkdown markdown={markdown} />
+          <ProjectMarkdown markdown={project.content} />
         </section>
 
         <footer className="project_detail_footer">

@@ -153,19 +153,16 @@
 .project_card_view {
   position: absolute;
   z-index: 2;
+  right: 2rem;
   bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   color: #ffffff;
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.13rem;
   text-transform: uppercase;
-}
-
-.project_card_view {
-  right: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
   transform: translateY(1rem);
   opacity: 0;
   transition:

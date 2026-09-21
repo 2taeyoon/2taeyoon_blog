@@ -1,12 +1,9 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProjectCaseStudy from "@/components/portfolio/project/ProjectCaseStudy";
 import {
   getProjectBySlug,
   projects,
-  type Project,
 } from "@/data/portfolio/projects";
 
 interface ProjectDetailPageProps {
@@ -16,6 +13,8 @@ interface ProjectDetailPageProps {
 export function generateStaticParams() {
   return projects.map((project) => ({ project: project.slug }));
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -40,18 +39,6 @@ export async function generateMetadata({
   };
 }
 
-async function readProjectMarkdown(project: Project) {
-  const publicRoot = path.resolve(process.cwd(), "public");
-  const relativePath = project.mdFile.replace(/^[/\\]+/, "");
-  const markdownPath = path.resolve(publicRoot, relativePath);
-
-  if (!markdownPath.startsWith(`${publicRoot}${path.sep}`)) {
-    throw new Error(`Invalid project markdown path: ${project.mdFile}`);
-  }
-
-  return readFile(markdownPath, "utf8");
-}
-
 export default async function ProjectDetailPage({
   params,
 }: ProjectDetailPageProps) {
@@ -61,18 +48,5 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
-  let markdown: string;
-
-  try {
-    markdown = await readProjectMarkdown(project);
-  } catch {
-    notFound();
-  }
-
-  return (
-    <ProjectCaseStudy
-      project={project}
-      markdown={markdown}
-    />
-  );
+  return <ProjectCaseStudy project={project} />;
 }
