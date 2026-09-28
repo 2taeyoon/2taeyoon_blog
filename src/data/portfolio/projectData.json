@@ -14,10 +14,10 @@
         { "name": "#CreativeCoding" },
         { "name": "#Frontend" }
       ],
-      "contribution": "Art Direction, UI/UX Design, Frontend Development",
       "period": "2026.07 — 2026.08",
+      "context": "personal",
       "role": "Designer & Frontend Developer",
-      "team": "Personal Project",
+      "contribution": 100,
       "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#557cff"
     },
@@ -35,10 +35,10 @@
         { "name": "#Motion" },
         { "name": "#Publishing" }
       ],
-      "contribution": "UI/UX Design, Web Publishing, Motion Interaction",
       "period": "2026.06 — 2026.07",
-      "role": "UI Designer & Publisher",
-      "team": "Personal Project",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 50,
       "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#c8794b"
     },
@@ -56,10 +56,10 @@
         { "name": "#UIUX" },
         { "name": "#Motion" }
       ],
-      "contribution": "Product Design, Interaction Design, Frontend Development",
       "period": "2026.05 — 2026.06",
-      "role": "Product Designer & Frontend Developer",
-      "team": "Personal Project",
+      "context": "academy-individual",
+      "role": "Frontend Developer",
+      "contribution": 100,
       "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#d79742"
     },
@@ -77,10 +77,10 @@
         { "name": "#Accessibility" },
         { "name": "#Frontend" }
       ],
-      "contribution": "UX Planning, Responsive UI, Frontend Development",
       "period": "2026.04 — 2026.05",
-      "role": "UX Designer & Frontend Developer",
-      "team": "Personal Project",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 60,
       "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#3b9ca0"
     },
@@ -98,10 +98,10 @@
         { "name": "#ArtDirection" },
         { "name": "#Performance" }
       ],
-      "contribution": "Art Direction, Visual Design, Performance Optimization",
       "period": "2026.03 — 2026.04",
+      "context": "personal",
       "role": "Designer & Frontend Developer",
-      "team": "Personal Project",
+      "contribution": 100,
       "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#b69b63"
     },
@@ -119,10 +119,10 @@
         { "name": "#Interaction" },
         { "name": "#CreativeWeb" }
       ],
-      "contribution": "Visual Design, Interaction Design, Web Development",
       "period": "2026.02 — 2026.03",
-      "role": "Visual Designer & Developer",
-      "team": "Personal Project",
+      "context": "academy-team",
+      "role": "Frontend Developer",
+      "contribution": 40,
       "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#7160a8"
     },
@@ -140,10 +140,10 @@
         { "name": "#WebGL" },
         { "name": "#Experience" }
       ],
-      "contribution": "Information Architecture, UI Design, Frontend Development",
       "period": "2026.01 — 2026.02",
-      "role": "UI Designer & Frontend Developer",
-      "team": "Personal Project",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 55,
       "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#315bd7"
     },
@@ -161,12 +161,96 @@
         { "name": "#DesignSystem" },
         { "name": "#Frontend" }
       ],
-      "contribution": "Design System, UI/UX Design, Frontend Development",
       "period": "2025.12 — 2026.01",
-      "role": "UI Designer & Frontend Developer",
-      "team": "Personal Project",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
       "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#465b91"
+    },
+    {
+      "id": "velvet-current",
+      "slug": "velvet-current",
+      "mdFile": "/images/portfolio/projects/velvet-current.md",
+      "image": "/images/portfolio/project-section/mirror-02-copper-vein.png",
+      "sortDate": "2025-12-02",
+      "title": "Velvet Current",
+      "subTitle": "부드러운 표면 질감과 느린 전환으로 콘텐츠의 여운을 남긴 웹 실험입니다.",
+      "subTitleEn": "A web study that leaves an afterimage through soft texture and slow transitions.",
+      "hashs": [
+        { "name": "#Motion" },
+        { "name": "#Visual" },
+        { "name": "#Frontend" }
+      ],
+      "period": "2025.11 — 2025.12",
+      "context": "academy-team",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
+      "accentColor": "#8a4d6d"
+    },
+    {
+      "id": "prism-harbor",
+      "slug": "prism-harbor",
+      "mdFile": "/images/portfolio/projects/prism-harbor.md",
+      "image": "/images/portfolio/project-section/mirror-05-gilded-smoke.png",
+      "sortDate": "2025-11-08",
+      "title": "Prism Harbor",
+      "subTitle": "흩어진 정보를 하나의 항로처럼 모아 단계적으로 읽히게 한 인터페이스입니다.",
+      "subTitleEn": "An interface that gathers scattered information into a single, readable course.",
+      "hashs": [
+        { "name": "#Information" },
+        { "name": "#UIUX" },
+        { "name": "#Publishing" }
+      ],
+      "period": "2025.10 — 2025.11",
+      "context": "academy-team",
+      "role": "Frontend Developer",
+      "contribution": 45,
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
+      "accentColor": "#6d8f7a"
+    },
+    {
+      "id": "lumen-fold",
+      "slug": "lumen-fold",
+      "mdFile": "/images/portfolio/projects/lumen-fold.md",
+      "image": "/images/portfolio/project-section/mirror-01-solar-tide.png",
+      "sortDate": "2025-10-14",
+      "title": "Lumen Fold",
+      "subTitle": "접히는 레이어와 빛으로 화면의 깊이를 나누어 보여 준 프로토타입입니다.",
+      "subTitleEn": "A prototype that separates depth through folded layers and light.",
+      "hashs": [
+        { "name": "#Prototype" },
+        { "name": "#Layer" },
+        { "name": "#CreativeCoding" }
+      ],
+      "period": "2025.09 — 2025.10",
+      "context": "academy-individual",
+      "role": "Frontend Developer",
+      "contribution": 100,
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
+      "accentColor": "#c4a15a"
+    },
+    {
+      "id": "night-lattice",
+      "slug": "night-lattice",
+      "mdFile": "/images/portfolio/projects/night-lattice.md",
+      "image": "/images/portfolio/project-section/mirror-07-blue-orbit.png",
+      "sortDate": "2025-09-20",
+      "title": "Night Lattice",
+      "subTitle": "격자 구조 위에 야간 톤의 대비를 얹어 정보를 차분히 훑게 한 화면입니다.",
+      "subTitleEn": "A calm scanning layout that sets night-toned contrast over a lattice.",
+      "hashs": [
+        { "name": "#Layout" },
+        { "name": "#DarkUI" },
+        { "name": "#DesignSystem" }
+      ],
+      "period": "2025.08 — 2025.09",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 25,
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
+      "accentColor": "#3d4f8f"
     }
   ]
 }
