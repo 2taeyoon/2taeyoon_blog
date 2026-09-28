@@ -14,17 +14,6 @@
   margin: 0 auto;
 }
 
-.project_detail_footer a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 220ms ease;
-}
-
-.project_detail_footer a:hover,
-.project_detail_footer a:focus-visible {
-  color: var(--pfTextStrong);
-}
-
 .project_detail_title_group {
   padding: 0 0 3rem;
   text-align: center;
@@ -72,7 +61,7 @@
   background: rgba(255, 255, 255, 0.07);
   padding: 0.7rem 1.1rem;
   color: var(--pfTextStrong);
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .project_detail_hero {
@@ -140,7 +129,7 @@
 .project_detail_links > p {
   margin: 0;
   color: var(--pfTextMuted);
-  font-size: 1.05rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.13rem;
   text-transform: uppercase;
@@ -181,15 +170,6 @@
 .project_detail_content {
   width: 88rem;
   margin: 0 auto;
-}
-
-.project_detail_content_label {
-  margin: 0 0 6rem;
-  color: var(--project-detail-accent);
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
 }
 
 .project_markdown {
@@ -312,20 +292,76 @@
   color: var(--pfTextStrong);
 }
 
-.project_detail_footer {
+.project_page_url {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 12rem;
-  padding-top: 4rem;
 }
 
-.project_detail_footer a {
+.project_page_url_link {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  overflow: hidden;
+  width: calc(50% - 1rem);
+  height: 12rem;
+  color: var(--pfTextStrong);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.project_page_url_image {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  filter: brightness(0.32);
+  transition: transform 500ms ease, filter 500ms ease;
+}
+
+.project_page_url_link:hover .project_page_url_image,
+.project_page_url_link:focus-visible .project_page_url_image {
+  filter: brightness(0.42);
+  transform: scale(1.04);
+}
+
+.project_page_url_item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  width: 100%;
+  padding: 0 2.4rem;
+}
+
+.project_page_url_link.is_next .project_page_url_item {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.project_page_url_arrow {
+  flex: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+
+.project_page_url_label,
+.project_page_url_title {
+  display: block;
+}
+
+.project_page_url_label {
   color: var(--pfTextSub);
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
+  font-family: "Pretendard", sans-serif;
+  font-size: 1.4rem;
+}
+
+.project_page_url_title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
 }
