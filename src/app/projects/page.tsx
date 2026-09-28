@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import ProjectCard from "@/components/portfolio/project/ProjectCard";
+import ProjectCardList from "@/components/portfolio/project/ProjectCardList";
+import ProjectPageFloaters from "@/components/portfolio/project/ProjectPageFloaters";
 import { projects } from "@/data/portfolio/projects";
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function ProjectPage() {
   return (
     <main className="project_page">
+      <ProjectPageFloaters />
       <header className="project_page_header">
         <h1>Projects</h1>
         <p className="project_page_intro">
@@ -27,17 +29,7 @@ export default function ProjectPage() {
         </p>
       </header>
 
-      <section
-        className="project_card_grid"
-        aria-label="전체 프로젝트 목록"
-      >
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-          />
-        ))}
-      </section>
+      <ProjectCardList projects={projects} />
     </main>
   );
 }
