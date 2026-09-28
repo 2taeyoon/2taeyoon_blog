@@ -12,7 +12,7 @@ import {
 export default function PortfolioChrome() {
   const pathname = usePathname();
   const isPortfolioRoute =
-    pathname === "/" || pathname.startsWith("/project");
+    pathname === "/" || pathname.startsWith("/projects");
 
   if (!isPortfolioRoute) {
     return null;
