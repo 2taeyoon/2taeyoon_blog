@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Project } from "@/data/portfolio/projects";
+import { skillBadges } from "@/data/portfolio/skills";
 import ProjectMarkdownLoader from "@/components/portfolio/project/ProjectMarkdownLoader";
+import ProjectNeighbors from "@/components/portfolio/project/ProjectNeighbors";
 
 type ProjectDetailStyle = CSSProperties & {
   "--project-detail-accent": string;
@@ -71,16 +72,28 @@ export default function ProjectCaseStudy({
                 <dd>{project.company}</dd>
               </div>
             )}
-          </dl>
+            <div className="project_detail_tech">
+              <dt>Tech Stack</dt>
+              <dd>
+                <ul>
+                  {project.techStack.map((technology) => {
+                    const skill = skillBadges[technology];
 
-          <div className="project_detail_tech">
-            <p>Tech Stack</p>
-            <ul>
-              {project.techStack.map((technology) => (
-                <li key={technology}>{technology}</li>
-              ))}
-            </ul>
-          </div>
+                    if (!skill) {
+                      return <li key={technology}>{technology}</li>;
+                    }
+
+                    return (
+                      <li key={technology} style={{ backgroundColor: skill.color }}>
+                        <img src={skill.icon} alt="" />
+                        <span>{skill.label}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </dd>
+            </div>
+          </dl>
 
           {project.links && project.links.length > 0 && (
             <div className="project_detail_links">
@@ -104,16 +117,10 @@ export default function ProjectCaseStudy({
         </section>
 
         <section className="project_detail_content" aria-label="프로젝트 상세 내용">
-          <p className="project_detail_content_label">Case Study</p>
           <ProjectMarkdownLoader mdFile={project.mdFile} />
         </section>
 
-        <footer className="project_detail_footer">
-          <Link href="/project">
-            <span aria-hidden="true">←</span>
-            Back to All Projects
-          </Link>
-        </footer>
+        <ProjectNeighbors project={project} />
       </article>
     </main>
   );

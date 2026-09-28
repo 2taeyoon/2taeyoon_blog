@@ -5,7 +5,7 @@
   z-index: 1;
   width: calc(100% - 8rem);
   margin: 0 auto;
-  padding: 15rem 0 10rem;
+  padding: 18vh 0 10rem;
   color: var(--pfTextStrong);
   font-family: "Nunito Sans", "Pretendard", sans-serif;
 }
@@ -47,7 +47,6 @@
 .project_page_header {
   width: 100%;
   margin-bottom: 8rem;
-  padding-bottom: 5rem;
   text-align: center;
 }
 
@@ -57,30 +56,28 @@
 }
 
 .project_page_header h1 {
-  margin: 0 0 1.6rem;
+  margin: 0;
   color: var(--pfTextStrong);
+  font-family: "Nunito Sans", sans-serif;
   font-size: 6.4rem;
   font-weight: 700;
+  text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
 }
 
 .project_page_intro {
-  width: 58rem;
-  margin: 0 auto;
   color: #ffffff;
   font-family: "Pretendard", "Malgun Gothic", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
-  letter-spacing: 0.06rem;
+  letter-spacing: 0.6px;
 }
 
 .project_page_intro_en {
-  width: 58rem;
-  margin: 0.8rem auto 0;
   color: var(--pfTextSub);
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
-  letter-spacing: 0.1rem;
+  letter-spacing: 1px;
 }
 
 .project_card_grid {
@@ -91,6 +88,7 @@
 
 .project_card {
   position: relative;
+  filter: drop-shadow(0 2.2rem 2.8rem var(--pfShadow));
 }
 
 .project_card_link {
@@ -110,18 +108,6 @@
   width: 100%;
   aspect-ratio: 16 / 10;
   background: var(--pfWhite);
-  box-shadow:
-    0 3rem 7rem var(--pfShadow),
-    inset 0 0 0 1px var(--pfShadowInset);
-}
-
-.project_card_visual::before {
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  pointer-events: none;
-  content: "";
 }
 
 .project_card_image {
@@ -153,8 +139,8 @@
 .project_card_view {
   position: absolute;
   z-index: 2;
-  right: 2rem;
-  bottom: 2rem;
+  right: 2.4rem;
+  bottom: 2.4rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -185,36 +171,35 @@
 }
 
 .project_card_body {
-  padding: 2rem 0 0;
+  padding-top: 2rem;
 }
 
 .project_card_heading {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 2rem;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .project_card_heading h2 {
   margin: 0;
   color: var(--pfTextStrong);
   font-size: 2.4rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.08rem;
 }
 
 .project_card_heading time {
-  color: var(--pfTextStrong);
-  font-size: 1.15rem;
+  color: var(--pfTextMuted);
+  font-size: 1.2rem;
   letter-spacing: 0.12rem;
 }
 
 .project_card_body > p {
-  margin: 1.2rem 0 1.8rem;
-  color: var(--pfTextStrong);
+  margin: 0.8rem 0 1.6rem;
+  color: var(--pfTextSub);
   font-family: "Pretendard", sans-serif;
-  font-size: 1.35rem;
-  font-weight: 300;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
 
 .project_card_hashs {
@@ -229,8 +214,8 @@
 .project_card_hashs li {
   background: rgba(255, 255, 255, 0.07);
   padding: 0.65rem 1rem;
-  color: var(--pfTextStrong);
-  font-size: 1.15rem;
+  color: var(--pfTextMuted);
+  font-size: 1.2rem;
   letter-spacing: 0.04rem;
 }
 

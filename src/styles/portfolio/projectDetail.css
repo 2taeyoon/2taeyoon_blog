@@ -10,37 +10,28 @@
 }
 
 .project_detail {
-  width: calc(100% - 8rem);
+  width: 88rem;
   margin: 0 auto;
 }
 
-.project_detail_footer a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 220ms ease;
-}
-
-.project_detail_footer a:hover,
-.project_detail_footer a:focus-visible {
-  color: var(--pfTextStrong);
-}
-
 .project_detail_title_group {
-  padding: 0 0 3rem;
+  width: 100%;
+  margin-bottom: 8rem;
   text-align: center;
 }
 
 .project_detail_title_group h1 {
-  margin: 0 0 1.6rem;
+  margin: 0;
   color: var(--pfTextStrong);
+  font-family: "Nunito Sans", sans-serif;
   font-size: 6.4rem;
   font-weight: 700;
+  text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
 }
 
 .project_detail_subtitle_ko,
 .project_detail_subtitle_en {
-  width: 58rem;
-  margin: 0 auto;
+  margin: 0;
   font-size: 1.6rem;
   font-weight: 400;
 }
@@ -48,14 +39,13 @@
 .project_detail_subtitle_ko {
   color: #ffffff;
   font-family: "Pretendard", "Malgun Gothic", sans-serif;
-  letter-spacing: 0.06rem;
+  letter-spacing: 0.6px;
 }
 
 .project_detail_subtitle_en {
-  margin: 0.8rem auto 0;
   color: var(--pfTextSub);
   font-family: "Nunito Sans", sans-serif;
-  letter-spacing: 0.1rem;
+  letter-spacing: 1px;
 }
 
 .project_detail_hashs {
@@ -71,16 +61,14 @@
 .project_detail_hashs li {
   background: rgba(255, 255, 255, 0.07);
   padding: 0.7rem 1.1rem;
-  color: var(--pfTextStrong);
-  font-size: 1.2rem;
+  color: var(--pfTextMuted);
+  font-size: 1.6rem;
 }
 
 .project_detail_hero {
   position: relative;
   overflow: hidden;
-  width: 96rem;
   aspect-ratio: 16 / 9;
-  margin: 0 auto;
   background: var(--pfWhite);
   box-shadow: 0 4rem 9rem var(--pfShadow);
 }
@@ -112,8 +100,8 @@
 }
 
 .project_detail_information {
-  display: grid;
-  grid-template-columns: 1.6fr 0.7fr 0.7fr;
+  display: flex;
+  align-items: flex-start;
   gap: 5rem;
   margin: 7rem 0 11rem;
   background: rgba(255, 255, 255, 0.035);
@@ -122,9 +110,18 @@
 
 .project_detail_information dl {
   display: grid;
+  flex: 1.6;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem 4rem;
   margin: 0;
+}
+
+.project_detail_links {
+  flex: 0.7;
+}
+
+.project_detail_tech {
+  grid-column: 1 / -1;
 }
 
 .project_detail_information dl div,
@@ -136,11 +133,10 @@
 }
 
 .project_detail_information dt,
-.project_detail_tech > p,
 .project_detail_links > p {
   margin: 0;
   color: var(--pfTextMuted);
-  font-size: 1.05rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.13rem;
   text-transform: uppercase;
@@ -150,11 +146,19 @@
   margin: 0;
   color: var(--pfTextStrong);
   font-family: "Pretendard", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 300;
 }
 
-.project_detail_tech ul,
+.project_detail_tech ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .project_detail_links ul {
   display: grid;
   gap: 0.55rem;
@@ -163,7 +167,28 @@
   list-style: none;
 }
 
-.project_detail_tech li,
+.project_detail_tech li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.03rem;
+  text-transform: uppercase;
+}
+
+.project_detail_tech li span {
+  font-size: 1.2rem;
+}
+
+.project_detail_tech li img {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 .project_detail_links a {
   color: var(--pfTextSub);
   font-family: "Pretendard", sans-serif;
@@ -176,20 +201,6 @@
   justify-content: space-between;
   padding-bottom: 0.5rem;
   text-decoration: none;
-}
-
-.project_detail_content {
-  width: 88rem;
-  margin: 0 auto;
-}
-
-.project_detail_content_label {
-  margin: 0 0 6rem;
-  color: var(--project-detail-accent);
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
 }
 
 .project_markdown {
@@ -217,7 +228,7 @@
 }
 
 .project_markdown h2 {
-  margin: 12rem 0 3rem;
+  margin: 8rem 0 2rem;
   font-size: 4.5rem;
   letter-spacing: -0.18rem;
 }
@@ -227,7 +238,7 @@
 }
 
 .project_markdown h3 {
-  margin: 6rem 0 1.5rem;
+  margin: 4rem 0 1.5rem;
   font-size: 2.7rem;
   letter-spacing: -0.08rem;
 }
@@ -246,7 +257,6 @@
   display: grid;
   gap: 1rem;
   margin: 2.5rem 0;
-  padding-left: 2.4rem;
 }
 
 .project_markdown li::marker {
@@ -312,20 +322,76 @@
   color: var(--pfTextStrong);
 }
 
-.project_detail_footer {
+.project_page_url {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 12rem;
-  padding-top: 4rem;
 }
 
-.project_detail_footer a {
+.project_page_url_link {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  overflow: hidden;
+  width: calc(50% - 1rem);
+  height: 25rem;
+  color: var(--pfTextStrong);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.project_page_url_image {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  filter: brightness(0.32);
+  transition: transform 500ms ease, filter 500ms ease;
+}
+
+.project_page_url_link:hover .project_page_url_image,
+.project_page_url_link:focus-visible .project_page_url_image {
+  filter: brightness(0.42);
+  transform: scale(1.04);
+}
+
+.project_page_url_item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  width: 100%;
+  padding: 0 2.4rem;
+}
+
+.project_page_url_link.is_next .project_page_url_item {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.project_page_url_arrow {
+  flex: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+
+.project_page_url_label,
+.project_page_url_title {
+  display: block;
+}
+
+.project_page_url_label {
   color: var(--pfTextSub);
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
+  font-family: "Pretendard", sans-serif;
+  font-size: 1.4rem;
+}
+
+.project_page_url_title {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
 }

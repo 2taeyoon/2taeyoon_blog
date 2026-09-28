@@ -51,7 +51,7 @@ export default function ProjectMarkdownLoader({
   }
 
   if (!markdown) {
-    return <p className="project_markdown_status">Loading case study...</p>;
+    return <p className="project_markdown_status">Loading...</p>;
   }
 
   return <ProjectMarkdown markdown={markdown} />;

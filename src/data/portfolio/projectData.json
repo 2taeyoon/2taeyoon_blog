@@ -18,7 +18,7 @@
       "period": "2026.07 — 2026.08",
       "role": "Designer & Frontend Developer",
       "team": "Personal Project",
-      "techStack": ["Next.js", "TypeScript", "GSAP", "Three.js"],
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#557cff"
     },
     {
@@ -39,7 +39,7 @@
       "period": "2026.06 — 2026.07",
       "role": "UI Designer & Publisher",
       "team": "Personal Project",
-      "techStack": ["Next.js", "TypeScript", "CSS", "GSAP"],
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#c8794b"
     },
     {
@@ -60,7 +60,7 @@
       "period": "2026.05 — 2026.06",
       "role": "Product Designer & Frontend Developer",
       "team": "Personal Project",
-      "techStack": ["React", "TypeScript", "CSS", "Framer Motion"],
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#d79742"
     },
     {
@@ -81,7 +81,7 @@
       "period": "2026.04 — 2026.05",
       "role": "UX Designer & Frontend Developer",
       "team": "Personal Project",
-      "techStack": ["Next.js", "TypeScript", "CSS", "Web APIs"],
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#3b9ca0"
     },
     {
@@ -102,7 +102,7 @@
       "period": "2026.03 — 2026.04",
       "role": "Designer & Frontend Developer",
       "team": "Personal Project",
-      "techStack": ["Next.js", "Three.js", "GSAP", "CSS"],
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#b69b63"
     },
     {
@@ -123,7 +123,7 @@
       "period": "2026.02 — 2026.03",
       "role": "Visual Designer & Developer",
       "team": "Personal Project",
-      "techStack": ["React", "TypeScript", "Canvas", "CSS"],
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#7160a8"
     },
     {
@@ -144,7 +144,7 @@
       "period": "2026.01 — 2026.02",
       "role": "UI Designer & Frontend Developer",
       "team": "Personal Project",
-      "techStack": ["Next.js", "TypeScript", "React Three Fiber", "GSAP"],
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#315bd7"
     },
     {
@@ -165,7 +165,7 @@
       "period": "2025.12 — 2026.01",
       "role": "UI Designer & Frontend Developer",
       "team": "Personal Project",
-      "techStack": ["Next.js", "TypeScript", "CSS", "Zustand"],
+      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
       "accentColor": "#465b91"
     }
   ]

@@ -10,7 +10,7 @@ import { usePortfolioSessionStore } from "@/stores/usePortfolioSessionStore";
 
 export default function Underlay() {
   const pathname = usePathname();
-  const shouldBlurHeader = pathname.startsWith("/project");
+  const shouldBlurHeader = pathname.startsWith("/projects");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const gainRef = useRef<GainNode | null>(null);

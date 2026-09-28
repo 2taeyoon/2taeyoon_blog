@@ -166,6 +166,7 @@
   width: 100%;
   height: auto;
   transform-origin: center top;
+  filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.45));
   transition: transform 650ms cubic-bezier(0.22, 0.76, 0.22, 1);
 }
 
@@ -176,14 +177,7 @@
   height: auto;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border: 1px solid rgba(80, 97, 184, 0.2);
   background: #03040f;
-  box-shadow:
-    0 22px 55px rgba(0, 0, 0, 0.45),
-    0 0 22px rgba(36, 60, 166, 0.07);
-  transition:
-    border-color 550ms ease,
-    box-shadow 550ms ease;
 }
 
 .project_panel_image,
@@ -219,28 +213,13 @@
   position: absolute;
   z-index: 1;
   top: 100%;
-  right: -10%;
-  left: -10%;
+  right: 0;
+  left: 0;
   height: 100%;
   overflow: hidden;
   opacity: 0.42;
   filter: saturate(0.86);
   transform: translateY(-3px);
-  clip-path: polygon(
-    0 5%,
-    8% 2%,
-    17% 6%,
-    27% 1%,
-    38% 5%,
-    49% 2%,
-    61% 6%,
-    72% 1%,
-    83% 5%,
-    92% 2%,
-    100% 5%,
-    100% 100%,
-    0 100%
-  );
   -webkit-mask-image: linear-gradient(
       to bottom,
       #000 0,
@@ -270,7 +249,6 @@
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
   transition: opacity 450ms ease;
-  animation: projectSectionWaterline 5.8s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
@@ -372,12 +350,11 @@
   margin-top: 1.8rem;
   color: var(--pfTextSub);
   font-family: "Nunito Sans", sans-serif;
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.12rem;
   pointer-events: auto;
   text-decoration: none;
-  text-transform: uppercase;
   transition: color 220ms ease;
 }
 
@@ -387,8 +364,8 @@
 }
 
 .project_section_view_all svg {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.8rem;
+  height: 1.8rem;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
@@ -421,43 +398,6 @@
     background-position:
       0 0,
       46px 0;
-  }
-}
-
-@keyframes projectSectionWaterline {
-  0% {
-    clip-path: polygon(
-      0 5%,
-      8% 2%,
-      17% 6%,
-      27% 1%,
-      38% 5%,
-      49% 2%,
-      61% 6%,
-      72% 1%,
-      83% 5%,
-      92% 2%,
-      100% 5%,
-      100% 100%,
-      0 100%
-    );
-  }
-  100% {
-    clip-path: polygon(
-      0 2%,
-      8% 6%,
-      17% 1%,
-      27% 5%,
-      38% 2%,
-      49% 6%,
-      61% 1%,
-      72% 5%,
-      83% 2%,
-      92% 6%,
-      100% 2%,
-      100% 100%,
-      0 100%
-    );
   }
 }
 

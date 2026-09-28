@@ -7,16 +7,12 @@
 }
 
 @media (width <= 1100px) {
-  .project_detail_hero {
-    width: 100%;
-  }
-
-  .project_detail_information {
-    grid-template-columns: 1.4fr 0.6fr;
+  .project_detail_information dl {
+    flex: 1.4;
   }
 
   .project_detail_links {
-    grid-column: 2;
+    flex: 0.6;
   }
 }
 
@@ -33,33 +29,24 @@
     width: calc(100% - 4rem);
   }
 
-  .project_page,
+  .project_page {
+    padding-bottom: 7rem;
+  }
+
   .project_detail_page {
     padding-top: 12rem;
     padding-bottom: 7rem;
   }
 
-  .project_page_header {
+  .project_page_header,
+  .project_detail_title_group {
     margin-bottom: 5rem;
   }
 
   .project_detail_information {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem 2rem;
+    flex-direction: column;
+    gap: 4rem;
     margin: 5rem 0 8rem;
-  }
-
-  .project_detail_information dl {
-    grid-column: 1 / -1;
-  }
-
-  .project_detail_tech,
-  .project_detail_links {
-    grid-column: auto;
-  }
-
-  .project_detail_content {
-    width: 100%;
   }
 }
 
@@ -67,10 +54,6 @@
   .project_page,
   .project_detail {
     width: calc(100% - 3.2rem);
-  }
-
-  .project_page {
-    padding-top: 10rem;
   }
 
   .project_detail_page {
@@ -82,18 +65,9 @@
     background-size: 4rem 4rem;
   }
 
-  .project_page_header {
+  .project_page_header,
+  .project_detail_title_group {
     margin-bottom: 4rem;
-    padding-bottom: 3.5rem;
-  }
-
-  .project_detail_title_group p {
-    width: 100%;
-  }
-
-  .project_page_intro,
-  .project_page_intro_en {
-    width: 100%;
   }
 
   .project_card_grid {
@@ -117,26 +91,9 @@
     opacity: 1;
   }
 
-  .project_detail_title_group {
-    padding: 3.5rem 0 2.5rem;
-  }
-
-  .project_detail_information {
-    grid-template-columns: 1fr;
-  }
-
   .project_detail_information dl {
     grid-template-columns: 1fr;
     gap: 2.3rem;
-  }
-
-  .project_detail_tech,
-  .project_detail_links {
-    grid-column: 1;
-  }
-
-  .project_detail_content_label {
-    margin-bottom: 4rem;
   }
 
   .project_markdown {
@@ -155,7 +112,13 @@
     font-size: 2.3rem;
   }
 
-  .project_detail_footer {
+  .project_page_url {
+    flex-direction: column;
+    gap: 1.6rem;
     margin-top: 8rem;
+  }
+
+  .project_page_url_link {
+    width: 100%;
   }
 }
