@@ -5,7 +5,7 @@
   z-index: 1;
   width: calc(100% - 8rem);
   margin: 0 auto;
-  padding: 15rem 0 10rem;
+  padding: 18vh 0 10rem;
   color: var(--pfTextStrong);
   font-family: "Nunito Sans", "Pretendard", sans-serif;
 }
@@ -47,7 +47,6 @@
 .project_page_header {
   width: 100%;
   margin-bottom: 8rem;
-  padding-bottom: 5rem;
   text-align: center;
 }
 
@@ -57,30 +56,28 @@
 }
 
 .project_page_header h1 {
-  margin: 0 0 1.6rem;
+  margin: 0;
   color: var(--pfTextStrong);
+  font-family: "Nunito Sans", sans-serif;
   font-size: 6.4rem;
   font-weight: 700;
+  text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
 }
 
 .project_page_intro {
-  width: 58rem;
-  margin: 0 auto;
   color: #ffffff;
   font-family: "Pretendard", "Malgun Gothic", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
-  letter-spacing: 0.06rem;
+  letter-spacing: 0.6px;
 }
 
 .project_page_intro_en {
-  width: 58rem;
-  margin: 0.8rem auto 0;
   color: var(--pfTextSub);
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
-  letter-spacing: 0.1rem;
+  letter-spacing: 1px;
 }
 
 .project_card_grid {
@@ -91,6 +88,7 @@
 
 .project_card {
   position: relative;
+  filter: drop-shadow(0 2.2rem 2.8rem var(--pfShadow));
 }
 
 .project_card_link {
@@ -110,18 +108,33 @@
   width: 100%;
   aspect-ratio: 16 / 10;
   background: var(--pfWhite);
-  box-shadow:
-    0 3rem 7rem var(--pfShadow),
-    inset 0 0 0 1px var(--pfShadowInset);
-}
-
-.project_card_visual::before {
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  pointer-events: none;
-  content: "";
+  clip-path: polygon(
+    0% 12%,
+    22% 12%,
+    26% 6%,
+    30% 0%,
+    42% 0%,
+    46% 6%,
+    50% 12%,
+    100% 12%,
+    100% 34%,
+    94% 38%,
+    90% 50%,
+    94% 62%,
+    100% 66%,
+    100% 88%,
+    50% 88%,
+    46% 82%,
+    38% 80%,
+    30% 82%,
+    26% 88%,
+    0% 88%,
+    0% 66%,
+    6% 62%,
+    10% 50%,
+    6% 38%,
+    0% 34%
+  );
 }
 
 .project_card_image {
@@ -153,8 +166,8 @@
 .project_card_view {
   position: absolute;
   z-index: 2;
-  right: 2rem;
-  bottom: 2rem;
+  right: 2.4rem;
+  bottom: 3.6rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
