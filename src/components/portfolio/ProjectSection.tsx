@@ -9,6 +9,7 @@ import {
   mainExit,
   puzzleSimulation,
 } from "@/lib/portfolio/pointerState";
+import { createPuzzleClipPath } from "@/lib/portfolio/puzzleClip";
 import { playUiHover } from "@/lib/portfolio/uiSound";
 
 const PROJECT_ITEMS = projects.map(({ title, image }) => ({ title, image }));
@@ -38,10 +39,29 @@ export default function ProjectSection() {
   const waterDisplacementRef = useRef<SVGFEDisplacementMapElement>(null);
   const navigateRef = useRef<(index: number) => void>(() => {});
   const activeIndexRef = useRef(0);
+  const artRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [puzzleClip, setPuzzleClip] = useState<string>();
 
   useEffect(() => {
     return () => puzzleSimulation.setPaused(false);
+  }, []);
+
+  useLayoutEffect(() => {
+    const node = artRef.current;
+    if (!node) return;
+
+    const update = () => {
+      const width = node.offsetWidth;
+      const height = node.offsetHeight;
+      if (width < 2 || height < 2) return;
+      setPuzzleClip(createPuzzleClipPath(width, height));
+    };
+
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(node);
+    return () => observer.disconnect();
   }, []);
 
   useLayoutEffect(() => {
@@ -395,14 +415,18 @@ export default function ProjectSection() {
               key={copy}
               aria-hidden={copy !== 1}
             >
-              {PROJECT_ITEMS.map((work) => (
+              {PROJECT_ITEMS.map((work, index) => (
                 <article
                   className="project_section_card"
                   key={`${copy}-${work.title}`}
                 >
                   <p className="project_panel_title">{work.title}</p>
                   <div className="project_panel_surface">
-                    <div className="project_panel_art">
+                    <div
+                      className="project_panel_art"
+                      ref={copy === 1 && index === 0 ? artRef : undefined}
+                      style={puzzleClip ? { clipPath: puzzleClip } : undefined}
+                    >
                       <Image
                         className="project_panel_image"
                         src={work.image}
@@ -417,7 +441,11 @@ export default function ProjectSection() {
                       />
                     </div>
 
-                    <div className="project_panel_reflection" aria-hidden="true">
+                    <div
+                      className="project_panel_reflection"
+                      aria-hidden="true"
+                      style={puzzleClip ? { clipPath: puzzleClip } : undefined}
+                    >
                       <Image
                         className="project_panel_reflection_image"
                         src={work.image}
