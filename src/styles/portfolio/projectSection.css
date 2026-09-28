@@ -178,33 +178,6 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #03040f;
-  clip-path: polygon(
-    0% 12%,
-    22% 12%,
-    26% 6%,
-    30% 0%,
-    42% 0%,
-    46% 6%,
-    50% 12%,
-    100% 12%,
-    100% 34%,
-    94% 38%,
-    90% 50%,
-    94% 62%,
-    100% 66%,
-    100% 88%,
-    50% 88%,
-    46% 82%,
-    38% 80%,
-    30% 82%,
-    26% 88%,
-    0% 88%,
-    0% 66%,
-    6% 62%,
-    10% 50%,
-    6% 38%,
-    0% 34%
-  );
 }
 
 .project_panel_image,
@@ -247,33 +220,6 @@
   opacity: 0.42;
   filter: saturate(0.86);
   transform: translateY(-3px);
-  clip-path: polygon(
-    0% 12%,
-    22% 12%,
-    26% 6%,
-    30% 0%,
-    42% 0%,
-    46% 6%,
-    50% 12%,
-    100% 12%,
-    100% 34%,
-    94% 38%,
-    90% 50%,
-    94% 62%,
-    100% 66%,
-    100% 88%,
-    50% 88%,
-    46% 82%,
-    38% 80%,
-    30% 82%,
-    26% 88%,
-    0% 88%,
-    0% 66%,
-    6% 62%,
-    10% 50%,
-    6% 38%,
-    0% 34%
-  );
   -webkit-mask-image: linear-gradient(
       to bottom,
       #000 0,
@@ -409,7 +355,6 @@
   letter-spacing: 0.12rem;
   pointer-events: auto;
   text-decoration: none;
-  text-transform: uppercase;
   transition: color 220ms ease;
 }
 
