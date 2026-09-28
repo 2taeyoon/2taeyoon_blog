@@ -10,6 +10,21 @@ export interface ProjectLink {
   type: "site" | "github" | "other";
 }
 
+export type ProjectContext =
+  | "company-maintenance"
+  | "company-project"
+  | "academy-individual"
+  | "academy-team"
+  | "personal";
+
+const PROJECT_CONTEXT_LABEL: Record<ProjectContext, string> = {
+  "company-maintenance": "Company · Maintenance",
+  "company-project": "Company · Project",
+  "academy-individual": "Academy · Individual",
+  "academy-team": "Academy · Team",
+  personal: "Personal",
+};
+
 export interface Project {
   id: string;
   slug: string;
@@ -20,14 +35,18 @@ export interface Project {
   subTitle: string;
   subTitleEn: string;
   hashs: ProjectHash[];
-  contribution: string;
   period: string;
+  context: ProjectContext;
   role: string;
-  team: string;
+  /** 이 프로젝트에서 맡은 비중. 0–100 */
+  contribution: number;
   techStack: string[];
   accentColor: string;
-  company?: string;
   links?: ProjectLink[];
+}
+
+export function projectContextLabel(context: ProjectContext) {
+  return PROJECT_CONTEXT_LABEL[context];
 }
 
 export const projects = (projectData.projects as Project[])
