@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Project } from "@/data/portfolio/projects";
-import { usePuzzleClip } from "@/lib/portfolio/usePuzzleClip";
 import { playUiHover } from "@/lib/portfolio/uiSound";
 
 type ProjectCardStyle = CSSProperties & {
@@ -19,7 +18,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const style: ProjectCardStyle = {
     "--project-card-accent": project.accentColor,
   };
-  const { ref: visualRef, clipPath } = usePuzzleClip<HTMLDivElement>();
 
   return (
     <article className="project_card" style={style}>
@@ -29,11 +27,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         aria-label={`${project.title} 프로젝트 상세 보기`}
         onMouseEnter={playUiHover}
       >
-        <div
-          className="project_card_visual"
-          ref={visualRef}
-          style={clipPath ? { clipPath } : undefined}
-        >
+        <div className="project_card_visual">
           <Image
             className="project_card_image"
             src={project.image}

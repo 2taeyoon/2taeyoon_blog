@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Underlay from "@/components/portfolio/ui/Underlay";
-import { buildPalette, syncPaletteCssVars } from "@/lib/portfolio/palette";
+import { buildPalette, syncPaletteCssVars, syncThemeAccent } from "@/lib/portfolio/palette";
 import {
   useHydratePortfolioSessionStore,
   usePortfolioSessionStore,
@@ -27,6 +27,7 @@ function ActivePortfolioChrome() {
 
   useEffect(() => {
     syncPaletteCssVars(buildPalette(themeColor));
+    syncThemeAccent(themeColor);
   }, [themeColor]);
 
   return <Underlay />;

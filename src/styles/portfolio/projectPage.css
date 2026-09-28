@@ -44,6 +44,19 @@
   content: "";
 }
 
+.project_page_floaters {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.project_page_floaters canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .project_page_header {
   width: 100%;
   margin-bottom: 8rem;
@@ -84,6 +97,60 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 5rem 2rem;
+}
+
+.project_pagination_nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 6rem;
+}
+
+.project_pagination {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project_pagination_nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--pfTextSub);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.project_pagination_nav button svg {
+  width: 0.7rem;
+  height: 1.2rem;
+}
+
+.project_pagination_nav button polyline {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.project_pagination_nav button:hover,
+.project_pagination_nav button:focus-visible,
+.project_pagination_nav button.is_active {
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
+}
+
+.project_pagination_nav button:focus-visible {
+  outline: 1px solid var(--pfTextStrong);
+  outline-offset: 0.2rem;
 }
 
 .project_card {
@@ -189,7 +256,7 @@
 }
 
 .project_card_heading time {
-  color: var(--pfTextMuted);
+  color: var(--pfTextSub);
   font-size: 1.2rem;
   letter-spacing: 0.12rem;
 }
@@ -214,7 +281,7 @@
 .project_card_hashs li {
   background: rgba(255, 255, 255, 0.07);
   padding: 0.65rem 1rem;
-  color: var(--pfTextMuted);
+  color: var(--pfTextSub);
   font-size: 1.2rem;
   letter-spacing: 0.04rem;
 }

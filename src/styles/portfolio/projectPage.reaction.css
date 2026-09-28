@@ -17,9 +17,17 @@
 }
 
 @media (width <= 768px) {
+  .project_page_floaters {
+    display: none;
+  }
+
   .project_card_grid {
     grid-template-columns: 1fr;
     gap: 5rem;
+  }
+
+  .project_card_visual {
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -51,6 +59,15 @@
 }
 
 @media (width <= 560px) {
+  .project_pagination_nav {
+    margin-top: 4rem;
+  }
+
+  .project_pagination_nav button {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
   .project_page,
   .project_detail {
     width: calc(100% - 3.2rem);
@@ -72,10 +89,6 @@
 
   .project_card_grid {
     gap: 5rem;
-  }
-
-  .project_card_visual {
-    aspect-ratio: 16 / 11;
   }
 
   .project_card_heading h2 {

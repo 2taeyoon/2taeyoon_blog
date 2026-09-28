@@ -61,7 +61,7 @@
 .project_detail_hashs li {
   background: rgba(255, 255, 255, 0.07);
   padding: 0.7rem 1.1rem;
-  color: var(--pfTextMuted);
+  color: var(--pfTextSub);
   font-size: 1.6rem;
 }
 

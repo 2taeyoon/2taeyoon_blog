@@ -100,3 +100,31 @@ export function syncPaletteCssVars(palette: BackdropPalette) {
   root.style.setProperty("--pfBgGray", palette.cssMid);
   root.style.setProperty("--pfProjectHighlight", palette.cssHighlight);
 }
+
+/** Theme Color를 페이지네이션 등 UI 강조색으로 반영 */
+export function syncThemeAccent(ballColor: string) {
+  const root = document.documentElement;
+  const accent = themeAccentCss(ballColor);
+  root.style.setProperty("--pfTheme", accent.background);
+  root.style.setProperty("--pfThemeText", accent.text);
+}
+
+function themeAccentCss(ballColor: string) {
+  if (ballColor === "fabric") {
+    return { background: "#5a7fd4", text: "#ffffff" };
+  }
+
+  const color = new THREE.Color(ballColor);
+  const hsl = { h: 0, s: 0, l: 0 };
+  color.getHSL(hsl);
+
+  if (hsl.l >= 0.28) {
+    return {
+      background: `#${color.getHexString()}`,
+      text: hsl.l > 0.62 ? "#12141c" : "#ffffff",
+    };
+  }
+
+  const accent = new THREE.Color().setHSL(hsl.h, hsl.s, 0.28);
+  return { background: `#${accent.getHexString()}`, text: "#ffffff" };
+}

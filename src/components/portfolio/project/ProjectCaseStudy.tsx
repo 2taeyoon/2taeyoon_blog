@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import type { Project } from "@/data/portfolio/projects";
+import { projectContextLabel, type Project } from "@/data/portfolio/projects";
 import { skillBadges } from "@/data/portfolio/skills";
 import ProjectMarkdownLoader from "@/components/portfolio/project/ProjectMarkdownLoader";
 import ProjectNeighbors from "@/components/portfolio/project/ProjectNeighbors";
@@ -55,23 +55,17 @@ export default function ProjectCaseStudy({
               <dd>{project.period}</dd>
             </div>
             <div>
+              <dt>Context</dt>
+              <dd>{projectContextLabel(project.context)}</dd>
+            </div>
+            <div>
               <dt>Role</dt>
               <dd>{project.role}</dd>
             </div>
             <div>
               <dt>Contribution</dt>
-              <dd>{project.contribution}</dd>
+              <dd>{project.contribution}%</dd>
             </div>
-            <div>
-              <dt>Team</dt>
-              <dd>{project.team}</dd>
-            </div>
-            {project.company && (
-              <div>
-                <dt>Company</dt>
-                <dd>{project.company}</dd>
-              </div>
-            )}
             <div className="project_detail_tech">
               <dt>Tech Stack</dt>
               <dd>
