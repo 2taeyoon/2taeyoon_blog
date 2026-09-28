@@ -12,7 +12,7 @@ async function getDynamicPaths(): Promise<{ url: string }[]> {
   });
 
   const projectPaths = projects.map((project) => ({
-    url: `/project/${encodeURIComponent(project.slug)}`,
+    url: `/projects/${encodeURIComponent(project.slug)}`,
   }));
 
   return [...blogPaths, ...projectPaths];
@@ -54,7 +54,7 @@ function generateSitemap(paths: { url: string }[]) {
       <priority>1.0</priority>
     </url>
     <url>
-      <loc>${domain}/project</loc>
+      <loc>${domain}/projects</loc>
       <changefreq>monthly</changefreq>
       <priority>0.9</priority>
     </url>
