@@ -460,7 +460,7 @@ export default function ProjectSection() {
         </div>
         <Link
           className="project_section_view_all"
-          href="/project"
+          href="/projects"
           onMouseEnter={playUiHover}
         >
           View All Projects
