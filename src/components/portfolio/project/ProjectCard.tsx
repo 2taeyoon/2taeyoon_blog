@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     <article className="project_card" style={style}>
       <Link
         className="project_card_link"
-        href={`/project/${project.slug}`}
+        href={`/projects/${project.slug}`}
         aria-label={`${project.title} 프로젝트 상세 보기`}
         onMouseEnter={playUiHover}
       >
@@ -37,7 +37,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           />
           <div className="project_card_visual_overlay" aria-hidden="true" />
           <span className="project_card_view" aria-hidden="true">
-            View Case Study
+            View Project
             <svg viewBox="0 0 24 24">
               <path d="M5 19L19 5M9 5h10v10" />
             </svg>
