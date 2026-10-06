@@ -6,6 +6,57 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/13/13.md",
+			"image": "/images/blog/ai/13/main_image.webp",
+			"sortDate": "2026-10-06",
+			"title": "파이썬 입문 3편 클래스와 모듈",
+			"subTitle": "나도코딩 파이썬 기본편 후반을 초보자 기준으로 정리했습니다. 클래스와 상속, 메소드 오버라이딩, 예외 처리, 모듈과 패키지를 작은 예제로 이어서 설명합니다.",
+			"hashs": [
+				{"name": "#Python"},
+				{"name": "#클래스"},
+				{"name": "#모듈"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/12/12.md",
+			"image": "/images/blog/ai/12/main_image.webp",
+			"sortDate": "2026-10-05",
+			"title": "파이썬 입문 2편 자료구조와 흐름 제어",
+			"subTitle": "나도코딩 파이썬 기본편 중반을 초보자 기준으로 정리했습니다. 리스트와 사전, 조건문과 반복문, 함수, 파일 입출력까지 예제와 함께 설명합니다.",
+			"hashs": [
+				{"name": "#Python"},
+				{"name": "#자료구조"},
+				{"name": "#함수"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/11/11.md",
+			"image": "/images/blog/ai/11/main_image.webp",
+			"sortDate": "2026-10-04",
+			"title": "파이썬 입문 1편 설치부터 문자열까지",
+			"subTitle": "나도코딩 파이썬 기본편 초반을 초보자 기준으로 정리했습니다. 설치, 자료형, 변수, 연산자, 문자열 슬라이싱과 포맷까지 예제와 함께 설명합니다.",
+			"hashs": [
+				{"name": "#Python"},
+				{"name": "#입문"},
+				{"name": "#문자열"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/10/10.md",
 			"image": "/images/blog/ai/10/main_image.webp",
 			"sortDate": "2026-08-30",
