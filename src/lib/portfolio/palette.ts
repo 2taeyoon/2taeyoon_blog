@@ -107,24 +107,41 @@ export function syncThemeAccent(ballColor: string) {
   const accent = themeAccentCss(ballColor);
   root.style.setProperty("--pfTheme", accent.background);
   root.style.setProperty("--pfThemeText", accent.text);
+  root.style.setProperty("--pfThemeLabel", accent.label);
 }
 
 function themeAccentCss(ballColor: string) {
   if (ballColor === "fabric") {
-    return { background: "#5a7fd4", text: "#ffffff" };
+    return { background: "#5a7fd4", text: "#ffffff", label: "#6b7280" };
   }
 
   const color = new THREE.Color(ballColor);
   const hsl = { h: 0, s: 0, l: 0 };
   color.getHSL(hsl);
 
+  const label = themeLabelCss(hsl);
+
   if (hsl.l >= 0.28) {
     return {
       background: `#${color.getHexString()}`,
       text: hsl.l > 0.62 ? "#12141c" : "#ffffff",
+      label,
     };
   }
 
   const accent = new THREE.Color().setHSL(hsl.h, hsl.s, 0.28);
-  return { background: `#${accent.getHexString()}`, text: "#ffffff" };
+  return { background: `#${accent.getHexString()}`, text: "#ffffff", label };
+}
+
+/** 상세 정보의 항목 이름. 파랑·남색은 기존 회색을 유지하고, 그 외 색은 같은 색조로 밝힌다. */
+function themeLabelCss(hsl: { h: number; s: number; l: number }) {
+  const coolBlue = hsl.h >= 0.55 && hsl.h <= 0.75;
+  if (hsl.s < 0.12 || coolBlue) return "#6b7280";
+
+  const label = new THREE.Color().setHSL(
+    hsl.h,
+    Math.min(0.48, Math.max(hsl.s * 0.62, 0.36)),
+    0.72,
+  );
+  return `#${label.getHexString()}`;
 }
