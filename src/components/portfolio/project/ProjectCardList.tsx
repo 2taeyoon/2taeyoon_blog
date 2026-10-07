@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import ProjectCard from "@/components/portfolio/project/ProjectCard";
 import {
   PROJECT_FILTERS,
@@ -50,7 +49,8 @@ function visiblePages(pageCount: number, currentPage: number) {
 export default function ProjectCardList({ projects }: { projects: Project[] }) {
   const currentPage = usePortfolioSessionStore((state) => state.projectPage);
   const setProjectPage = usePortfolioSessionStore((state) => state.setProjectPage);
-  const [filter, setFilter] = useState<ProjectFilter>("all");
+  const filter = usePortfolioSessionStore((state) => state.projectFilter);
+  const setProjectFilter = usePortfolioSessionStore((state) => state.setProjectFilter);
   const filteredProjects =
     filter === "all"
       ? projects
@@ -68,7 +68,7 @@ export default function ProjectCardList({ projects }: { projects: Project[] }) {
   };
 
   const selectFilter = (nextFilter: ProjectFilter) => {
-    setFilter(nextFilter);
+    setProjectFilter(nextFilter);
     setProjectPage(0);
   };
 
