@@ -130,6 +130,12 @@
   transform-style: preserve-3d;
 }
 
+a.project_section_card {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .project_section_card {
   position: relative;
   flex: none;
@@ -249,7 +255,6 @@
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
   transition: opacity 450ms ease;
-  pointer-events: none;
 }
 
 .project_panel_reflection_image {
