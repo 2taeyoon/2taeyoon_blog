@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { projectContextLabel, type Project } from "@/data/portfolio/projects";
 import { skillBadges } from "@/data/portfolio/skills";
@@ -25,6 +26,9 @@ export default function ProjectCaseStudy({
       <article className="project_detail">
         <header className="project_detail_header">
           <div className="project_detail_title_group">
+            <Link className="project_detail_back" href="/projects">
+              ← Projects
+            </Link>
             <h1>{project.title}</h1>
             <p className="project_detail_subtitle_ko">{project.subTitle}</p>
             <p className="project_detail_subtitle_en">{project.subTitleEn}</p>
