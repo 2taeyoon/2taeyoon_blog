@@ -17,6 +17,10 @@
 }
 
 @media (width <= 768px) {
+  .project_detail_back {
+    display: none;
+  }
+
   .project_page_floaters {
     display: none;
   }
