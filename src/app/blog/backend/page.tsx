@@ -4,10 +4,10 @@ import StudyListPage from "@/components/blog/study-list/StudyListPage";
 const category = getBlogCategory("backend");
 
 export const metadata = {
-  title: "Back Study",
+  title: "Backend | 2taeyoon",
   description: "백엔드와 관련된 내용을 공부하고 기록한 페이지입니다.",
   openGraph: {
-    title: "Back Study",
+    title: "Backend | 2taeyoon",
     description: "백엔드와 관련된 내용을 공부하고 기록한 페이지입니다.",
     url: "https://www.2taeyoon.com/blog/backend",
     images: [

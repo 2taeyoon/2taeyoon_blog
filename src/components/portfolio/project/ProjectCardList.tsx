@@ -1,7 +1,12 @@
 "use client";
 
 import ProjectCard from "@/components/portfolio/project/ProjectCard";
-import type { Project } from "@/data/portfolio/projects";
+import {
+  PROJECT_FILTERS,
+  projectFilterId,
+  type Project,
+  type ProjectFilter,
+} from "@/data/portfolio/projects";
 import { usePortfolioSessionStore } from "@/stores/usePortfolioSessionStore";
 
 const PROJECTS_PER_PAGE = 8;
@@ -44,9 +49,15 @@ function visiblePages(pageCount: number, currentPage: number) {
 export default function ProjectCardList({ projects }: { projects: Project[] }) {
   const currentPage = usePortfolioSessionStore((state) => state.projectPage);
   const setProjectPage = usePortfolioSessionStore((state) => state.setProjectPage);
-  const pageCount = Math.max(1, Math.ceil(projects.length / PROJECTS_PER_PAGE));
+  const filter = usePortfolioSessionStore((state) => state.projectFilter);
+  const setProjectFilter = usePortfolioSessionStore((state) => state.setProjectFilter);
+  const filteredProjects =
+    filter === "all"
+      ? projects
+      : projects.filter((project) => projectFilterId(project.context) === filter);
+  const pageCount = Math.max(1, Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE));
   const safePage = Math.min(currentPage, pageCount - 1);
-  const pageProjects = projects.slice(
+  const pageProjects = filteredProjects.slice(
     safePage * PROJECTS_PER_PAGE,
     (safePage + 1) * PROJECTS_PER_PAGE,
   );
@@ -56,13 +67,35 @@ export default function ProjectCardList({ projects }: { projects: Project[] }) {
     setProjectPage(nextPage);
   };
 
+  const selectFilter = (nextFilter: ProjectFilter) => {
+    setProjectFilter(nextFilter);
+    setProjectPage(0);
+  };
+
   return (
     <>
+      <div className="project_filter" role="toolbar" aria-label="프로젝트 구분">
+        {PROJECT_FILTERS.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className={filter === item.id ? "is_active" : undefined}
+            aria-pressed={filter === item.id}
+            onClick={() => selectFilter(item.id)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
       <section className="project_card_grid" aria-label="전체 프로젝트 목록">
         {pageProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </section>
+      {filteredProjects.length === 0 && (
+        <p className="project_filter_empty">이 구분에 해당하는 프로젝트가 없습니다.</p>
+      )}
 
       {pageCount > 1 && (
         <nav className="project_pagination_nav" aria-label="프로젝트 페이지">

@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { projects } from "@/data/portfolio/projects";
+import { featuredProjects } from "@/data/portfolio/projects";
 import {
   mainExit,
   puzzleSimulation,
@@ -12,7 +13,11 @@ import {
 import { createPuzzleClipPath } from "@/lib/portfolio/puzzleClip";
 import { playUiHover } from "@/lib/portfolio/uiSound";
 
-const PROJECT_ITEMS = projects.map(({ title, image }) => ({ title, image }));
+const PROJECT_ITEMS = featuredProjects.map(({ title, image, slug }) => ({
+  title,
+  image,
+  slug,
+}));
 
 const TRACK_COPIES = [0, 1, 2];
 const AUTO_SPEED = 0.34;
@@ -34,6 +39,9 @@ function modulo(value: number, divisor: number) {
 }
 
 export default function ProjectSection() {
+  const router = useRouter();
+  const routerRef = useRef(router);
+  routerRef.current = router;
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const waterDisplacementRef = useRef<SVGFEDisplacementMapElement>(null);
@@ -249,8 +257,22 @@ export default function ProjectSection() {
 
     navigateRef.current = goToIndex;
 
+    let pressStartX = 0;
+    let pressStartY = 0;
+    let pressSlug: string | null = null;
+    let dragged = false;
+
     const handlePointerDown = (event: PointerEvent) => {
       if (event.pointerType === "mouse" && event.button !== 0) return;
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+
+      const card = (event.target as Element).closest<HTMLElement>(
+        "[data-project-slug]",
+      );
+      pressStartX = event.clientX;
+      pressStartY = event.clientY;
+      pressSlug = card?.dataset.projectSlug ?? null;
+      dragged = false;
 
       navigationTween?.kill();
       navigating = false;
@@ -270,6 +292,9 @@ export default function ProjectSection() {
       const now = performance.now();
       const elapsed = Math.max(now - previousTime, 8);
       const movement = event.clientX - previousX;
+      const travelX = event.clientX - pressStartX;
+      const travelY = event.clientY - pressStartY;
+      if (travelX * travelX + travelY * travelY > 64) dragged = true;
       position.x += movement;
       velocity = (movement / elapsed) * 16.67;
       previousX = event.clientX;
@@ -280,11 +305,19 @@ export default function ProjectSection() {
     const releasePointer = (event: PointerEvent) => {
       if (pointerId !== event.pointerId) return;
 
+      const slug = pressSlug;
+      const shouldOpen = Boolean(slug) && !dragged;
+      pressSlug = null;
+
       if (viewport.hasPointerCapture(event.pointerId)) {
         viewport.releasePointerCapture(event.pointerId);
       }
       pointerId = null;
       viewport.dataset.dragging = "false";
+
+      if (shouldOpen && slug) {
+        routerRef.current.push(`/projects/${slug}`);
+      }
     };
 
     const handlePointerLeave = () => {
@@ -416,9 +449,18 @@ export default function ProjectSection() {
               aria-hidden={copy !== 1}
             >
               {PROJECT_ITEMS.map((work, index) => (
-                <article
+                <Link
                   className="project_section_card"
-                  key={`${copy}-${work.title}`}
+                  href={`/projects/${work.slug}`}
+                  key={`${copy}-${work.slug}`}
+                  data-project-slug={work.slug}
+                  tabIndex={copy === 1 ? undefined : -1}
+                  draggable={false}
+                  onClick={(event) => {
+                    if (event.detail === 0) return;
+                    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                    event.preventDefault();
+                  }}
                 >
                   <p className="project_panel_title">{work.title}</p>
                   <div className="project_panel_surface">
@@ -457,7 +499,7 @@ export default function ProjectSection() {
                       <span className="project_panel_ripple" />
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           ))}

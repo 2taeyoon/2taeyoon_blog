@@ -17,6 +17,10 @@
 }
 
 @media (width <= 768px) {
+  .project_detail_back {
+    display: none;
+  }
+
   .project_page_floaters {
     display: none;
   }
@@ -51,6 +55,10 @@
     margin-bottom: 5rem;
   }
 
+  .project_filter {
+    margin-bottom: 3.2rem;
+  }
+
   .project_detail_information {
     flex-direction: column;
     gap: 4rem;
@@ -77,6 +85,11 @@
     padding-top: 10rem;
   }
 
+  .project_detail_back {
+    left: 1.6rem;
+    bottom: 1.6rem;
+  }
+
   .project_page::after,
   .project_detail_page::after {
     background-size: 4rem 4rem;
@@ -85,6 +98,15 @@
   .project_page_header,
   .project_detail_title_group {
     margin-bottom: 4rem;
+  }
+
+  .project_filter {
+    margin-bottom: 2.8rem;
+  }
+
+  .project_filter button {
+    padding: 0.7rem 1rem;
+    font-size: 1.3rem;
   }
 
   .project_card_grid {

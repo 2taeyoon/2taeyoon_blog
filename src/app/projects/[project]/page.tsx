@@ -28,10 +28,10 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} | 2taeyoon`,
+    title: { absolute: project.title },
     description: project.subTitle,
     openGraph: {
-      title: `${project.title} | 2taeyoon`,
+      title: project.title,
       description: project.subTitle,
       images: [project.image],
       type: "article",

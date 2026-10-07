@@ -20,6 +20,39 @@
   text-align: center;
 }
 
+.project_detail_back {
+  position: fixed;
+  z-index: 90;
+  left: 3.2rem;
+  bottom: 3.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.2rem 1.6rem;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project_detail_back svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.project_detail_back:hover,
+.project_detail_back:focus-visible {
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
+}
+
 .project_detail_title_group h1 {
   margin: 0;
   color: var(--pfTextStrong);
@@ -135,7 +168,7 @@
 .project_detail_information dt,
 .project_detail_links > p {
   margin: 0;
-  color: var(--pfTextMuted);
+  color: var(--pfThemeLabel);
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.13rem;
