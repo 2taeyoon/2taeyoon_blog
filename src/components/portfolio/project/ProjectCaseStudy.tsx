@@ -23,12 +23,15 @@ export default function ProjectCaseStudy({
 
   return (
     <main className="project_detail_page" style={style}>
+      <Link className="project_detail_back" href="/projects">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 12H5M11 6l-6 6 6 6" />
+        </svg>
+        Projects
+      </Link>
       <article className="project_detail">
         <header className="project_detail_header">
           <div className="project_detail_title_group">
-            <Link className="project_detail_back" href="/projects">
-              ← Projects
-            </Link>
             <h1>{project.title}</h1>
             <p className="project_detail_subtitle_ko">{project.subTitle}</p>
             <p className="project_detail_subtitle_en">{project.subTitleEn}</p>
