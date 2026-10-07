@@ -51,6 +51,10 @@
     margin-bottom: 5rem;
   }
 
+  .project_filter {
+    margin-bottom: 3.2rem;
+  }
+
   .project_detail_information {
     flex-direction: column;
     gap: 4rem;
@@ -85,6 +89,15 @@
   .project_page_header,
   .project_detail_title_group {
     margin-bottom: 4rem;
+  }
+
+  .project_filter {
+    margin-bottom: 2.8rem;
+  }
+
+  .project_filter button {
+    padding: 0.7rem 1rem;
+    font-size: 1.3rem;
   }
 
   .project_card_grid {
