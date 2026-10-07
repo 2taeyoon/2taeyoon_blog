@@ -1,4 +1,4 @@
-import projectData from "@/data/portfolio/projectData.json";
+import projectsData from "@/data/portfolio/projectsData.json";
 
 export interface ProjectHash {
   name: string;
@@ -72,7 +72,7 @@ export function projectContextLabel(context: ProjectContext) {
   return PROJECT_FILTERS.find((filter) => filter.id === filterId)?.label ?? "";
 }
 
-export const projects = (projectData.projects as Project[])
+export const projects = (projectsData.projects as Project[])
   .slice()
   .sort(
     (projectA, projectB) =>
