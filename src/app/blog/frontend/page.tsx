@@ -4,10 +4,10 @@ import StudyListPage from "@/components/blog/study-list/StudyListPage";
 const category = getBlogCategory("frontend");
 
 export const metadata = {
-  title: "Front Study",
+  title: "Frontend | 2taeyoon",
   description: "프론트와 관련된 내용을 공부하고 기록한 페이지입니다.",
   openGraph: {
-    title: "Front Study",
+    title: "Frontend | 2taeyoon",
     description: "프론트와 관련된 내용을 공부하고 기록한 페이지입니다.",
     url: "https://www.2taeyoon.com/blog/frontend",
     images: [

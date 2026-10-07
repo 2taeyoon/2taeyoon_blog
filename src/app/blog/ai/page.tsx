@@ -4,10 +4,10 @@ import StudyListPage from "@/components/blog/study-list/StudyListPage";
 const category = getBlogCategory("ai");
 
 export const metadata = {
-  title: "AI",
+  title: "AI | 2taeyoon",
   description: "AI 인사이트와 직접 적용한 에이전트 및 실험 기록을 모아둔 페이지입니다.",
   openGraph: {
-    title: "AI",
+    title: "AI | 2taeyoon",
     description: "AI 인사이트와 직접 적용한 에이전트 및 실험 기록을 모아둔 페이지입니다.",
     url: "https://www.2taeyoon.com/blog/ai",
     images: [
