@@ -20,6 +20,24 @@
   text-align: center;
 }
 
+.project_detail_back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 2.4rem;
+  color: var(--pfTextSub);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.14rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project_detail_back:hover,
+.project_detail_back:focus-visible {
+  color: var(--pfTheme);
+}
+
 .project_detail_title_group h1 {
   margin: 0;
   color: var(--pfTextStrong);
