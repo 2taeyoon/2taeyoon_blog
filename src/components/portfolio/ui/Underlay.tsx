@@ -269,8 +269,8 @@ export default function Underlay() {
           2taeyoon.com
         </Link>
         <div className="underlay_nav" onPointerDown={blockPointer}>
-          <Link href="/blog" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Blog</Link>
           <Link href="/projects" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Projects</Link>
+          <Link href="/blog" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Blog</Link>
           <a href="https://github.com/2taeyoon" target="_blank" rel="noreferrer" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Github</a>
         </div>
         <div className="underlay_controls" ref={settingsRef} onPointerDown={blockPointer}>
