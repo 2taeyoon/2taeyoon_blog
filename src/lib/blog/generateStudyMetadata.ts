@@ -34,7 +34,7 @@ export async function generateStudyMetadata(
   const { card, decodedTitle } = result;
 
   return {
-    title: card.title,
+    title: { absolute: card.title },
     description: card.subTitle,
     openGraph: {
       title: card.title,
