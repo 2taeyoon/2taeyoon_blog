@@ -20,6 +20,8 @@ export default function ProjectCaseStudy({
   const style: ProjectDetailStyle = {
     "--project-detail-accent": project.accentColor,
   };
+  const siteLink = project.links?.find((link) => link.type === "site");
+  const githubLink = project.links?.find((link) => link.type === "github");
 
   return (
     <main className="project_detail_page" style={style}>
@@ -96,22 +98,26 @@ export default function ProjectCaseStudy({
             </div>
           </dl>
 
-          {project.links && project.links.length > 0 && (
+          {(siteLink || githubLink) && (
             <div className="project_detail_links">
               <p>Links</p>
               <ul>
-                {project.links.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {link.label}
+                {siteLink && (
+                  <li>
+                    <a href={siteLink.href} target="_blank" rel="noreferrer">
+                      Site
                       <span aria-hidden="true">↗</span>
                     </a>
                   </li>
-                ))}
+                )}
+                {githubLink && (
+                  <li>
+                    <a href={githubLink.href} target="_blank" rel="noreferrer">
+                      GitHub
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
           )}
