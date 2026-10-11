@@ -86,14 +86,11 @@ export function getProjectBySlug(slug: string) {
 
 /** 메인 프로젝트 섹션에 보여줄 작품. 적힌 순서대로 최대 8개. */
 export const FEATURED_PROJECT_SLUGS = [
-  "solar-tide",
-  "copper-vein",
-  "velvet-current",
-  "eclipse-current",
-  "amber-flux",
-  "tide-pool",
-  "ink-bloom",
-  "night-lattice",
+  "mydays",
+  "krmx",
+  "ni-web",
+  "hivu",
+  "yoondesign",
 ];
 
 export const featuredProjects = FEATURED_PROJECT_SLUGS.slice(0, 8)
