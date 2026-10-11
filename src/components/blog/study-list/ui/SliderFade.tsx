@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 
-import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from "swiper";
 import { Autoplay, EffectFade } from "swiper/modules";
 
 import "swiper/css";
@@ -50,8 +51,11 @@ export function SliderFadeComponent() {
 
   // 윈도우 리사이즈 시 Swiper 리렌더링 START!
   useEffect(() => {
+    let width = window.innerWidth;
     const handleResize = () => {
-      setSwiperKey((prev) => prev + 1); // key 값을 변경시켜서 Swiper 강제 리렌더링
+      if (window.innerWidth === width) return;
+      width = window.innerWidth;
+      setSwiperKey((prev) => prev + 1);
     };
 
     window.addEventListener("resize", handleResize);

@@ -210,6 +210,10 @@ a.project_section_card {
     animation-duration: 9s;
   }
 
+  .project_section_card.is_hovered .project_panel_reflection_image {
+    animation-duration: 9s;
+  }
+
   .project_section_card.is_hovered .project_panel_reflection {
     opacity: 0.43;
   }
@@ -225,7 +229,7 @@ a.project_section_card {
   overflow: hidden;
   opacity: 0.42;
   filter: saturate(0.86);
-  transform: translateY(-3px);
+  transform: translateY(-1px);
   -webkit-mask-image: linear-gradient(
       to bottom,
       #000 0,
@@ -257,10 +261,15 @@ a.project_section_card {
   transition: opacity 450ms ease;
 }
 
+.project_panel_reflection_mirror {
+  position: absolute;
+  inset: 0;
+  transform: scaleY(-1);
+}
+
 .project_panel_reflection_image {
   filter: url("#projectSectionWater") blur(0.6px);
-  object-position: center bottom;
-  transform: scaleY(-1) scale(1.12);
+  animation: projectSectionImageDrift 13s ease-in-out infinite alternate;
 }
 
 .project_panel_ripple {

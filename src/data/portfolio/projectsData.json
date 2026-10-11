@@ -1,256 +1,142 @@
 {
   "projects": [
     {
-      "id": "solar-tide",
-      "slug": "solar-tide",
-      "mdFile": "/images/portfolio/projects/solar-tide.md",
-      "image": "/images/portfolio/project-section/mirror-01-solar-tide.png",
-      "sortDate": "2026-08-18",
-      "title": "Solar Tide",
-      "subTitle": "빛의 흐름과 유체적인 움직임을 결합한 인터랙티브 웹 경험입니다.",
-      "subTitleEn": "An interactive web experience combining the flow of light with fluid motion.",
+      "id": "mydays",
+      "slug": "mydays",
+      "mdFile": "/images/portfolio/projects/3/3.md",
+      "image": "/images/portfolio/projects/3/main_image.jpg",
+      "sortDate": "2023-06-01",
+      "title": "MyDays",
+      "subTitle": "기념일과 생일을 기록하고 디데이를 확인하는 PWA입니다.",
+      "subTitleEn": "A PWA for tracking anniversaries, birthdays, and D-day dates.",
       "hashs": [
-        { "name": "#Interaction" },
-        { "name": "#CreativeCoding" },
-        { "name": "#Frontend" }
+        { "name": "#PWA" },
+        { "name": "#Firebase" },
+        { "name": "#JavaScript" }
       ],
-      "period": "2026.07 — 2026.08",
+      "period": "2023.06",
       "context": "personal",
+      "role": "Frontend Developer",
+      "contribution": 100,
+      "techStack": ["html5", "css3", "sass", "javascript"],
+      "accentColor": "#e0761f",
+      "links": [
+        { "label": "Site", "href": "https://2taeyoon.github.io/task/MyDays/", "type": "site" },
+        { "label": "GitHub", "href": "https://github.com/2taeyoon/task/tree/master/MyDays", "type": "github" }
+      ]
+    },
+    {
+      "id": "krmx",
+      "slug": "krmx",
+      "mdFile": "/images/portfolio/projects/6/6.md",
+      "image": "/images/portfolio/projects/6/main_image.jpg",
+      "sortDate": "2024-03-01",
+      "title": "KRMX",
+      "subTitle": "골프장 회원권 시세와 매매를 다루는 기업형 거래 플랫폼입니다.",
+      "subTitleEn": "A membership trading platform for golf club rights, pricing, and listings.",
+      "hashs": [
+        { "name": "#NextJS" },
+        { "name": "#B2C" },
+        { "name": "#Company" }
+      ],
+      "period": "2024.03",
+      "context": "company-project",
+      "role": "Designer & Frontend Developer",
+      "contribution": 70,
+      "techStack": ["html5", "css3", "sass", "javascript", "typescript", "nextjs", "php"],
+      "accentColor": "#c2a10f"
+    },
+    {
+      "id": "ni-web",
+      "slug": "ni-web",
+      "mdFile": "/images/portfolio/projects/5/5.md",
+      "image": "/images/portfolio/projects/5/main_image.jpg",
+      "sortDate": "2023-11-01",
+      "title": "엔아이 자사웹",
+      "subTitle": "주식회사 엔아이의 브랜드와 마케팅 역량을 소개하는 공식 사이트입니다.",
+      "subTitleEn": "The official site introducing NI Marketing's brand, vision, and services.",
+      "hashs": [
+        { "name": "#NextJS" },
+        { "name": "#Branding" },
+        { "name": "#Company" }
+      ],
+      "period": "2023.11",
+      "context": "company-project",
       "role": "Designer & Frontend Developer",
       "contribution": 100,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#557cff"
+      "techStack": ["html5", "css3", "tailwindcss", "javascript", "typescript", "nextjs"],
+      "accentColor": "#0033ff"
     },
     {
-      "id": "copper-vein",
-      "slug": "copper-vein",
-      "mdFile": "/images/portfolio/projects/copper-vein.md",
-      "image": "/images/portfolio/project-section/mirror-02-copper-vein.png",
-      "sortDate": "2026-07-12",
-      "title": "Copper Vein",
-      "subTitle": "금속성 질감과 정제된 정보 구조를 하나의 화면 언어로 연결했습니다.",
-      "subTitleEn": "A refined interface language shaped by metallic texture and structured information.",
+      "id": "hivu",
+      "slug": "hivu",
+      "mdFile": "/images/portfolio/projects/4/4.md",
+      "image": "/images/portfolio/projects/4/main_image.jpg",
+      "sortDate": "2023-10-01",
+      "title": "hivu",
+      "subTitle": "체험 캠페인과 리뷰를 운영하는 인플루언서 마케팅 플랫폼입니다.",
+      "subTitleEn": "Interface work for a regional campaign platform connecting brands and reviewers.",
       "hashs": [
-        { "name": "#WebDesign" },
-        { "name": "#Motion" },
-        { "name": "#Publishing" }
+        { "name": "#Publishing" },
+        { "name": "#Campaign" },
+        { "name": "#Company" }
       ],
-      "period": "2026.06 — 2026.07",
-      "context": "company-project",
-      "role": "Frontend Developer",
-      "contribution": 50,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#c8794b"
+      "period": "2023.10",
+      "context": "company-maintenance",
+      "role": "Designer & Publisher",
+      "contribution": 30,
+      "techStack": ["html5", "css3", "javascript", "php"],
+      "accentColor": "#09770e"
     },
     {
-      "id": "amber-flux",
-      "slug": "amber-flux",
-      "mdFile": "/images/portfolio/projects/amber-flux.md",
-      "image": "/images/portfolio/project-section/mirror-03-amber-flux.png",
-      "sortDate": "2026-06-20",
-      "title": "Amber Flux",
-      "subTitle": "따뜻한 색의 변화와 빠른 피드백을 중심으로 설계한 디지털 프로토타입입니다.",
-      "subTitleEn": "A digital prototype centered on warm color transitions and immediate feedback.",
-      "hashs": [
-        { "name": "#Prototype" },
-        { "name": "#UIUX" },
-        { "name": "#Motion" }
-      ],
-      "period": "2026.05 — 2026.06",
-      "context": "academy-individual",
-      "role": "Frontend Developer",
-      "contribution": 100,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#d79742"
-    },
-    {
-      "id": "tide-pool",
-      "slug": "tide-pool",
-      "mdFile": "/images/portfolio/projects/tide-pool.md",
-      "image": "/images/portfolio/project-section/mirror-04-tide-pool.png",
-      "sortDate": "2026-05-08",
-      "title": "Tide Pool",
-      "subTitle": "콘텐츠를 탐색하는 과정이 잔잔한 파동처럼 이어지도록 구성한 웹 인터페이스입니다.",
-      "subTitleEn": "A web interface where content exploration flows like a gentle ripple.",
+      "id": "yoondesign",
+      "slug": "yoondesign",
+      "mdFile": "/images/portfolio/projects/2/2.md",
+      "image": "/images/portfolio/projects/2/main_image.jpg",
+      "sortDate": "2023-05-01",
+      "title": "YOONDESIGN",
+      "subTitle": "고정 헤더, 슬라이더, 스크롤 모션을 적용한 반응형 자사 사이트입니다.",
+      "subTitleEn": "A responsive company site with a fixed header, slider, and scroll motion.",
       "hashs": [
         { "name": "#Responsive" },
-        { "name": "#Accessibility" },
-        { "name": "#Frontend" }
+        { "name": "#JavaScript" },
+        { "name": "#AOS" }
       ],
-      "period": "2026.04 — 2026.05",
-      "context": "company-project",
-      "role": "Frontend Developer",
-      "contribution": 60,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#3b9ca0"
-    },
-    {
-      "id": "gilded-smoke",
-      "slug": "gilded-smoke",
-      "mdFile": "/images/portfolio/projects/gilded-smoke.md",
-      "image": "/images/portfolio/project-section/mirror-05-gilded-smoke.png",
-      "sortDate": "2026-04-16",
-      "title": "Gilded Smoke",
-      "subTitle": "절제된 레이아웃 위에 깊이감 있는 시각 효과를 더한 포트폴리오 실험입니다.",
-      "subTitleEn": "A portfolio experiment layering visual depth over a restrained layout.",
-      "hashs": [
-        { "name": "#Portfolio" },
-        { "name": "#ArtDirection" },
-        { "name": "#Performance" }
-      ],
-      "period": "2026.03 — 2026.04",
+      "period": "2023.05",
       "context": "personal",
-      "role": "Designer & Frontend Developer",
-      "contribution": 100,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#b69b63"
-    },
-    {
-      "id": "ink-bloom",
-      "slug": "ink-bloom",
-      "mdFile": "/images/portfolio/projects/ink-bloom.md",
-      "image": "/images/portfolio/project-section/mirror-06-ink-bloom.png",
-      "sortDate": "2026-03-11",
-      "title": "Ink Bloom",
-      "subTitle": "강한 대비와 확산되는 움직임으로 콘텐츠의 집중도를 높인 인터랙션 연구입니다.",
-      "subTitleEn": "An interaction study using contrast and diffusion to strengthen content focus.",
-      "hashs": [
-        { "name": "#Typography" },
-        { "name": "#Interaction" },
-        { "name": "#CreativeWeb" }
-      ],
-      "period": "2026.02 — 2026.03",
-      "context": "academy-team",
-      "role": "Frontend Developer",
-      "contribution": 40,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#7160a8"
-    },
-    {
-      "id": "blue-orbit",
-      "slug": "blue-orbit",
-      "mdFile": "/images/portfolio/projects/blue-orbit.md",
-      "image": "/images/portfolio/project-section/mirror-07-blue-orbit.png",
-      "sortDate": "2026-02-14",
-      "title": "Blue Orbit",
-      "subTitle": "순환하는 탐색 구조와 공간감을 활용해 정보를 단계적으로 보여주는 웹 경험입니다.",
-      "subTitleEn": "A spatial web experience that reveals information through circular navigation.",
-      "hashs": [
-        { "name": "#Navigation" },
-        { "name": "#WebGL" },
-        { "name": "#Experience" }
-      ],
-      "period": "2026.01 — 2026.02",
-      "context": "company-project",
-      "role": "Frontend Developer",
-      "contribution": 55,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#315bd7"
-    },
-    {
-      "id": "eclipse-current",
-      "slug": "eclipse-current",
-      "mdFile": "/images/portfolio/projects/eclipse-current.md",
-      "image": "/images/portfolio/project-section/mirror-08-eclipse-current.png",
-      "sortDate": "2026-01-09",
-      "title": "Eclipse Current",
-      "subTitle": "어두운 배경과 선명한 흐름을 대비시켜 핵심 정보에 집중하도록 설계했습니다.",
-      "subTitleEn": "A focused interface built through the contrast of a dark canvas and vivid currents.",
-      "hashs": [
-        { "name": "#DarkUI" },
-        { "name": "#DesignSystem" },
-        { "name": "#Frontend" }
-      ],
-      "period": "2025.12 — 2026.01",
-      "context": "company-maintenance",
-      "role": "Frontend Developer",
-      "contribution": 30,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#465b91"
-    },
-    {
-      "id": "velvet-current",
-      "slug": "velvet-current",
-      "mdFile": "/images/portfolio/projects/velvet-current.md",
-      "image": "/images/portfolio/project-section/mirror-02-copper-vein.png",
-      "sortDate": "2025-12-02",
-      "title": "Velvet Current",
-      "subTitle": "부드러운 표면 질감과 느린 전환으로 콘텐츠의 여운을 남긴 웹 실험입니다.",
-      "subTitleEn": "A web study that leaves an afterimage through soft texture and slow transitions.",
-      "hashs": [
-        { "name": "#Motion" },
-        { "name": "#Visual" },
-        { "name": "#Frontend" }
-      ],
-      "period": "2025.11 — 2025.12",
-      "context": "academy-team",
-      "role": "Frontend Developer",
-      "contribution": 35,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#8a4d6d"
-    },
-    {
-      "id": "prism-harbor",
-      "slug": "prism-harbor",
-      "mdFile": "/images/portfolio/projects/prism-harbor.md",
-      "image": "/images/portfolio/project-section/mirror-05-gilded-smoke.png",
-      "sortDate": "2025-11-08",
-      "title": "Prism Harbor",
-      "subTitle": "흩어진 정보를 하나의 항로처럼 모아 단계적으로 읽히게 한 인터페이스입니다.",
-      "subTitleEn": "An interface that gathers scattered information into a single, readable course.",
-      "hashs": [
-        { "name": "#Information" },
-        { "name": "#UIUX" },
-        { "name": "#Publishing" }
-      ],
-      "period": "2025.10 — 2025.11",
-      "context": "academy-team",
-      "role": "Frontend Developer",
-      "contribution": 45,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#6d8f7a"
-    },
-    {
-      "id": "lumen-fold",
-      "slug": "lumen-fold",
-      "mdFile": "/images/portfolio/projects/lumen-fold.md",
-      "image": "/images/portfolio/project-section/mirror-01-solar-tide.png",
-      "sortDate": "2025-10-14",
-      "title": "Lumen Fold",
-      "subTitle": "접히는 레이어와 빛으로 화면의 깊이를 나누어 보여 준 프로토타입입니다.",
-      "subTitleEn": "A prototype that separates depth through folded layers and light.",
-      "hashs": [
-        { "name": "#Prototype" },
-        { "name": "#Layer" },
-        { "name": "#CreativeCoding" }
-      ],
-      "period": "2025.09 — 2025.10",
-      "context": "academy-individual",
       "role": "Frontend Developer",
       "contribution": 100,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#c4a15a"
+      "techStack": ["html5", "css3", "sass", "javascript"],
+      "accentColor": "#001570",
+      "links": [
+        { "label": "Site", "href": "https://2taeyoon.github.io/task/YOONDESIGN/", "type": "site" },
+        { "label": "GitHub", "href": "https://github.com/2taeyoon/task/tree/master/YOONDESIGN", "type": "github" }
+      ]
     },
     {
-      "id": "night-lattice",
-      "slug": "night-lattice",
-      "mdFile": "/images/portfolio/projects/night-lattice.md",
-      "image": "/images/portfolio/project-section/mirror-07-blue-orbit.png",
-      "sortDate": "2025-09-20",
-      "title": "Night Lattice",
-      "subTitle": "격자 구조 위에 야간 톤의 대비를 얹어 정보를 차분히 훑게 한 화면입니다.",
-      "subTitleEn": "A calm scanning layout that sets night-toned contrast over a lattice.",
+      "id": "netmarble",
+      "slug": "netmarble",
+      "mdFile": "/images/portfolio/projects/1/1.md",
+      "image": "/images/portfolio/projects/1/main_image.jpg",
+      "sortDate": "2023-03-01",
+      "title": "netmarble",
+      "subTitle": "PC와 모바일 화면을 나눠 구성한 넷마블 사이트 클론입니다.",
+      "subTitleEn": "An adaptive clone of the Netmarble site for desktop and mobile layouts.",
       "hashs": [
-        { "name": "#Layout" },
-        { "name": "#DarkUI" },
-        { "name": "#DesignSystem" }
+        { "name": "#Clone" },
+        { "name": "#JavaScript" },
+        { "name": "#Swiper" }
       ],
-      "period": "2025.08 — 2025.09",
-      "context": "company-maintenance",
+      "period": "2023.03",
+      "context": "personal",
       "role": "Frontend Developer",
-      "contribution": 25,
-      "techStack": ["html5", "css3", "sass", "tailwindcss", "javascript", "typescript", "react", "webpack", "nextjs", "photoshop", "illustrator", "indesign", "figma"],
-      "accentColor": "#3d4f8f"
+      "contribution": 100,
+      "techStack": ["html5", "css3", "javascript"],
+      "accentColor": "#b21210",
+      "links": [
+        { "label": "Site", "href": "https://2taeyoon.github.io/task/netmable/", "type": "site" },
+        { "label": "GitHub", "href": "https://github.com/2taeyoon/task/tree/master/netmable", "type": "github" }
+      ]
     }
   ]
 }
