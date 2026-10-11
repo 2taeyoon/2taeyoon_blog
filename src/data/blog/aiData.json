@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/18/18.md",
+			"image": "/images/blog/ai/18/main_image.webp",
+			"sortDate": "2026-10-11",
+			"title": "토끼와 거북이 RAG 청킹, 임베딩, 하이브리드 검색",
+			"subTitle": "「토끼와 거북이」를 다시 쓴 동화 한 편으로 청킹 6가지, 임베딩 3종, 하이브리드 검색을 질문 525개로 비교한 실험 기록이다. 1위 적중률만 보면 parent-child가 앞서지만 읽는 분량을 2,000자로 맞추면 재귀 분할이 앞섰고, BM25는 dense 8 대 2 정도로 조금만 섞는 편이 나았다.",
+			"hashs": [
+				{"name": "#청킹"},
+				{"name": "#임베딩"},
+				{"name": "#하이브리드검색"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/17/17.md",
 			"image": "/images/blog/ai/17/main_image.webp",
 			"sortDate": "2026-10-11",
