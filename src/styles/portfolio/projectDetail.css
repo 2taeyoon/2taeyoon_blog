@@ -223,17 +223,24 @@
 }
 
 .project_detail_links a {
-  color: var(--pfTextSub);
-  font-family: "Pretendard", sans-serif;
-  font-size: 1.35rem;
-}
-
-.project_detail_links a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 0.5rem;
+  padding: 1rem 1.2rem;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
   text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project_detail_links a:hover,
+.project_detail_links a:focus-visible {
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
 }
 
 .project_markdown {
