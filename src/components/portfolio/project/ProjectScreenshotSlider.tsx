@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from "swiper";
 import { A11y, Navigation, Thumbs } from "swiper/modules";
-import type { SwiperClass } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
@@ -41,7 +42,14 @@ export default function ProjectScreenshotSlider({
       >
         {images.map((image) => (
           <SwiperSlide key={image.src}>
-            <img src={image.src} alt={image.alt} />
+            <a href={image.src} target="_blank" rel="noreferrer">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 700px) 92vw, 80vw"
+              />
+            </a>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -56,7 +64,7 @@ export default function ProjectScreenshotSlider({
         {images.map((image, index) => (
           <SwiperSlide key={image.src}>
             <button type="button" aria-label={`${index + 1}번 스크린샷 미리보기`}>
-              <img src={image.src} alt="" />
+              <Image src={image.src} alt="" fill sizes="16rem" />
             </button>
           </SwiperSlide>
         ))}
