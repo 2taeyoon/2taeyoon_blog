@@ -197,14 +197,9 @@
 }
 
 .project_card_link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
-.project_card_link:focus-visible {
-  outline: 1px solid var(--pfTextStrong);
-  outline-offset: 0.8rem;
+  position: absolute;
+  z-index: 2;
+  inset: 0;
 }
 
 .project_card_visual {
@@ -222,10 +217,15 @@
     filter 500ms ease;
 }
 
-.project_card_link:hover .project_card_image,
-.project_card_link:focus-visible .project_card_image {
-  filter: saturate(1.08) contrast(1.04);
-  transform: scale(1.045);
+.project_card_visual:hover .project_card_image,
+.project_card_visual:focus-within .project_card_image {
+  filter: brightness(0.7);
+  transform: scale(1.02);
+}
+
+.project_card_visual:hover .project_card_visual_overlay,
+.project_card_visual:focus-within .project_card_visual_overlay {
+  background: rgba(3, 5, 12, 0.28);
 }
 
 .project_card_visual_overlay {
@@ -241,42 +241,11 @@
     );
 }
 
-.project_card_view {
-  position: absolute;
-  z-index: 2;
-  right: 2.4rem;
-  bottom: 2.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: #ffffff;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.13rem;
-  text-transform: uppercase;
-  transform: translateY(1rem);
-  opacity: 0;
-  transition:
-    transform 320ms ease,
-    opacity 320ms ease;
-}
-
-.project_card_view svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-}
-
-.project_card_link:hover .project_card_view,
-.project_card_link:focus-visible .project_card_view {
-  transform: translateY(0);
-  opacity: 1;
-}
-
 .project_card_body {
+  display: block;
   padding-top: 2rem;
+  color: inherit;
+  text-decoration: none;
 }
 
 .project_card_heading {
@@ -295,39 +264,78 @@
 
 .project_card_heading time {
   color: var(--pfTextSub);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   letter-spacing: 0.12rem;
 }
 
 .project_card_body > p {
-  margin: 0.8rem 0 1.6rem;
+  display: -webkit-box;
+  margin: 0.8rem 0 1.2rem;
+  overflow: hidden;
   color: var(--pfTextSub);
   font-family: "Pretendard", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.project_card_hashs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
+.project_card_context {
+  display: inline-flex;
   margin: 0;
-  padding: 0;
-  list-style: none;
+  padding: 0.55rem 0.9rem;
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04rem;
 }
 
-.project_card_hashs li {
-  background: rgba(255, 255, 255, 0.07);
-  padding: 0.65rem 1rem;
-  color: var(--pfTextSub);
-  font-size: 1.2rem;
+.project_card_links {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease;
+}
+
+.project_card_visual:hover .project_card_links,
+.project_card_visual:focus-within .project_card_links {
+  opacity: 1;
+}
+
+.project_card_links a {
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
   letter-spacing: 0.04rem;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.project_card_visual:hover .project_card_links a,
+.project_card_visual:focus-within .project_card_links a {
+  pointer-events: auto;
+}
+
+.project_card_links a:hover,
+.project_card_links a:focus-visible {
+  text-decoration: underline;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .project_card_link,
   .project_card_image,
-  .project_card_view {
+  .project_card_links {
     transition-duration: 0.001ms;
   }
 }

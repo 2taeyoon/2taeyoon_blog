@@ -121,9 +121,12 @@
     font-size: 1.4rem;
   }
 
-  .project_card_view {
-    transform: translateY(0);
+  .project_card_links {
     opacity: 1;
+  }
+
+  .project_card_links a {
+    pointer-events: auto;
   }
 
   .project_detail_information dl {
