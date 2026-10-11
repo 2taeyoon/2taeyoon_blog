@@ -53,7 +53,6 @@ export default function ProjectCaseStudy({
               priority
               sizes="(max-width: 700px) 92vw, 88vw"
             />
-            <span aria-hidden="true" />
           </div>
         </header>
 
