@@ -1,5 +1,73 @@
 {
-  "cards": [
+	"cards": [
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/17/17.md",
+			"image": "/images/blog/ai/17/main_image.webp",
+			"sortDate": "2026-10-11",
+			"title": "실전 RAG 파이프라인과 검색 고도화 로드맵",
+			"subTitle": "단순히 문서를 넣고 검색을 띄워보는 기초 튜토리얼을 넘어, 실제 서비스에서 오답 없는 검색 품질을 만들기 위해 청킹 전략을 깎고 하이브리드 검색을 숫자로 검증해 나간 실무 최적화 로드맵을 상자로 정리한 것이다.",
+			"hashs": [
+				{"name": "#RAG"},
+				{"name": "#청킹"},
+				{"name": "#하이브리드검색"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/16/16.md",
+			"image": "/images/blog/ai/16/main_image.webp",
+			"sortDate": "2026-10-11",
+			"title": "실전 딥러닝 모델 선정 및 최적화 파이프라인",
+			"subTitle": "실제 현업 프로젝트에서 수많은 모델 중 무엇을 골라, 어떻게 깎고, 어떻게 서비스로 올릴 것인가를 고민할 때 거쳐 가는 실무 관점의 모델 선정 및 최적화 파이프라인을 한눈에 정리한 것이다.",
+			"hashs": [
+				{"name": "#딥러닝"},
+				{"name": "#모델선정"},
+				{"name": "#파이프라인"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/15/15.md",
+			"image": "/images/blog/ai/15/main_image.webp",
+			"sortDate": "2026-10-11",
+			"title": "군중 객체 인식 모델 비교",
+			"subTitle": "군중 사진에서 모델마다 박스가 얼마나 붙고, 한 장에 시간이 얼마나 걸리는지 비교했다. 정답 라벨은 없고, 신뢰도 0.25에서 센 감지 수와 CPU 시간이다. 비교는 글래스고 거리 한 장의 캡처와 사진 6장의 평균이다.",
+			"hashs": [
+				{"name": "#객체인식"},
+				{"name": "#YOLO"},
+				{"name": "#RT-DETR"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/14/14.md",
+			"image": "/images/blog/ai/14/main_image.webp",
+			"sortDate": "2026-10-10",
+			"title": "AX 개발자 특강",
+			"subTitle": "좋은 기회로 참석하게 된 AX 개발자 특강을 다시 정리한 글이다. AX 개발의 시작은 세 가지를 한 줄로 잇는 일이다. AGI가 어떤 목표인지 알고, 임베딩으로 뜻의 가까움을 숫자로 다루며, 그 일을 내 윈도우 컴퓨터에서 직접 돌릴 책상을 차린다.",
+			"hashs": [
+				{"name": "#AX"},
+				{"name": "#AGI"},
+				{"name": "#임베딩"}
+			]
+		},
 		{
 			"type": "blog/ai",
 			"category": [
