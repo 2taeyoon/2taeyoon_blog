@@ -13,6 +13,7 @@
 
 @media (width <= 640px) {
   .project_panel_image,
+  .project_panel_reflection_image,
   .project_panel_reflection,
   .project_panel_ripple {
     animation: none;

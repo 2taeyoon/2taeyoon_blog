@@ -483,20 +483,21 @@ export default function ProjectSection() {
                       />
                     </div>
 
-                    <div
-                      className="project_panel_reflection"
-                      aria-hidden="true"
-                      style={puzzleClip ? { clipPath: puzzleClip } : undefined}
-                    >
-                      <Image
-                        className="project_panel_reflection_image"
-                        src={work.image}
-                        alt=""
-                        fill
-                        sizes="(max-width: 560px) 70vw, (max-width: 900px) 42vw, 32rem"
-                        draggable={false}
-                      />
-                      <span className="project_panel_ripple" />
+                    <div className="project_panel_reflection" aria-hidden="true">
+                      <div
+                        className="project_panel_reflection_mirror"
+                        style={puzzleClip ? { clipPath: puzzleClip } : undefined}
+                      >
+                        <Image
+                          className="project_panel_reflection_image"
+                          src={work.image}
+                          alt=""
+                          fill
+                          sizes="(max-width: 560px) 70vw, (max-width: 900px) 42vw, 32rem"
+                          draggable={false}
+                        />
+                        <span className="project_panel_ripple" />
+                      </div>
                     </div>
                   </div>
                 </Link>

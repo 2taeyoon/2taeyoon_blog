@@ -119,19 +119,6 @@
   object-fit: cover;
 }
 
-.project_detail_hero > span {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background:
-    linear-gradient(to top, rgba(3, 5, 12, 0.48), transparent 38%),
-    linear-gradient(
-      125deg,
-      color-mix(in srgb, var(--project-detail-accent) 18%, transparent),
-      transparent 55%
-    );
-}
-
 .project_detail_information {
   display: flex;
   align-items: flex-start;
@@ -223,17 +210,24 @@
 }
 
 .project_detail_links a {
-  color: var(--pfTextSub);
-  font-family: "Pretendard", sans-serif;
-  font-size: 1.35rem;
-}
-
-.project_detail_links a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 0.5rem;
+  padding: 1rem 1.2rem;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.06rem;
   text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project_detail_links a:hover,
+.project_detail_links a:focus-visible {
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
 }
 
 .project_markdown {
@@ -337,6 +331,91 @@
   width: 100%;
   height: auto;
   margin: 5rem 0;
+}
+
+.project_screenshot {
+  margin: 3rem 0 5rem;
+}
+
+.project_screenshot_main {
+  background: rgba(255, 255, 255, 0.04);
+  aspect-ratio: 16 / 9;
+}
+
+.project_screenshot_main .swiper-wrapper,
+.project_screenshot_main .swiper-slide {
+  height: 100%;
+}
+
+.project_screenshot_main .swiper-slide a {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.project_screenshot_main .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+}
+
+.project_screenshot_main .swiper-button-prev,
+.project_screenshot_main .swiper-button-next {
+  width: 4.4rem;
+  height: 4.4rem;
+  background: #ffffff;
+  color: #000000;
+}
+
+.project_screenshot_main .swiper-button-prev::after,
+.project_screenshot_main .swiper-button-next::after {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.project_screenshot_main .swiper-button-prev:hover,
+.project_screenshot_main .swiper-button-next:hover,
+.project_screenshot_main .swiper-button-prev:focus-visible,
+.project_screenshot_main .swiper-button-next:focus-visible {
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
+}
+
+.project_screenshot_thumbs {
+  margin-top: 1.6rem;
+}
+
+.project_screenshot_thumbs .swiper-slide {
+  width: 16rem;
+  aspect-ratio: 16 / 10;
+  opacity: 0.5;
+}
+
+.project_screenshot_thumbs .swiper-slide-thumb-active {
+  opacity: 1;
+  box-shadow: inset 0 0 0 2px var(--pfTheme);
+}
+
+.project_screenshot_thumbs button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.project_screenshot_thumbs img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: cover;
 }
 
 .project_markdown table {
