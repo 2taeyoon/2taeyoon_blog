@@ -11,6 +11,12 @@
   }
 }
 
+@media (width <= 768px) {
+  .project_section_floaters {
+    display: none;
+  }
+}
+
 @media (width <= 640px) {
   .project_panel_image,
   .project_panel_reflection_image,

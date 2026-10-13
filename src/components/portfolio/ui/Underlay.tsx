@@ -252,14 +252,6 @@ export default function Underlay() {
         className={`underlay_top_row underlay_top_row_global${
           shouldBlurHeader ? " is_blurred" : ""
         }`}
-        style={
-          shouldBlurHeader
-            ? {
-                backdropFilter: "blur(5px)",
-                WebkitBackdropFilter: "blur(5px)",
-              }
-            : undefined
-        }
       >
         <Link
           href="/"

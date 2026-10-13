@@ -2,13 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import { projectContextLabel, type Project } from "@/data/portfolio/projects";
 import { playUiHover } from "@/lib/portfolio/uiSound";
-
-type ProjectCardStyle = CSSProperties & {
-  "--project-card-accent": string;
-};
 
 interface ProjectCardProps {
   project: Project;
@@ -20,15 +15,12 @@ function projectCardDate(sortDate: string) {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const style: ProjectCardStyle = {
-    "--project-card-accent": project.accentColor,
-  };
   const siteLink = project.links?.find((link) => link.type === "site");
   const githubLink = project.links?.find((link) => link.type === "github");
   const detailHref = `/projects/${project.slug}`;
 
   return (
-    <article className="project_card" style={style}>
+    <article className="project_card">
       <div className="project_card_visual">
         <Image
           className="project_card_image"

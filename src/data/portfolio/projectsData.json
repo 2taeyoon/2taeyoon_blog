@@ -1,43 +1,17 @@
 {
   "projects": [
     {
-      "id": "mydays",
-      "slug": "mydays",
-      "mdFile": "/images/portfolio/projects/3/3.md",
-      "image": "/images/portfolio/projects/3/main_image.jpg",
-      "sortDate": "2023-06-01",
-      "title": "MyDays",
-      "subTitle": "기념일과 생일을 기록하고 디데이를 확인하는 PWA입니다.",
-      "subTitleEn": "A PWA for tracking anniversaries, birthdays, and D-day dates.",
-      "hashs": [
-        { "name": "#PWA" },
-        { "name": "#Firebase" },
-        { "name": "#JavaScript" }
-      ],
-      "period": "2023.06",
-      "context": "personal",
-      "role": "Frontend Developer",
-      "contribution": 100,
-      "techStack": ["html5", "css3", "sass", "javascript"],
-      "accentColor": "#e0761f",
-      "links": [
-        { "label": "Site", "href": "https://2taeyoon.github.io/task/MyDays/", "type": "site" },
-        { "label": "GitHub", "href": "https://github.com/2taeyoon/task/tree/master/MyDays", "type": "github" }
-      ]
-    },
-    {
       "id": "krmx",
       "slug": "krmx",
       "mdFile": "/images/portfolio/projects/6/6.md",
-      "image": "/images/portfolio/projects/6/main_image.jpg",
+      "image": "/images/portfolio/projects/6/main_image.webp",
       "sortDate": "2024-03-01",
       "title": "KRMX",
       "subTitle": "골프장 회원권 시세와 매매를 다루는 기업형 거래 플랫폼입니다.",
       "subTitleEn": "A membership trading platform for golf club rights, pricing, and listings.",
       "hashs": [
         { "name": "#NextJS" },
-        { "name": "#B2C" },
-        { "name": "#Company" }
+        { "name": "#B2C" }
       ],
       "period": "2024.03",
       "context": "company-project",
@@ -50,15 +24,14 @@
       "id": "ni-web",
       "slug": "ni-web",
       "mdFile": "/images/portfolio/projects/5/5.md",
-      "image": "/images/portfolio/projects/5/main_image.jpg",
+      "image": "/images/portfolio/projects/5/main_image.webp",
       "sortDate": "2023-11-01",
       "title": "엔아이 자사웹",
       "subTitle": "주식회사 엔아이의 브랜드와 마케팅 역량을 소개하는 공식 사이트입니다.",
       "subTitleEn": "The official site introducing NI Marketing's brand, vision, and services.",
       "hashs": [
         { "name": "#NextJS" },
-        { "name": "#Branding" },
-        { "name": "#Company" }
+        { "name": "#Branding" }
       ],
       "period": "2023.11",
       "context": "company-project",
@@ -71,17 +44,16 @@
       "id": "hivu",
       "slug": "hivu",
       "mdFile": "/images/portfolio/projects/4/4.md",
-      "image": "/images/portfolio/projects/4/main_image.jpg",
-      "sortDate": "2023-10-01",
+      "image": "/images/portfolio/projects/4/main_image.webp",
+      "sortDate": "2023-09-01",
       "title": "hivu",
       "subTitle": "체험 캠페인과 리뷰를 운영하는 인플루언서 마케팅 플랫폼입니다.",
       "subTitleEn": "Interface work for a regional campaign platform connecting brands and reviewers.",
       "hashs": [
         { "name": "#Publishing" },
-        { "name": "#Campaign" },
-        { "name": "#Company" }
+        { "name": "#Campaign" }
       ],
-      "period": "2023.10",
+      "period": "2023.09",
       "context": "company-maintenance",
       "role": "Designer & Publisher",
       "contribution": 30,
@@ -89,11 +61,36 @@
       "accentColor": "#09770e"
     },
     {
+      "id": "mydays",
+      "slug": "mydays",
+      "mdFile": "/images/portfolio/projects/3/3.md",
+      "image": "/images/portfolio/projects/3/main_image.webp",
+      "sortDate": "2022-06-01",
+      "title": "MyDays",
+      "subTitle": "기념일과 생일을 기록하고 디데이를 확인하는 PWA입니다.",
+      "subTitleEn": "A PWA for tracking anniversaries, birthdays, and D-day dates.",
+      "hashs": [
+        { "name": "#PWA" },
+        { "name": "#Firebase" },
+        { "name": "#JavaScript" }
+      ],
+      "period": "2022.06",
+      "context": "personal",
+      "role": "Frontend Developer",
+      "contribution": 100,
+      "techStack": ["html5", "css3", "sass", "javascript"],
+      "accentColor": "#e0761f",
+      "links": [
+        { "label": "Site", "href": "https://2taeyoon.github.io/task/MyDays/", "type": "site" },
+        { "label": "GitHub", "href": "https://github.com/2taeyoon/task/tree/master/MyDays", "type": "github" }
+      ]
+    },
+    {
       "id": "yoondesign",
       "slug": "yoondesign",
       "mdFile": "/images/portfolio/projects/2/2.md",
-      "image": "/images/portfolio/projects/2/main_image.jpg",
-      "sortDate": "2023-05-01",
+      "image": "/images/portfolio/projects/2/main_image.webp",
+      "sortDate": "2022-05-01",
       "title": "YOONDESIGN",
       "subTitle": "고정 헤더, 슬라이더, 스크롤 모션을 적용한 반응형 자사 사이트입니다.",
       "subTitleEn": "A responsive company site with a fixed header, slider, and scroll motion.",
@@ -102,7 +99,7 @@
         { "name": "#JavaScript" },
         { "name": "#AOS" }
       ],
-      "period": "2023.05",
+      "period": "2022.05",
       "context": "personal",
       "role": "Frontend Developer",
       "contribution": 100,
@@ -117,8 +114,8 @@
       "id": "netmarble",
       "slug": "netmarble",
       "mdFile": "/images/portfolio/projects/1/1.md",
-      "image": "/images/portfolio/projects/1/main_image.jpg",
-      "sortDate": "2023-03-01",
+      "image": "/images/portfolio/projects/1/main_image.webp",
+      "sortDate": "2022-03-01",
       "title": "netmarble",
       "subTitle": "PC와 모바일 화면을 나눠 구성한 넷마블 사이트 클론입니다.",
       "subTitleEn": "An adaptive clone of the Netmarble site for desktop and mobile layouts.",
@@ -127,7 +124,7 @@
         { "name": "#JavaScript" },
         { "name": "#Swiper" }
       ],
-      "period": "2023.03",
+      "period": "2022.03",
       "context": "personal",
       "role": "Frontend Developer",
       "contribution": 100,
