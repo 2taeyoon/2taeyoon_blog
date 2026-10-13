@@ -34,8 +34,20 @@
 }
 
 .underlay_top_row_global.is_blurred {
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 8, 14, 0.94) 0%,
+    rgba(6, 8, 14, 0.82) 68%,
+    rgba(6, 8, 14, 0.28) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.underlay_top_row_global.is_blurred .underlay_logo,
+.underlay_top_row_global.is_blurred .underlay_nav_item {
+  color: #f4f4f6;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.72);
 }
 
 .underlay_logo {
