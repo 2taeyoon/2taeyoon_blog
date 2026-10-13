@@ -5,12 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import ProjectPageFloaters from "@/components/portfolio/project/ProjectPageFloaters";
 import { featuredProjects } from "@/data/portfolio/projects";
 import {
   mainExit,
   puzzleSimulation,
 } from "@/lib/portfolio/pointerState";
-import { createPuzzleClipPath } from "@/lib/portfolio/puzzleClip";
 import { playUiHover } from "@/lib/portfolio/uiSound";
 
 const PROJECT_ITEMS = featuredProjects.map(({ title, image, slug }) => ({
@@ -34,6 +34,25 @@ function formatIndex(index: number) {
   return String(index + 1).padStart(2, "0");
 }
 
+const HANGUL_PATTERN = /[ㄱ-ㅎㅏ-ㅣ가-힣]/;
+const LATIN_PATTERN = /[A-Za-z]/;
+
+type ActiveTitleScript = "english" | "korean" | "mixed";
+
+function activeTitleScript(title: string): ActiveTitleScript {
+  const hasHangul = HANGUL_PATTERN.test(title);
+  const hasLatin = LATIN_PATTERN.test(title);
+  if (hasHangul && hasLatin) return "mixed";
+  if (hasHangul) return "korean";
+  return "english";
+}
+
+const ACTIVE_TITLE_FONT: Record<ActiveTitleScript, string> = {
+  english: '"Nunito Sans", sans-serif',
+  korean: '"Pretendard", "Malgun Gothic", sans-serif',
+  mixed: '"Pretendard", "Malgun Gothic", sans-serif',
+};
+
 function modulo(value: number, divisor: number) {
   return ((value % divisor) + divisor) % divisor;
 }
@@ -45,30 +64,30 @@ export default function ProjectSection() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const waterDisplacementRef = useRef<SVGFEDisplacementMapElement>(null);
+  const waterTurbulenceRef = useRef<SVGFETurbulenceElement>(null);
   const navigateRef = useRef<(index: number) => void>(() => {});
+  const draggedRef = useRef(false);
   const activeIndexRef = useRef(0);
-  const artRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [puzzleClip, setPuzzleClip] = useState<string>();
+  const [showFloaters, setShowFloaters] = useState(false);
+  const activeScript = activeTitleScript(PROJECT_ITEMS[activeIndex].title);
 
   useEffect(() => {
     return () => puzzleSimulation.setPaused(false);
   }, []);
 
-  useLayoutEffect(() => {
-    const node = artRef.current;
-    if (!node) return;
+  useEffect(() => {
+    const root = document.querySelector(".portfolio_sections");
+    if (!root) return;
 
-    const update = () => {
-      const width = node.offsetWidth;
-      const height = node.offsetHeight;
-      if (width < 2 || height < 2) return;
-      setPuzzleClip(createPuzzleClipPath(width, height));
+    const read = () => {
+      const value = Number(getComputedStyle(root).getPropertyValue("--project-enter"));
+      setShowFloaters(value > 0.05);
     };
 
-    update();
-    const observer = new ResizeObserver(update);
-    observer.observe(node);
+    read();
+    const observer = new MutationObserver(read);
+    observer.observe(root, { attributes: true, attributeFilter: ["style"] });
     return () => observer.disconnect();
   }, []);
 
@@ -260,7 +279,6 @@ export default function ProjectSection() {
     let pressStartX = 0;
     let pressStartY = 0;
     let pressSlug: string | null = null;
-    let dragged = false;
 
     const handlePointerDown = (event: PointerEvent) => {
       if (event.pointerType === "mouse" && event.button !== 0) return;
@@ -272,7 +290,7 @@ export default function ProjectSection() {
       pressStartX = event.clientX;
       pressStartY = event.clientY;
       pressSlug = card?.dataset.projectSlug ?? null;
-      dragged = false;
+      draggedRef.current = false;
 
       navigationTween?.kill();
       navigating = false;
@@ -281,6 +299,7 @@ export default function ProjectSection() {
       previousTime = performance.now();
       velocity = 0;
       viewport.dataset.dragging = "true";
+      if (event.pointerType === "mouse") event.preventDefault();
       viewport.setPointerCapture(event.pointerId);
     };
 
@@ -294,7 +313,7 @@ export default function ProjectSection() {
       const movement = event.clientX - previousX;
       const travelX = event.clientX - pressStartX;
       const travelY = event.clientY - pressStartY;
-      if (travelX * travelX + travelY * travelY > 64) dragged = true;
+      if (travelX * travelX + travelY * travelY > 36) draggedRef.current = true;
       position.x += movement;
       velocity = (movement / elapsed) * 16.67;
       previousX = event.clientX;
@@ -306,7 +325,7 @@ export default function ProjectSection() {
       if (pointerId !== event.pointerId) return;
 
       const slug = pressSlug;
-      const shouldOpen = Boolean(slug) && !dragged;
+      const shouldOpen = Boolean(slug) && !draggedRef.current;
       pressSlug = null;
 
       if (viewport.hasPointerCapture(event.pointerId)) {
@@ -324,24 +343,37 @@ export default function ProjectSection() {
       setHoveredCard(null);
     };
 
+    const handleClickCapture = (event: MouseEvent) => {
+      if (!draggedRef.current) return;
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
     const tick = () => {
       const frameRatio = gsap.ticker.deltaRatio(60);
       const elapsed = frameRatio / 60;
-      if (mainExit.progress < 0.75) return;
 
-      waterTime += elapsed;
-      waterElapsed += elapsed;
-      if (waterElapsed >= WATER_FRAME_TIME) {
-        waterElapsed %= WATER_FRAME_TIME;
-        const idleWave =
-          Math.sin(waterTime * 1.7) * 3 +
-          Math.sin(waterTime * 0.83 + 1.4) * 2;
-        waterDisplacementRef.current?.setAttribute(
-          "scale",
-          String(16 + idleWave),
-        );
+      if (mainExit.progress > 0.05) {
+        waterTime += elapsed;
+        waterElapsed += elapsed;
+        if (waterElapsed >= WATER_FRAME_TIME) {
+          waterElapsed %= WATER_FRAME_TIME;
+          const idleWave =
+            Math.sin(waterTime * 1.7) * 8 +
+            Math.sin(waterTime * 0.83 + 1.4) * 5;
+          const flow = Math.sin(waterTime * 0.9);
+          waterDisplacementRef.current?.setAttribute(
+            "scale",
+            String(14 + idleWave),
+          );
+          waterTurbulenceRef.current?.setAttribute(
+            "baseFrequency",
+            `${0.007 + flow * 0.003} ${0.045 + Math.sin(waterTime * 1.35) * 0.018}`,
+          );
+        }
       }
 
+      if (mainExit.progress < 0.75) return;
       if (!period || pointerId !== null || navigating) return;
 
       if (Math.abs(velocity) > 0.04) {
@@ -360,6 +392,7 @@ export default function ProjectSection() {
     viewport.addEventListener("pointerup", releasePointer);
     viewport.addEventListener("pointercancel", releasePointer);
     viewport.addEventListener("pointerleave", handlePointerLeave);
+    viewport.addEventListener("click", handleClickCapture, true);
     gsap.ticker.add(tick);
     measure();
 
@@ -372,6 +405,7 @@ export default function ProjectSection() {
       viewport.removeEventListener("pointerup", releasePointer);
       viewport.removeEventListener("pointercancel", releasePointer);
       viewport.removeEventListener("pointerleave", handlePointerLeave);
+      viewport.removeEventListener("click", handleClickCapture, true);
       gsap.ticker.remove(tick);
       navigateRef.current = () => {};
     };
@@ -384,6 +418,8 @@ export default function ProjectSection() {
       onPointerEnter={() => puzzleSimulation.setPaused(true)}
       onPointerLeave={() => puzzleSimulation.setPaused(false)}
     >
+      {showFloaters && <ProjectPageFloaters variant="section" />}
+
       <svg className="project_section_filter" aria-hidden="true">
         <defs>
           <filter id="projectSectionFluid" x="-8%" y="-8%" width="116%" height="116%">
@@ -402,10 +438,11 @@ export default function ProjectSection() {
               yChannelSelector="B"
             />
           </filter>
-          <filter id="projectSectionWater" x="-16%" y="-8%" width="132%" height="116%">
+          <filter id="projectSectionWater" x="-20%" y="-24%" width="140%" height="148%">
             <feTurbulence
+              ref={waterTurbulenceRef}
               type="fractalNoise"
-              baseFrequency="0.008 0.065"
+              baseFrequency="0.008 0.05"
               numOctaves="2"
               seed="12"
               result="waterNoise"
@@ -456,7 +493,13 @@ export default function ProjectSection() {
                   data-project-slug={work.slug}
                   tabIndex={copy === 1 ? undefined : -1}
                   draggable={false}
+                  onDragStart={(event) => event.preventDefault()}
                   onClick={(event) => {
+                    if (draggedRef.current) {
+                      event.preventDefault();
+                      draggedRef.current = false;
+                      return;
+                    }
                     if (event.detail === 0) return;
                     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
                     event.preventDefault();
@@ -464,11 +507,7 @@ export default function ProjectSection() {
                 >
                   <p className="project_panel_title">{work.title}</p>
                   <div className="project_panel_surface">
-                    <div
-                      className="project_panel_art"
-                      ref={copy === 1 && index === 0 ? artRef : undefined}
-                      style={puzzleClip ? { clipPath: puzzleClip } : undefined}
-                    >
+                    <div className="project_panel_art">
                       <Image
                         className="project_panel_image"
                         src={work.image}
@@ -484,10 +523,7 @@ export default function ProjectSection() {
                     </div>
 
                     <div className="project_panel_reflection" aria-hidden="true">
-                      <div
-                        className="project_panel_reflection_mirror"
-                        style={puzzleClip ? { clipPath: puzzleClip } : undefined}
-                      >
+                      <div className="project_panel_reflection_mirror">
                         <Image
                           className="project_panel_reflection_image"
                           src={work.image}
@@ -513,7 +549,14 @@ export default function ProjectSection() {
           <span aria-hidden="true">/</span>
           <span>{String(PROJECT_ITEMS.length).padStart(2, "0")}</span>
         </p>
-        <p className="project_section_active_title">
+        <p
+          className={
+            activeScript === "english"
+              ? "project_section_active_title"
+              : "project_section_active_title is_korean"
+          }
+          style={{ fontFamily: ACTIVE_TITLE_FONT[activeScript] }}
+        >
           {PROJECT_ITEMS[activeIndex].title}
         </p>
         <div className="project_section_pagination" aria-label="작품 선택">
