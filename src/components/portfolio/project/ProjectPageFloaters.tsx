@@ -27,6 +27,14 @@ const PIECES: FloaterPiece[] = [
   { side: -1, pad: 7.4, y: 0.4, scale: 1.4, variant: 6, phase: 2.9, speed: 0.16 },
 ];
 
+const SECTION_PIECES: FloaterPiece[] = [
+  { side: -1, pad: 3.6, y: 0.26, scale: 1.85, variant: 0, phase: 0.3, speed: 0.22 },
+  { side: 1, pad: 3.4, y: 0.36, scale: 1.4, variant: 1, phase: 1.5, speed: 0.18 },
+  { side: -1, pad: 5.6, y: 0.44, scale: 1, variant: 3, phase: 2.4, speed: 0.26 },
+  { side: 1, pad: 1.5, y: 0.2, scale: 1, variant: 5, phase: 0.7, speed: 0.2 },
+  { side: -1, pad: 6.4, y: 0.32, scale: 1.4, variant: 6, phase: 2.9, speed: 0.16 },
+];
+
 function FloatingPuzzle({
   piece,
   reducedMotion,
@@ -65,9 +73,16 @@ function FloatingPuzzle({
   );
 }
 
-function FloaterScene({ reducedMotion }: { reducedMotion: boolean }) {
+function FloaterScene({
+  reducedMotion,
+  variant,
+}: {
+  reducedMotion: boolean;
+  variant: "page" | "section";
+}) {
   const width = useThree((state) => state.size.width);
-  const pieces = width <= 800 ? PIECES.filter((piece) => piece.scale > 1) : PIECES;
+  const source = variant === "section" ? SECTION_PIECES : PIECES;
+  const pieces = width <= 800 ? source.filter((piece) => piece.scale > 1.15) : source;
 
   return (
     <>
@@ -86,7 +101,11 @@ function FloaterScene({ reducedMotion }: { reducedMotion: boolean }) {
   );
 }
 
-export default function ProjectPageFloaters() {
+export default function ProjectPageFloaters({
+  variant = "page",
+}: {
+  variant?: "page" | "section";
+}) {
   const themeColor = usePortfolioSessionStore((state) => state.themeColor);
   const [ready, setReady] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -114,7 +133,10 @@ export default function ProjectPageFloaters() {
   }, []);
 
   return (
-    <div className="project_page_floaters" aria-hidden="true">
+    <div
+      className={variant === "section" ? "project_section_floaters" : "project_page_floaters"}
+      aria-hidden="true"
+    >
       {ready && !isMobile && (
         <Canvas
           style={{ pointerEvents: "none" }}
@@ -127,7 +149,7 @@ export default function ProjectPageFloaters() {
             gl.setClearColor(0x000000, 0);
           }}
         >
-          <FloaterScene reducedMotion={reducedMotion} />
+          <FloaterScene reducedMotion={reducedMotion} variant={variant} />
         </Canvas>
       )}
     </div>
