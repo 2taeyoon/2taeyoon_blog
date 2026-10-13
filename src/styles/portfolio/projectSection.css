@@ -31,11 +31,23 @@
   font-family: "Nunito Sans", "Pretendard", sans-serif;
 }
 
+.project_section_floaters {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.project_section_floaters canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .project_section_filter {
   position: absolute;
   width: 0;
   height: 0;
-  overflow: hidden;
   pointer-events: none;
 }
 
@@ -183,7 +195,16 @@ a.project_section_card {
   height: auto;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #03040f;
+  background: var(--pfBgLavender);
+}
+
+.project_panel_art::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: color-mix(in srgb, var(--pfBgLavender) 32%, transparent);
+  pointer-events: none;
 }
 
 .project_panel_image,
@@ -193,6 +214,7 @@ a.project_section_card {
 }
 
 .project_panel_image {
+  filter: brightness(0.82) saturate(0.88);
   animation: projectSectionImageDrift 13s ease-in-out infinite alternate;
 }
 
@@ -206,7 +228,7 @@ a.project_section_card {
   }
 
   .project_section_card.is_hovered .project_panel_image {
-    filter: url("#projectSectionFluid") saturate(1.08) contrast(1.04);
+    filter: url("#projectSectionFluid") brightness(0.86) saturate(0.94) contrast(1.04);
     animation-duration: 9s;
   }
 
@@ -215,7 +237,7 @@ a.project_section_card {
   }
 
   .project_section_card.is_hovered .project_panel_reflection {
-    opacity: 0.43;
+    opacity: 0.46;
   }
 }
 
@@ -227,14 +249,14 @@ a.project_section_card {
   left: 0;
   height: 100%;
   overflow: hidden;
-  opacity: 0.42;
-  filter: saturate(0.86);
+  opacity: 0.4;
+  filter: saturate(0.78);
   transform: translateY(-1px);
   -webkit-mask-image: linear-gradient(
       to bottom,
       #000 0,
-      rgba(0, 0, 0, 0.9) 72%,
-      transparent 100%
+      rgba(0, 0, 0, 0.72) 48%,
+      transparent 88%
     ),
     linear-gradient(
       to right,
@@ -246,8 +268,8 @@ a.project_section_card {
   mask-image: linear-gradient(
       to bottom,
       #000 0,
-      rgba(0, 0, 0, 0.9) 72%,
-      transparent 100%
+      rgba(0, 0, 0, 0.72) 48%,
+      transparent 88%
     ),
     linear-gradient(
       to right,
@@ -268,7 +290,7 @@ a.project_section_card {
 }
 
 .project_panel_reflection_image {
-  filter: url("#projectSectionWater") blur(0.6px);
+  filter: url("#projectSectionWater") brightness(0.74) saturate(0.8);
   animation: projectSectionImageDrift 13s ease-in-out infinite alternate;
 }
 
@@ -276,18 +298,23 @@ a.project_section_card {
   position: absolute;
   z-index: 3;
   inset: 0;
-  opacity: 0.44;
+  opacity: 0.82;
   background:
-    linear-gradient(180deg, rgba(93, 115, 223, 0.16), transparent 12%, rgba(2, 3, 24, 0.62)),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--pfIndigo) 18%, transparent),
+      transparent 22%,
+      color-mix(in srgb, var(--pfBgLavender) 78%, black)
+    ),
     repeating-linear-gradient(
-      176deg,
-      transparent 0 10px,
-      rgba(92, 116, 224, 0.15) 11px,
-      transparent 14px
+      180deg,
+      transparent 0 7px,
+      color-mix(in srgb, var(--pfIndigo) 42%, transparent) 8px,
+      transparent 15px
     );
-  mix-blend-mode: screen;
+  mix-blend-mode: overlay;
   pointer-events: none;
-  animation: projectSectionWaterRipple 5.5s linear infinite;
+  animation: projectSectionWaterRipple 2.8s linear infinite;
 }
 
 .project_section_footer {
@@ -323,9 +350,14 @@ a.project_section_card {
   color: var(--pfTextStrong);
   font-family: "Nunito Sans", sans-serif;
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: 700;
   letter-spacing: 3px;
   text-align: center;
+}
+
+.project_section_active_title.is_korean {
+  font-family: "Pretendard", sans-serif;
+  letter-spacing: 0;
 }
 
 .project_section_pagination {
@@ -401,17 +433,12 @@ a.project_section_card {
   0% {
     background-position:
       0 0,
-      -18px 0;
-  }
-  50% {
-    background-position:
-      0 0,
-      14px 8px;
+      0 -28px;
   }
   100% {
     background-position:
       0 0,
-      46px 0;
+      0 28px;
   }
 }
 
