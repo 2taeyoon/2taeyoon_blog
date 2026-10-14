@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/20/20.md",
+			"image": "/images/blog/ai/20/main_image.webp",
+			"sortDate": "2026-10-14",
+			"title": "Zabbix AI 서비스 구성, 역할을 나눈 이유",
+			"subTitle": "Zabbix AI 구성도를 칸마다 풀어 적었다. 밖으로 여는 화면은 Frontend 하나이고, AI Agent만 MCP와 LLM을 부르며, 운영 Zabbix는 조회만 한다. BFF, MCP, 게이트웨이, 확인 안 됨이 이 그림에서 가리키는 것을 적는다.",
+			"hashs": [
+				{"name": "#Zabbix"},
+				{"name": "#MCP"},
+				{"name": "#아키텍처"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/19/19.md",
 			"image": "/images/blog/ai/19/main_image.webp",
 			"sortDate": "2026-10-13",
