@@ -9,11 +9,11 @@
 			"mdFile": "/images/blog/ai/20/20.md",
 			"image": "/images/blog/ai/20/main_image.webp",
 			"sortDate": "2026-10-15",
-			"title": "AI agent와 진행한 Windows Zabbix",
-			"subTitle": "AI Agent와 함께 이 PC에서 Zabbix Agent와 조회 API를 확인한 기록이다. 조사는 넓게 하고 먼저 보는 칸은 CPU·메모리·디스크·네트워크다. 운영 Sever에는 쓰지 않고, 모르는 값은 0으로 그리지 않는다.",
+			"title": "AI Agent와 진행한 Windows Zabbix",
+			"subTitle": "팀에서 받은 일은 이 한 문장이었다. 참조한 기획서를 참고하여 zabbix Agent를 설치하고 pc의 cpu / mem hdd 등을 수집하고 어떤 데이터를 우리가 쓸 수 있는지, zabbix에서 어떤 데이터들을 api로 제공을 하는지 Zabbix Sever 설치는 다른 팀원 몫이었다. 내 몫은 두 가지였다. 그 Sever로 숫자를 보내는 일, 그리고 그 숫자를 우리 제품이 어떻게 꺼내 쓰는지 알아보는 일.",
 			"hashs": [
 				{"name": "#Zabbix"},
-				{"name": "#모니터링"},
+				{"name": "#Agent"},
 				{"name": "#Windows"}
 			]
 		},
@@ -29,8 +29,8 @@
 			"title": "토끼와 거북이 챗봇 에이전트 평가",
 			"subTitle": "무조건 검색에서 LangGraph 라우터를 거쳐 create_agent로 바꾼 뒤, 그 규칙을 54개 케이스로 잰 기록이다. 도구 선택은 코드로 93%, 검색 3건 안 근거는 90%, 충실성은 심판 평균 4.80이었다. 평가 지표는 이름을 지정하지 않고, 흔한 에이전트 지표 중에서 이 챗봇에 맞는 것만 고르라고 지시한 결과다.",
 			"hashs": [
-				{"name": "#에이전트"},
-				{"name": "#LLM심판"},
+				{"name": "#Agent"},
+				{"name": "#LLM"},
 				{"name": "#LangSmith"}
 			]
 		},
