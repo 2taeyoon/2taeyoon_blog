@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/21/21.md",
+			"image": "/images/blog/ai/21/main_image.webp",
+			"sortDate": "2026-10-15",
+			"title": "운영 Zabbix에 붙기 전에, Windows에서 무엇을 볼 수 있는지 확인한 이유",
+			"subTitle": "Zabbix AI 화면을 만들기 전에 이 PC에서 에이전트와 조회 API를 확인한 기록이다. 조사는 넓게 하고 먼저 보는 칸은 CPU·메모리·디스크·네트워크다. 운영 서버에는 쓰지 않고, 모르는 값은 0으로 그리지 않는다.",
+			"hashs": [
+				{"name": "#Zabbix"},
+				{"name": "#모니터링"},
+				{"name": "#Windows"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/20/20.md",
 			"image": "/images/blog/ai/20/main_image.webp",
 			"sortDate": "2026-10-14",
