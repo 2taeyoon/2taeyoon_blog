@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/21/21.md",
+			"image": "/images/blog/ai/21/main_image.webp",
+			"sortDate": "2026-10-16",
+			"title": "AI Agent에게 일을 맡기는 업무 프로세스",
+			"subTitle": "슬랙으로 건네던 요청을 Github Issue와 15분 loop로 바꾼 기록이다. 보고, 요청하고, 고치고, 확인해서 dev에 넣는 일까지 loop에 맡겼다. 나는 방향이 갈릴 때만 고른다.",
+			"hashs": [
+				{"name": "#Agent"},
+				{"name": "#워크플로"},
+				{"name": "#Issue"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/20/20.md",
 			"image": "/images/blog/ai/20/main_image.webp",
 			"sortDate": "2026-10-15",
@@ -27,7 +44,7 @@
 			"image": "/images/blog/ai/19/main_image.webp",
 			"sortDate": "2026-10-13",
 			"title": "토끼와 거북이 챗봇 에이전트 평가",
-			"subTitle": "무조건 검색에서 LangGraph 라우터를 거쳐 create_agent로 바꾼 뒤, 그 규칙을 54개 케이스로 잰 기록이다. 도구 선택은 코드로 93%, 검색 3건 안 근거는 90%, 충실성은 심판 평균 4.80이었다. 평가 지표는 이름을 지정하지 않고, 흔한 에이전트 지표 중에서 이 챗봇에 맞는 것만 고르라고 지시한 결과다.",
+			"subTitle": "동화 챗봇의 규칙을 한 번에 시키지 않고, 검색 고정, 화면, 갈림길, 기억, 도구 둘로 나눠 지시한 기록이다. 평가 지표 이름은 적지 않고 규칙에 맞는 것만 고르게 했다. 도구 선택은 93%, 검색 적중은 90%, 충실성은 심판 평균 4.80이었다.",
 			"hashs": [
 				{"name": "#Agent"},
 				{"name": "#LLM"},
