@@ -30,5 +30,16 @@ function ActivePortfolioChrome() {
     syncThemeAccent(themeColor);
   }, [themeColor]);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.add("portfolio_scroll");
+    root.classList.toggle("portfolio_theme_default", themeColor === "fabric");
+    return () => {
+      root.classList.remove("portfolio_scroll");
+      root.classList.remove("portfolio_theme_default");
+      root.style.removeProperty("--pfScrollThumb");
+    };
+  }, [themeColor]);
+
   return <Underlay />;
 }
