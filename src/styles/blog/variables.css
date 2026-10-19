@@ -32,9 +32,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: var(--themaBright);
+	background-color: var(--pfScrollThumb, var(--themaBright));
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color: var(--thema);
+	background-color: var(--pfScrollThumb, var(--thema));
 }
