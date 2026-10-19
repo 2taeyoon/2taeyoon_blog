@@ -18,7 +18,7 @@ export default function Underlay() {
   const volumeRef = useRef(100);
   const restoredMusicRef = useRef(false);
   const settingsRef = useRef<HTMLDivElement | null>(null);
-  // const unlockHandlerRef = useRef<(() => void) | null>(null);
+  const unlockHandlerRef = useRef<(() => void) | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const playingRef = useRef(false);
@@ -92,41 +92,33 @@ export default function Underlay() {
     }
   }, [createAudio, resumeAudioContext, setPlaying]);
 
-  // const removeUnlockListeners = () => {
-  //   const handler = unlockHandlerRef.current;
-  //   if (!handler) return;
-  //   window.removeEventListener("pointerdown", handler);
-  //   window.removeEventListener("keydown", handler);
-  //   unlockHandlerRef.current = null;
-  // };
+  const removeUnlockListeners = () => {
+    const handler = unlockHandlerRef.current;
+    if (!handler) return;
+    window.removeEventListener("pointerdown", handler);
+    window.removeEventListener("keydown", handler);
+    unlockHandlerRef.current = null;
+  };
 
-  // --- 현재: 처음 렌더링 시 자동 재생 (차단되면 첫 클릭/키 입력에 재시도) ---
-  // useEffect(() => {
-  //   void tryPlay();
+  // 처음 렌더링 시 자동 재생. 브라우저가 막으면 첫 클릭이나 키 입력에서 다시 시도한다.
+  useEffect(() => {
+    void tryPlay();
 
-  //   // Chrome/Safari 등은 사용자 제스처 없이 audio.play()를 막음 → 첫 상호작용 때 한 번 더 시도
-  //   const unlockOnInteraction = () => {
-  //     void tryPlay().then((ok) => {
-  //       if (ok) removeUnlockListeners();
-  //     });
-  //   };
-  //   unlockHandlerRef.current = unlockOnInteraction;
-  //   window.addEventListener("pointerdown", unlockOnInteraction);
-  //   window.addEventListener("keydown", unlockOnInteraction);
+    const unlockOnInteraction = () => {
+      void tryPlay().then((ok) => {
+        if (ok) removeUnlockListeners();
+      });
+    };
+    unlockHandlerRef.current = unlockOnInteraction;
+    window.addEventListener("pointerdown", unlockOnInteraction);
+    window.addEventListener("keydown", unlockOnInteraction);
 
-  //   return () => {
-  //     removeUnlockListeners();
-  //     audioRef.current?.pause();
-  //     audioRef.current = null;
-  //     void audioCtxRef.current?.close();
-  //     audioCtxRef.current = null;
-  //     gainRef.current = null;
-  //     graphWiredRef.current = false;
-  //   };
-  // // eslint-disable-next-line react-hooks/exhaustive-deps -- 마운트 시 1회만 실행
-  // }, []);
+    return () => {
+      removeUnlockListeners();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- 마운트 시 1회만 실행
+  }, []);
 
-  // --- 개발 시: 처음 렌더링 시 자동 재생 없음 ---
   useEffect(() => {
     setPortalTarget(document.body);
   }, []);
@@ -253,13 +245,16 @@ export default function Underlay() {
           shouldBlurHeader ? " is_blurred" : ""
         }`}
       >
-        <Link
-          href="/"
-          className="underlay_logo"
-          aria-label="2taeyoon.com 홈으로 이동"
-        >
-          2taeyoon.com
-        </Link>
+        <div className="underlay_logo_slot">
+          <Link
+            href="/"
+            className="underlay_logo"
+            aria-label="2taeyoon.com 홈으로 이동"
+            onMouseEnter={playUiHover}
+          >
+            2taeyoon.com
+          </Link>
+        </div>
         <div className="underlay_nav" onPointerDown={blockPointer}>
           <Link href="/projects" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Projects</Link>
           <Link href="/blog" className="underlay_nav_item underlay_nav_link" onMouseEnter={playUiHover}>Blog</Link>
