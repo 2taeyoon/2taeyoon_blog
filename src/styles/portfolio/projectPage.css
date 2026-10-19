@@ -217,14 +217,14 @@
     filter 500ms ease;
 }
 
-.project_card_visual:hover .project_card_image,
-.project_card_visual:focus-within .project_card_image {
+.project_card:hover .project_card_image,
+.project_card:focus-within .project_card_image {
   filter: brightness(0.7);
   transform: scale(1.02);
 }
 
-.project_card_visual:hover .project_card_visual_overlay,
-.project_card_visual:focus-within .project_card_visual_overlay {
+.project_card:hover .project_card_visual_overlay,
+.project_card:focus-within .project_card_visual_overlay {
   background: rgba(3, 5, 12, 0.28);
 }
 
@@ -306,13 +306,19 @@
   transition: opacity 320ms ease;
 }
 
-.project_card_visual:hover .project_card_links,
-.project_card_visual:focus-within .project_card_links {
+.project_card:hover .project_card_links,
+.project_card:focus-within .project_card_links {
   opacity: 1;
 }
 
 .project_card_links a {
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14rem;
+  padding: 0.8rem;
+  background: var(--pfTextStrong);
+  color: var(--pfWhite);
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
@@ -321,14 +327,15 @@
   pointer-events: none;
 }
 
-.project_card_visual:hover .project_card_links a,
-.project_card_visual:focus-within .project_card_links a {
+.project_card:hover .project_card_links a,
+.project_card:focus-within .project_card_links a {
   pointer-events: auto;
 }
 
 .project_card_links a:hover,
 .project_card_links a:focus-visible {
-  text-decoration: underline;
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
 }
 
 @media (prefers-reduced-motion: reduce) {

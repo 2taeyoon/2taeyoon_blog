@@ -7,14 +7,13 @@
 				{"color": "greenBright"}
 			],
 			"mdFile": "/images/blog/ai/22/22.md",
-			"image": "/images/blog/ai/22/images2.webp",
+			"image": "/images/blog/ai/22/main_image.webp",
 			"sortDate": "2026-10-16",
-			"title": "Zabbix Web과 테스트 리허설",
-			"subTitle": "Zabbix Web의 Latest data와 Problems를 로컬 화면과 같이 봤다. CPU 부하 3분 리허설에서 메일은 179초, 합격선 3분을 1초 남기고 통과했다.",
+			"title": "Zabbix Web과 테스트",
+			"subTitle": "Zabbix Web의 Latest data와 Problems를 로컬 화면과 같이 봤다. CPU 부하 3분 테스트에서 메일은 179초, 합격선 3분을 1초 남기고 통과했다.",
 			"hashs": [
 				{"name": "#Zabbix"},
-				{"name": "#데모"},
-				{"name": "#리허설"}
+				{"name": "#테스트"}
 			]
 		},
 		{
