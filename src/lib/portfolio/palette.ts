@@ -108,6 +108,7 @@ export function syncThemeAccent(ballColor: string) {
   root.style.setProperty("--pfTheme", accent.background);
   root.style.setProperty("--pfThemeText", accent.text);
   root.style.setProperty("--pfThemeLabel", accent.label);
+  root.style.setProperty("--pfScrollThumb", accent.background);
 }
 
 function themeAccentCss(ballColor: string) {

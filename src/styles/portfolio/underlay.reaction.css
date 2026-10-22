@@ -40,7 +40,7 @@
     row-gap: 8px;
   }
 
-  .underlay_logo {
+  .underlay_logo_slot {
     order: 1;
     flex: 1 1 auto;
     padding-right: 52px;
