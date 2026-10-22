@@ -37,21 +37,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           tabIndex={-1}
           onMouseEnter={playUiHover}
         />
-        <div className="project_card_links">
-          <Link href={detailHref} onMouseEnter={playUiHover}>
-            View Details
-          </Link>
-          {siteLink && (
-            <a href={siteLink.href} target="_blank" rel="noreferrer" onMouseEnter={playUiHover}>
-              Go to Site
-            </a>
-          )}
-          {githubLink && (
-            <a href={githubLink.href} target="_blank" rel="noreferrer" onMouseEnter={playUiHover}>
-              Go to GitHub
-            </a>
-          )}
-        </div>
       </div>
 
       <Link className="project_card_body" href={detailHref} onMouseEnter={playUiHover}>
@@ -62,6 +47,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <p>{project.subTitle}</p>
         <span className="project_card_context">{projectContextLabel(project.context)}</span>
       </Link>
+      <div className="project_card_links">
+        <Link href={detailHref} onMouseEnter={playUiHover}>
+          View Details
+        </Link>
+        {siteLink && (
+          <a href={siteLink.href} target="_blank" rel="noreferrer" onMouseEnter={playUiHover}>
+            Go to Site
+          </a>
+        )}
+        {githubLink && (
+          <a href={githubLink.href} target="_blank" rel="noreferrer" onMouseEnter={playUiHover}>
+            Go to GitHub
+          </a>
+        )}
+      </div>
     </article>
   );
 }

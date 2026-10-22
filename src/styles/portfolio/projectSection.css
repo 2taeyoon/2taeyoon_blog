@@ -159,26 +159,6 @@ a.project_section_card {
   transform-style: preserve-3d;
 }
 
-.project_panel_title {
-  position: relative;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 32px;
-  margin: 0;
-  overflow: visible;
-  color: rgba(191, 198, 232, 0.76);
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-align: center;
-  white-space: nowrap;
-  transform: translateZ(30px);
-  transition: color 350ms ease;
-}
-
 .project_panel_surface {
   position: relative;
   width: 100%;
@@ -219,10 +199,6 @@ a.project_section_card {
 }
 
 @media (hover: hover) {
-  .project_section_card.is_hovered .project_panel_title {
-    color: rgba(232, 235, 255, 0.98);
-  }
-
   .project_section_card.is_hovered .project_panel_surface {
     transform: scale(1.05);
   }

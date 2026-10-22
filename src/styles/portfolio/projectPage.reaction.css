@@ -33,6 +33,30 @@
   .project_card_visual {
     aspect-ratio: 16 / 9;
   }
+
+  .project_card {
+    grid-template-areas:
+      "visual"
+      "body"
+      "links";
+  }
+
+  .project_card_links {
+    grid-area: links;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .project_card_links a {
+    flex: 1;
+    width: auto;
+    pointer-events: auto;
+  }
 }
 
 @media (width <= 800px) {
@@ -119,14 +143,6 @@
 
   .project_card_body > p {
     font-size: 1.4rem;
-  }
-
-  .project_card_links {
-    opacity: 1;
-  }
-
-  .project_card_links a {
-    pointer-events: auto;
   }
 
   .project_detail_information dl {

@@ -193,6 +193,10 @@
 
 .project_card {
   position: relative;
+  display: grid;
+  grid-template-areas:
+    "visual"
+    "body";
   filter: drop-shadow(0 2.2rem 2.8rem var(--pfShadow));
 }
 
@@ -204,6 +208,7 @@
 
 .project_card_visual {
   position: relative;
+  grid-area: visual;
   overflow: hidden;
   width: 100%;
   aspect-ratio: 16 / 10;
@@ -242,6 +247,7 @@
 
 .project_card_body {
   display: block;
+  grid-area: body;
   padding-top: 2rem;
   color: inherit;
   text-decoration: none;
@@ -293,9 +299,8 @@
 }
 
 .project_card_links {
-  position: absolute;
   z-index: 3;
-  inset: 0;
+  grid-area: visual;
   display: flex;
   flex-direction: column;
   align-items: center;
