@@ -505,7 +505,6 @@ export default function ProjectSection() {
                     event.preventDefault();
                   }}
                 >
-                  <p className="project_panel_title">{work.title}</p>
                   <div className="project_panel_surface">
                     <div className="project_panel_art">
                       <Image

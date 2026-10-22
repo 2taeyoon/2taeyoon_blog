@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/24/24.md",
+			"image": "/images/blog/ai/24/main_image.webp",
+			"sortDate": "2026-10-22",
+			"title": "AI 에이전트를 하나의 레포에서 운영한 방법",
+			"subTitle": "ax-company-hq는 부서별 AI 에이전트를 한 백엔드 레포에 연결하는 AX 플랫폼이다. 팀원 6명이 폴더를 나눠 맡고, 폴더 경계와 리뷰, 머지를 GitHub Actions로 자동으로 돌게 만든 기록이다.",
+			"hashs": [
+				{"name": "#Agent"},
+				{"name": "#GitHub"},
+				{"name": "#AX"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/23/23.md",
 			"image": "/images/blog/ai/23/main_image.webp",
 			"sortDate": "2026-10-19",
