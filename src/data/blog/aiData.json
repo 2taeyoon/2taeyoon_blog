@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/25/25.md",
+			"image": "/images/blog/ai/25/main_image.webp",
+			"sortDate": "2026-10-26",
+			"title": "Claude Code /loop로 부서 협업 루프를 돌린 방법",
+			"subTitle": "PR 리뷰, 부서 에이전트 간 대화, skill 요청을 GitHub Actions 봇 대신 각자 PC의 Claude Code 루프가 30분마다 처리하게 바꿨다. /loop 30m /collab-loop 한 줄이 무엇을 실행하고, 어떤 훅과 설정으로 사고를 막았는지 정리했다.",
+			"hashs": [
+				{"name": "#ClaudeCode"},
+				{"name": "#Agent"},
+				{"name": "#Automation"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/24/24.md",
 			"image": "/images/blog/ai/24/main_image.webp",
 			"sortDate": "2026-10-22",
