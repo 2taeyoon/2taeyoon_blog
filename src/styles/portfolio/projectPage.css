@@ -222,15 +222,18 @@
     filter 500ms ease;
 }
 
-.project_card:hover .project_card_image,
-.project_card:focus-within .project_card_image {
-  filter: brightness(0.7);
-  transform: scale(1.02);
-}
+/* 모바일(768px 이하)에서는 이미지 흐림·오버레이 호버 효과를 쓰지 않음 */
+@media (width > 768px) {
+  .project_card:hover .project_card_image,
+  .project_card:focus-within .project_card_image {
+    filter: brightness(0.7);
+    transform: scale(1.02);
+  }
 
-.project_card:hover .project_card_visual_overlay,
-.project_card:focus-within .project_card_visual_overlay {
-  background: rgba(3, 5, 12, 0.28);
+  .project_card:hover .project_card_visual_overlay,
+  .project_card:focus-within .project_card_visual_overlay {
+    background: rgba(3, 5, 12, 0.28);
+  }
 }
 
 .project_card_visual_overlay {
@@ -337,10 +340,12 @@
   pointer-events: auto;
 }
 
-.project_card_links a:hover,
-.project_card_links a:focus-visible {
-  background: var(--pfTheme);
-  color: var(--pfThemeText);
+@media (width > 768px) {
+  .project_card_links a:hover,
+  .project_card_links a:focus-visible {
+    background: var(--pfTheme);
+    color: var(--pfThemeText);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
