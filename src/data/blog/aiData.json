@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/26/26.md",
+			"image": "/images/blog/ai/26/main_image.webp",
+			"sortDate": "2026-10-28",
+			"title": "AXcellent에 DejaFix와 실제 데이터 A2A를 붙인 방법",
+			"subTitle": "캣북스 대시보드의 AI 7개를 AXcellent로 옮기고, DejaFix 장애는 화면이 아니라 API 데이터로 받아 장애 대응 탭에 다시 그렸다. 목 모드를 끄고 캣북스 실제 주문·결제로 장애를 넣어, AI들이 A2A로 일을 나누고 그 대화가 AI 대화방에 쌓이게 만든 기록이다.",
+			"hashs": [
+				{"name": "#A2A"},
+				{"name": "#Agent"},
+				{"name": "#DejaFix"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/25/25.md",
 			"image": "/images/blog/ai/25/main_image.webp",
 			"sortDate": "2026-10-26",
