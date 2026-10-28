@@ -6,11 +6,6 @@ export interface SkillCategory {
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    id: "design",
-    label: "Design Tools",
-    skills: ["Photoshop", "Illustrator", "InDesign"],
-  },
-  {
     id: "frontend",
     label: "FrontEnd Stack",
     skills: ["PHP", "HTML5", "CSS3", "Sass", "Tailwind CSS", "JavaScript", "TypeScript", "React", "Webpack", "Next.js"],
@@ -29,89 +24,45 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export interface SkillBadge {
   label: string;
-  icon: string;
+  /** 배지 배경색 */
   color: string;
+  /** Simple Icons 이름. 없으면 shields.io가 글자만 있는 배지를 그림 */
+  logo?: string;
+  logoColor?: string;
 }
 
 export const skillBadges: Record<string, SkillBadge> = {
-  photoshop: {
-    label: "Photoshop",
-    icon: "/images/skill/adobephotoshop.svg",
-    color: "#31A8FF",
-  },
-  illustrator: {
-    label: "Illustrator",
-    icon: "/images/skill/adobeillustrator.svg",
-    color: "#FF9A00",
-  },
-  indesign: {
-    label: "InDesign",
-    icon: "/images/skill/adobeindesign.svg",
-    color: "#FF3366",
-  },
-  figma: {
-    label: "Figma",
-    icon: "/images/skill/figma.svg",
-    color: "#F24E1E",
-  },
-  php: {
-    label: "PHP",
-    icon: "/images/skill/php.svg",
-    color: "#777BB4",
-  },
-  html5: {
-    label: "HTML5",
-    icon: "/images/skill/html5.svg",
-    color: "#E34F26",
-  },
-  css3: {
-    label: "CSS3",
-    icon: "/images/skill/css3.svg",
-    color: "#1572B6",
-  },
-  sass: {
-    label: "Sass",
-    icon: "/images/skill/sass.svg",
-    color: "#CC6699",
-  },
-  tailwindcss: {
-    label: "Tailwind CSS",
-    icon: "/images/skill/tailwindcss.svg",
-    color: "#06B6D4",
-  },
-  javascript: {
-    label: "JavaScript",
-    icon: "/images/skill/javascript.svg",
-    color: "#323330",
-  },
-  typescript: {
-    label: "TypeScript",
-    icon: "/images/skill/typescript.svg",
-    color: "#007ACC",
-  },
-  react: {
-    label: "React",
-    icon: "/images/skill/react.svg",
-    color: "#20232A",
-  },
-  webpack: {
-    label: "Webpack",
-    icon: "/images/skill/webpack.svg",
-    color: "#4285F4",
-  },
-  nextjs: {
-    label: "Next.js",
-    icon: "/images/skill/nextjs.svg",
-    color: "#000000",
-  },
-  python: {
-    label: "Python",
-    icon: "/images/skill/python.svg",
-    color: "#3776AB",
-  },
-  mongodb: {
-    label: "MongoDB",
-    icon: "/images/skill/mongodb.svg",
-    color: "#47A248",
-  },
+  php: { label: "PHP", color: "#777BB4", logo: "php" },
+  html5: { label: "HTML5", color: "#E34F26", logo: "html5" },
+  css3: { label: "CSS", color: "#663399", logo: "css" },
+  sass: { label: "Sass", color: "#CC6699", logo: "sass" },
+  tailwindcss: { label: "Tailwind CSS", color: "#06B6D4", logo: "tailwindcss" },
+  javascript: { label: "JavaScript", color: "#000000", logo: "javascript", logoColor: "F7DF1E" },
+  typescript: { label: "TypeScript", color: "#007ACC", logo: "typescript" },
+  nextjs: { label: "Next.js", color: "#000000", logo: "nextdotjs" },
+  jquery: { label: "jQuery", color: "#0769AD", logo: "jquery" },
+  firebase: { label: "Firebase", color: "#DD2C00", logo: "firebase" },
 };
+
+/** API & Library 이름 → Simple Icons 이름. 여기 없는 항목은 글자만 있는 검정 배지 */
+const LIBRARY_LOGOS: Record<string, string> = {
+  Swiper: "swiper",
+  "jQuery UI": "jquery",
+  "Kakao Maps": "kakao",
+};
+
+/** shields.io for-the-badge 스타일 배지 주소 */
+export function shieldsBadgeUrl({ label, color, logo, logoColor = "white" }: SkillBadge) {
+  // shields.io 경로에서 '-'와 '_'는 구분자라 두 번 써서 글자로 넣음
+  const text = encodeURIComponent(label.replace(/-/g, "--").replace(/_/g, "__"));
+  const params = new URLSearchParams({ style: "for-the-badge" });
+  if (logo) {
+    params.set("logo", logo);
+    params.set("logoColor", logoColor);
+  }
+  return `https://img.shields.io/badge/${text}-${color.replace("#", "")}?${params}`;
+}
+
+export function libraryBadge(name: string): SkillBadge {
+  return { label: name, color: "#000000", logo: LIBRARY_LOGOS[name] };
+}

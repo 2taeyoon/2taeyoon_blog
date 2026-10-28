@@ -16,7 +16,7 @@
 
 .project_detail_title_group {
   width: 100%;
-  margin-bottom: 8rem;
+  margin-bottom: 4rem;
   text-align: center;
 }
 
@@ -81,23 +81,6 @@
   letter-spacing: 1px;
 }
 
-.project_detail_hashs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.8rem;
-  margin: 0 0 3rem;
-  padding: 0;
-  list-style: none;
-}
-
-.project_detail_hashs li {
-  background: rgba(255, 255, 255, 0.07);
-  padding: 0.7rem 1.1rem;
-  color: var(--pfTextSub);
-  font-size: 1.6rem;
-}
-
 .project_detail_hero {
   position: relative;
   overflow: hidden;
@@ -130,14 +113,15 @@
 
 .project_detail_information dl {
   display: grid;
-  flex: 1.6;
+  flex: 1;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem 4rem;
   margin: 0;
 }
 
+/* 링크 칸은 버튼 폭만 차지하고 나머지는 Skills 배지 줄에 줌 */
 .project_detail_links {
-  flex: 0.7;
+  flex: 0 0 18rem;
 }
 
 .project_detail_tech {
@@ -189,24 +173,13 @@
 
 .project_detail_tech li {
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.65rem;
-  color: #ffffff;
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.03rem;
-  text-transform: uppercase;
 }
 
-.project_detail_tech li span {
-  font-size: 1.2rem;
-}
-
+/* shields.io for-the-badge 배지(원본 높이 28px) */
 .project_detail_tech li img {
-  width: 1.25rem;
-  height: 1.25rem;
+  display: block;
+  width: auto;
+  height: 2.8rem;
 }
 
 .project_detail_links a {
@@ -231,10 +204,10 @@
 }
 
 .project_markdown {
-  color: var(--pfTextSub);
+  color: var(--pfTextBody);
   font-family: "Pretendard", sans-serif;
   font-size: 1.7rem;
-  font-weight: 300;
+  font-weight: 400;
   word-break: keep-all;
 }
 
@@ -251,12 +224,12 @@
 .project_markdown h4 {
   color: var(--pfTextStrong);
   font-family: "Nunito Sans", "Pretendard", sans-serif;
-  font-weight: 300;
 }
 
 .project_markdown h2 {
   margin: 8rem 0 2rem;
   font-size: 4.5rem;
+  font-weight: 700;
   letter-spacing: -0.18rem;
 }
 
@@ -265,14 +238,16 @@
 }
 
 .project_markdown h3 {
-  margin: 4rem 0 1.5rem;
+  margin: 4rem 0 0;
   font-size: 2.7rem;
+  font-weight: 600;
   letter-spacing: -0.08rem;
 }
 
 .project_markdown h4 {
   margin: 4rem 0 1.3rem;
   font-size: 2rem;
+  font-weight: 500;
 }
 
 .project_markdown p {
@@ -282,8 +257,7 @@
 .project_markdown ul,
 .project_markdown ol {
   display: grid;
-  gap: 1rem;
-  margin: 2.5rem 0;
+  margin: 1.5rem 0;
 }
 
 .project_markdown li::marker {

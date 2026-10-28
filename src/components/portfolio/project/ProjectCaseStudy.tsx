@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { projectContextLabel, type Project } from "@/data/portfolio/projects";
-import { skillBadges } from "@/data/portfolio/skills";
+import { libraryBadge, shieldsBadgeUrl, skillBadges } from "@/data/portfolio/skills";
 import ProjectMarkdownLoader from "@/components/portfolio/project/ProjectMarkdownLoader";
 import ProjectNeighbors from "@/components/portfolio/project/ProjectNeighbors";
 
@@ -39,12 +39,6 @@ export default function ProjectCaseStudy({
             <p className="project_detail_subtitle_en">{project.subTitleEn}</p>
           </div>
 
-          <ul className="project_detail_hashs" aria-label="프로젝트 태그">
-            {project.hashs.map((hash) => (
-              <li key={hash.name}>{hash.name}</li>
-            ))}
-          </ul>
-
           <div className="project_detail_hero">
             <Image
               src={project.image}
@@ -75,26 +69,35 @@ export default function ProjectCaseStudy({
               <dd>{project.contribution}%</dd>
             </div>
             <div className="project_detail_tech">
-              <dt>Tech Stack</dt>
+              <dt>Skills</dt>
               <dd>
                 <ul>
-                  {project.techStack.map((technology) => {
-                    const skill = skillBadges[technology];
-
-                    if (!skill) {
-                      return <li key={technology}>{technology}</li>;
-                    }
+                  {project.skills.map((technology) => {
+                    const skill = skillBadges[technology] ?? libraryBadge(technology);
 
                     return (
-                      <li key={technology} style={{ backgroundColor: skill.color }}>
-                        <img src={skill.icon} alt="" />
-                        <span>{skill.label}</span>
+                      <li key={technology}>
+                        <img src={shieldsBadgeUrl(skill)} alt={skill.label} />
                       </li>
                     );
                   })}
                 </ul>
               </dd>
             </div>
+            {project.libraries && project.libraries.length > 0 && (
+              <div className="project_detail_tech">
+                <dt>API &amp; Library</dt>
+                <dd>
+                  <ul>
+                    {project.libraries.map((library) => (
+                      <li key={library}>
+                        <img src={shieldsBadgeUrl(libraryBadge(library))} alt={library} />
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )}
           </dl>
 
           {(siteLink || githubLink) && (

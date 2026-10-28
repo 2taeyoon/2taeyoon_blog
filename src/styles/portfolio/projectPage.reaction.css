@@ -6,16 +6,6 @@
   }
 }
 
-@media (width <= 1100px) {
-  .project_detail_information dl {
-    flex: 1.4;
-  }
-
-  .project_detail_links {
-    flex: 0.6;
-  }
-}
-
 @media (width <= 768px) {
   .project_detail_back {
     display: none;
@@ -74,8 +64,7 @@
     padding-bottom: 7rem;
   }
 
-  .project_page_header,
-  .project_detail_title_group {
+  .project_page_header {
     margin-bottom: 5rem;
   }
 
@@ -119,8 +108,7 @@
     background-size: 4rem 4rem;
   }
 
-  .project_page_header,
-  .project_detail_title_group {
+  .project_page_header {
     margin-bottom: 4rem;
   }
 

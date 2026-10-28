@@ -1,9 +1,5 @@
 import projectsData from "@/data/portfolio/projectsData.json";
 
-export interface ProjectHash {
-  name: string;
-}
-
 export interface ProjectLink {
   label: string;
   href: string;
@@ -56,13 +52,15 @@ export interface Project {
   title: string;
   subTitle: string;
   subTitleEn: string;
-  hashs: ProjectHash[];
   period: string;
   context: ProjectContext;
   role: string;
   /** 이 프로젝트에서 맡은 비중. 0–100 */
   contribution: number;
-  techStack: string[];
+  /** 사용한 언어·프레임워크. skillBadges 키 */
+  skills: string[];
+  /** 함께 쓴 라이브러리와 외부 API. 표시용 이름 그대로 */
+  libraries?: string[];
   accentColor: string;
   links?: ProjectLink[];
 }
