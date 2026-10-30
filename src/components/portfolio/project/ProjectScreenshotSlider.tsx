@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper";
@@ -8,6 +8,7 @@ import { A11y, Navigation, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import ProjectScreenshotLightbox from "./ProjectScreenshotLightbox";
 
 export interface ProjectScreenshot {
   src: string;
@@ -22,6 +23,17 @@ export default function ProjectScreenshotSlider({
   images,
 }: ProjectScreenshotSliderProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
+  const [mainSwiper, setMainSwiper] = useState<SwiperClass | null>(null);
+  const [openedIndex, setOpenedIndex] = useState<number | null>(null);
+  const closeLightbox = useCallback(() => setOpenedIndex(null), []);
+  // 팝업에서 넘긴 위치를 슬라이더에도 맞춰 닫았을 때 같은 이미지가 보이게
+  const changeOpenedIndex = useCallback(
+    (index: number) => {
+      setOpenedIndex(index);
+      mainSwiper?.slideTo(index);
+    },
+    [mainSwiper],
+  );
   const canSlide = images.length > 1;
 
   return (
@@ -36,20 +48,25 @@ export default function ProjectScreenshotSlider({
         navigation={canSlide}
         watchOverflow
         spaceBetween={0}
+        onSwiper={setMainSwiper}
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
       >
-        {images.map((image) => (
+        {images.map((image, index) => (
           <SwiperSlide key={image.src}>
-            <a href={image.src} target="_blank" rel="noreferrer">
+            <button
+              type="button"
+              aria-label={`${image.alt || "스크린샷"} 크게 보기`}
+              onClick={() => setOpenedIndex(index)}
+            >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
                 sizes="(max-width: 700px) 92vw, 80vw"
               />
-            </a>
+            </button>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -69,6 +86,14 @@ export default function ProjectScreenshotSlider({
           </SwiperSlide>
         ))}
       </Swiper>
+      {openedIndex !== null && (
+        <ProjectScreenshotLightbox
+          images={images}
+          index={openedIndex}
+          onIndexChange={changeOpenedIndex}
+          onClose={closeLightbox}
+        />
+      )}
     </div>
   );
 }
