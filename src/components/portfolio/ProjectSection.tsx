@@ -34,25 +34,6 @@ function formatIndex(index: number) {
   return String(index + 1).padStart(2, "0");
 }
 
-const HANGUL_PATTERN = /[ㄱ-ㅎㅏ-ㅣ가-힣]/;
-const LATIN_PATTERN = /[A-Za-z]/;
-
-type ActiveTitleScript = "english" | "korean" | "mixed";
-
-function activeTitleScript(title: string): ActiveTitleScript {
-  const hasHangul = HANGUL_PATTERN.test(title);
-  const hasLatin = LATIN_PATTERN.test(title);
-  if (hasHangul && hasLatin) return "mixed";
-  if (hasHangul) return "korean";
-  return "english";
-}
-
-const ACTIVE_TITLE_FONT: Record<ActiveTitleScript, string> = {
-  english: '"Nunito Sans", sans-serif',
-  korean: '"Pretendard", "Malgun Gothic", sans-serif',
-  mixed: '"Pretendard", "Malgun Gothic", sans-serif',
-};
-
 function modulo(value: number, divisor: number) {
   return ((value % divisor) + divisor) % divisor;
 }
@@ -70,7 +51,6 @@ export default function ProjectSection() {
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [showFloaters, setShowFloaters] = useState(false);
-  const activeScript = activeTitleScript(PROJECT_ITEMS[activeIndex].title);
 
   useEffect(() => {
     return () => puzzleSimulation.setPaused(false);
@@ -548,14 +528,7 @@ export default function ProjectSection() {
           <span aria-hidden="true">/</span>
           <span>{String(PROJECT_ITEMS.length).padStart(2, "0")}</span>
         </p>
-        <p
-          className={
-            activeScript === "english"
-              ? "project_section_active_title"
-              : "project_section_active_title is_korean"
-          }
-          style={{ fontFamily: ACTIVE_TITLE_FONT[activeScript] }}
-        >
+        <p className="project_section_active_title">
           {PROJECT_ITEMS[activeIndex].title}
         </p>
         <div className="project_section_pagination" aria-label="작품 선택">

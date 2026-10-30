@@ -67,7 +67,6 @@ html.portfolio_theme_default .underlay_top_row_global.is_blurred {
 }
 
 .underlay_logo {
-  font-family: "Nunito Sans", sans-serif;
   flex: 0 0 auto;
   font-size: 3rem;
   font-weight: 700;
@@ -86,7 +85,6 @@ html.portfolio_theme_default .underlay_top_row_global.is_blurred {
 }
 
 .underlay_nav_item {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
@@ -200,7 +198,6 @@ button.underlay_settings_item:hover {
 }
 
 .underlay_settings_item_label {
-  font-family: "Nunito Sans", sans-serif;
   flex-shrink: 0;
   font-size: 1.4rem;
   font-weight: 700;
@@ -216,7 +213,6 @@ button.underlay_settings_item:hover {
 }
 
 .underlay_settings_status {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.6px;
@@ -243,7 +239,6 @@ button.underlay_settings_item:hover {
 
 .color_palette_label {
   margin: 0;
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.8px;
@@ -295,7 +290,6 @@ button.underlay_settings_item:hover {
 }
 
 .color_palette_custom_label {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
   color: #3f3f46;
@@ -379,7 +373,6 @@ button.underlay_settings_item:hover {
 }
 
 .underlay_volume_value {
-  font-family: "Nunito Sans", sans-serif;
   width: 3ch;
   font-size: 1.3rem;
   font-weight: 600;
@@ -434,12 +427,10 @@ button.underlay_settings_item:hover {
 
 .underlay_intro_text_ko {
   color: #fff;
-  font-family: "Pretendard", "Malgun Gothic", sans-serif;
 }
 
 .underlay_intro_text_en {
   color: var(--pfTextSub);
-  font-family: "Nunito Sans", sans-serif;
 }
 
 .underlay_gutter {
@@ -470,7 +461,6 @@ button.underlay_settings_item:hover {
 }
 
 .underlay_roles {
-  font-family: "Nunito Sans", sans-serif;
   white-space: nowrap;
   flex: 1 1 0%;
   display: flex;
@@ -486,7 +476,6 @@ button.underlay_settings_item:hover {
 }
 
 .underlay_drag_hint {
-  font-family: "Nunito Sans", sans-serif;
   flex: 1 1 0%;
   font-size: 1.8rem;
   font-weight: 600;
@@ -499,7 +488,6 @@ button.underlay_settings_item:hover {
 }
 
 .underlay_roles_right {
-  font-family: "Nunito Sans", sans-serif;
   white-space: nowrap;
   flex: 1 1 0%;
   display: flex;

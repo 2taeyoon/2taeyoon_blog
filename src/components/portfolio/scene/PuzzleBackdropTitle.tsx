@@ -6,8 +6,8 @@ import { Text } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { mainExit } from "@/lib/portfolio/pointerState";
 
-const NUNITO_SANS =
-  "https://fonts.gstatic.com/s/nunitosans/v19/pe1mMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q42ptCp5F5bxqqtQ1yiU4GVi5ntA.ttf";
+const PRETENDARD =
+  "https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff";
 
 const LETTERS = "Developer".split("");
 const LETTER_ADVANCE: Record<string, number> = {
@@ -67,7 +67,7 @@ export default function PuzzleBackdropTitle() {
             ref={(node) => {
               if (node) textRefs.current[index] = node;
             }}
-            font={NUNITO_SANS}
+            font={PRETENDARD}
             fontSize={fontSize}
             letterSpacing={-0.05}
             color="#ffffff"
