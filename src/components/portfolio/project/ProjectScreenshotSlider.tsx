@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper";
@@ -8,6 +8,7 @@ import { A11y, Navigation, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import ProjectScreenshotLightbox from "./ProjectScreenshotLightbox";
 
 export interface ProjectScreenshot {
   src: string;
@@ -22,6 +23,8 @@ export default function ProjectScreenshotSlider({
   images,
 }: ProjectScreenshotSliderProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
+  const [openedImage, setOpenedImage] = useState<ProjectScreenshot | null>(null);
+  const closeLightbox = useCallback(() => setOpenedImage(null), []);
   const canSlide = images.length > 1;
 
   return (
@@ -42,14 +45,18 @@ export default function ProjectScreenshotSlider({
       >
         {images.map((image) => (
           <SwiperSlide key={image.src}>
-            <a href={image.src} target="_blank" rel="noreferrer">
+            <button
+              type="button"
+              aria-label={`${image.alt || "스크린샷"} 크게 보기`}
+              onClick={() => setOpenedImage(image)}
+            >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
                 sizes="(max-width: 700px) 92vw, 80vw"
               />
-            </a>
+            </button>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -69,6 +76,9 @@ export default function ProjectScreenshotSlider({
           </SwiperSlide>
         ))}
       </Swiper>
+      {openedImage && (
+        <ProjectScreenshotLightbox image={openedImage} onClose={closeLightbox} />
+      )}
     </div>
   );
 }

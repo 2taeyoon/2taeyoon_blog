@@ -321,11 +321,15 @@
   height: 100%;
 }
 
-.project_screenshot_main .swiper-slide a {
+.project_screenshot_main .swiper-slide > button {
   position: relative;
   display: block;
   width: 100%;
   height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
 }
 
 .project_screenshot_main .swiper-slide img {
@@ -390,6 +394,102 @@
   height: 100%;
   margin: 0;
   object-fit: cover;
+}
+
+/* 스크린샷 팝업: 화면에 맞춰 보여주고 클릭하면 원본 크기로 확대 */
+.project_lightbox {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.88);
+  overscroll-behavior: contain;
+  animation: project_lightbox_fade 200ms ease;
+}
+
+.project_lightbox_stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 6rem 3.2rem;
+}
+
+.project_lightbox_stage img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  object-fit: contain;
+  cursor: default;
+}
+
+.project_lightbox.is_zoomable .project_lightbox_stage img {
+  cursor: zoom-in;
+}
+
+.project_lightbox.is_zoomed .project_lightbox_stage {
+  width: max-content;
+  min-width: 100%;
+  height: auto;
+  min-height: 100%;
+}
+
+.project_lightbox.is_zoomed .project_lightbox_stage img {
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+
+.project_lightbox_close {
+  position: fixed;
+  z-index: 1;
+  top: 2.4rem;
+  right: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0;
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
+}
+
+.project_lightbox_close svg {
+  width: 2rem;
+  height: 2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.project_lightbox_close:hover,
+.project_lightbox_close:focus-visible {
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
+}
+
+@keyframes project_lightbox_fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .project_lightbox_stage {
+    padding: 7.2rem 1.6rem 3.2rem;
+  }
+
+  .project_lightbox_close {
+    top: 1.6rem;
+    right: 1.6rem;
+  }
 }
 
 .project_markdown table {
