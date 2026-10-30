@@ -5,32 +5,51 @@ import { createPortal } from "react-dom";
 import type { ProjectScreenshot } from "./ProjectScreenshotSlider";
 
 interface ProjectScreenshotLightboxProps {
-  image: ProjectScreenshot;
+  images: ProjectScreenshot[];
+  index: number;
+  onIndexChange: (index: number) => void;
   onClose: () => void;
 }
 
 // 브라우저 기본 이미지 뷰어처럼 화면에 맞춰 보여주고, 클릭하면 원본 크기로 확대
 export default function ProjectScreenshotLightbox({
-  image,
+  images,
+  index,
+  onIndexChange,
   onClose,
 }: ProjectScreenshotLightboxProps) {
+  const overlayRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const [zoomable, setZoomable] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  const image = images[index];
+  const hasPrev = index > 0;
+  const hasNext = index < images.length - 1;
+
+  useEffect(() => {
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") onClose();
+      if (event.key === "ArrowLeft" && hasPrev) onIndexChange(index - 1);
+      if (event.key === "ArrowRight" && hasNext) onIndexChange(index + 1);
     };
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [index, hasPrev, hasNext, onIndexChange, onClose]);
 
-    return () => {
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onClose]);
+  // 다른 이미지로 넘어가면 확대 상태와 스크롤을 처음으로
+  useEffect(() => {
+    setZoomed(false);
+    setZoomable(false);
+    overlayRef.current?.scrollTo(0, 0);
+  }, [index]);
 
   // 화면에 맞춘 크기가 원본보다 작을 때만 확대 가능
   const checkZoomable = () => {
@@ -56,12 +75,12 @@ export default function ProjectScreenshotLightbox({
     if (!zoomable) return;
 
     // 클릭한 지점이 확대 후에도 화면 가운데 오도록 스크롤
-    const overlay = event.currentTarget.closest<HTMLElement>(".project_lightbox");
     const rect = event.currentTarget.getBoundingClientRect();
     const ratioX = (event.clientX - rect.left) / rect.width;
     const ratioY = (event.clientY - rect.top) / rect.height;
     setZoomed(true);
     requestAnimationFrame(() => {
+      const overlay = overlayRef.current;
       const img = imageRef.current;
       if (!overlay || !img) return;
       overlay.scrollTo(
@@ -81,6 +100,7 @@ export default function ProjectScreenshotLightbox({
 
   return createPortal(
     <div
+      ref={overlayRef}
       className={className}
       role="dialog"
       aria-modal="true"
@@ -89,6 +109,7 @@ export default function ProjectScreenshotLightbox({
     >
       <div className="project_lightbox_stage">
         <img
+          key={image.src}
           ref={imageRef}
           src={image.src}
           alt={image.alt}
@@ -109,6 +130,41 @@ export default function ProjectScreenshotLightbox({
           <path d="M6 6l12 12M18 6L6 18" />
         </svg>
       </button>
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            className="project_lightbox_nav is_prev"
+            aria-label="이전 스크린샷"
+            aria-disabled={!hasPrev}
+            onClick={(event) => {
+              event.stopPropagation();
+              if (hasPrev) onIndexChange(index - 1);
+            }}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 5l-7 7 7 7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="project_lightbox_nav is_next"
+            aria-label="다음 스크린샷"
+            aria-disabled={!hasNext}
+            onClick={(event) => {
+              event.stopPropagation();
+              if (hasNext) onIndexChange(index + 1);
+            }}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <p className="project_lightbox_count">
+            {index + 1} / {images.length}
+          </p>
+        </>
+      )}
     </div>,
     document.body,
   );

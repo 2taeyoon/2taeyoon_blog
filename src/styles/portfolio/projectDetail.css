@@ -475,6 +475,69 @@
   color: var(--pfThemeText);
 }
 
+.project_lightbox_nav {
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0;
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.project_lightbox_nav.is_prev {
+  left: 2.4rem;
+}
+
+.project_lightbox_nav.is_next {
+  right: 2.4rem;
+}
+
+.project_lightbox_nav svg {
+  width: 2rem;
+  height: 2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.project_lightbox_nav:not([aria-disabled="true"]):hover,
+.project_lightbox_nav:not([aria-disabled="true"]):focus-visible {
+  background: var(--pfTheme);
+  color: var(--pfThemeText);
+}
+
+.project_lightbox_nav[aria-disabled="true"] {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.project_lightbox_count {
+  position: fixed;
+  z-index: 1;
+  bottom: 2.4rem;
+  left: 50%;
+  margin: 0;
+  padding: 0.6rem 1.2rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
 @keyframes project_lightbox_fade {
   from {
     opacity: 0;
@@ -488,6 +551,14 @@
 
   .project_lightbox_close {
     top: 1.6rem;
+    right: 1.6rem;
+  }
+
+  .project_lightbox_nav.is_prev {
+    left: 1.6rem;
+  }
+
+  .project_lightbox_nav.is_next {
     right: 1.6rem;
   }
 }
