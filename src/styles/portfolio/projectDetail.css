@@ -443,6 +443,14 @@
   cursor: zoom-out;
 }
 
+.project_lightbox.is_dragging .project_lightbox_stage img {
+  cursor: grabbing;
+}
+
+.project_lightbox.is_dragging {
+  user-select: none;
+}
+
 .project_lightbox_close {
   position: fixed;
   z-index: 1;

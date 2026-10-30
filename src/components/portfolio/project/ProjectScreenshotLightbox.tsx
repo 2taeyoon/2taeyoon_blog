@@ -22,6 +22,9 @@ export default function ProjectScreenshotLightbox({
   const imageRef = useRef<HTMLImageElement>(null);
   const [zoomable, setZoomable] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  // 확대 상태에서 누른 채 끌면 이동, 끈 뒤 생기는 click은 확대 해제·닫기로 처리하지 않음
+  const dragRef = useRef({ x: 0, y: 0, left: 0, top: 0, moved: false });
   const image = images[index];
   const hasPrev = index > 0;
   const hasNext = index < images.length - 1;
@@ -66,8 +69,49 @@ export default function ProjectScreenshotLightbox({
     return () => window.removeEventListener("resize", checkZoomable);
   }, []);
 
+  const handlePointerDown = (event: React.PointerEvent<HTMLImageElement>) => {
+    const overlay = overlayRef.current;
+    if (!zoomed || !overlay || event.button !== 0) return;
+    event.preventDefault();
+    dragRef.current = {
+      x: event.clientX,
+      y: event.clientY,
+      left: overlay.scrollLeft,
+      top: overlay.scrollTop,
+      moved: false,
+    };
+    setDragging(true);
+
+    const handleMove = (moveEvent: PointerEvent) => {
+      const drag = dragRef.current;
+      const dx = moveEvent.clientX - drag.x;
+      const dy = moveEvent.clientY - drag.y;
+      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) drag.moved = true;
+      overlay.scrollTo(drag.left - dx, drag.top - dy);
+    };
+    const handleUp = () => {
+      setDragging(false);
+      // 바로 뒤따르는 click에서만 쓰이도록 다음 틱에 초기화
+      setTimeout(() => {
+        dragRef.current.moved = false;
+      }, 0);
+      window.removeEventListener("pointermove", handleMove);
+      window.removeEventListener("pointerup", handleUp);
+    };
+    window.addEventListener("pointermove", handleMove);
+    window.addEventListener("pointerup", handleUp);
+  };
+
+  // 끌어서 이동한 직후의 click이면 true를 돌려주고 표시를 지움
+  const consumeDrag = () => {
+    if (!dragRef.current.moved) return false;
+    dragRef.current.moved = false;
+    return true;
+  };
+
   const handleImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
     event.stopPropagation();
+    if (consumeDrag()) return;
     if (zoomed) {
       setZoomed(false);
       return;
@@ -94,6 +138,7 @@ export default function ProjectScreenshotLightbox({
     "project_lightbox",
     zoomed && "is_zoomed",
     zoomable && "is_zoomable",
+    dragging && "is_dragging",
   ]
     .filter(Boolean)
     .join(" ");
@@ -105,7 +150,9 @@ export default function ProjectScreenshotLightbox({
       role="dialog"
       aria-modal="true"
       aria-label={image.alt || "스크린샷 크게 보기"}
-      onClick={onClose}
+      onClick={() => {
+        if (!consumeDrag()) onClose();
+      }}
     >
       <div className="project_lightbox_stage">
         <img
@@ -113,7 +160,9 @@ export default function ProjectScreenshotLightbox({
           ref={imageRef}
           src={image.src}
           alt={image.alt}
+          draggable={false}
           onLoad={checkZoomable}
+          onPointerDown={handlePointerDown}
           onClick={handleImageClick}
         />
       </div>
