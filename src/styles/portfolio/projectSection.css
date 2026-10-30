@@ -28,7 +28,6 @@
     );
   background-size: 270px 240px, 340px 300px, 210px 260px, auto, auto, auto;
   color: var(--pfTextStrong);
-  font-family: "Nunito Sans", "Pretendard", sans-serif;
 }
 
 .project_section_floaters {
@@ -68,7 +67,6 @@
 
 .project_section_eyebrow {
   color: #fff;
-  font-family: "Pretendard", "Malgun Gothic", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 0.6px;
@@ -77,7 +75,6 @@
 .project_section_title {
   margin: 0;
   color: var(--pfTextStrong);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 6.4rem;
   font-weight: 700;
   text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
@@ -85,7 +82,6 @@
 
 .project_section_description {
   color: var(--pfTextSub);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 1px;
@@ -311,7 +307,6 @@ a.project_section_card {
   gap: 7px;
   margin: 0;
   color: rgba(129, 140, 190, 0.72);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.2rem;
   letter-spacing: 1.5px;
 }
@@ -324,16 +319,9 @@ a.project_section_card {
   width: 32rem;
   margin-bottom: 2rem;
   color: var(--pfTextStrong);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 3rem;
   font-weight: 700;
-  letter-spacing: 3px;
   text-align: center;
-}
-
-.project_section_active_title.is_korean {
-  font-family: "Pretendard", sans-serif;
-  letter-spacing: 0;
 }
 
 .project_section_pagination {
@@ -371,7 +359,6 @@ a.project_section_card {
   gap: 0.8rem;
   margin-top: 1.8rem;
   color: var(--pfTextSub);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.12rem;

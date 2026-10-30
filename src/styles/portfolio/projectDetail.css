@@ -6,7 +6,6 @@
   width: 100%;
   padding: 15rem 0 10rem;
   color: var(--pfTextStrong);
-  font-family: "Nunito Sans", "Pretendard", sans-serif;
 }
 
 .project_detail {
@@ -31,7 +30,6 @@
   padding: 1.2rem 1.6rem;
   background: #ffffff;
   color: #000000;
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.08rem;
@@ -56,7 +54,6 @@
 .project_detail_title_group h1 {
   margin: 0;
   color: var(--pfTextStrong);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 6.4rem;
   font-weight: 700;
   text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
@@ -71,13 +68,11 @@
 
 .project_detail_subtitle_ko {
   color: #ffffff;
-  font-family: "Pretendard", "Malgun Gothic", sans-serif;
   letter-spacing: 0.6px;
 }
 
 .project_detail_subtitle_en {
   color: var(--pfTextSub);
-  font-family: "Nunito Sans", sans-serif;
   letter-spacing: 1px;
 }
 
@@ -149,7 +144,6 @@
 .project_detail_information dd {
   margin: 0;
   color: var(--pfTextStrong);
-  font-family: "Pretendard", sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
 }
@@ -189,7 +183,6 @@
   padding: 1rem 1.2rem;
   background: #ffffff;
   color: #000000;
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 0.06rem;
@@ -205,7 +198,6 @@
 
 .project_markdown {
   color: var(--pfTextBody);
-  font-family: "Pretendard", sans-serif;
   font-size: 1.7rem;
   font-weight: 400;
   word-break: keep-all;
@@ -214,7 +206,6 @@
 .project_markdown_status {
   margin: 0;
   color: var(--pfTextSub);
-  font-family: "Nunito Sans", "Pretendard", sans-serif;
   font-size: 1.5rem;
   text-align: center;
 }
@@ -223,7 +214,6 @@
 .project_markdown h3,
 .project_markdown h4 {
   color: var(--pfTextStrong);
-  font-family: "Nunito Sans", "Pretendard", sans-serif;
 }
 
 .project_markdown h2 {
@@ -538,7 +528,6 @@
   padding: 0.6rem 1.2rem;
   background: rgba(0, 0, 0, 0.6);
   color: #ffffff;
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.08rem;
@@ -651,12 +640,10 @@
 
 .project_page_url_label {
   color: var(--pfTextSub);
-  font-family: "Pretendard", sans-serif;
   font-size: 1.4rem;
 }
 
 .project_page_url_title {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 2rem;
   font-weight: 600;
 }

@@ -31,7 +31,6 @@
 }
 
 .scene_tag {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: 4px;
@@ -39,7 +38,6 @@
 }
 
 .scene_title {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 6.4rem;
   font-weight: 800;
   letter-spacing: -3px;
@@ -48,7 +46,6 @@
 }
 
 .scene_desc {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.6rem;
   color: var(--pfTextSub);
   margin: 0;
@@ -71,7 +68,6 @@
 }
 
 .scene_skill_label {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: 1px;
@@ -87,7 +83,6 @@
 }
 
 .scene_skill_chip {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
   padding: 6px 14px;
@@ -128,7 +123,6 @@
 }
 
 .scene_project_name {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--pfBlack);
@@ -136,14 +130,12 @@
 }
 
 .scene_project_desc {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.3rem;
   color: var(--pfTextSub);
   margin: 0;
 }
 
 .scene_project_stack {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--pfTextMuted);
@@ -158,7 +150,6 @@
 }
 
 .scene_contact_link {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: 2px;
@@ -326,7 +317,6 @@
 }
 
 .scene_nav_arrow {
-  font-family: "Nunito Sans", sans-serif;
   width: 40px;
   height: 40px;
   border: 1px solid var(--pfLine);
@@ -394,7 +384,6 @@
 }
 
 .scene_nav_dot_label {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 1px;

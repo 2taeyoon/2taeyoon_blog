@@ -7,7 +7,6 @@
   margin: 0 auto;
   padding: 18vh 0 10rem;
   color: var(--pfTextStrong);
-  font-family: "Nunito Sans", "Pretendard", sans-serif;
 }
 
 .project_page::before,
@@ -71,7 +70,6 @@
 .project_page_header h1 {
   margin: 0;
   color: var(--pfTextStrong);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 6.4rem;
   font-weight: 700;
   text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
@@ -79,7 +77,6 @@
 
 .project_page_intro {
   color: #ffffff;
-  font-family: "Pretendard", "Malgun Gothic", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 0.6px;
@@ -87,7 +84,6 @@
 
 .project_page_intro_en {
   color: var(--pfTextSub);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 1px;
@@ -106,7 +102,6 @@
   border: 0;
   background: transparent;
   color: var(--pfTextSub);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   letter-spacing: 0.04rem;
   cursor: pointer;
@@ -163,7 +158,6 @@
   border: 0;
   background: transparent;
   color: var(--pfTextSub);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -281,7 +275,6 @@
   margin: 0.4rem 0 1.2rem;
   overflow: hidden;
   color: var(--pfTextSub);
-  font-family: "Pretendard", sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   text-overflow: ellipsis;
@@ -295,7 +288,6 @@
   padding: 0.55rem 0.9rem;
   background: var(--pfTheme);
   color: var(--pfThemeText);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.04rem;
@@ -327,7 +319,6 @@
   padding: 0.8rem;
   background: var(--pfTextStrong);
   color: var(--pfWhite);
-  font-family: "Nunito Sans", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 0.04rem;
