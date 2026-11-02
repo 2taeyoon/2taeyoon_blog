@@ -9,7 +9,7 @@
 			"mdFile": "/images/blog/ai/27/27.md",
 			"image": "/images/blog/ai/27/main_image.webp",
 			"sortDate": "2026-11-02",
-			"title": "서버를 빌리지 않고 에이전트 9개를 배포한 방법",
+			"title": "화면만 배포하고 에이전트 9개는 내 PC에 남겼다",
 			"subTitle": "Hugging Face Docker는 유료가 됐고 ngrok 무료는 월 2만 요청에서 막혔다. 결국 화면은 Vercel에 올리고 에이전트는 내 PC에서 돌리면서, 블로그 도메인의 네임서버를 Cloudflare로 옮겨 터널에 고정 주소를 붙였다. 카드 등록 없이 전부 0원으로 끝낸 기록이다.",
 			"hashs": [
 				{"name": "#Cloudflare"},
