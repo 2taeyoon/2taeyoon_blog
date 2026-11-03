@@ -1,4 +1,5 @@
 {
+  "ignoreCommand": "test \"$VERCEL_PROJECT_ID\" = \"prj_bYLz2SRG1n21sMZjJkmRPrT4gy5Q\"",
   "rewrites": [
     { "source": "/images/(.*)", "destination": "/images/$1" },
     { "source": "/favicon/(.*)", "destination": "/favicon/$1" }
