@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/28/28.md",
+			"image": "/images/blog/ai/28/main_image.webp",
+			"sortDate": "2026-11-09",
+			"title": "AI끼리 장애에 대응하는 AX 솔루션",
+			"subTitle": "안녕하세요. 오늘은 저희 팀이 개발하고 있는 AX 솔루션을 소개하겠습니다. 핵심 주제는 두 가지입니다. AI끼리 일을 주고받는 A2A와 A2A를 기반으로 작동하는 장애 대응입니다.",
+			"hashs": [
+				{"name": "#A2A"},
+				{"name": "#장애대응"},
+				{"name": "#AX"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/27/27.md",
 			"image": "/images/blog/ai/27/main_image.webp",
 			"sortDate": "2026-11-02",

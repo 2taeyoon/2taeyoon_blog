@@ -52,6 +52,24 @@ export default function StudyToc({ items }: StudyTocProps) {
     };
   }, []);
 
+  // 활성 항목이 바뀌면 목차 자체 스크롤을 옮겨 활성 항목이 목차 가운데에 보이게 한다.
+  // scrollIntoView는 페이지 전체까지 스크롤할 수 있어서 aside의 scrollTop만 직접 조정한다.
+  useEffect(() => {
+    const tocElement = tocRef.current;
+    if (!tocElement || !activeAnchorId) return;
+    if (tocElement.scrollHeight <= tocElement.clientHeight) return;
+
+    const activeItem = tocElement.querySelector<HTMLElement>(".study_toc_item.is_active");
+    if (!activeItem) return;
+
+    const tocRect = tocElement.getBoundingClientRect();
+    const itemRect = activeItem.getBoundingClientRect();
+    const itemTopInToc = itemRect.top - tocRect.top + tocElement.scrollTop;
+    const targetTop = itemTopInToc - (tocElement.clientHeight - itemRect.height) / 2;
+
+    tocElement.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+  }, [activeAnchorId]);
+
   return (
     <aside ref={tocRef} className={`study_toc ${isFixed ? "fix" : ""}`}>
       {!items.length ? (
