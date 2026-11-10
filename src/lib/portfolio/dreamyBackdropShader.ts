@@ -107,6 +107,15 @@ export const DREAMY_FRAGMENT_SHADER = /* glsl */ `
     return mix(col, uSoft, smoothstep(0.8, 1.0, e2) * 0.12);
   }
 
+  // idx: 0=A, 1=B, 2=C, 3=D, 4=E (기존 전환 순서 E→A→B→C→D→E 그대로)
+  vec3 patternAt(float idx, vec2 fieldUv) {
+    if (idx < 0.5) return patternA(fieldUv);
+    if (idx < 1.5) return patternB(fieldUv);
+    if (idx < 2.5) return patternC(fieldUv);
+    if (idx < 3.5) return patternD(fieldUv);
+    return patternE(fieldUv);
+  }
+
   void main() {
     vec2 uv = vUv;
     vec2 cuv = curveUv(uv);
@@ -134,26 +143,12 @@ export const DREAMY_FRAGMENT_SHADER = /* glsl */ `
     float cycle = uTime / 3.0;
     float idx = mod(floor(cycle), 5.0);
     float fade = smoothstep(0.0, 0.2, fract(cycle));
-    vec3 prevCol;
-    vec3 nextCol;
-    if (idx < 0.5) {
-      prevCol = patternE(fieldUv);
-      nextCol = patternA(fieldUv);
-    } else if (idx < 1.5) {
-      prevCol = patternA(fieldUv);
-      nextCol = patternB(fieldUv);
-    } else if (idx < 2.5) {
-      prevCol = patternB(fieldUv);
-      nextCol = patternC(fieldUv);
-    } else if (idx < 3.5) {
-      prevCol = patternC(fieldUv);
-      nextCol = patternD(fieldUv);
-    } else {
-      prevCol = patternD(fieldUv);
-      nextCol = patternE(fieldUv);
+    // 전환(fade)이 끝난 구간(주기의 80%)에서는 이전 패턴이 결과에 안 쓰이므로 계산을 건너뛴다.
+    // fade는 시간에만 의존해 모든 픽셀이 같은 분기를 타므로 GPU 분기 비용이 거의 없다.
+    vec3 col = patternAt(idx, fieldUv);
+    if (fade < 1.0) {
+      col = mix(patternAt(mod(idx + 4.0, 5.0), fieldUv), col, fade);
     }
-
-    vec3 col = mix(prevCol, nextCol, fade);
     float gAmt = exp(-length((uv - 0.5) * vec2(uAspect * 0.55, 1.0)) * 2.8);
     col += uGlow * gAmt * 0.05;
 
