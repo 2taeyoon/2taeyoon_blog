@@ -465,7 +465,7 @@ export default function ProjectSection() {
               key={copy}
               aria-hidden={copy !== 1}
             >
-              {PROJECT_ITEMS.map((work, index) => (
+              {PROJECT_ITEMS.map((work) => (
                 <Link
                   className="project_section_card"
                   href={`/projects/${work.slug}`}

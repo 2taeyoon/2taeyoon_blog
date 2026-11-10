@@ -40,6 +40,7 @@ export const skillBadges: Record<string, SkillBadge> = {
   javascript: { label: "JavaScript", color: "#000000", logo: "javascript", logoColor: "F7DF1E" },
   typescript: { label: "TypeScript", color: "#007ACC", logo: "typescript" },
   nextjs: { label: "Next.js", color: "#000000", logo: "nextdotjs" },
+  react: { label: "React", color: "#20232A", logo: "react", logoColor: "61DAFB" },
   jquery: { label: "jQuery", color: "#0769AD", logo: "jquery" },
   firebase: { label: "Firebase", color: "#DD2C00", logo: "firebase" },
 };
