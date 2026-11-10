@@ -9,11 +9,6 @@ interface ProjectCardProps {
   project: Project;
 }
 
-function projectCardDate(sortDate: string) {
-  const [year, month] = sortDate.split("-");
-  return `${year}.${month}`;
-}
-
 export default function ProjectCard({ project }: ProjectCardProps) {
   const siteLink = project.links?.find((link) => link.type === "site");
   const githubLink = project.links?.find((link) => link.type === "github");
@@ -41,7 +36,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       <Link className="project_card_body" href={detailHref} onMouseEnter={playUiHover}>
         <div className="project_card_heading">
-          <time dateTime={project.sortDate}>{projectCardDate(project.sortDate)}</time>
+          <time dateTime={project.sortDate}>{project.period}</time>
           <h2>{project.title}</h2>
         </div>
         <p>{project.subTitle}</p>

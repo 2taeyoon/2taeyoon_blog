@@ -113,6 +113,1945 @@
         { "label": "Site", "href": "https://2taeyoon.github.io/task/netmable/", "type": "site" },
         { "label": "GitHub", "href": "https://github.com/2taeyoon/task/tree/master/netmable", "type": "github" }
       ]
+    },
+    {
+      "id": "alphabeta",
+      "slug": "alphabeta",
+      "mdFile": "/images/portfolio/projects/7/7.md",
+      "image": "/images/portfolio/projects/7/main_image.webp",
+      "sortDate": "2026-07-25",
+      "title": "AlphaBeta AI",
+      "subTitle": "보건의료 데이터 분석 기업 AlphaBeta AI의 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of AlphaBeta AI, a healthcare data analytics company.",
+      "period": "2026.07",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "AOS", "jQuery Validation"],
+      "accentColor": "#1f3484",
+      "links": [
+        { "label": "Site", "href": "https://www.alphabetaai.co.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "profngr",
+      "slug": "profngr",
+      "mdFile": "/images/portfolio/projects/8/8.md",
+      "image": "/images/portfolio/projects/8/main_image.webp",
+      "sortDate": "2026-07-15",
+      "title": "서울임상마취연구회",
+      "subTitle": "임상마취 연구회의 활동과 SPROUT Trials 연구를 소개하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a clinical anesthesia research group introducing its activities and SPROUT Trials.",
+      "period": "2026.07",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#56b142",
+      "links": [
+        { "label": "Site", "href": "https://www.sproutgroup.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksccm7",
+      "slug": "ksccm7",
+      "mdFile": "/images/portfolio/projects/9/9.md",
+      "image": "/images/portfolio/projects/9/main_image.webp",
+      "sortDate": "2026-07-05",
+      "title": "대한중환자의학회 연수교육 시스템",
+      "subTitle": "중환자의학 연수교육의 수강·진도·평가·이수증을 관리하는 온라인 교육 시스템입니다.",
+      "subTitleEn": "Online continuing education system for the Korean Society of Critical Care Medicine.",
+      "period": "2026.07",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#3d67a3",
+      "links": [
+        { "label": "Site", "href": "https://elearning.ksccm.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "applasma",
+      "slug": "applasma",
+      "mdFile": "/images/portfolio/projects/10/10.md",
+      "image": "/images/portfolio/projects/10/main_image.webp",
+      "sortDate": "2026-06-25",
+      "title": "에이피피",
+      "subTitle": "대기압 플라즈마 장비 기업 에이피피의 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive corporate website for APP, an atmospheric pressure plasma equipment company.",
+      "period": "2026.06",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "AOS", "jQuery Validation"],
+      "accentColor": "#2b2a78",
+      "links": [
+        { "label": "Site", "href": "http://applasma.website.or.kr/", "type": "site" }
+      ]
+    },
+    {
+      "id": "kess",
+      "slug": "kess",
+      "mdFile": "/images/portfolio/projects/11/11.md",
+      "image": "/images/portfolio/projects/11/main_image.webp",
+      "sortDate": "2026-06-15",
+      "title": "대한외과응급수술연구학회",
+      "subTitle": "외과 응급수술 연구 학회의 학술행사와 회원 정보를 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean society for acute care surgery, covering events and membership.",
+      "period": "2026.06",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#224880",
+      "links": [
+        { "label": "Site", "href": "https://www.kfacs.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "karpet",
+      "slug": "karpet",
+      "mdFile": "/images/portfolio/projects/12/12.md",
+      "image": "/images/portfolio/projects/12/main_image.webp",
+      "sortDate": "2026-06-05",
+      "title": "외상술기교육연구학회",
+      "subTitle": "외상 술기교육 코스와 학술행사 등록을 안내하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a trauma skills education society, covering training courses and event registration.",
+      "period": "2026.06",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c4876",
+      "links": [
+        { "label": "Site", "href": "https://www.karpet.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kahta",
+      "slug": "kahta",
+      "mdFile": "/images/portfolio/projects/13/13.md",
+      "image": "/images/portfolio/projects/13/main_image.webp",
+      "sortDate": "2026-05-25",
+      "title": "한국보건의료기술평가학회",
+      "subTitle": "한국보건의료기술평가학회의 학술행사와 학회지를 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Association of Health Technology Assessment.",
+      "period": "2026.05",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "jQuery Validation"],
+      "accentColor": "#0357a0",
+      "links": [
+        { "label": "Site", "href": "https://www.kahta.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kora",
+      "slug": "kora",
+      "mdFile": "/images/portfolio/projects/14/14.md",
+      "image": "/images/portfolio/projects/14/main_image.webp",
+      "sortDate": "2026-05-15",
+      "title": "대한미용비만재생의학회",
+      "subTitle": "미용·비만·재생의학 분야의 학술행사와 회원 활동을 안내하는 학회 홈페이지입니다.",
+      "subTitleEn": "Official website of a society for aesthetic, obesity and regenerative medicine, covering events and membership.",
+      "period": "2026.05",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#14308e",
+      "links": [
+        { "label": "Site", "href": "https://www.kora-med.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "kspm",
+      "slug": "kspm",
+      "mdFile": "/images/portfolio/projects/15/15.md",
+      "image": "/images/portfolio/projects/15/main_image.webp",
+      "sortDate": "2026-05-05",
+      "title": "한국제약의학회",
+      "subTitle": "한국제약의학회의 학술 행사와 회원 정보를 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Society of Pharmaceutical Medicine.",
+      "period": "2026.05",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#2757c6",
+      "links": [
+        { "label": "Site", "href": "https://www.kspm.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "aslskorea",
+      "slug": "aslskorea",
+      "mdFile": "/images/portfolio/projects/16/16.md",
+      "image": "/images/portfolio/projects/16/main_image.webp",
+      "sortDate": "2026-04-25",
+      "title": "ASLS KOREA",
+      "subTitle": "학술대회 ASLS KOREA의 영문 중심 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "English-first responsive official website for the ASLS KOREA congress.",
+      "period": "2026.04",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Slick", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#522aba",
+      "links": [
+        { "label": "Site", "href": "https://www.asls.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kogoeng2",
+      "slug": "kogoeng2",
+      "mdFile": "/images/portfolio/projects/17/17.md",
+      "image": "/images/portfolio/projects/17/main_image.webp",
+      "sortDate": "2026-04-15",
+      "title": "한국유전체학회 국제학술대회 영문 사이트",
+      "subTitle": "한국유전체학회 국제학술대회의 등록과 일정을 영문으로 안내하는 행사 사이트입니다.",
+      "subTitleEn": "English event site for the KOGO International Annual Conference.",
+      "period": "2026.04",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 55,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#21588d",
+      "links": [
+        { "label": "Site", "href": "https://conf-en.kogo.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kgog",
+      "slug": "kgog",
+      "mdFile": "/images/portfolio/projects/18/18.md",
+      "image": "/images/portfolio/projects/18/main_image.webp",
+      "sortDate": "2026-04-05",
+      "title": "사단법인 대한부인종양연구회",
+      "subTitle": "부인종양 임상연구와 학술행사 정보를 제공하는 연구회 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a gynecologic oncology research group for clinical studies and academic events.",
+      "period": "2026.04",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#2c4476",
+      "links": [
+        { "label": "Site", "href": "https://www.kgog.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "apapari",
+      "slug": "apapari",
+      "mdFile": "/images/portfolio/projects/19/19.md",
+      "image": "/images/portfolio/projects/19/main_image.webp",
+      "sortDate": "2026-03-15",
+      "title": "APAPARI",
+      "subTitle": "아시아태평양 소아알레르기·호흡기·면역 학회의 영문 공식 홈페이지입니다.",
+      "subTitleEn": "Official English website of the Asia Pacific Association of Pediatric Allergy, Respirology & Immunology.",
+      "period": "2026.03",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 60,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#0043a3",
+      "links": [
+        { "label": "Site", "href": "https://www.apapari.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "koat",
+      "slug": "koat",
+      "mdFile": "/images/portfolio/projects/20/20.md",
+      "image": "/images/portfolio/projects/20/main_image.webp",
+      "sortDate": "2026-03-05",
+      "title": "대한비만미용학회",
+      "subTitle": "비만·미용 분야 학술대회의 사전등록과 초록접수, 학회 소식을 제공하는 홈페이지입니다.",
+      "subTitleEn": "Society website for obesity and aesthetics, offering congress registration, abstracts and news.",
+      "period": "2026.03",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Vimeo", "Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c4e76",
+      "links": [
+        { "label": "Site", "href": "https://www.koat.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "elearning2",
+      "slug": "elearning2",
+      "mdFile": "/images/portfolio/projects/21/21.md",
+      "image": "/images/portfolio/projects/21/main_image.webp",
+      "sortDate": "2026-02-25",
+      "title": "서울대병원 외과 온라인 교육 시스템",
+      "subTitle": "서울대병원 외과 교육 과정을 온라인으로 운영하는 교육 시스템입니다.",
+      "subTitleEn": "Online education system for the Department of Surgery at Seoul National University Hospital.",
+      "period": "2026.02",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 60,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "AOS", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#1e3b97",
+      "links": [
+        { "label": "Site", "href": "https://elearning1surgery.snu.ac.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kogoeng",
+      "slug": "kogoeng",
+      "mdFile": "/images/portfolio/projects/22/22.md",
+      "image": "/images/portfolio/projects/22/main_image.webp",
+      "sortDate": "2026-02-15",
+      "title": "한국유전체학회 영문 홈페이지",
+      "subTitle": "한국유전체학회(KOGO)의 영문 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive English website for the Korea Genome Organization (KOGO).",
+      "period": "2026.02",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 55,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#264e7c",
+      "links": [
+        { "label": "Site", "href": "http://kogoeng.website.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "elearning",
+      "slug": "elearning",
+      "mdFile": "/images/portfolio/projects/23/23.md",
+      "image": "/images/portfolio/projects/23/main_image.webp",
+      "sortDate": "2026-02-05",
+      "title": "대한병리학회 온라인 교육 시스템",
+      "subTitle": "병리과 전공의가 증례와 강의로 학습하고 성취도를 평가받는 온라인 교육 시스템입니다.",
+      "subTitleEn": "An e-learning system for pathology residents with cases, lectures and self-tests.",
+      "period": "2026.02",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 60,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#253d7d",
+      "links": [
+        { "label": "Site", "href": "https://elearning.pathology.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kmips",
+      "slug": "kmips",
+      "mdFile": "/images/portfolio/projects/24/24.md",
+      "image": "/images/portfolio/projects/24/main_image.webp",
+      "sortDate": "2026-01-25",
+      "title": "한국최소침습췌장수술연구회",
+      "subTitle": "최소침습 췌장수술 연구와 학술행사 등록을 안내하는 연구회 홈페이지입니다.",
+      "subTitleEn": "Official website of a minimally invasive pancreatic surgery study group with event registration.",
+      "period": "2026.01",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 60,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#2b3d77",
+      "links": [
+        { "label": "Site", "href": "https://www.kmips.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kscc2",
+      "slug": "kscc2",
+      "mdFile": "/images/portfolio/projects/25/25.md",
+      "image": "/images/portfolio/projects/25/main_image.webp",
+      "sortDate": "2026-01-15",
+      "title": "대한임상화학회",
+      "subTitle": "대한임상화학회의 학술대회 등록과 교육 정보를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Society of Clinical Chemistry.",
+      "period": "2026.01",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#005aa3",
+      "links": [
+        { "label": "Site", "href": "https://www.kscc.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "livercancer",
+      "slug": "livercancer",
+      "mdFile": "/images/portfolio/projects/26/26.md",
+      "image": "/images/portfolio/projects/26/main_image.webp",
+      "sortDate": "2026-01-05",
+      "title": "대한간암학회",
+      "subTitle": "간암 가이드라인과 병기 계산기, 학술행사 정보를 제공하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a liver cancer society with guidelines, a staging calculator and academic events.",
+      "period": "2026.01",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 75,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#183c8f",
+      "links": [
+        { "label": "Site", "href": "https://www.livercancer.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kshm",
+      "slug": "kshm",
+      "mdFile": "/images/portfolio/projects/27/27.md",
+      "image": "/images/portfolio/projects/27/main_image.webp",
+      "sortDate": "2025-12-25",
+      "title": "대한병원의학회",
+      "subTitle": "대한병원의학회의 학술행사와 소식을 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Society of Hospital Medicine.",
+      "period": "2025.12",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#24387e",
+      "links": [
+        { "label": "Site", "href": "https://www.k-shm.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksccm4",
+      "slug": "ksccm4",
+      "mdFile": "/images/portfolio/projects/28/28.md",
+      "image": "/images/portfolio/projects/28/main_image.webp",
+      "sortDate": "2025-12-15",
+      "title": "대한중환자의학회 연수평점",
+      "subTitle": "대한중환자의학회의 연수교육 일정과 평점을 관리하는 반응형 사이트입니다.",
+      "subTitleEn": "Responsive CME credit management site for the Korean Society of Critical Care Medicine.",
+      "period": "2025.12",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "SweetAlert2", "jQuery UI", "bxSlider", "AOS", "jQuery Validation", "qrcode.js"],
+      "accentColor": "#466ab8",
+      "links": [
+        { "label": "Site", "href": "https://credit.ksccm.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksccm3",
+      "slug": "ksccm3",
+      "mdFile": "/images/portfolio/projects/29/29.md",
+      "image": "/images/portfolio/projects/29/main_image.webp",
+      "sortDate": "2025-12-05",
+      "title": "대한중환자의학회 수련병원 & 세부전문의",
+      "subTitle": "중환자의학 수련병원 지정과 세부전문의 자격 관리를 위한 신청·관리 사이트입니다.",
+      "subTitleEn": "A site for managing critical care training hospitals and subspecialty certification.",
+      "period": "2025.12",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "SweetAlert2", "Slick", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#163d96",
+      "links": [
+        { "label": "Site", "href": "https://hospital.ksccm.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksccm2",
+      "slug": "ksccm2",
+      "mdFile": "/images/portfolio/projects/30/30.md",
+      "image": "/images/portfolio/projects/30/main_image.webp",
+      "sortDate": "2025-11-15",
+      "title": "대한중환자의학회",
+      "subTitle": "학술행사, 연수교육, 연구비 공모를 한곳에서 안내하는 학회 메인 홈페이지입니다.",
+      "subTitleEn": "Main website of a critical care medicine society for events, training, and research grants.",
+      "period": "2025.11",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 75,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#1947b3",
+      "links": [
+        { "label": "Site", "href": "https://www.ksccm.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "kdsnet",
+      "slug": "kdsnet",
+      "mdFile": "/images/portfolio/projects/31/31.md",
+      "image": "/images/portfolio/projects/31/main_image.webp",
+      "sortDate": "2025-11-05",
+      "title": "한국유전체물성학회",
+      "subTitle": "한국유전체물성학회의 학술행사와 회원 서비스를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean society for genome physical properties.",
+      "period": "2025.11",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#2e4a79",
+      "links": [
+        { "label": "Site", "href": "https://www.kds.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "krprs",
+      "slug": "krprs",
+      "mdFile": "/images/portfolio/projects/32/32.md",
+      "image": "/images/portfolio/projects/32/main_image.webp",
+      "sortDate": "2025-10-25",
+      "title": "대한회복기재활학회",
+      "subTitle": "회복기 재활 분야의 학술행사 등록과 조회, 학회 소식을 제공하는 홈페이지입니다.",
+      "subTitleEn": "Society website for rehabilitation medicine with event registration, lookup and news.",
+      "period": "2025.10",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#3d52a0",
+      "links": [
+        { "label": "Site", "href": "https://www.koscore.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ydnrs",
+      "slug": "ydnrs",
+      "mdFile": "/images/portfolio/projects/33/33.md",
+      "image": "/images/portfolio/projects/33/main_image.webp",
+      "sortDate": "2025-10-15",
+      "title": "유당신경과학연구회",
+      "subTitle": "유당신경과학연구회의 심포지엄과 연구 소식을 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Yudang Neuroscience Research Society.",
+      "period": "2025.10",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#1c3f86",
+      "links": [
+        { "label": "Site", "href": "https://www.yudangneuro.co.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "stent2",
+      "slug": "stent2",
+      "mdFile": "/images/portfolio/projects/34/34.md",
+      "image": "/images/portfolio/projects/34/main_image.webp",
+      "sortDate": "2025-10-05",
+      "title": "한국중재의료기기학회",
+      "subTitle": "한국중재의료기기학회의 국문/영문 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive Korean/English official website for the Korean Society of Interventional Medical Devices.",
+      "period": "2025.10",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#144a8e",
+      "links": [
+        { "label": "Site", "href": "https://www.stent.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kitechbiz",
+      "slug": "kitechbiz",
+      "mdFile": "/images/portfolio/projects/35/35.md",
+      "image": "/images/portfolio/projects/35/main_image.webp",
+      "sortDate": "2025-09-25",
+      "title": "한국생산기술연구원 뿌리BIZ플랫폼",
+      "subTitle": "뿌리산업 기업정보와 제작의뢰, 지원사업, 교육을 한곳에 모은 비즈니스 데이터 플랫폼입니다.",
+      "subTitleEn": "A business data platform for Korea's root industries, built with Next.js.",
+      "period": "2025.09",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 75,
+      "skills": ["nextjs", "javascript", "css3", "html5"],
+      "accentColor": "#2a4279",
+      "links": [
+        { "label": "Site", "href": "http://ppuribiz.com/", "type": "site" }
+      ]
+    },
+    {
+      "id": "kimtec",
+      "slug": "kimtec",
+      "mdFile": "/images/portfolio/projects/36/36.md",
+      "image": "/images/portfolio/projects/36/main_image.webp",
+      "sortDate": "2025-09-15",
+      "title": "대한의료기술혁신학회",
+      "subTitle": "의료기술 혁신 연구와 학술대회 등록을 안내하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official Korean and English website of a medical technology innovation society.",
+      "period": "2025.09",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 60,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#0144a1",
+      "links": [
+        { "label": "Site", "href": "https://www.kimtec.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kfs2",
+      "slug": "kfs2",
+      "mdFile": "/images/portfolio/projects/37/37.md",
+      "image": "/images/portfolio/projects/37/main_image.webp",
+      "sortDate": "2025-09-05",
+      "title": "한국주조공학회",
+      "subTitle": "한국주조공학회의 학술대회와 학회지, 회원사 소식을 전하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Foundry Society.",
+      "period": "2025.09",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "AOS", "Slick", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#0b3e97",
+      "links": [
+        { "label": "Site", "href": "https://www.kfs.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "standard4u",
+      "slug": "standard4u",
+      "mdFile": "/images/portfolio/projects/38/38.md",
+      "image": "/images/portfolio/projects/38/main_image.webp",
+      "sortDate": "2025-08-25",
+      "title": "(주)스텐다드싸이텍",
+      "subTitle": "의료기기 기업의 제품과 회사 정보를 국문과 영문으로 소개하는 홈페이지입니다.",
+      "subTitleEn": "Bilingual corporate website for a medical device company presenting its products and company.",
+      "period": "2025.08",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#11e2ed",
+      "links": [
+        { "label": "Site", "href": "https://www.standardsci-tech.com", "type": "site" }
+      ]
+    },
+    {
+      "id": "kam2",
+      "slug": "kam2",
+      "mdFile": "/images/portfolio/projects/39/39.md",
+      "image": "/images/portfolio/projects/39/main_image.webp",
+      "sortDate": "2025-08-15",
+      "title": "한국인사조직학회",
+      "subTitle": "한국인사조직학회의 학술대회와 논문 정보를 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Academy of Management.",
+      "period": "2025.08",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Slick", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c3d76",
+      "links": [
+        { "label": "Site", "href": "https://www.kam.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "unesco",
+      "slug": "unesco",
+      "mdFile": "/images/portfolio/projects/40/40.md",
+      "image": "/images/portfolio/projects/40/main_image.webp",
+      "sortDate": "2025-08-05",
+      "title": "유네스코한국위원회 초국경 유산 공동연구 지원사업",
+      "subTitle": "유네스코한국위원회 초국경 유산 공동연구 지원사업의 영문 홈페이지와 심사 시스템입니다.",
+      "subTitleEn": "English website and grant review system for UNESCO Korea's Transnational Heritage Joint Research Grants.",
+      "period": "2025.08",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 75,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c4276",
+      "links": [
+        { "label": "Site", "href": "https://www.transnationalheritage.or.kr/html/", "type": "site" }
+      ]
+    },
+    {
+      "id": "gendermed",
+      "slug": "gendermed",
+      "mdFile": "/images/portfolio/projects/41/41.md",
+      "image": "/images/portfolio/projects/41/main_image.webp",
+      "sortDate": "2025-07-15",
+      "title": "대한성차의과학회",
+      "subTitle": "성차의과학 학회의 학술대회 등록과 학회 소식을 국문·영문으로 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official bilingual website of the Korean Society of Gender-Specific Medicine.",
+      "period": "2025.07",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Slick", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c3576",
+      "links": [
+        { "label": "Site", "href": "https://www.sgbiomed.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kssre",
+      "slug": "kssre",
+      "mdFile": "/images/portfolio/projects/42/42.md",
+      "image": "/images/portfolio/projects/42/main_image.webp",
+      "sortDate": "2025-07-05",
+      "title": "한국우주자원에너지학회",
+      "subTitle": "우주자원·에너지 연구와 학술대회 정보를 제공하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a space resources and energy society for research and conferences.",
+      "period": "2025.07",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 60,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Slick", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#24577e",
+      "links": [
+        { "label": "Site", "href": "https://www.kssre.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "sscime",
+      "slug": "sscime",
+      "mdFile": "/images/portfolio/projects/43/43.md",
+      "image": "/images/portfolio/projects/43/main_image.webp",
+      "sortDate": "2025-06-25",
+      "title": "사회과학과 의학교육 연구회",
+      "subTitle": "사회과학과 의학교육 연구회의 학술활동과 학술지를 소개하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Society for Social Sciences in Medical Education.",
+      "period": "2025.06",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Slick", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#04439e",
+      "links": [
+        { "label": "Site", "href": "https://www.sscime.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "burn",
+      "slug": "burn",
+      "mdFile": "/images/portfolio/projects/44/44.md",
+      "image": "/images/portfolio/projects/44/main_image.webp",
+      "sortDate": "2025-06-15",
+      "title": "대한화상학회",
+      "subTitle": "화상 분야 학술대회와 인증의제도, 화상 전문 병원 찾기를 제공하는 학회 홈페이지입니다.",
+      "subTitleEn": "Burn society website with congress registration, specialist certification and a burn hospital finder.",
+      "period": "2025.06",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 75,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Slick", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#337187",
+      "links": [
+        { "label": "Site", "href": "https://www.burn.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "surfaceanalysis",
+      "slug": "surfaceanalysis",
+      "mdFile": "/images/portfolio/projects/45/45.md",
+      "image": "/images/portfolio/projects/45/main_image.webp",
+      "sortDate": "2025-06-05",
+      "title": "한국표면분석학회",
+      "subTitle": "한국표면분석학회의 학술대회와 워크샵을 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Society for Surface Analysis.",
+      "period": "2025.06",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 65,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Slick", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#194289",
+      "links": [
+        { "label": "Site", "href": "https://www.surfaceanalysis.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksopp",
+      "slug": "ksopp",
+      "mdFile": "/images/portfolio/projects/46/46.md",
+      "image": "/images/portfolio/projects/46/main_image.webp",
+      "sortDate": "2025-05-25",
+      "title": "한국식물병리학회",
+      "subTitle": "한국식물병리학회의 학술행사와 회원 서비스를 담은 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive official website for the Korean Society of Plant Pathology.",
+      "period": "2025.05",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2e3ed0",
+      "links": [
+        { "label": "Site", "href": "https://www.kspp.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "entent",
+      "slug": "entent",
+      "mdFile": "/images/portfolio/projects/47/47.md",
+      "image": "/images/portfolio/projects/47/main_image.webp",
+      "sortDate": "2025-05-15",
+      "title": "잘듣는이비인후과의원",
+      "subTitle": "이비인후과 의원의 진료센터와 질환 정보, 예약·상담 경로를 안내하는 병원 홈페이지입니다.",
+      "subTitleEn": "Hospital website for an ENT clinic with clinic centers and disease information.",
+      "period": "2025.05",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 60,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "AOS", "jQuery Validation"],
+      "accentColor": "#253a7d",
+      "links": [
+        { "label": "Site", "href": "https://www.entent.co.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "chest",
+      "slug": "chest",
+      "mdFile": "/images/portfolio/projects/48/48.md",
+      "image": "/images/portfolio/projects/48/main_image.webp",
+      "sortDate": "2025-05-05",
+      "title": "사랑의열매",
+      "subTitle": "기부 신청부터 영수증 발급까지 지원하는 사회복지공동모금회 홈페이지입니다.",
+      "subTitleEn": "Website of the Community Chest of Korea, from donation sign-up to receipts.",
+      "period": "2025.05",
+      "context": "company-project",
+      "role": "Frontend Developer",
+      "contribution": 70,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["YouTube", "Lenis", "Swiper", "jQuery UI", "Daum Postcode", "Kakao SDK"],
+      "accentColor": "#07319b",
+      "links": [
+        { "label": "Site", "href": "https://chest.or.kr/base.do", "type": "site" }
+      ]
+    },
+    {
+      "id": "krss",
+      "slug": "krss",
+      "mdFile": "/images/portfolio/projects/49/49.md",
+      "image": "/images/portfolio/projects/49/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국방사성폐기물학회",
+      "subTitle": "한국방사성폐기물학회의 학술발표회와 학회지 논문 검색을 제공하는 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Radioactive Waste Society.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#175b8b",
+      "links": [
+        { "label": "Site", "href": "https://www.krs.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kieeme",
+      "slug": "kieeme",
+      "mdFile": "/images/portfolio/projects/50/50.md",
+      "image": "/images/portfolio/projects/50/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국전기전자재료학회",
+      "subTitle": "전기전자재료 분야의 학술대회, 산학연협력, 교육 정보를 제공하는 학회 홈페이지입니다.",
+      "subTitleEn": "Society website for electrical and electronic materials covering conferences, industry collaboration and education.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#762c52",
+      "links": [
+        { "label": "Site", "href": "https://www.kieeme.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kogo",
+      "slug": "kogo",
+      "mdFile": "/images/portfolio/projects/51/51.md",
+      "image": "/images/portfolio/projects/51/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국유전체학회",
+      "subTitle": "한국유전체학회의 학술행사와 학회 소식을 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korea Genome Organization (KOGO).",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2e3d85",
+      "links": [
+        { "label": "Site", "href": "https://www.kogo.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ysmed2",
+      "slug": "ysmed2",
+      "mdFile": "/images/portfolio/projects/52/52.md",
+      "image": "/images/portfolio/projects/52/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "연세대학교 의과대학 의학교육학교실",
+      "subTitle": "연세대학교 의과대학 의학교육학교실의 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive official website for the Department of Medical Education, Yonsei University College of Medicine.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#27397c",
+      "links": [
+        { "label": "Site", "href": "https://www.ysmed.net", "type": "site" }
+      ]
+    },
+    {
+      "id": "cde",
+      "slug": "cde",
+      "mdFile": "/images/portfolio/projects/53/53.md",
+      "image": "/images/portfolio/projects/53/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국CDE학회",
+      "subTitle": "CDE 학회의 학술대회 등록과 학회지·논문집 검색을 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Society for CDE with conference registration and paper search.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#ea8314",
+      "links": [
+        { "label": "Site", "href": "https://www.cde.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kvbm",
+      "slug": "kvbm",
+      "mdFile": "/images/portfolio/projects/54/54.md",
+      "image": "/images/portfolio/projects/54/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국혈관학회",
+      "subTitle": "혈관 연구 학술행사와 학술상 정보를 안내하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official Korean and English website of a vascular biology society.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#3792c7",
+      "links": [
+        { "label": "Site", "href": "https://www.kvbm.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "freud",
+      "slug": "freud",
+      "mdFile": "/images/portfolio/projects/55/55.md",
+      "image": "/images/portfolio/projects/55/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한정신분석학회(한국정신분석연구원)",
+      "subTitle": "대한정신분석학회와 한국정신분석연구원의 학술·수련 정보를 담은 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Psychoanalytic Society and Institute.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c4f76",
+      "links": [
+        { "label": "Site", "href": "https://www.kfreud.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksnd2",
+      "slug": "ksnd2",
+      "mdFile": "/images/portfolio/projects/56/56.md",
+      "image": "/images/portfolio/projects/56/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한퇴행성신경질환학회",
+      "subTitle": "퇴행성 신경질환 분야의 학술대회와 학회 소식을 국문과 영문으로 전하는 홈페이지입니다.",
+      "subTitleEn": "Bilingual website of a neurodegenerative disease society sharing congresses and news.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#3467ca",
+      "links": [
+        { "label": "Site", "href": "https://www.ksnd.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksgna2",
+      "slug": "ksgna2",
+      "mdFile": "/images/portfolio/projects/57/57.md",
+      "image": "/images/portfolio/projects/57/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한소화기내시경간호학회",
+      "subTitle": "대한소화기내시경간호학회의 학술행사와 교육 자료를 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Society of Gastroenterology Nurses and Associates.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#283b84",
+      "links": [
+        { "label": "Site", "href": "https://www.ksgna.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kgu",
+      "slug": "kgu",
+      "mdFile": "/images/portfolio/projects/58/58.md",
+      "image": "/images/portfolio/projects/58/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국지구과학연합회",
+      "subTitle": "지구과학 6개 학회가 모인 한국지구과학연합회의 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive official website for the Korean Federation of Earth Science Societies.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#1e4685",
+      "links": [
+        { "label": "Site", "href": "https://www.koreagu.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kaaba",
+      "slug": "kaaba",
+      "mdFile": "/images/portfolio/projects/59/59.md",
+      "image": "/images/portfolio/projects/59/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한경영학회",
+      "subTitle": "경영학 학회의 학술행사 등록과 후원 신청, 회원 정보를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a Korean business administration society.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c3f76",
+      "links": [
+        { "label": "Site", "href": "https://www.kaaba.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "carbonkorea",
+      "slug": "carbonkorea",
+      "mdFile": "/images/portfolio/projects/60/60.md",
+      "image": "/images/portfolio/projects/60/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "카본코리아",
+      "subTitle": "탄소복합재 전시회 CARBON KOREA의 참가신청과 관람 정보를 담은 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the CARBON KOREA composites exhibition for exhibitors and visitors.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#3e9da6",
+      "links": [
+        { "label": "Site", "href": "https://www.carbonkorea.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "krs",
+      "slug": "krs",
+      "mdFile": "/images/portfolio/projects/61/61.md",
+      "image": "/images/portfolio/projects/61/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "메드소프트 디자인·퍼블리싱 아카이브",
+      "subTitle": "메드소프트 운영팀의 디자인과 퍼블리싱 예제를 모아 둔 아카이브 사이트입니다.",
+      "subTitleEn": "An archive site collecting the Medsoft operations team's design and publishing examples.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c3f76",
+      "links": [
+        { "label": "Site", "href": "http://krs.website.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksehconf",
+      "slug": "ksehconf",
+      "mdFile": "/images/portfolio/projects/62/62.md",
+      "image": "/images/portfolio/projects/62/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국환경보건학회 가을 정기학술대회",
+      "subTitle": "한국환경보건학회 가을 정기학술대회의 등록과 초록접수를 위한 행사 전용 홈페이지입니다.",
+      "subTitleEn": "Dedicated website for an environmental health society's autumn conference, handling registration and abstracts.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#1a5388",
+      "links": [
+        { "label": "Site", "href": "http://ksehconf.website.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kbcs",
+      "slug": "kbcs",
+      "mdFile": "/images/portfolio/projects/63/63.md",
+      "image": "/images/portfolio/projects/63/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국유방암학회",
+      "subTitle": "한국유방암학회의 학술행사와 진료 자료를 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Breast Cancer Society.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#c9353c",
+      "links": [
+        { "label": "Site", "href": "https://www.kbcs.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "bda",
+      "slug": "bda",
+      "mdFile": "/images/portfolio/projects/64/64.md",
+      "image": "/images/portfolio/projects/64/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "부산광역시치과의사회",
+      "subTitle": "부산광역시치과의사회의 회원 서비스와 부치신문을 담은 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive official website for the Busan Dental Association.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#235180",
+      "links": [
+        { "label": "Site", "href": "https://www.bda.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "hyundance",
+      "slug": "hyundance",
+      "mdFile": "/images/portfolio/projects/65/65.md",
+      "image": "/images/portfolio/projects/65/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "현댄스스튜디오",
+      "subTitle": "댄스 스튜디오의 소개와 수업 정보, 수강·대관 문의를 담은 브랜드 홈페이지입니다.",
+      "subTitleEn": "Brand website for a dance studio with class info and booking inquiries.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "jQuery Validation"],
+      "accentColor": "#362c76",
+      "links": [
+        { "label": "Site", "href": "https://www.hyundance.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "biolpsy",
+      "slug": "biolpsy",
+      "mdFile": "/images/portfolio/projects/66/66.md",
+      "image": "/images/portfolio/projects/66/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한생물정신의학회",
+      "subTitle": "생물정신의학 학술대회와 학회 자료를 안내하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a biological psychiatry society for conferences and resources.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#37927b",
+      "links": [
+        { "label": "Site", "href": "https://www.biolpsychiatry.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "katn",
+      "slug": "katn",
+      "mdFile": "/images/portfolio/projects/67/67.md",
+      "image": "/images/portfolio/projects/67/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한외상급성기간호학회",
+      "subTitle": "대한외상급성기간호학회의 교육과 학술행사 정보를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Association of Trauma and Acute Care Nursing.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Vimeo", "Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2c3b76",
+      "links": [
+        { "label": "Site", "href": "https://www.katn.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kaca",
+      "slug": "kaca",
+      "mdFile": "/images/portfolio/projects/68/68.md",
+      "image": "/images/portfolio/projects/68/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국임상예술학회",
+      "subTitle": "예술치료 분야의 학술대회와 교육, 학술지 정보를 제공하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a clinical arts therapy society covering conferences, education and its journal.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#762c2c",
+      "links": [
+        { "label": "Site", "href": "https://www.kaca.ne.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksap",
+      "slug": "ksap",
+      "mdFile": "/images/portfolio/projects/69/69.md",
+      "image": "/images/portfolio/projects/69/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한마취약리학회",
+      "subTitle": "대한마취약리학회의 학술행사와 자료를 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Society of Anesthetic Pharmacology.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "fullPage.js", "bxSlider", "jQuery Validation"],
+      "accentColor": "#4275bc",
+      "links": [
+        { "label": "Site", "href": "https://www.ksap.co.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksme",
+      "slug": "ksme",
+      "mdFile": "/images/portfolio/projects/70/70.md",
+      "image": "/images/portfolio/projects/70/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국의학교육학회",
+      "subTitle": "한국의학교육학회의 학술대회와 교육 프로그램을 안내하는 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive official website for the Korean Society of Medical Education.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#1b34b5",
+      "links": [
+        { "label": "Site", "href": "https://www.ksmed.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "korlp",
+      "slug": "korlp",
+      "mdFile": "/images/portfolio/projects/71/71.md",
+      "image": "/images/portfolio/projects/71/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한이비인후과의사회",
+      "subTitle": "이비인후과 의사회의 회원 서비스와 질환 정보, 병원 찾기를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean association of otolaryngologists.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#214281",
+      "links": [
+        { "label": "Site", "href": "https://www.korlp.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "kseh",
+      "slug": "kseh",
+      "mdFile": "/images/portfolio/projects/72/72.md",
+      "image": "/images/portfolio/projects/72/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국환경보건학회",
+      "subTitle": "환경보건 학술대회와 연구센터 소식을 안내하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official Korean and English website of an environmental health society.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#0d4796",
+      "links": [
+        { "label": "Site", "href": "https://www.kseh.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "kwsma",
+      "slug": "kwsma",
+      "mdFile": "/images/portfolio/projects/73/73.md",
+      "image": "/images/portfolio/projects/73/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한외과여자의사회",
+      "subTitle": "대한외과여자의사회의 활동과 학술행사를 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Association of Women Surgeons.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#46b0b8",
+      "links": [
+        { "label": "Site", "href": "https://www.kaws2019.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "kmeps",
+      "slug": "kmeps",
+      "mdFile": "/images/portfolio/projects/74/74.md",
+      "image": "/images/portfolio/projects/74/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국마이크로전자패키징학회",
+      "subTitle": "마이크로전자·패키징 분야의 학술대회 등록과 학회 소식을 국문과 영문으로 제공하는 홈페이지입니다.",
+      "subTitleEn": "Bilingual society website for microelectronics and packaging with conference registration and news.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2895d6",
+      "links": [
+        { "label": "Site", "href": "https://www.kmeps.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "swda",
+      "slug": "swda",
+      "mdFile": "/images/portfolio/projects/75/75.md",
+      "image": "/images/portfolio/projects/75/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "수원시치과의사회",
+      "subTitle": "수원시치과의사회의 행사와 회원 소식을 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Suwon Dental Association.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#4695b8",
+      "links": [
+        { "label": "Site", "href": "https://www.swda.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "cvrc",
+      "slug": "cvrc",
+      "mdFile": "/images/portfolio/projects/76/76.md",
+      "image": "/images/portfolio/projects/76/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "심혈관연구원",
+      "subTitle": "심혈관 분야 연구와 학술행사를 소개하는 심혈관연구원 공식 홈페이지입니다.",
+      "subTitleEn": "Official website for the Cardiovascular Research Center (CVRC).",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#3a2c76",
+      "links": [
+        { "label": "Site", "href": "https://www.cvrc.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kscava",
+      "slug": "kscava",
+      "mdFile": "/images/portfolio/projects/77/77.md",
+      "image": "/images/portfolio/projects/77/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한심폐혈관마취학회",
+      "subTitle": "심폐혈관마취 학회의 학술대회와 참가지원, TEE QUIZ를 제공하는 국문·영문 홈페이지입니다.",
+      "subTitleEn": "Official bilingual website of the Korean society of cardiothoracic and vascular anesthesiologists.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#427eb0",
+      "links": [
+        { "label": "Site", "href": "https://www.ksctva.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "msk",
+      "slug": "msk",
+      "mdFile": "/images/portfolio/projects/78/78.md",
+      "image": "/images/portfolio/projects/78/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국미생물학회",
+      "subTitle": "학술행사 등록과 논문·용어 검색을 제공하는 미생물학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official Korean and English website of a microbiology society with paper and glossary search.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#4680b8",
+      "links": [
+        { "label": "Site", "href": "https://www.msk.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kterms",
+      "slug": "kterms",
+      "mdFile": "/images/portfolio/projects/79/79.md",
+      "image": "/images/portfolio/projects/79/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국조직공학재생의학회",
+      "subTitle": "한국조직공학재생의학회의 학술행사와 학술지 정보를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Tissue Engineering and Regenerative Medicine Society.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#1a5b88",
+      "links": [
+        { "label": "Site", "href": "https://www.kterms.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksacs",
+      "slug": "ksacs",
+      "mdFile": "/images/portfolio/projects/80/80.md",
+      "image": "/images/portfolio/projects/80/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한외상중환자외과학회",
+      "subTitle": "외상·중환자외과 분야의 학술행사 접수와 분과전문의 정보를 제공하는 학회 홈페이지입니다.",
+      "subTitleEn": "Society website for trauma and acute care surgery with event submissions and subspecialty information.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#253d7d",
+      "links": [
+        { "label": "Site", "href": "https://www.ksacs.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "cei",
+      "slug": "cei",
+      "mdFile": "/images/portfolio/projects/81/81.md",
+      "image": "/images/portfolio/projects/81/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "(사)창의공학연구원",
+      "subTitle": "창의공학연구원의 고위자 과정과 포럼을 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Creative Engineering Institute.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#0599d9",
+      "links": [
+        { "label": "Site", "href": "https://www.cei.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kpic",
+      "slug": "kpic",
+      "mdFile": "/images/portfolio/projects/82/82.md",
+      "image": "/images/portfolio/projects/82/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "국가뿌리산업진흥센터",
+      "subTitle": "뿌리산업 지원사업과 통계, 공고를 안내하는 국가뿌리산업진흥센터 공식 홈페이지입니다.",
+      "subTitleEn": "Official website for the Korea Ppuri Industry Center (KPIC).",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#23528d",
+      "links": [
+        { "label": "Site", "href": "https://www.kpic.re.kr/html/?pmode=intro", "type": "site" }
+      ]
+    },
+    {
+      "id": "kgca2",
+      "slug": "kgca2",
+      "mdFile": "/images/portfolio/projects/83/83.md",
+      "image": "/images/portfolio/projects/83/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한위암학회",
+      "subTitle": "위암 학회의 학술행사 등록과 광고 신청, 가이드라인을 국문·영문으로 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official bilingual website of the Korean Gastric Cancer Association.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#d3782b",
+      "links": [
+        { "label": "Site", "href": "https://www.kgca-i.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kbss",
+      "slug": "kbss",
+      "mdFile": "/images/portfolio/projects/84/84.md",
+      "image": "/images/portfolio/projects/84/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한뇌자극학회",
+      "subTitle": "뇌자극치료 정보와 학술대회 등록을 안내하는 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a brain stimulation society for therapy information and conferences.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 25,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#116591",
+      "links": [
+        { "label": "Site", "href": "https://www.kbssociety.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "koreahernia",
+      "slug": "koreahernia",
+      "mdFile": "/images/portfolio/projects/85/85.md",
+      "image": "/images/portfolio/projects/85/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한탈장학회",
+      "subTitle": "대한탈장학회의 학술대회와 탈장 관련 정보를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Hernia Society.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 25,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#4697b8",
+      "links": [
+        { "label": "Site", "href": "https://www.koreahernia.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksimm",
+      "slug": "ksimm",
+      "mdFile": "/images/portfolio/projects/86/86.md",
+      "image": "/images/portfolio/projects/86/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한면역학회",
+      "subTitle": "면역학 분야의 학술대회와 연구 자원 정보를 국문과 영문으로 제공하는 학회 홈페이지입니다.",
+      "subTitleEn": "Bilingual website of an immunology society offering conferences and research resources.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#075e9b",
+      "links": [
+        { "label": "Site", "href": "https://www.kaimm.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "sndoc",
+      "slug": "sndoc",
+      "mdFile": "/images/portfolio/projects/87/87.md",
+      "image": "/images/portfolio/projects/87/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "성남시의사회",
+      "subTitle": "성남시의사회의 회무와 학술대회, 회원 소식을 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Seongnam Medical Association.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["YouTube", "Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#1e3585",
+      "links": [
+        { "label": "Site", "href": "https://www.sndoc.com", "type": "site" }
+      ]
+    },
+    {
+      "id": "ksbmor",
+      "slug": "ksbmor",
+      "mdFile": "/images/portfolio/projects/88/88.md",
+      "image": "/images/portfolio/projects/88/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국생체재료학회",
+      "subTitle": "한국생체재료학회의 학술대회와 협력사 서비스를 담은 국문/영문 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive Korean/English official website for the Korean Society for Biomaterials.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "AOS", "Slick", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#04449e",
+      "links": [
+        { "label": "Site", "href": "https://www.ksbm.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "asmak",
+      "slug": "asmak",
+      "mdFile": "/images/portfolio/projects/89/89.md",
+      "image": "/images/portfolio/projects/89/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국항공우주의학협회",
+      "subTitle": "항공우주의학 협회와 산하 3개 학회를 하나로 묶은 국문·영문 통합 홈페이지입니다.",
+      "subTitleEn": "Integrated bilingual website for an aerospace medicine association and its three societies.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#096699",
+      "links": [
+        { "label": "Site", "href": "https://www.asmak.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "khim",
+      "slug": "khim",
+      "mdFile": "/images/portfolio/projects/90/90.md",
+      "image": "/images/portfolio/projects/90/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한보건의료정보관리학회",
+      "subTitle": "학술행사 초록접수와 학회지 논문투고를 연계한 학회 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a health information management society with abstract submission.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 25,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#305690",
+      "links": [
+        { "label": "Site", "href": "https://www.khimi.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "tksfdt",
+      "slug": "tksfdt",
+      "mdFile": "/images/portfolio/projects/91/91.md",
+      "image": "/images/portfolio/projects/91/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한디지털치료학회",
+      "subTitle": "대한디지털치료학회의 학술대회와 회원 정보를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Society for Digital Therapeutics.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 25,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#006ca3",
+      "links": [
+        { "label": "Site", "href": "https://www.kodt.org", "type": "site" }
+      ]
+    },
+    {
+      "id": "kisehome",
+      "slug": "kisehome",
+      "mdFile": "/images/portfolio/projects/92/92.md",
+      "image": "/images/portfolio/projects/92/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국표면공학회",
+      "subTitle": "표면공학 분야의 국내외 학술대회와 학회 간행물 정보를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of a surface engineering society with domestic and international conferences and publications.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#2872a3",
+      "links": [
+        { "label": "Site", "href": "https://www.kssse.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kafc",
+      "slug": "kafc",
+      "mdFile": "/images/portfolio/projects/93/93.md",
+      "image": "/images/portfolio/projects/93/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한리프팅학회",
+      "subTitle": "대한리프팅학회의 학술대회와 학회 소식을 안내하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Academy of Face Contouring and Lifting.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "Owl Carousel", "jQuery UI", "jQuery Validation"],
+      "accentColor": "#4698b8",
+      "links": [
+        { "label": "Site", "href": "http://kafc.website.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "anxiety",
+      "slug": "anxiety",
+      "mdFile": "/images/portfolio/projects/94/94.md",
+      "image": "/images/portfolio/projects/94/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한불안의학회",
+      "subTitle": "전문가용과 일반인용 메인을 갖춘 대한불안의학회 공식 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive official website for the Korean Society of Anxiety Medicine.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#178a8c",
+      "links": [
+        { "label": "Site", "href": "https://www.anxiety.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kscm2",
+      "slug": "kscm2",
+      "mdFile": "/images/portfolio/projects/95/95.md",
+      "image": "/images/portfolio/projects/95/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한임상미생물학회",
+      "subTitle": "임상미생물 학회의 학술대회 등록과 E-Learning, 회원 서비스를 제공하는 공식 홈페이지입니다.",
+      "subTitleEn": "Official bilingual website of the Korean Society of Clinical Microbiology.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#0ca7b3",
+      "links": [
+        { "label": "Site", "href": "https://www.kscm.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kcnia2020",
+      "slug": "kcnia2020",
+      "mdFile": "/images/portfolio/projects/96/96.md",
+      "image": "/images/portfolio/projects/96/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국탄소나노산업협회",
+      "subTitle": "탄소나노 산업 협회와 연구조합의 사업과 회원사 정보를 담은 홈페이지입니다.",
+      "subTitleEn": "Official Korean and English website of a carbon nano industry association.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 25,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Swiper", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#1f7b83",
+      "links": [
+        { "label": "Site", "href": "https://www.kcania.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "apfid",
+      "slug": "apfid",
+      "mdFile": "/images/portfolio/projects/97/97.md",
+      "image": "/images/portfolio/projects/97/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "아시아태평양감염재단",
+      "subTitle": "아시아태평양감염재단(APFID)의 활동과 학술대회를 소개하는 영문 홈페이지입니다.",
+      "subTitleEn": "Official English website of the Asia Pacific Foundation for Infectious Diseases (APFID).",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#d1103f",
+      "links": [
+        { "label": "Site", "href": "http://apfid.website.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kagg",
+      "slug": "kagg",
+      "mdFile": "/images/portfolio/projects/98/98.md",
+      "image": "/images/portfolio/projects/98/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국노인과학학술단체연합회",
+      "subTitle": "노인과학 분야 회원학회들의 행사와 소식을 모아 전하는 학술단체연합회 홈페이지입니다.",
+      "subTitleEn": "Website of a federation of gerontology societies sharing member societies' events and news.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#215282",
+      "links": [
+        { "label": "Site", "href": "https://www.kagg.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kaosm",
+      "slug": "kaosm",
+      "mdFile": "/images/portfolio/projects/99/99.md",
+      "image": "/images/portfolio/projects/99/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한수면의학회",
+      "subTitle": "전문가와 일반인 모두에게 수면 의학 정보를 제공하는 학회 홈페이지입니다.",
+      "subTitleEn": "Official website of the Korean Sleep Research Society for professionals and the public.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#32bbcc",
+      "links": [
+        { "label": "Site", "href": "https://www.sleep.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "jkfs",
+      "slug": "jkfs",
+      "mdFile": "/images/portfolio/projects/100/100.md",
+      "image": "/images/portfolio/projects/100/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "Journal of the Korea Foundry Society",
+      "subTitle": "한국주조공학회지(Journal of the Korea Foundry Society)의 영문 반응형 홈페이지입니다.",
+      "subTitleEn": "Responsive English website for the Journal of the Korea Foundry Society.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "jQuery Validation"],
+      "accentColor": "#bc4942",
+      "links": [
+        { "label": "Site", "href": "http://jkfs.website.or.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "daorc",
+      "slug": "daorc",
+      "mdFile": "/images/portfolio/projects/102/102.md",
+      "image": "/images/portfolio/projects/102/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "대한비만연구의학회",
+      "subTitle": "비만 연구 세미나 등록과 후원·사회공헌 신청을 지원하는 학회 홈페이지입니다.",
+      "subTitleEn": "Official website of an obesity research society for seminars, sponsorship, and outreach.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 30,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation"],
+      "accentColor": "#98bc42",
+      "links": [
+        { "label": "Site", "href": "https://www.daor.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "ysresearchs",
+      "slug": "ysresearchs",
+      "mdFile": "/images/portfolio/projects/103/103.md",
+      "image": "/images/portfolio/projects/103/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "원주연세의료원 의과학연구처",
+      "subTitle": "원주연세의료원 의과학연구처와 미래의료산학협력단의 연구지원 홈페이지입니다.",
+      "subTitleEn": "Research support website of the Wonju Yonsei Medical Center Office of Medical Research.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 35,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#2b93d3",
+      "links": [
+        { "label": "Site", "href": "https://wmrc.yonsei.ac.kr", "type": "site" }
+      ]
+    },
+    {
+      "id": "kiees",
+      "slug": "kiees",
+      "mdFile": "/images/portfolio/projects/104/104.md",
+      "image": "/images/portfolio/projects/104/main_image.webp",
+      "sortDate": "2025-05-01",
+      "title": "한국전자파학회",
+      "subTitle": "전자파 분야의 학술행사와 연구회·지부 활동, 회의실 예약을 제공하는 학회 홈페이지입니다.",
+      "subTitleEn": "Electromagnetics society website with events, research groups, branches and meeting room booking.",
+      "period": "2025.05 ~ 2026.07",
+      "context": "company-maintenance",
+      "role": "Frontend Developer",
+      "contribution": 40,
+      "skills": ["javascript", "jquery", "css3", "html5"],
+      "libraries": ["Owl Carousel", "jQuery UI", "bxSlider", "jQuery Validation", "rwdImageMaps"],
+      "accentColor": "#2c7657",
+      "links": [
+        { "label": "Site", "href": "https://www.kiees.or.kr", "type": "site" }
+      ]
     }
   ]
 }
