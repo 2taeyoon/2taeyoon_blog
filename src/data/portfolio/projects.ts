@@ -70,13 +70,31 @@ export function projectContextLabel(context: ProjectContext) {
   return PROJECT_FILTERS.find((filter) => filter.id === filterId)?.label ?? "";
 }
 
+/** 목록 맨 앞에 고정할 프로젝트. 적힌 순서대로 나오고, 나머지는 날짜순 */
+export const PINNED_PROJECT_SLUGS = [
+  "unesco",
+  "chest",
+  "kitechbiz",
+  "apfid",
+  "ysresearchs",
+  "sndoc",
+  "kpic",
+  "ysmed2",
+];
+
+function pinnedRank(slug: string) {
+  const rank = PINNED_PROJECT_SLUGS.indexOf(slug);
+  return rank === -1 ? Number.POSITIVE_INFINITY : rank;
+}
+
 export const projects = (projectsData.projects as Project[])
   .slice()
-  .sort(
-    (projectA, projectB) =>
-      new Date(projectB.sortDate).getTime() -
-      new Date(projectA.sortDate).getTime(),
-  );
+  .sort((projectA, projectB) => {
+    const rankA = pinnedRank(projectA.slug);
+    const rankB = pinnedRank(projectB.slug);
+    if (rankA !== rankB) return rankA < rankB ? -1 : 1;
+    return new Date(projectB.sortDate).getTime() - new Date(projectA.sortDate).getTime();
+  });
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
