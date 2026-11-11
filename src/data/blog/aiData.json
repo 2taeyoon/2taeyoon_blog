@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/29/29.md",
+			"image": "/images/blog/ai/29/main_image.webp",
+			"sortDate": "2026-11-11",
+			"title": "AI 업무 플랫폼과 장애 대응 시스템",
+			"subTitle": "AI가 일할 가상 쇼핑몰, 서버를 지켜보는 장애 대응 시스템, 부서별 AI가 함께 일하는 AI 업무 플랫폼이 어떻게 맞물려 하나의 회사처럼 움직이는지 정리했습니다. 실제 결제 장애는 2분 47초 만에 마무리됐고, 같은 장애의 복구 시간은 과거 기록을 재사용해 22초에서 1초로 줄었습니다.",
+			"hashs": [
+				{"name": "#AX"},
+				{"name": "#A2A"},
+				{"name": "#RAG"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/28/28.md",
 			"image": "/images/blog/ai/28/main_image.webp",
 			"sortDate": "2026-11-09",
