@@ -6,6 +6,23 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/30/30.md",
+			"image": "/images/blog/ai/30/main_image.webp",
+			"sortDate": "2026-11-12",
+			"title": "클로드 코드로 2D·3D 영상 만드는 작업 환경",
+			"subTitle": "FFmpeg, Whisper, yt-dlp, Remotion, HyperFrames에 Blender와 three.js까지, 클로드 코드로 영상을 만들 때 쓰는 도구를 한 폴더에 모으고 설치법과 사용법을 정리했습니다. 2D와 3D는 쓰는 도구와 스킬이 달라서 각각의 작업 흐름과 프롬프트 예시도 함께 담았습니다.",
+			"hashs": [
+				{"name": "#ClaudeCode"},
+				{"name": "#HyperFrames"},
+				{"name": "#영상제작"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/29/29.md",
 			"image": "/images/blog/ai/29/main_image.webp",
 			"sortDate": "2026-11-11",
