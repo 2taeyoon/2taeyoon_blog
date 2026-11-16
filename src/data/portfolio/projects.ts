@@ -76,9 +76,9 @@ export const PINNED_PROJECT_SLUGS = [
   "chest",
   "kitechbiz",
   "apfid",
-  "ysresearchs",
-  "sndoc",
   "kpic",
+  "sndoc",
+  "ysresearchs",
   "ysmed2",
 ];
 
