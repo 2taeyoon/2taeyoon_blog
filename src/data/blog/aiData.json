@@ -6,6 +6,57 @@
 				{"text": "AI" },
 				{"color": "greenBright"}
 			],
+			"mdFile": "/images/blog/ai/36/36.md",
+			"image": "/images/blog/ai/36/main_image.webp",
+			"sortDate": "2026-11-25",
+			"title": "AI 에이전트 최종 과제 GAIA 벤치마크",
+			"subTitle": "smolagents CodeAgent와 Claude로 GAIA Level 1 서브셋 20문제를 모두 맞히고 Agents Course 수료 기준(30%)을 통과한 과정을 정리했습니다. 에이전트 설계와 실행 중 부딪힌 문제의 해결 방법까지 담았습니다.",
+			"hashs": [
+				{"name": "#AIAgent"},
+				{"name": "#smolagents"},
+				{"name": "#GAIA"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/35/35.md",
+			"image": "/images/blog/ai/35/main_image.webp",
+			"sortDate": "2026-11-25",
+			"title": "AI 에이전트 molagents와 LangGraph로 에이전트 만들기",
+			"subTitle": "모델이 코드를 써서 움직이는 smolagents와, 개발자가 흐름을 그래프로 설계하는 LangGraph를 허깅페이스 에이전트 코스를 바탕으로 정리했습니다. 강의 예제 중 이름이 바뀌었거나 요즘 잘 쓰지 않는 코드는 최신 문서 기준으로 바꿨습니다.",
+			"hashs": [
+				{"name": "#AIAgent"},
+				{"name": "#smolagents"},
+				{"name": "#LangGraph"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
+			"mdFile": "/images/blog/ai/34/34.md",
+			"image": "/images/blog/ai/34/main_image.webp",
+			"sortDate": "2026-11-25",
+			"title": "AI 에이전트 사고, 행동, 관찰 루프, smolagents",
+			"subTitle": "AI 에이전트가 사고, 행동, 관찰을 반복하며 도구를 쓰는 원리를 허깅페이스 에이전트 코스를 바탕으로 정리했습니다. 프레임워크 없이 만든 더미 에이전트와 smolagents로 만든 첫 에이전트, 강의에서 바로잡을 ReAct 설명까지 담았습니다.",
+			"hashs": [
+				{"name": "#AIAgent"},
+				{"name": "#HuggingFace"},
+				{"name": "#smolagents"}
+			]
+		},
+		{
+			"type": "blog/ai",
+			"category": [
+				{"text": "AI" },
+				{"color": "greenBright"}
+			],
 			"mdFile": "/images/blog/ai/33/33.md",
 			"image": "/images/blog/ai/33/main_image.webp",
 			"sortDate": "2026-11-19",
