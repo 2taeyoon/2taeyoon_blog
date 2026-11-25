@@ -26,7 +26,7 @@
 			"mdFile": "/images/blog/ai/35/35.md",
 			"image": "/images/blog/ai/35/main_image.webp",
 			"sortDate": "2026-11-25",
-			"title": "AI 에이전트 molagents와 LangGraph로 에이전트 만들기",
+			"title": "AI 에이전트 smolagents와 LangGraph로 에이전트 만들기",
 			"subTitle": "모델이 코드를 써서 움직이는 smolagents와, 개발자가 흐름을 그래프로 설계하는 LangGraph를 허깅페이스 에이전트 코스를 바탕으로 정리했습니다. 강의 예제 중 이름이 바뀌었거나 요즘 잘 쓰지 않는 코드는 최신 문서 기준으로 바꿨습니다.",
 			"hashs": [
 				{"name": "#AIAgent"},
