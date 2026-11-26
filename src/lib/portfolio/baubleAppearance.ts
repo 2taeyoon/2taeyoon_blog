@@ -1,7 +1,33 @@
 import * as THREE from "three";
-import { baubleMaterial } from "@/lib/portfolio/pointerState";
+import { baubleMaterial, coreGlow } from "@/lib/portfolio/pointerState";
 
-/** 직물(리넨) 질감 + 인디고/오렌지 그라데이션 텍스처 생성 */
+/** 물결치는 나뭇결을 가로로 그린다. color가 null이면 밝기(범프용 회색)로 그린다 */
+function drawWoodGrain(ctx: CanvasRenderingContext2D, size: number, tinted: boolean) {
+  ctx.lineWidth = 1;
+  for (let y = 0; y < size; y += 1.5) {
+    const light = Math.random() < 0.45;
+    const alpha = 0.03 + Math.random() * (light ? 0.07 : 0.12);
+    ctx.strokeStyle = tinted
+      ? light
+        ? `rgba(150, 170, 255, ${alpha})`
+        : `rgba(4, 8, 30, ${alpha + 0.04})`
+      : light
+        ? `rgba(255, 255, 255, ${alpha * 2.4})`
+        : `rgba(0, 0, 0, ${alpha * 2.4})`;
+    const wave = 1.5 + Math.random() * 2.5;
+    const period = 90 + Math.random() * 140;
+    const phase = Math.random() * Math.PI * 2;
+    ctx.beginPath();
+    for (let x = 0; x <= size; x += 16) {
+      const yy = y + Math.sin(x / period + phase) * wave;
+      if (x === 0) ctx.moveTo(x, yy);
+      else ctx.lineTo(x, yy);
+    }
+    ctx.stroke();
+  }
+}
+
+/** 배경 그림처럼 결이 살아 있는 인디고 나무 질감 텍스처 생성 */
 export function createFabricTexture() {
   const size = 512;
   const canvas = document.createElement("canvas");
@@ -9,55 +35,46 @@ export function createFabricTexture() {
   canvas.height = size;
   const ctx = canvas.getContext("2d");
   if (ctx) {
-    // 인디고 베이스 그라데이션
+    // 그림 속 퍼즐처럼 짙고 채도가 조금 빠진 인디고
     const base = ctx.createLinearGradient(0, 0, size, size);
-    base.addColorStop(0, "#3a5494");
-    base.addColorStop(0.55, "#27407c");
-    base.addColorStop(1, "#16224d");
+    base.addColorStop(0, "#3a4088");
+    base.addColorStop(0.55, "#2c3274");
+    base.addColorStop(1, "#1f2458");
     ctx.fillStyle = base;
     ctx.fillRect(0, 0, size, size);
 
-    // 조각 왼쪽 상단에 퍼지는 오렌지 글로우
-    const glow = ctx.createRadialGradient(
-      size * 0.32,
-      size * 0.3,
-      0,
-      size * 0.32,
-      size * 0.3,
-      size * 0.52,
-    );
-    glow.addColorStop(0, "rgba(222, 124, 58, 0.95)");
-    glow.addColorStop(0.45, "rgba(205, 108, 52, 0.4)");
-    glow.addColorStop(1, "rgba(205, 108, 52, 0)");
-    ctx.fillStyle = glow;
+    // 꽃송이 안쪽 빛은 셰이더(coreGlow)가 담당한다. 여기서는 옅은 반사광만 남긴다
+    const bounce = ctx.createRadialGradient(size * 0.3, size * 0.32, 0, size * 0.3, size * 0.32, size * 0.6);
+    bounce.addColorStop(0, "rgba(214, 120, 62, 0.22)");
+    bounce.addColorStop(1, "rgba(214, 120, 62, 0)");
+    ctx.fillStyle = bounce;
     ctx.fillRect(0, 0, size, size);
 
-    // 가로 위사 라인 — 밝고 어두운 실이 번갈아 가며 직물 결 표현
-    ctx.lineWidth = 1;
-    for (let y = 0; y < size; y += 2) {
-      const alpha = 0.04 + Math.random() * 0.1;
-      ctx.strokeStyle = Math.random() < 0.5 ? `rgba(255, 255, 255, ${alpha})` : `rgba(8, 12, 30, ${alpha + 0.05})`;
-      ctx.beginPath();
-      ctx.moveTo(0, y + Math.random());
-      ctx.lineTo(size, y + Math.random());
-      ctx.stroke();
-    }
-
-    // 세로 경사 라인 — 듬성듬성 교차하는 크로스해치
-    for (let x = 0; x < size; x += 4) {
-      if (Math.random() < 0.4) continue;
-      ctx.strokeStyle = `rgba(255, 255, 255, ${0.02 + Math.random() * 0.05})`;
-      ctx.beginPath();
-      ctx.moveTo(x + Math.random(), 0);
-      ctx.lineTo(x + Math.random(), size);
-      ctx.stroke();
-    }
+    drawWoodGrain(ctx, size, true);
   }
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.wrapS = THREE.ClampToEdgeWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
+  texture.anisotropy = 4;
+  texture.needsUpdate = true;
+  return texture;
+}
+
+/** 나뭇결 요철용 범프 텍스처 */
+function createGrainBumpTexture() {
+  const size = 512;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  if (ctx) {
+    ctx.fillStyle = "#808080";
+    ctx.fillRect(0, 0, size, size);
+    drawWoodGrain(ctx, size, false);
+  }
+  const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
   return texture;
 }
@@ -68,14 +85,20 @@ export function applyBallColor(ballColor: string) {
     const texture = createFabricTexture();
     baubleMaterial.map = texture;
     baubleMaterial.emissiveMap = texture;
+    baubleMaterial.bumpMap = createGrainBumpTexture();
+    baubleMaterial.bumpScale = 0.6;
     baubleMaterial.color.setHex(0xffffff);
-    baubleMaterial.emissive.setHex(0xffffff).multiplyScalar(0.2);
+    // 자체 발광을 낮춰야 조명 음영이 살아나 그림처럼 차분해진다
+    baubleMaterial.emissive.setHex(0xffffff).multiplyScalar(0.07);
+    coreGlow.strength.value = 1;
     baubleMaterial.needsUpdate = true;
     return;
   }
 
+  coreGlow.strength.value = 0;
   baubleMaterial.map = null;
   baubleMaterial.emissiveMap = null;
+  baubleMaterial.bumpMap = null;
 
   const c = new THREE.Color(ballColor);
   const hsl = { h: 0, s: 0, l: 0 };
