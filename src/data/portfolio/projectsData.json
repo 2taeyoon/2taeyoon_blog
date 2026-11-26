@@ -5,17 +5,22 @@
       "slug": "axcellent",
       "mdFile": "/images/portfolio/projects/105/105.md",
       "image": "/images/portfolio/projects/105/main_image.webp",
-      "sortDate": "2026-11-26",
+      "sortDate": "2026-12-01",
       "title": "AXcellent",
-      "subTitle": "부서 AI 에이전트와 인프라 AI, 가상 고객사 3곳으로 이뤄진 A2A 업무 자동화 솔루션입니다.",
-      "subTitleEn": "A2A business automation with department AI agents, an infrastructure AI, and three demo client companies.",
-      "period": "2026.10 ~ 2026.11",
-      "context": "company-project",
+      "subTitle": "AI 에이전트와 인프라 AI, 가상 고객사 3곳으로 이뤄진 A2A 업무 자동화 솔루션입니다.",
+      "subTitleEn": "A2A business automation with AI agents, an infrastructure AI, and three demo client companies.",
+      "period": "2026.12",
+      "context": "academy-team",
       "role": "Finance AI · Infra AI · Frontend Developer",
       "contribution": 13,
       "skills": ["react", "typescript", "vite", "tailwindcss", "nextjs", "python", "fastapi"],
       "libraries": ["React Router", "A2A", "Claude API", "MCP", "Zabbix", "Higgsfield", "Prisma"],
-      "accentColor": "#5b5bd6"
+      "accentColor": "#5b5bd6",
+      "links": [
+        { "label": "Site", "href": "https://app.axcellent.cloud/", "type": "site" },
+        { "label": "Intro", "href": "https://axcellent.cloud/", "type": "other" },
+        { "label": "GitHub", "href": "https://github.com/Axcellent-bs/Axcellent-bs", "type": "github" }
+      ]
     },
     {
       "id": "printguard-ai",

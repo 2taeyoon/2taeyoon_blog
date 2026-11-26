@@ -22,6 +22,7 @@ export default function ProjectCaseStudy({
   };
   const siteLink = project.links?.find((link) => link.type === "site");
   const githubLink = project.links?.find((link) => link.type === "github");
+  const otherLinks = project.links?.filter((link) => link.type === "other") ?? [];
 
   return (
     <main className="project_detail_page" style={style}>
@@ -100,7 +101,7 @@ export default function ProjectCaseStudy({
             )}
           </dl>
 
-          {(siteLink || githubLink) && (
+          {(siteLink || githubLink || otherLinks.length > 0) && (
             <div className="project_detail_links">
               <p>Links</p>
               <ul>
@@ -112,6 +113,14 @@ export default function ProjectCaseStudy({
                     </a>
                   </li>
                 )}
+                {otherLinks.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} target="_blank" rel="noreferrer">
+                      {link.label}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                ))}
                 {githubLink && (
                   <li>
                     <a href={githubLink.href} target="_blank" rel="noreferrer">
