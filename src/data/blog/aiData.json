@@ -10,7 +10,7 @@
 			"image": "/images/blog/ai/36/main_image.webp",
 			"sortDate": "2026-11-25",
 			"title": "AI 에이전트 최종 과제 GAIA 벤치마크",
-			"subTitle": "smolagents CodeAgent와 Claude로 GAIA Level 1 서브셋 20문제를 모두 맞히고 Agents Course 수료 기준(30%)을 통과한 과정을 정리했습니다. 에이전트 설계와 실행 중 부딪힌 문제의 해결 방법까지 담았습니다.",
+			"subTitle": "smolagents CodeAgent와 Claude로 GAIA Level 1 서브셋 20문제를 모두 맞히고 Agents Course 수료 기준(30%)을 통과한 과정을 정리했습니다. 에이전트 설계와 도구 구성, 실행 구조까지 담았습니다.",
 			"hashs": [
 				{"name": "#AIAgent"},
 				{"name": "#smolagents"},

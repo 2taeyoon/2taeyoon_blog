@@ -9,7 +9,8 @@
 }
 
 .project_detail {
-  width: 88rem;
+  width: 120rem;
+  max-width: calc(100% - 4rem);
   margin: 0 auto;
 }
 
@@ -54,7 +55,7 @@
 .project_detail_title_group h1 {
   margin: 0;
   color: var(--pfTextStrong);
-  font-size: 6.4rem;
+  font-size: 5.6rem;
   font-weight: 700;
   text-shadow: 0 0 36px rgba(96, 116, 220, 0.2);
 }
@@ -295,6 +296,15 @@
   width: 100%;
   height: auto;
   margin: 5rem 0;
+}
+
+.project_markdown iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 3rem 0 5rem;
+  border: 0;
 }
 
 .project_screenshot {
