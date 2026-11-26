@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import BaubleScene from "@/components/portfolio/scene/BaubleScene";
+import HeroBackdrop from "@/components/portfolio/ui/HeroBackdrop";
+import { usePortfolioSessionStore } from "@/stores/usePortfolioSessionStore";
 import UnderlayHero from "@/components/portfolio/ui/UnderlayHero";
 import SceneContent from "@/components/portfolio/ui/SceneContent";
 import SceneNav from "@/components/portfolio/ui/SceneNav";
 import { SCENE_ORDER, cubeSpinState, type SceneId } from "@/lib/portfolio/scenes";
-import { usePortfolioSessionStore } from "@/stores/usePortfolioSessionStore";
 
 interface FaceTransition {
   from: SceneId;
@@ -57,6 +58,8 @@ export default function MainSection() {
 
   return (
     <div className="main_section_container">
+      <HeroBackdrop />
+      <BaubleScene ballColor={ballColor} scene={scene} />
       <UnderlayHero visible={scene === "main" && !transitioning} />
 
       {faceTransition ? (
@@ -80,8 +83,6 @@ export default function MainSection() {
       )}
 
       <SceneNav scene={scene} transitioning={transitioning} onNavigate={goToScene} />
-
-      <BaubleScene ballColor={ballColor} scene={scene} />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectSection from "@/components/portfolio/ProjectSection";
 import MainSection from "@/components/portfolio/MainSection";
+import PortfolioLoader from "@/components/portfolio/PortfolioLoader";
 import { mainExit, mainRenderState } from "@/lib/portfolio/pointerState";
 
 function applyScrollProgress(progress: number, sections: HTMLElement | null, project: HTMLDivElement | null) {
@@ -80,6 +81,7 @@ export default function PortfolioSections() {
 
   return (
     <section ref={sectionsRef} className="portfolio_sections">
+      <PortfolioLoader />
       <div className="portfolio_main_layer">
         <MainSection />
       </div>

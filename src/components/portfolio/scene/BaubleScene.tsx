@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
@@ -15,12 +15,12 @@ import {
 import { createBaubleConfigs, getBaubleCount } from "@/lib/portfolio/createBaubles";
 import { applyBallColor } from "@/lib/portfolio/baubleAppearance";
 import type { SceneId } from "@/lib/portfolio/scenes";
+import { markSceneReady } from "@/lib/portfolio/sceneReady";
 import Bauble from "@/components/portfolio/scene/Bauble";
 import PointerInput from "@/components/portfolio/scene/PointerInput";
 import Collisions from "@/components/portfolio/scene/Collisions";
 import ResponsiveCamera from "@/components/portfolio/scene/ResponsiveCamera";
-import GiantGlassCube from "@/components/portfolio/scene/GiantGlassCube";
-import PuzzleBackdropTitle from "@/components/portfolio/scene/PuzzleBackdropTitle";
+import { updateFlowerAnchor } from "@/lib/portfolio/heroImage";
 
 interface BaubleSceneProps {
   ballColor: string;
@@ -114,6 +114,23 @@ function MainScene({
   );
 }
 
+/**
+ * 배경 그림의 꽃송이 자리를 3D 좌표로 바꿔 둔다.
+ * ResponsiveCamera가 카메라를 맞춘 다음에 계산해야 하므로 Canvas 안에서 그 뒤에 둔다.
+ */
+function FlowerAnchorSync() {
+  const camera = useThree((state) => state.camera) as THREE.PerspectiveCamera;
+  const size = useThree((state) => state.size);
+
+  useLayoutEffect(() => {
+    const visibleHeight = 2 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
+    updateFlowerAnchor(size.width, size.height, visibleHeight / Math.max(size.height, 1));
+    mainRenderState.request();
+  }, [camera, size.width, size.height]);
+
+  return null;
+}
+
 function SceneFrameLoop() {
   const invalidate = useThree((state) => state.invalidate);
 
@@ -183,9 +200,8 @@ function SceneLighting() {
 }
 
 /**
- * 사이트 전체의 단일 3D 월드.
- * - GiantGlassCube: 쉐이더 몽환 배경 (격자 + 모핑 + 마우스 유체)
- * - Main: 물리 퍼즐 조각들
+ * 메인 3D 월드. 배경 그림(HeroBackdrop) 위에 투명하게 겹친다.
+ * - Main: 물리 퍼즐 조각들. 배경 그림의 꽃대 위(heroImage.flowerAnchor)로 모여 꽃송이가 된다
  */
 export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
   const baubles = useMemo(() => createBaubleConfigs(getBaubleCount()), []);
@@ -216,16 +232,16 @@ export default function BaubleScene({ ballColor, scene }: BaubleSceneProps) {
       onCreated={(state) => {
         state.gl.toneMappingExposure = 1.35;
         state.gl.domElement.style.touchAction = "pan-y";
+        // 로딩 화면(PortfolioLoader)에 첫 장면이 준비됐다고 알린다
+        window.requestAnimationFrame(markSceneReady);
       }}
     >
       <SceneFrameLoop />
       <ResponsiveCamera />
+      <FlowerAnchorSync />
       <PointerInput />
       <SceneLighting />
 
-      <GiantGlassCube ballColor={ballColor} />
-
-      {scene === "main" && <PuzzleBackdropTitle />}
       {scene === "main" && (
         <MainScene baubles={baubles} paused={!mainActive} />
       )}
