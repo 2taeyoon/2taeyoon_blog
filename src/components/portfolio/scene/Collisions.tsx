@@ -4,14 +4,20 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { usePlane, useSphere } from "@react-three/cannon";
 import { pointerState, puzzleSimulation, MOUSE_SPHERE_RADIUS, mainExit } from "@/lib/portfolio/pointerState";
+import { flowerAnchor } from "@/lib/portfolio/heroImage";
 
 /** 이보다 크게 한 번에 움직이면 순간이동(섹션 복귀 등)으로 보고 속도를 넘기지 않는다 */
 const MAX_SPHERE_JUMP = 6;
 /** 마우스를 아주 빠르게 휘둘러도 조각이 화면 밖으로 날아가지 않게 속도 상한을 둔다 */
 const MAX_SPHERE_SPEED = 40;
+/** 꽃송이 위·아래로 조각이 이만큼은 삐져나와도 되게 벽을 둔다 */
+const WALL_MARGIN = 1.2;
+/** 앞쪽 벽. 얕게 둬야 조각이 앞뒤로 겹겹이 쌓이지 않고 꽃송이 모양으로 납작하게 모인다 */
+const FRONT_WALL_Z = 4;
 
 export default function Collisions() {
   const wallsOpen = useRef(false);
+  const wallSpan = useRef<[number, number]>([Number.NaN, Number.NaN]);
   const sphereMoving = useRef(false);
   const spherePosition = useRef<[number, number, number]>([
     Number.NaN,
@@ -19,7 +25,7 @@ export default function Collisions() {
     Number.NaN,
   ]);
   const [, backApi] = usePlane(() => ({ position: [0, 0, 0], rotation: [0, 0, 0] }));
-  const [, frontApi] = usePlane(() => ({ position: [0, 0, 8], rotation: [0, -Math.PI, 0] }));
+  const [, frontApi] = usePlane(() => ({ position: [0, 0, FRONT_WALL_Z], rotation: [0, -Math.PI, 0] }));
   const [, bottomApi] = usePlane(() => ({ position: [0, -4, 0], rotation: [-Math.PI / 2, 0, 0] }));
   const [, topApi] = usePlane(() => ({ position: [0, 4, 0], rotation: [Math.PI / 2, 0, 0] }));
 
@@ -33,8 +39,13 @@ export default function Collisions() {
 
   useFrame((_, delta) => {
     const exiting = mainExit.progress > 0.03;
-    if (wallsOpen.current !== exiting) {
+    // 위아래 벽은 배경 그림의 꽃송이 위·아래에 맞춘다 (화면 크기가 바뀌면 꽃송이 자리도 바뀐다)
+    const wallTop = flowerAnchor.y + flowerAnchor.ry + WALL_MARGIN;
+    const wallBottom = flowerAnchor.y - flowerAnchor.ry - WALL_MARGIN;
+    const anchorMoved = wallTop !== wallSpan.current[0] || wallBottom !== wallSpan.current[1];
+    if (wallsOpen.current !== exiting || (!exiting && anchorMoved)) {
       wallsOpen.current = exiting;
+      wallSpan.current = [wallTop, wallBottom];
       if (exiting) {
         backApi.position.set(0, 0, -60);
         frontApi.position.set(0, 0, 60);
@@ -42,9 +53,9 @@ export default function Collisions() {
         topApi.position.set(0, 60, 0);
       } else {
         backApi.position.set(0, 0, 0);
-        frontApi.position.set(0, 0, 8);
-        bottomApi.position.set(0, -4, 0);
-        topApi.position.set(0, 4, 0);
+        frontApi.position.set(0, 0, FRONT_WALL_Z);
+        bottomApi.position.set(0, wallBottom, 0);
+        topApi.position.set(0, wallTop, 0);
       }
     }
 

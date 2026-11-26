@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+/* 첫 진입 로딩 화면 — 밝은 화면 한 줄 + 마우스를 따라오는 사운드 알약 */
+.pf_loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background:
+    radial-gradient(90% 70% at 50% 55%, rgba(58, 84, 148, 0.35) 0%, rgba(58, 84, 148, 0) 70%),
+    var(--pfBgLavender, #070b1a);
+  color: #e9ecf7;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.pf_loader.is_leaving {
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+}
+
+.pf_loader_row {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  padding: 0 32px;
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
+  transform: translateY(-50%);
+  transition:
+    opacity 0.35s ease,
+    transform 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.pf_loader.is_leaving .pf_loader_row {
+  opacity: 0;
+  transform: translateY(calc(-50% - 2.4rem));
+}
+
+.pf_loader_name,
+.pf_loader_role,
+.pf_loader_status {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.pf_loader_name {
+  left: 32px;
+}
+
+.pf_loader_role {
+  left: 17%;
+  color: #9ca3c4;
+}
+
+.pf_loader_status {
+  left: 67%;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.pf_loader_spinner {
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 1.5px solid var(--pfOrange);
+  border-right-color: transparent;
+  box-shadow: 0 0 10px var(--pfOrangeGlow);
+  border-radius: 50%;
+  animation: pf_loader_spin 0.8s linear infinite;
+}
+
+.pf_loader_pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.9rem 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--pfOrange);
+  color: #0b1024;
+  box-shadow: 0 0 24px rgba(224, 136, 80, 0.45);
+  font: inherit;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.pf_loader_pill.is_on {
+  background: #e9ecf7;
+  color: #0b1024;
+  box-shadow: 0 0 24px rgba(233, 236, 247, 0.35);
+}
+
+.pf_loader_pill_dash {
+  width: 1.2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+@keyframes pf_loader_spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (width <= 760px) {
+  .pf_loader_row {
+    top: auto;
+    bottom: 32px;
+    padding: 0 20px;
+    font-size: 1.5rem;
+    transform: none;
+  }
+
+  .pf_loader.is_leaving .pf_loader_row {
+    transform: translateY(-2.4rem);
+  }
+
+  .pf_loader_name {
+    left: 20px;
+    top: -5.6rem;
+  }
+
+  .pf_loader_role {
+    left: 20px;
+    top: -3rem;
+  }
+
+  .pf_loader_status {
+    left: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf_loader {
+    transition: opacity 0.4s ease;
+    clip-path: none;
+  }
+
+  .pf_loader.is_leaving {
+    opacity: 0;
+  }
+
+  .pf_loader_spinner {
+    animation-duration: 2.4s;
+  }
+}

@@ -14,6 +14,7 @@ import {
   PUZZLE_DEPTH,
   puzzleGeometries,
 } from "@/lib/portfolio/puzzleGeometry";
+import { flowerAnchor, flowerHome } from "@/lib/portfolio/heroImage";
 
 const INTRO_KICK = 18;
 const INTRO_MS = 720;
@@ -30,9 +31,10 @@ export default function Bauble(props: BaubleProps) {
       mass: props.mass,
       angularDamping: props.angularDamping,
       linearDamping: props.linearDamping,
+      // 꽃송이 한가운데에서 터져 나왔다가 각자 자리로 모인다
       position: [
-        (Math.random() - 0.5) * 0.35,
-        (Math.random() - 0.5) * 0.35,
+        flowerAnchor.x + (Math.random() - 0.5) * 0.35,
+        flowerAnchor.y + (Math.random() - 0.5) * 0.35,
         (Math.random() - 0.5) * 0.35,
       ],
       velocity: [
@@ -59,6 +61,8 @@ export default function Bauble(props: BaubleProps) {
   useEffect(() => {
     const vec = force.current;
     const unsubscribe = api.position.subscribe((p) => {
+      // 돌아갈 자리는 배경 그림의 꽃송이 위치를 따른다 (화면 크기가 바뀌면 함께 바뀐다)
+      const home = flowerHome(props.homeX, props.homeY);
       const burst = mainExit.progress;
       if (burst > 0.001) {
         wasExit.current = true;
@@ -66,8 +70,8 @@ export default function Bauble(props: BaubleProps) {
         lastBurst.current = burst;
         const d = 36 * burst;
         api.position.set(
-          props.homeX + props.explodeX * d,
-          props.homeY + props.explodeY * d,
+          home.x + props.explodeX * d,
+          home.y + props.explodeY * d,
           burst * 8,
         );
         api.velocity.set(0, 0, 0);
@@ -77,7 +81,7 @@ export default function Bauble(props: BaubleProps) {
       if (wasExit.current) {
         wasExit.current = false;
         lastBurst.current = -1;
-        api.position.set(props.homeX, props.homeY, 0);
+        api.position.set(home.x, home.y, 0);
         api.velocity.set(0, 0, 0);
         return;
       }
@@ -100,15 +104,15 @@ export default function Bauble(props: BaubleProps) {
       }
 
       const distFromHome = Math.hypot(
-        p[0] - props.homeX,
-        p[1] - props.homeY,
+        p[0] - home.x,
+        p[1] - home.y,
         p[2],
       );
       if (distFromHome < 0.32) return;
 
       api.applyForce(
         vec
-          .set(p[0] - props.homeX, p[1] - props.homeY, p[2] * 0.4)
+          .set(p[0] - home.x, p[1] - home.y, p[2] * 0.4)
           .normalize()
           .multiplyScalar(-props.args * 28)
           .toArray(),
