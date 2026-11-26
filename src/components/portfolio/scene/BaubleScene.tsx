@@ -5,9 +5,10 @@ import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Physics } from "@react-three/cannon";
 import { Environment } from "@react-three/drei";
-import { EffectComposer, N8AO, ToneMapping } from "@react-three/postprocessing";
-import { ToneMappingMode } from "postprocessing";
+import { EffectComposer, N8AO, Noise, ToneMapping } from "@react-three/postprocessing";
+import { BlendFunction, ToneMappingMode } from "postprocessing";
 import {
+  coreGlow,
   mainExit,
   mainRenderState,
   type BaubleProps,
@@ -20,7 +21,7 @@ import Bauble from "@/components/portfolio/scene/Bauble";
 import PointerInput from "@/components/portfolio/scene/PointerInput";
 import Collisions from "@/components/portfolio/scene/Collisions";
 import ResponsiveCamera from "@/components/portfolio/scene/ResponsiveCamera";
-import { updateFlowerAnchor } from "@/lib/portfolio/heroImage";
+import { flowerAnchor, updateFlowerAnchor } from "@/lib/portfolio/heroImage";
 
 interface BaubleSceneProps {
   ballColor: string;
@@ -83,6 +84,19 @@ function ShadowUpdateGate({ target }: { target: React.RefObject<THREE.Group | nu
   return null;
 }
 
+/**
+ * 꽃송이 속 주황 불빛(coreGlow)을 꽃송이 자리에 맞춘다.
+ * 꽃송이 자리는 화면 크기에 따라 바뀌므로 매 프레임 따라간다.
+ */
+function FlowerCoreGlowSync() {
+  useFrame(() => {
+    coreGlow.center.value.set(flowerAnchor.x, flowerAnchor.y - flowerAnchor.ry * 0.1, -0.6);
+    coreGlow.radius.value.set(flowerAnchor.rx, flowerAnchor.ry);
+  });
+
+  return null;
+}
+
 /** Main Scene 전용 — 물리 퍼즐 조각들 (마운트될 때만 물리 월드 존재) */
 function MainScene({
   baubles,
@@ -104,6 +118,7 @@ function MainScene({
       shouldInvalidate={false}
     >
       <Collisions />
+      <FlowerCoreGlowSync />
       <group ref={piecesRef}>
         {baubles.map((props, i) => (
           <Bauble key={i} {...props} />
@@ -160,12 +175,14 @@ function SceneEffects() {
   return (
     <EffectComposer multisampling={0}>
       <N8AO
-        aoRadius={2}
-        intensity={7}
+        aoRadius={1.6}
+        intensity={3.5}
         halfRes
         quality="medium"
       />
       <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
+      {/* 배경 그림의 필름 그레인과 맞춘다 */}
+      <Noise premultiply blendFunction={BlendFunction.SCREEN} opacity={0.18} />
     </EffectComposer>
   );
 }
