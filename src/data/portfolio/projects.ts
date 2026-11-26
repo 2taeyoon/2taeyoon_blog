@@ -72,14 +72,14 @@ export function projectContextLabel(context: ProjectContext) {
 
 /** 목록 맨 앞에 고정할 프로젝트. 적힌 순서대로 나오고, 나머지는 날짜순 */
 export const PINNED_PROJECT_SLUGS = [
+  "axcellent",
+  "printguard-ai",
   "unesco",
   "chest",
   "kitechbiz",
   "apfid",
   "kpic",
   "sndoc",
-  "ysresearchs",
-  "ysmed2",
 ];
 
 function pinnedRank(slug: string) {
@@ -100,14 +100,8 @@ export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
 
-/** 메인 프로젝트 섹션에 보여줄 작품. 적힌 순서대로 최대 8개. */
-export const FEATURED_PROJECT_SLUGS = [
-  "mydays",
-  "krmx",
-  "ni-web",
-  "hivu",
-  "yoondesign",
-];
+/** 메인 프로젝트 섹션에 보여줄 작품. 목록 1페이지 고정 순서와 같다. 최대 8개. */
+export const FEATURED_PROJECT_SLUGS = PINNED_PROJECT_SLUGS;
 
 export const featuredProjects = FEATURED_PROJECT_SLUGS.slice(0, 8)
   .map((slug) => getProjectBySlug(slug))

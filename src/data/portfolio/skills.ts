@@ -43,6 +43,9 @@ export const skillBadges: Record<string, SkillBadge> = {
   react: { label: "React", color: "#20232A", logo: "react", logoColor: "61DAFB" },
   jquery: { label: "jQuery", color: "#0769AD", logo: "jquery" },
   firebase: { label: "Firebase", color: "#DD2C00", logo: "firebase" },
+  vite: { label: "Vite", color: "#646CFF", logo: "vite" },
+  python: { label: "Python", color: "#3776AB", logo: "python" },
+  fastapi: { label: "FastAPI", color: "#009688", logo: "fastapi" },
 };
 
 /** API & Library 이름 → Simple Icons 이름. 여기 없는 항목은 글자만 있는 검정 배지 */
@@ -50,6 +53,14 @@ const LIBRARY_LOGOS: Record<string, string> = {
   Swiper: "swiper",
   "jQuery UI": "jquery",
   "Kakao Maps": "kakao",
+  "Claude API": "claude",
+  MCP: "modelcontextprotocol",
+  Leaflet: "leaflet",
+  "Transformers.js": "huggingface",
+  "ONNX Runtime": "onnx",
+  "React Router": "reactrouter",
+  Zabbix: "zabbix",
+  Prisma: "prisma",
 };
 
 /** shields.io for-the-badge 스타일 배지 주소 */
